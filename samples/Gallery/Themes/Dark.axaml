@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--  Add Resources Here  -->
+  <SolidColorBrush x:Key="SystemBrush" Color="#202020"/>
+
+  <SolidColorBrush x:Key="IconCardBrush" Color="#80413f3e"/>
+  <SolidColorBrush x:Key="IconCardForegroundHoverBrush" Color="#000000"/>
+
+  <SolidColorBrush x:Key="CardBorderBrush" Color="#393939"/>
+  <SolidColorBrush x:Key="CardBrush" Color="{StaticResource CardBackgroundFillColorDefault}"/>
+  <SolidColorBrush x:Key="CodeCardBrush" Color="#80202020"/>
+
+  <SolidColorBrush x:Key="TextForegroundInverted" Color="#000000"/>
+  <SolidColorBrush x:Key="GridSplitterBrush" Color="#A1A1A1"/>
+
+  <SolidColorBrush x:Key="LinkCardBrush" Color="#D1333333"/>
+  <SolidColorBrush x:Key="LinkCardBrushPointerOver" Color="#C1333333"/>
+  <SolidColorBrush x:Key="LinkCardBorderBrush" Color="#CC393939"/>
+  <SolidColorBrush x:Key="LinkCardBorderBrushPointerOver" Color="#393939"/>
+</ResourceDictionary>

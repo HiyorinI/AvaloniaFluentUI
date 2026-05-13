@@ -1,0 +1,204 @@
+﻿<ui:ViewBase
+  x:Class="Gallery.Views.DateTimeView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ui="clr-namespace:Gallery.Controls"
+  xmlns:viewModel="clr-namespace:Gallery.ViewModels"
+  Title="日期和时间"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="viewModel:DateTimeViewModel"
+  mc:Ignorable="d">
+
+  <ui:ViewBase.Styles>
+    <Style Selector="TextBox">
+      <Setter Property="MinWidth" Value="128"/>
+    </Style>
+
+    <Style Selector="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.Title">
+      <Setter Property="FontSize" Value="28"/>
+      <Setter Property="Margin" Value="0 5 0 15"/>
+      <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
+
+    <Style Selector="ui|CodeCard /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Padding" Value="15"/>
+    </Style>
+  </ui:ViewBase.Styles>
+
+  <StackPanel Spacing="50">
+    <!--  Calender  -->
+    <ui:CodeCard Title="日历选择器">
+      <Grid ColumnDefinitions="*, Auto">
+        <Calendar
+          Grid.Column="0"
+          DisplayDate="{Binding DisplayDate}"
+          DisplayMode="{Binding CalenderDisplayMode}"
+          SelectedDate="{Binding CalenderSelectedDate}"
+          SelectionMode="{Binding CalendarSelectionMode}"/>
+        <Grid
+          Grid.Column="1"
+          ColumnDefinitions="Auto, Auto"
+          ColumnSpacing="10"
+          RowDefinitions="Auto, Auto"
+          RowSpacing="10">
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="设置选择模式: "/>
+          <fui:FluentComboBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="168"
+            ItemsSource="{Binding CalendarSelectionModes}"
+            SelectedItem="{Binding CalendarSelectionMode, Mode=TwoWay}"/>
+
+          <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="设置显示模式: "/>
+          <fui:FluentComboBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="168"
+            ItemsSource="{Binding CalenderDisplayModes}"
+            SelectedItem="{Binding CalenderDisplayMode, Mode=TwoWay}"/>
+        </Grid>
+      </Grid>
+      <ui:CodeCard.CodeContent>
+        <TextBlock
+          Margin="10,0,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Text="{Binding CurrentSelectedDate}"/>
+      </ui:CodeCard.CodeContent>
+    </ui:CodeCard>
+
+    <!--  CalenderDatePicker  -->
+    <ui:CodeCard Name="CalendarDatePickerCard" Title="弹出日历选择器">
+      <CalendarDatePicker SelectedDate="{Binding CalenderDatePickerSelectedDate}"/>
+      <ui:CodeCard.CodeContent>
+        <TextBlock
+          Margin="10,0,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Text="{Binding CurrentDatePickerSelectedDate}"/>
+      </ui:CodeCard.CodeContent>
+    </ui:CodeCard>
+
+    <!--  ColorPicker  -->
+    <ui:CodeCard Title="颜色选择器">
+      <ColorPicker HorizontalAlignment="Left" Color="{Binding ColorPickerSelectedColor}"/>
+      <ui:CodeCard.CodeContent>
+        <TextBlock
+          Margin="10,0,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Text="{Binding CurrentColor}"/>
+      </ui:CodeCard.CodeContent>
+    </ui:CodeCard>
+
+    <!--  DatePicker  -->
+    <ui:CodeCard Name="DatePickerCard" Title="日期选择器">
+      <Grid ColumnDefinitions="*, Auto">
+        <DatePicker
+          Grid.Column="0"
+          HorizontalAlignment="Left"
+          DayVisible="{Binding DatePickerIsDisplayDay}"
+          MonthVisible="{Binding DatePickerIsDisplayMonth}"
+          SelectedDate="{Binding DatePickerSelectedDate}"
+          YearVisible="{Binding DatePickerIsDisplayYear}"/>
+        <Grid
+          Grid.Column="1"
+          ColumnDefinitions="Auto, Auto"
+          RowDefinitions="Auto, Auto, Auto">
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="显示日: "/>
+          <ToggleSwitch
+            Grid.Row="0"
+            Grid.Column="1"
+            IsChecked="{Binding DatePickerIsDisplayDay}"/>
+
+          <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="显示月: "/>
+          <ToggleSwitch
+            Grid.Row="1"
+            Grid.Column="1"
+            IsChecked="{Binding DatePickerIsDisplayMonth}"/>
+
+          <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="显示年: "/>
+          <ToggleSwitch
+            Grid.Row="2"
+            Grid.Column="1"
+            IsChecked="{Binding DatePickerIsDisplayYear}"/>
+        </Grid>
+      </Grid>
+      <ui:CodeCard.CodeContent>
+        <TextBlock
+          Margin="10,0,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Text="{Binding DatePickerCurrentDate}"/>
+      </ui:CodeCard.CodeContent>
+    </ui:CodeCard>
+
+    <!--  TimePicker  -->
+    <ui:CodeCard Name="TimePickerCard" Title="时间选择器">
+      <Grid ColumnDefinitions="*, Auto">
+        <TimePicker
+          ClockIdentifier="{Binding TimePickerCurrentClockIdentifier}"
+          MinuteIncrement="{Binding TimePickerCurrentMinuteIncrement}"
+          SelectedTime="{Binding TimePickerSelectedTime}"/>
+        <Grid
+          Grid.Column="1"
+          ColumnDefinitions="Auto, Auto"
+          ColumnSpacing="8"
+          RowDefinitions="Auto, Auto"
+          RowSpacing="10">
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="选择时间格式: "/>
+          <fui:FluentComboBox
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            ItemsSource="{Binding TimePickerClockIdentifiers}"
+            SelectedItem="{Binding TimePickerCurrentClockIdentifier}"/>
+
+          <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="默认时间增量: "/>
+          <fui:FluentComboBox
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            ItemsSource="{Binding TimePickerMinuteIncrements}"
+            SelectedItem="{Binding TimePickerCurrentMinuteIncrement}"/>
+        </Grid>
+      </Grid>
+      <ui:CodeCard.CodeContent>
+        <TextBlock
+          Margin="10,0,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Text="{Binding TimePickerCurrentTime}"/>
+      </ui:CodeCard.CodeContent>
+    </ui:CodeCard>
+  </StackPanel>
+</ui:ViewBase>

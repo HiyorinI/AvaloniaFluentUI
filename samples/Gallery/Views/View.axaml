@@ -1,0 +1,185 @@
+﻿<ui:ViewBase
+  x:Class="Gallery.Views.View"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:models="clr-namespace:Gallery.Models"
+  xmlns:ui="clr-namespace:Gallery.Controls"
+  xmlns:viewModel="clr-namespace:Gallery.ViewModels"
+  Title="视图"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="viewModel:ViewModel"
+  mc:Ignorable="d">
+  <StackPanel Orientation="Vertical" Spacing="50">
+    <ui:CodeCard Name="ListBoxCard" Title="列表控件">
+      <ListBox
+        Height="328"
+        HorizontalAlignment="Stretch"
+        ItemsSource="{Binding ItemSource}"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="表格控件" Height="456">
+      <Grid ColumnDefinitions="*, Auto">
+        <DataGrid
+          Margin="10"
+          AutoGenerateColumns="True"
+          BorderBrush="{DynamicResource CardBorderBrush}"
+          BorderThickness="1"
+          CornerRadius="8"
+          GridLinesVisibility="{Binding DataGridLinesVisibilityMode}"
+          IsReadOnly="{Binding DataGridIsReadOnly}"
+          ItemsSource="{Binding People}"/>
+
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="是只读的" IsChecked="{Binding DataGridIsReadOnly}"/>
+            <StackPanel Orientation="Horizontal" Spacing="5">
+              <TextBlock VerticalAlignment="Center" Text="边框显示模式"/>
+              <fui:FluentComboBox
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding DataGridLineVisibilityModes}"
+                SelectedItem="{Binding DataGridLinesVisibilityMode}"/>
+            </StackPanel>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard
+      Name="TreeViewCard"
+      Title="树状控件"
+      Height="456">
+      <Grid ColumnDefinitions="*, Auto">
+        <TreeView ItemsSource="{Binding TreeViewItems}" SelectionMode="{Binding TreeViewSelectedMode}">
+          <TreeView.ItemTemplate>
+            <TreeDataTemplate ItemsSource="{Binding SubNodes}">
+              <Border
+                Padding="15,3"
+                HorizontalAlignment="Left"
+                CornerRadius="8">
+                <TextBlock Text="{Binding Title}"/>
+              </Border>
+            </TreeDataTemplate>
+          </TreeView.ItemTemplate>
+        </TreeView>
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock Text="选项"/>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock Text="选择模式: "/>
+              <fui:FluentComboBox ItemsSource="{Binding TreeViewSelectedModes}" SelectedItem="{Binding TreeViewSelectedMode}"/>
+            </StackPanel>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard
+      Name="CarouselCard"
+      Title="轮播页面"
+      Height="400">
+      <Grid ColumnDefinitions="*, Auto">
+        <Carousel
+          Name="Carousel"
+          Margin="0,0,15,0"
+          AutoScrollToSelectedItem="True"
+          ItemsSource="{Binding CarouselItems}"
+          SelectedIndex="{Binding CarouselCurrentIndex}"
+          Transitions=""
+          WrapSelection="True">
+          <Carousel.PageTransition>
+            <CompositePageTransition>
+              <PageSlide
+                Orientation="Horizontal"
+                SlideInEasing="CubicEaseOut"
+                Duration="0:0:0.30"/>
+            </CompositePageTransition>
+          </Carousel.PageTransition>
+          <Carousel.ItemTemplate>
+            <DataTemplate DataType="models:CarouselData">
+              <Border
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{Binding Background}"
+                CornerRadius="8">
+                <TextBlock
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  FontSize="24"
+                  Text="{Binding Content}"/>
+              </Border>
+            </DataTemplate>
+          </Carousel.ItemTemplate>
+        </Carousel>
+
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="8">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock Text="{Binding CarouselAllCountFormat}"/>
+            <TextBlock Text="{Binding CarouselCurrentIndexFormat}"/>
+            <Button
+              HorizontalAlignment="Stretch"
+              Command="{Binding #Carousel.Previous}"
+              Content="上一张"/>
+            <Button
+              HorizontalAlignment="Stretch"
+              Command="{Binding #Carousel.Next}"
+              Content="下一张"/>
+            <Button
+              HorizontalAlignment="Stretch"
+              Classes="accent"
+              Command="{Binding AddCarouselCommand}"
+              Content="添加页面"/>
+            <CheckBox Content="自动播放" IsChecked="{Binding IsAutoPlay}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="简单设置卡">
+      <fui:SettingsExpander Header="Volume">
+        <fui:SettingsExpander.Footer>
+          <fui:ToolTipSlider
+            Width="168"
+            MinHeight="0"
+            MaxHeight="100"
+            Value="32"/>
+        </fui:SettingsExpander.Footer>
+      </fui:SettingsExpander>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="可点击设置卡">
+      <fui:SettingsExpander
+        ActionIconSource="ChevronRight"
+        Description="Volume levels, output, input, sound devices"
+        Header="Sound"
+        IconSource="Volume"
+        IsClickEnabled="True"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="可展开设置卡">
+      <fui:SettingsExpander
+        Description="Apps might have their own settings"
+        Header="Choose a device for speaking or recording"
+        IconSource="Microphone">
+        <fui:SettingsExpanderItem Content="Headest" Description="Device Name"/>
+        <fui:SettingsExpanderItem Content="This one has footer content" Description="Device Name">
+          <fui:SettingsExpanderItem.Footer>
+            <fui:PushButton
+              Classes="accent"
+              Content="添加设备"
+              IconData="{DynamicResource Add}"/>
+          </fui:SettingsExpanderItem.Footer>
+        </fui:SettingsExpanderItem>
+        <fui:SettingsExpanderItem
+          ActionIconSource="ChevronRight"
+          Content="This one is clickable"
+          IsClickEnabled="True"/>
+      </fui:SettingsExpander>
+    </ui:CodeCard>
+  </StackPanel>
+</ui:ViewBase>

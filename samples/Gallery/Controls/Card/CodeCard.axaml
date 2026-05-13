@@ -1,0 +1,105 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="using:Gallery.Controls">
+
+  <ControlTheme x:Key="{x:Type controls:CodeCard}" TargetType="controls:CodeCard">
+    <Setter Property="ClipToBounds" Value="True"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}"/>
+    <Setter Property="Margin" Value="0"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="CornerRadius" Value="12"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid RowDefinitions="Auto, *">
+          <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,5"
+            HorizontalAlignment="Left"
+            FontSize="16"
+            Text="{TemplateBinding Title}"/>
+          <Border
+            Name="PART_RootBorder"
+            Grid.Row="1"
+            Padding="{TemplateBinding Padding}"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            ClipToBounds="{TemplateBinding ClipToBounds}"
+            CornerRadius="{TemplateBinding CornerRadius}">
+
+            <Grid
+              Name="PART_LayoutGrid"
+              Margin="0"
+              RowDefinitions="*, 2, Auto">
+              <ContentPresenter
+                Name="PART_ContentPresenter"
+                Grid.Row="0"
+                Content="{TemplateBinding Content}"
+                ContentTemplate="{TemplateBinding ContentTemplate}"/>
+
+              <Separator
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource CardBorderBrush}"
+                Opacity="1"/>
+
+              <Border
+                Name="PART_CodeContentBorder"
+                Grid.Row="2"
+                Height="{TemplateBinding CodeContentHeight}">
+                <Grid HorizontalAlignment="Stretch" ColumnDefinitions="Auto, *, Auto">
+                  <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="源代码"/>
+
+                  <ContentPresenter
+                    Name="PART_CodePresenter"
+                    Grid.Column="1"
+                    Content="{TemplateBinding CodeContent}"
+                    ContentTemplate="{TemplateBinding CodeContentTemplate}"/>
+
+                  <PathIcon
+                    Grid.Column="2"
+                    Width="15"
+                    Height="15"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Data="{StaticResource Link}"/>
+                </Grid>
+              </Border>
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^ /template/ ContentPresenter">
+      <Setter Property="Padding" Value="10 5"/>
+      <Setter Property="Margin" Value="0"/>
+      <Setter Property="MinHeight" Value="65"/>
+    </Style>
+
+    <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="CornerRadius" Value="12 12 0 0"/>
+      <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+    </Style>
+
+    <Style Selector="^ /template/ Border#PART_CodeContentBorder">
+      <Setter Property="Padding" Value="15 5"/>
+      <Setter Property="CornerRadius" Value="0 0 12 12"/>
+      <Setter Property="MinHeight" Value="65"/>
+      <Setter Property="Background" Value="{DynamicResource CodeCardBrush}"/>
+    </Style>
+
+    <Style Selector="^ /template/ Border#PART_CodeContentBorder:pointerover">
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>

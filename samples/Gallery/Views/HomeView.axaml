@@ -1,0 +1,174 @@
+﻿<UserControl
+  x:Class="Gallery.Views.HomeView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:model="clr-namespace:Gallery.Models"
+  xmlns:ui="clr-namespace:Gallery.Controls"
+  xmlns:viewModel="clr-namespace:Gallery.ViewModels"
+  d:DesignHeight="1080"
+  d:DesignWidth="1920"
+  x:DataType="viewModel:HomeViewModel">
+  <UserControl.Styles>
+    <Style Selector="TextBlock.Title">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="FontSize" Value="18"/>
+    </Style>
+  </UserControl.Styles>
+
+  <fui:SmoothScrollViewer
+    Name="SmoothScrollViewer"
+    Margin="0,0,0,20"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    HorizontalScrollBarVisibility="Disabled">
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+      <Border Grid.Row="0" Padding="35">
+        <Border.Background>
+          <ImageBrush Source="avares://Gallery/Assets/Images/header.png" Stretch="Fill"/>
+        </Border.Background>
+        <Grid HorizontalAlignment="Stretch" RowDefinitions="Auto, Auto">
+          <TextBlock
+            Margin="0,0,0,45"
+            HorizontalAlignment="Left"
+            FontSize="48"
+            Text="Fluent Gallery"/>
+
+          <fui:SmoothScrollViewer
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+              <ui:LinkCard
+                Title="Getting started"
+                Content="An overview of app development options and samples."
+                IconData="{StaticResource Application}"/>
+              <ui:LinkCard
+                Title="GitHub repo"
+                Content="The latest fluent design controls and styles for your applications."
+                IconData="{StaticResource GitHub}"/>
+              <ui:LinkCard
+                Title="Code samples"
+                Content="Find samples that demonstrate specific tasks, features and APIs."
+                IconData="{StaticResource Code}"/>
+              <ui:LinkCard
+                Title="Send feedback"
+                Content="Help us improve PySide6-Fluent-UI by providing feedback."
+                IconData="{StaticResource Feedback}"/>
+            </StackPanel>
+          </fui:SmoothScrollViewer>
+        </Grid>
+      </Border>
+
+      <!--  Button  -->
+      <TextBlock
+        Grid.Row="1"
+        Margin="35,0,0,8"
+        Classes="Title"
+        Text="基本输入"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="2"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding ButtonItemSource}"
+        Tag="BasicInput"/>
+
+      <!--  Date Time  -->
+      <TextBlock
+        Grid.Row="3"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="日期时间"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="4"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding DateTimeItemSource}"
+        Tag="DateTime"/>
+
+      <!--  Dialog  -->
+      <TextBlock
+        Grid.Row="5"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="对话框"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="6"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding DialogItemSource}"
+        Tag="DialogBoxAndPopup"/>
+
+      <!--  Layout  -->
+      <TextBlock
+        Grid.Row="7"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="布局"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="8"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding LayoutItemSource}"
+        Tag="Layout"/>
+
+      <!--  Menu & ToolBar  -->
+      <TextBlock
+        Grid.Row="9"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="菜单和工具栏"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="10"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding MenuAndToolBarItemSource}"
+        Tag="MenuAndToolBar"/>
+
+      <!--  Navigation View  -->
+      <TextBlock
+        Grid.Row="11"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="导航视图"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="12"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding NavigationViewItemSource}"
+        Tag="Navigation"/>
+
+      <!--  Status and Information  -->
+      <TextBlock
+        Grid.Row="13"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="状态和信息"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="14"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding StatusAndInformationItemSource}"
+        Tag="StatusAndInformation"/>
+
+      <!--  Text  -->
+      <TextBlock
+        Grid.Row="15"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="文本"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="16"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding TextItemSource}"
+        Tag="Text"/>
+
+      <!--  View  -->
+      <TextBlock
+        Grid.Row="17"
+        Margin="35,35,0,8"
+        Classes="Title"
+        Text="视图"/>
+      <ui:ButtonItemsPanel
+        Grid.Row="18"
+        Command="{Binding GotoCommand}"
+        ItemsSource="{Binding ViewItemSource}"
+        Tag="View"/>
+    </Grid>
+  </fui:SmoothScrollViewer>
+</UserControl>

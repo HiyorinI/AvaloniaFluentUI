@@ -1,0 +1,71 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="clr-namespace:Gallery.Controls"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:model="clr-namespace:Gallery.Models">
+
+  <ControlTheme x:Key="{x:Type controls:ButtonItemsPanel}" TargetType="controls:ButtonItemsPanel">
+    <Setter Property="Margin" Value="35 0 0 0"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ItemsControl ItemsSource="{TemplateBinding ItemsSource}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel ItemSpacing="12" LineSpacing="12"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="model:ButtonItemModel">
+              <Button
+                Name="Button"
+                Width="360"
+                Height="90"
+                Padding="18,5,11,6"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Command="{Binding $parent[controls:ButtonItemsPanel].Command}"
+                CommandParameter="{Binding $self}"
+                Tag="{Binding $parent[controls:ButtonItemsPanel].Tag}">
+                <!-- <Button.CommandParameter> -->
+                <!-- <model:JumpButtonModel Control="{x:Reference Title}" Page="{Binding $parent[controls:ButtonItemsPanel].CommandParameter}"/> -->
+                <!-- </Button.CommandParameter> -->
+                <!--  CommandParameter="{Binding $parent[controls:ButtonItemsPanel].CommandParameter}"  -->
+                <!--  CommandParameter="{Binding $self}"  -->
+                <!--  Command="{Binding Command, RelativeSource={RelativeSource TemplatedParent}}"  -->
+                <Grid
+                  HorizontalAlignment="Left"
+                  ColumnDefinitions="Auto, *"
+                  ColumnSpacing="20"
+                  RowDefinitions="Auto, *">
+                  <fui:ImageIcon
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Width="48"
+                    Height="48"
+                    HorizontalAlignment="Left"
+                    Source="{Binding Image}"/>
+                  <TextBlock
+                    Name="Title"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Text="{Binding Title}"
+                    TextWrapping="WrapWithOverflow"/>
+                  <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Opacity="0.6"
+                    Text="{Binding Content}"
+                    TextWrapping="WrapWithOverflow"/>
+                </Grid>
+              </Button>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+</ResourceDictionary>

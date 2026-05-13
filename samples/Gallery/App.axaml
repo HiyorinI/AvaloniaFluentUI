@@ -1,0 +1,83 @@
+<Application
+  x:Class="Gallery.App"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:fluentUi="using:AvaloniaFluentUI.Styling"
+  xmlns:local="using:Gallery">
+  <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+  <TrayIcon.Icons>
+    <TrayIcons>
+      <TrayIcon Icon="/Assets/app.ico" ToolTipText="Avalonia Tray Icon ToolTip">
+        <TrayIcon.Menu>
+          <NativeMenu>
+            <NativeMenuItem Header="Settings">
+              <NativeMenu>
+                <NativeMenuItem Header="Option 1"/>
+                <NativeMenuItem Header="Option 2"/>
+                <NativeMenuItemSeparator/>
+                <NativeMenuItem Header="Option 3"/>
+                <NativeMenuItem Click="OnClicked" Header="退出"/>
+              </NativeMenu>
+            </NativeMenuItem>
+          </NativeMenu>
+        </TrayIcon.Menu>
+      </TrayIcon>
+    </TrayIcons>
+  </TrayIcon.Icons>
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+
+        <!--  Card  -->
+        <ResourceInclude Source="avares://Gallery/Controls/Card/CodeCard.axaml"/>
+        <ResourceInclude Source="avares://Gallery/Controls/Card/Card.axaml"/>
+
+        <!--  Navigation  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Navigation/NavigationView.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Navigation/NavigationViewItem.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Navigation/NavigationSeparator.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Navigation/NavigationButton.axaml"/> -->
+
+        <!--  Button  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Button/ToolButton.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Demo/Controls/Scroll/ScrollViewer.axaml"/> -->
+
+        <!--  Menu  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Menu/ContextMenu.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Menu/MenuItem.axaml"/> -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/Menu/MenuItemIcon.axaml"/> -->
+
+        <ResourceInclude Source="avares://Gallery/Controls/View/ViewBase.axaml"/>
+
+        <!--  ComboBox  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/ComboBox/ComboBox.axaml" /> -->
+
+        <!--  SmoothScrollViewer  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/ScrollViewer/SmoothScrollViewer.axaml"></ResourceInclude> -->
+
+        <!--  AnimatedWrapPanel  -->
+        <!-- <ResourceInclude Source="avares://Gallery/Controls/WrapPanel/AnimatedWrapPanel.axaml"/> -->
+
+        <ResourceInclude Source="avares://Gallery/Controls/Panel/ButtonItemsPanel.axaml"/>
+        <ResourceInclude Source="avares://Gallery/Controls/Card/LinkCard.axaml"/>
+
+      </ResourceDictionary.MergedDictionaries>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceInclude x:Key="Light" Source="Themes/Light.axaml"/>
+        <ResourceInclude x:Key="Dark" Source="Themes/Dark.axaml"/>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+
+  <Application.DataTemplates>
+    <local:ViewLocator/>
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <!-- <FluentTheme/> -->
+    <!-- <sukiUi:SukiTheme ThemeColor="Orange"></sukiUi:SukiTheme> -->
+    <fluentUi:FluentAvaloniaTheme/>
+  </Application.Styles>
+</Application>

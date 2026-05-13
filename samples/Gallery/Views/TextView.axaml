@@ -1,0 +1,327 @@
+﻿<ui:ViewBase
+  x:Class="Gallery.Views.TextView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ui="clr-namespace:Gallery.Controls"
+  xmlns:viewModel="clr-namespace:Gallery.ViewModels"
+  Title="文本"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="viewModel:TextViewModel"
+  mc:Ignorable="d">
+
+  <ui:ViewBase.Styles>
+    <Style Selector="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBox">
+      <Setter Property="MinWidth" Value="128"/>
+    </Style>
+
+    <Style Selector="TextBlock.Title">
+      <Setter Property="FontSize" Value="28"/>
+      <Setter Property="Margin" Value="0 5 0 15"/>
+      <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
+
+    <Style Selector="ui|CodeCard /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Padding" Value="15"/>
+    </Style>
+
+    <Style Selector="Button.AddButton">
+      <Setter Property="Background" Value="#52b69a"/>
+      <Setter Property="Foreground" Value="#FFFFFF"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style Selector="Button.RemoveButton">
+      <Setter Property="Background" Value="#ff477e"/>
+      <Setter Property="Foreground" Value="#FFFFFF"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style Selector="SplitView">
+      <Setter Property="OpenPaneLength" Value="328"/>
+      <Setter Property="PanePlacement" Value="Right"/>
+      <Setter Property="DisplayMode" Value="Overlay"/>
+      <Setter Property="CompactPaneLength" Value="100"/>
+    </Style>
+
+    <Style Selector="SplitView Panel#PART_PaneRoot">
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+  </ui:ViewBase.Styles>
+
+  <!--  AutoCompleteBox  -->
+  <StackPanel Spacing="50">
+    <!--  如果Text需要嵌套{}  -->
+    <!--  Text="{}{This is literal text, not a markup extension}"  -->
+    <ui:CodeCard Title="自动补全输入框">
+      <Grid ColumnDefinitions="*, Auto">
+        <AutoCompleteBox
+          Grid.Column="0"
+          Width="256"
+          HorizontalAlignment="Left"
+          FilterMode="{Binding AutoCompleterMode}"
+          ItemsSource="{Binding AutoCompleteItems}"
+          Text="{Binding AutoCompleteBoxText}"/>
+        <ui:Card
+          Grid.Column="1"
+          Width="328"
+          VerticalAlignment="Stretch">
+          <Grid
+            Margin="10"
+            ColumnDefinitions="Auto, *"
+            ColumnSpacing="6"
+            RowDefinitions="Auto, Auto, Auto"
+            RowSpacing="10">
+            <TextBlock
+              Grid.Row="0"
+              Grid.Column="0"
+              Text="添加要匹配的元素: "/>
+            <TextBox
+              Grid.Row="0"
+              Grid.Column="1"
+              Text="{Binding AutoCompleteElement}"/>
+            <TextBlock
+              Grid.Row="1"
+              Grid.Column="0"
+              Text="选择匹配模式: "/>
+            <fui:FluentComboBox
+              Grid.Row="1"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              ItemsSource="{Binding AutoCompleteFilterModeItems}"
+              SelectedItem="{Binding SelectedAutoCompleteMode}"/>
+            <Button
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              Classes="AddButton"
+              Command="{Binding AddAutoCompleteItemCommand}"
+              Content="添加要匹配的元素"/>
+          </Grid>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <!--  TextBlock  -->
+    <ui:CodeCard Name="TextBlockCard" Title="显示文本">
+      <Grid ColumnDefinitions="*, Auto" RowDefinitions="*, *">
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          HorizontalAlignment="Center"
+          FontSize="{Binding TextBlockFontSize}"
+          FontStyle="{Binding TextBlockFontStyle}"
+          FontWeight="{Binding TextBlockFontWeight}"
+          LetterSpacing="{Binding TextBlockLetterSpacing}"
+          Text="{Binding TextBlockText}"
+          TextDecorations="{Binding TextDecorations}"/>
+        <TextBlock
+          Grid.Row="1"
+          Grid.Column="0"
+          HorizontalAlignment="Center">
+          <Run Text="Your name is"/>
+          <Run
+            FontSize="24"
+            FontWeight="Bold"
+            Foreground="Orange"
+            Text="John Doe"/>
+          <Run Text="and your favorite activity is"/>
+          <Run
+            FontStyle="Italic"
+            Foreground="DeepPink"
+            Text="Learning Avalonia"
+            TextDecorations="Underline"/>
+        </TextBlock>
+
+        <ui:Card Grid.RowSpan="2" Grid.Column="1">
+          <Grid
+            Margin="10"
+            ColumnDefinitions="Auto, *"
+            ColumnSpacing="10"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+            RowSpacing="6">
+            <TextBlock
+              Grid.Row="0"
+              Grid.Column="0"
+              Text="设置要显示的文本: "/>
+            <TextBox
+              Grid.Row="0"
+              Grid.Column="1"
+              Text="{Binding TextBlockText}"/>
+
+            <TextBlock
+              Grid.Row="1"
+              Grid.Column="0"
+              Text="设置字体大小"/>
+            <fui:FluentComboBox
+              Grid.Row="1"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              ItemsSource="{Binding FontSizeItems}"
+              SelectedItem="{Binding TextBlockFontSize}"/>
+
+            <TextBlock
+              Grid.Row="2"
+              Grid.Column="0"
+              Text="设置字体粗细: "/>
+            <fui:FluentComboBox
+              Grid.Row="2"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              ItemsSource="{Binding FontWeightItems}"
+              SelectedItem="{Binding TextBlockFontWeight}"/>
+
+            <TextBlock
+              Grid.Row="3"
+              Grid.Column="0"
+              Text="设置字母样式: "/>
+            <fui:FluentComboBox
+              Grid.Row="3"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              ItemsSource="{Binding FontStyleItems}"
+              SelectedItem="{Binding TextBlockFontStyle}"/>
+
+            <TextBlock
+              Grid.Row="4"
+              Grid.Column="0"
+              Text="设置字母间隔: "/>
+            <fui:ToolTipSlider
+              Grid.Row="4"
+              Grid.Column="1"
+              Margin="0"
+              Padding="0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Center"
+              Maximum="32"
+              Minimum="0"
+              Value="{Binding TextBlockLetterSpacing, Mode=TwoWay}"/>
+
+            <TextBlock
+              Grid.Row="5"
+              Grid.Column="0"
+              Text="设置文本装饰: "/>
+            <fui:FluentComboBox
+              Grid.Row="5"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch"
+              ItemsSource="{Binding TextDecorationsItems}"
+              SelectedItem="{Binding TextDecorations}"/>
+          </Grid>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <!--  TextBox  -->
+    <ui:CodeCard Name="TextBoxCard" Title="文本输入框">
+      <Grid ColumnDefinitions="*, Auto">
+
+        <TextBox
+          Width="256"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          AcceptsReturn="{Binding IsAccentReturn}"
+          AcceptsTab="{Binding IsAcceptTab}"
+          Classes="clearButton"
+          Watermark="{Binding Watermark}"/>
+        <ui:Card
+          Grid.Column="1"
+          Width="256"
+          VerticalAlignment="Stretch">
+          <StackPanel Orientation="Vertical">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+
+            <CheckBox Content="接受回车" IsChecked="{Binding IsAccentReturn}"/>
+            <CheckBox Content="接受Tab" IsChecked="{Binding IsAcceptTab}"/>
+            <TextBlock HorizontalAlignment="Left" Text="提示文字"/>
+            <TextBox Text="{Binding Watermark}"/>
+
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="带清空按钮的输入框">
+      <TextBox
+        Width="256"
+        HorizontalAlignment="Left"
+        Classes="clearButton"
+        Watermark="带清空按钮的输入框"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="PasswordBoxCard" Title="密码输入框">
+      <TextBox
+        Width="256"
+        HorizontalAlignment="Left"
+        Classes="revealPasswordButton"
+        PasswordChar="*"
+        Watermark="请输入密码"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="NumberBoxCard" Title="数字编辑框">
+      <Grid ColumnDefinitions="*, Auto">
+        <fui:NumberBox
+          Maximum="10000"
+          Minimum="0"
+          SpinButtonPlacementMode="{Binding NumberBoxSpinButtonPlacementMode}"/>
+
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock Text="SpinButton显示模式: "/>
+              <fui:FluentComboBox
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding NumberBoxSpinButtonPlacementModes}"
+                SelectedItem="{Binding NumberBoxSpinButtonPlacementMode}"/>
+            </StackPanel>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="按钮微调器">
+      <Grid ColumnDefinitions="*, Auto">
+        <ButtonSpinner
+          Grid.Column="0"
+          Width="128"
+          AllowSpin="{Binding IsEnabledSpinner}"
+          ButtonSpinnerLocation="{Binding SpinnerLocation}"/>
+        <ui:Card Grid.Column="1">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="微调按钮位置: "/>
+              <fui:FAComboBox ItemsSource="{Binding SpinnerLocations}" SelectedItem="{Binding SpinnerLocation}"/>
+            </StackPanel>
+            <CheckBox Content="启用旋转功能" IsChecked="{Binding IsEnabledSpinner}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <!--  MaskedTextBox  -->
+    <ui:CodeCard Title="MaskedTextBox">
+      <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
+        <TextBlock
+          Grid.Row="0"
+          Classes="Title"
+          Text="{OnFormFactor Default=MaskedTextBox}"/>
+        <TextBlock Grid.Row="1" Text="请输入11位电话号码:"/>
+        <MaskedTextBox Grid.Row="2" Mask="(+86) 000 0000 0000"/>
+
+        <TextBlock Grid.Row="3" Text="请输入名字(A-Z)(a-z)"/>
+        <MaskedTextBox
+          Grid.Row="4"
+          AsciiOnly="True"
+          Mask="*"/>
+      </Grid>
+    </ui:CodeCard>
+  </StackPanel>
+</ui:ViewBase>

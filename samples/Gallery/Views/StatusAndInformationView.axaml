@@ -1,0 +1,149 @@
+﻿<ui:ViewBase
+  x:Class="Gallery.Views.StatusAndInformationView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ui="clr-namespace:Gallery.Controls"
+  xmlns:viewModel="clr-namespace:Gallery.ViewModels"
+  Title="状态和信息"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="viewModel:StatusAndInformationViewModel"
+  mc:Ignorable="d">
+  <StackPanel Spacing="50">
+    <ui:CodeCard Name="ToolTipCard" Title="带工具提示的按钮">
+      <Button Content="带工具提示的按钮">
+        <ToolTip.Tip>
+          <ToolTip Content="我是工具提示"/>
+        </ToolTip.Tip>
+      </Button>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="InfoBadgeCard" Title="信息徽章">
+      <StackPanel Orientation="Horizontal" Spacing="10">
+        <fui:InfoBadge Classes="Attention" Value="10"/>
+        <fui:InfoBadge Classes="Informational" Value="50"/>
+        <fui:InfoBadge Classes="Success" Value="100"/>
+        <fui:InfoBadge Classes="Caution" Value="500"/>
+        <fui:InfoBadge Classes="Critical" Value="1000"/>
+      </StackPanel>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="InfoBarCard" Title="消息条">
+      <Grid ColumnDefinitions="*, Auto">
+        <fui:InfoBar
+          Title="保存成功"
+          Grid.Column="0"
+          Margin="0,10,10,0"
+          IsClosable="{Binding InfoBarIsClosable}"
+          IsOpen="{Binding InfoBarIsOpen, Mode=TwoWay}"
+          Message="文件已成功保存到服务器"
+          Severity="{Binding CurrentInfoBarSeverity}">
+          <fui:InfoBar.ActionButton>
+            <Button
+              Padding="20,5,20,6"
+              HorizontalAlignment="Right"
+              Content="Action"/>
+          </fui:InfoBar.ActionButton>
+        </fui:InfoBar>
+        <ui:Card Grid.Column="1" Width="256">
+          <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto">
+            <TextBlock
+              Grid.Row="0"
+              Grid.Column="0"
+              FontWeight="Bold"
+              Text="选项"/>
+            <TextBlock
+              Grid.Row="1"
+              Grid.Column="0"
+              VerticalAlignment="Center"
+              Text="样式: "/>
+            <fui:FluentComboBox
+              Grid.Row="1"
+              Grid.Column="1"
+              ItemsSource="{Binding InfoBarSeverityItems}"
+              SelectedItem="{Binding CurrentInfoBarSeverity}"/>
+            <CheckBox
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              Content="是可关闭的"
+              IsChecked="{Binding InfoBarIsClosable}"/>
+            <Button
+              Grid.Row="3"
+              Grid.ColumnSpan="2"
+              HorizontalAlignment="Stretch"
+              Classes="accent"
+              Command="{Binding ResetInfoBarCommand}"
+              Content="重置"/>
+          </Grid>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="ProgressBarCard" Title="进度条">
+      <Grid ColumnDefinitions="*, Auto">
+        <ProgressBar
+          Width="256"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          IsIndeterminate="{Binding ProgressBarIsIndeterminate}"
+          Maximum="100"
+          Minimum="0"
+          Value="{Binding ProgressBarCurrentValue}"/>
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="是不确定的" IsChecked="{Binding ProgressBarIsIndeterminate}"/>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock VerticalAlignment="Center" Text="进度: "/>
+
+              <fui:NumberBox
+                HorizontalAlignment="Stretch"
+                Maximum="100"
+                Minimum="0"
+                SpinButtonPlacementMode="Inline"
+                Value="{Binding ProgressBarCurrentValue}"/>
+            </StackPanel>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="ProgressRingCard" Title="进度环">
+      <Grid ColumnDefinitions="*, Auto">
+        <fui:ProgressRing
+          Width="128"
+          Height="128"
+          HorizontalAlignment="Left"
+          Background="{Binding ProgressRingBackground}"
+          IsIndeterminate="{Binding ProgressRingIsIndeterminate}"
+          Maximum="100"
+          Minimum="0"
+          Value="{Binding ProgressRingCurrentValue}"/>
+
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="是不确定的" IsChecked="{Binding ProgressRingIsIndeterminate}"/>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock VerticalAlignment="Center" Text="进度: "/>
+
+              <fui:NumberBox
+                HorizontalAlignment="Stretch"
+                Maximum="100"
+                Minimum="0"
+                SpinButtonPlacementMode="Inline"
+                Value="{Binding ProgressRingCurrentValue}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock VerticalAlignment="Center" Text="背景色: "/>
+              <ColorPicker HorizontalAlignment="Left" Color="{Binding ProgressRingColor, Mode=TwoWay}"/>
+            </StackPanel>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+  </StackPanel>
+</ui:ViewBase>

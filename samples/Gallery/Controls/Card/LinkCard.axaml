@@ -1,0 +1,58 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="clr-namespace:Gallery.Controls">
+
+  <ControlTheme x:Key="{x:Type controls:LinkCard}" TargetType="controls:LinkCard">
+    <Setter Property="Background" Value="{DynamicResource LinkCardBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource LinkCardBorderBrush}"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Width" Value="198"/>
+    <Setter Property="Height" Value="220"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+          Name="Border"
+          Width="{TemplateBinding Width}"
+          Height="{TemplateBinding Height}"
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}"
+          CornerRadius="8">
+          <Grid Margin="20,20,10,10" RowDefinitions="Auto, Auto, *, Auto">
+            <PathIcon
+              Grid.Row="0"
+              Width="64"
+              Height="64"
+              HorizontalAlignment="Left"
+              Data="{TemplateBinding IconData}"/>
+            <TextBlock
+              Grid.Row="1"
+              Margin="0,8,0,0"
+              FontSize="18"
+              Text="{TemplateBinding Title}"/>
+            <TextBlock
+              Grid.Row="2"
+              Margin="0,8,0,8"
+              FontSize="13"
+              Text="{TemplateBinding Content}"
+              TextWrapping="WrapWithOverflow"/>
+            <PathIcon
+              Grid.Row="3"
+              Width="16"
+              Height="16"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Bottom"
+              Data="M7.4 4.267h5.467l0.209 0.020 0.195 0.059 0.18 0.099 0.166 0.139 0.139 0.166 0.099 0.18 0.059 0.195 0.020 0.209-0.020 0.209-0.059 0.195-0.099 0.18-0.139 0.166-0.166 0.139-0.18 0.099-0.195 0.059-0.209 0.020h-5.417l-0.412 0.021-0.403 0.064-0.393 0.107-0.384 0.149-0.368 0.185-0.345 0.215-0.322 0.244-0.299 0.273-0.273 0.299-0.244 0.322-0.215 0.345-0.185 0.368-0.149 0.384-0.107 0.393-0.064 0.403-0.021 0.412v15.1l0.021 0.412 0.064 0.403 0.107 0.393 0.149 0.384 0.185 0.368 0.215 0.345 0.244 0.322 0.273 0.299 0.299 0.273 0.322 0.244 0.345 0.215 0.368 0.185 0.384 0.149 0.393 0.107 0.403 0.064 0.412 0.021h15.1l0.427-0.022 0.413-0.066 0.399-0.109 0.386-0.153 0.367-0.19 0.343-0.219 0.319-0.248 0.295-0.277 0.269-0.304 0.24-0.328 0.21-0.352 0.181-0.376 0.146-0.392 0.104-0.402 0.063-0.411 0.021-0.42v-5.333l0.020-0.209 0.059-0.195 0.099-0.18 0.139-0.166 0.166-0.139 0.18-0.099 0.195-0.059 0.209-0.020 0.209 0.020 0.195 0.059 0.18 0.099 0.166 0.139 0.139 0.166 0.099 0.18 0.059 0.195 0.020 0.209v5.467l-0.032 0.618-0.095 0.605-0.159 0.591-0.222 0.578-0.276 0.553-0.32 0.518-0.364 0.482-0.407 0.447-0.447 0.407-0.482 0.364-0.518 0.32-0.553 0.276-0.578 0.222-0.591 0.159-0.605 0.095-0.618 0.032h-15.2l-0.618-0.032-0.605-0.095-0.591-0.159-0.578-0.222-0.553-0.276-0.518-0.32-0.482-0.364-0.447-0.407-0.407-0.447-0.364-0.482-0.32-0.518-0.276-0.553-0.222-0.578-0.159-0.591-0.095-0.605-0.032-0.618v-15.2l0.032-0.618 0.095-0.605 0.159-0.591 0.222-0.578 0.276-0.553 0.32-0.518 0.364-0.482 0.407-0.447 0.447-0.407 0.482-0.364 0.518-0.32 0.553-0.276 0.578-0.222 0.591-0.159 0.605-0.095 0.618-0.032zM17.133 2.133h12.8l0.209 0.020 0.195 0.059 0.18 0.099 0.166 0.139 0.139 0.166 0.099 0.18 0.059 0.195 0.020 0.209v12.8l-0.020 0.209-0.059 0.195-0.099 0.18-0.139 0.166-0.166 0.139-0.18 0.099-0.195 0.059-0.209 0.020-0.209-0.020-0.195-0.059-0.18-0.099-0.166-0.139-0.139-0.166-0.099-0.18-0.059-0.195-0.020-0.209v-10.217l-13.117 13.1-0.169 0.133-0.173 0.1-0.19 0.063-0.219 0.021-0.209-0.020-0.195-0.059-0.18-0.099-0.166-0.139-0.139-0.166-0.099-0.18-0.059-0.195-0.020-0.209 0.020-0.209 0.059-0.195 0.099-0.18 0.139-0.166 13.117-13.117h-10.233l-0.209-0.020-0.195-0.059-0.18-0.099-0.166-0.139-0.139-0.166-0.099-0.18-0.059-0.195-0.020-0.209 0.020-0.209 0.059-0.195 0.099-0.18 0.139-0.166 0.166-0.139 0.18-0.099 0.195-0.059 0.209-0.020z"/>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^:pointerover /template/ Border#Border">
+      <Setter Property="Background" Value="{DynamicResource LinkCardBrushPointerOver}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource LinkCardBorderBrushPointerOver}"/>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>
