@@ -43,18 +43,22 @@
             <StackPanel Orientation="Horizontal" Spacing="10">
               <ui:LinkCard
                 Title="Getting started"
+                Click="OnGettingStartedClicked"
                 Content="An overview of app development options and samples."
                 IconData="{StaticResource Application}"/>
               <ui:LinkCard
                 Title="GitHub repo"
+                Click="OnGitHubRepoClicked"
                 Content="The latest fluent design controls and styles for your applications."
                 IconData="{StaticResource GitHub}"/>
               <ui:LinkCard
                 Title="Code samples"
+                Click="OnCodeSamplesClicked"
                 Content="Find samples that demonstrate specific tasks, features and APIs."
                 IconData="{StaticResource Code}"/>
               <ui:LinkCard
                 Title="Send feedback"
+                Click="OnSendFeedBackClicked"
                 Content="Help us improve PySide6-Fluent-UI by providing feedback."
                 IconData="{StaticResource Feedback}"/>
             </StackPanel>

@@ -4,6 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using AvaloniaFluentUI.UI.Controls;
+using Gallery.Helpers;
 
 namespace Gallery.Views;
 
@@ -115,4 +116,22 @@ public partial class HomeView : UserControl
 //             ConsoleTest.WriteLine("你点了取消");
 //         }
 //     }
+private void OnGettingStartedClicked(object? sender, RoutedEventArgs e)
+{
+    UrlHelpers.OpenUrl("https://github.com/HiyorinI/AvaloniaFluentUI.git");
+}
+
+private void OnGitHubRepoClicked(object? sender, RoutedEventArgs e)
+{
+    UrlHelpers.OpenUrl("https://github.com/HiyorinI/AvaloniaFluentUI.git");
+}
+
+private void OnCodeSamplesClicked(object? sender, RoutedEventArgs e)
+{
+    UrlHelpers.OpenUrl("https://github.com/HiyorinI/AvaloniaFluentUI/tree/master/samples/Gallery");
+}
+
+private void OnSendFeedBackClicked(object? sender, RoutedEventArgs e)
+{
+}
 }
