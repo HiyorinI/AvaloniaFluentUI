@@ -1,56 +1,65 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Gallery.ViewModels;
 
-namespace Gallery;
+namespace Gallery; 
 
-[RequiresUnreferencedCode(
-    "Default implementation of ViewLocator involves reflection which may be trimmed away.",
-    Url = "https://docs.avaloniaui.net/docs/concepts/view-locator")]
 public class ViewLocator : IDataTemplate
 {
-    // 🔹 缓存 View 实例
+    private readonly Dictionary<Type, Func<Control>> _factory = new();
     private readonly Dictionary<Type, Control> _cache = new();
 
-    private async Task Init()
+    public ViewLocator()
     {
-        await Task.Run(() =>
-        {
-            var type = Type.GetType("Gallery.Views.LayoutControlsView");
+        Register();
+    }
 
-            if (type != null)
-            {
-                var view = (Control)Activator.CreateInstance(type)!;
-                _cache[type] = view;
-                Console.WriteLine(type + "Null");
-                Console.WriteLine(view + "Null");
-            }
-            else
-            {
-                Console.WriteLine("Type Is Null");
-            }
-
-            Console.WriteLine(_cache[type!]);
-        });
+    private void Register()
+    {
+        _factory[typeof(HomeViewModel)] = () => new Views.HomeView();
+        _factory[typeof(IconsViewModel)] = () => new Views.IconsView();
+        _factory[typeof(BasicInputViewModel)] = () => new Views.BasicInputView();
+        _factory[typeof(DialogBoxAndPopupViewModel)] = () => new Views.DialogBoxAndPopupView();
+        _factory[typeof(LayoutViewModel)] = () => new Views.LayoutView();
+        _factory[typeof(NavigationViewModel)] = () => new Views.NavigationView();
+        _factory[typeof(TextViewModel)] = () => new Views.TextView();
+        _factory[typeof(ViewModel)] = () => new Views.View();
+        _factory[typeof(ScrollViewModel)] = () => new Views.ScrollView();
+        _factory[typeof(StatusAndInformationViewModel)] = () => new Views.StatusAndInformationView();
+        _factory[typeof(MenuAndToolBarViewModel)] = () => new Views.MenuAndToolBarView();
+        _factory[typeof(DateTimeViewModel)] = () => new Views.DateTimeView();
+        _factory[typeof(SettingsViewModel)] = () => new Views.SettingsView();
     }
 
     public Control? Build(object? param)
     {
-        if (param is null) { return null; }
+        if (param is null)
+            return null;
 
-        var viewTypeName = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var viewType = Type.GetType(viewTypeName);
-        
-        if (viewType == null) { return new TextBlock { Text = "Not Found: " + viewTypeName }; }
-        if (_cache.TryGetValue(viewType, out var cachedView)) { return cachedView; }
+        var vmType = param.GetType();
 
-        var view = (Control)Activator.CreateInstance(viewType)!;
+        if (_cache.TryGetValue(vmType, out var cached))
+        {
+            cached.DataContext = param;
+            return cached;
+        }
 
-        _cache[viewType] = view;
+        if (!_factory.TryGetValue(vmType, out var creator))
+        {
+            return new TextBlock
+            {
+                Text = $"View not registered: {vmType.Name}"
+            };
+        }
+
+        var view = creator();
+
+        view.DataContext = param;
+
+        _cache[vmType] = view;
+
         return view;
     }
 

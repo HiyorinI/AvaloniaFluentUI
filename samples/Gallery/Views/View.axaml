@@ -14,8 +14,43 @@
   x:DataType="viewModel:ViewModel"
   mc:Ignorable="d">
   <StackPanel Orientation="Vertical" Spacing="50">
+    <ui:CodeCard>
+      <Grid ColumnDefinitions="*, Auto">
+        <fui:FlipView
+          Height="400"
+          Interval="{Binding FlipViewAutoPlayInterval}"
+          IsAutoPlay="{Binding FlipViewIsAutoPlay}"
+          ItemsSource="{Binding FlipViewItems}"
+          SelectedIndex="0"/>
+        <ui:Card
+          Grid.Column="1"
+          Width="256"
+          Margin="10,0,0,0">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock Text="选项"/>
+            <CheckBox Content="自动播放" IsChecked="{Binding FlipViewIsAutoPlay}"/>
+            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="3">
+              <TextBlock VerticalAlignment="Center" Text="间隔"/>
+              <fui:FluentComboBox
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding Intervals}"
+                SelectedItem="{Binding FlipViewAutoPlayInterval}"/>
+            </Grid>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
     <ui:CodeCard Name="ListBoxCard" Title="列表控件">
       <ListBox
+        Height="328"
+        HorizontalAlignment="Stretch"
+        ItemsSource="{Binding ItemSource}"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="圆角列表控件">
+      <fui:RoundListBox
         Height="328"
         HorizontalAlignment="Stretch"
         ItemsSource="{Binding ItemSource}"/>
@@ -89,7 +124,6 @@
           AutoScrollToSelectedItem="True"
           ItemsSource="{Binding CarouselItems}"
           SelectedIndex="{Binding CarouselCurrentIndex}"
-          Transitions=""
           WrapSelection="True">
           <Carousel.PageTransition>
             <CompositePageTransition>

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Avalonia.Threading;
+using AvaloniaFluentUI.UI.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Gallery.Models;
@@ -24,146 +28,143 @@ public partial class ViewModel : ViewModelBase
 
     public ViewModel()
     {
-        var people = new Person[]
-        {
-            new Person("Neil", "Armstrong"),
-            new Person("Buzz", "Lightyear"),
-            new Person("James", "Kirk"),
-            new Person("Peaceful", "Echoes"),
-            new Person("Falling", "Whisper"),
-            new Person("Horizon", "Dancing"),
-            new Person("Silent", "Stars"),
-            new Person("Night", "Heart"),
-            new Person("Flame", "Summer"),
-            new Person("Secret", "Shining"),
-            new Person("Neil", "Armstrong"),
-            new Person("Buzz", "Lightyear"),
-            new Person("James", "Kirk"),
-            new Person("Peaceful", "Echoes"),
-            new Person("Falling", "Whisper"),
-            new Person("Horizon", "Dancing"),
-            new Person("Silent", "Stars"),
-            new Person("Night", "Heart"),
-            new Person("Flame", "Summer"),
-            new Person("Secret", "Shining"),
-            new Person("Neil", "Armstrong"),
-            new Person("Buzz", "Lightyear"),
-            new Person("James", "Kirk"),
-            new Person("Peaceful", "Echoes"),
-            new Person("Falling", "Whisper"),
-            new Person("Horizon", "Dancing"),
-            new Person("Silent", "Stars"),
-            new Person("Night", "Heart"),
-            new Person("Flame", "Summer"),
-            new Person("Secret", "Shining"),
-            new Person("Neil", "Armstrong"),
-            new Person("Buzz", "Lightyear"),
-            new Person("James", "Kirk"),
-            new Person("Peaceful", "Echoes"),
-            new Person("Falling", "Whisper"),
-            new Person("Horizon", "Dancing"),
-            new Person("Silent", "Stars"),
-            new Person("Night", "Heart"),
-            new Person("Flame", "Summer"),
-            new Person("Secret", "Shining"),
-        };
-        _people = new ObservableCollection<Person>(people);
-
-        TreeViewItems = new ObservableCollection<Node>
-        {
-            new Node("Technology", new ObservableCollection<Node>
-            {
-                new Node("Programming", new ObservableCollection<Node>
-                {
-                    new Node("C#"),
-                    new Node("Python"),
-                    new Node("Rust"),
-                    new Node("Go")
-                }),
-
-                new Node("Frontend", new ObservableCollection<Node>
-                {
-                    new Node("React"),
-                    new Node("Vue"),
-                    new Node("Avalonia"),
-                    new Node("WPF")
-                })
-            }),
-
-            new Node("Games", new ObservableCollection<Node>
-            {
-                new Node("RPG", new ObservableCollection<Node>
-                {
-                    new Node("Genshin Impact"),
-                    new Node("Honkai Star Rail"),
-                    new Node("Persona 5")
-                }),
-
-                new Node("Sandbox", new ObservableCollection<Node>
-                {
-                    new Node("Minecraft"),
-                    new Node("Terraria"),
-                    new Node("Roblox")
-                })
-            }),
-
-            new Node("Music", new ObservableCollection<Node>
-            {
-                new Node("Pop", new ObservableCollection<Node>
-                {
-                    new Node("Taylor Swift"),
-                    new Node("Ariana Grande"),
-                    new Node("Ed Sheeran")
-                }),
-
-                new Node("Anime Songs", new ObservableCollection<Node>
-                {
-                    new Node("YOASOBI"),
-                    new Node("Aimer"),
-                    new Node("EGOIST")
-                })
-            }),
-
-            new Node("Movies", new ObservableCollection<Node>
-            {
-                new Node("Sci-Fi", new ObservableCollection<Node>
-                {
-                    new Node("Interstellar"),
-                    new Node("The Matrix"),
-                    new Node("Blade Runner 2049")
-                }),
-
-                new Node("Animation", new ObservableCollection<Node>
-                {
-                    new Node("Your Name"),
-                    new Node("Spirited Away"),
-                    new Node("Suzume")
-                })
-            })
-        };
-        
-        CarouselData[] pages = new CarouselData[CarouselAllCount];
-        for (int i = 1; i <= CarouselAllCount; i++)
-        {
-            pages[i - 1] = new CarouselData($"Page {i}", GetRandomHexColor());
-        }
-        
-        CarouselItems = new ObservableCollection<CarouselData>(pages);
-
         _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-        _timer.Tick += (_, _) =>
+        _timer.Tick += OnCarouselAutoPlay;
+        _ = InitAsync();
+    }
+
+    private void OnCarouselAutoPlay(object? sender, EventArgs e)
+    {
+        if (CarouselCurrentIndex == CarouselAllCount - 1)
         {
-            if (CarouselCurrentIndex == CarouselAllCount - 1)
+            _target = -1;
+        }
+        if (CarouselCurrentIndex == 0)
+        {
+            _target = 1;
+        }
+
+        CarouselCurrentIndex += _target;
+    }
+
+    private async Task InitAsync()
+    {
+        await Task.Run(async () =>
+        {
+            var people = new Person[]
             {
-                _target = -1;
-            }
-            if (CarouselCurrentIndex == 0)
+                new Person("Neil", "Armstrong"),
+                new Person("Buzz", "Lightyear"), 
+                new Person("James", "Kirk"),
+                new Person("Peaceful", "Echoes"),
+                new Person("Falling", "Whisper"),
+                new Person("Horizon", "Dancing"),
+                new Person("Silent", "Stars"),
+                new Person("Night", "Heart"),
+                new Person("Flame", "Summer"),
+                new Person("Secret", "Shining"),
+                new Person("Neil", "Armstrong"),
+                new Person("Buzz", "Lightyear"),
+                new Person("James", "Kirk"),
+                new Person("Peaceful", "Echoes"),
+                new Person("Falling", "Whisper"), 
+                new Person("Horizon", "Dancing"), 
+                new Person("Silent", "Stars"),
+                new Person("Night", "Heart"), 
+                new Person("Flame", "Summer"), 
+                new Person("Secret", "Shining"),
+                new Person("Neil", "Armstrong"),
+                new Person("Buzz", "Lightyear"), 
+                new Person("James", "Kirk"),
+                new Person("Peaceful", "Echoes"),
+                new Person("Falling", "Whisper"),
+                new Person("Horizon", "Dancing"),
+                new Person("Silent", "Stars"), 
+                new Person("Night", "Heart"),
+                new Person("Flame", "Summer"), 
+                new Person("Secret", "Shining"),
+                new Person("Neil", "Armstrong"),
+                new Person("Buzz", "Lightyear"), 
+                new Person("James", "Kirk"),
+                new Person("Peaceful", "Echoes"),
+                new Person("Falling", "Whisper"),
+                new Person("Horizon", "Dancing"),
+                new Person("Silent", "Stars"),
+                new Person("Night", "Heart"), 
+                new Person("Flame", "Summer"), 
+                new Person("Secret", "Shining"),
+            };
+            People = new ObservableCollection<Person>(people);
+            
+            TreeViewItems = new ObservableCollection<Node>
+            { 
+                new Node("Technology",
+                new ObservableCollection<Node>
+                {
+                    new Node("Programming",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("C#"), new Node("Python"), new Node("Rust"), new Node("Go")
+                        }),
+                    new Node("Frontend",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("React"), new Node("Vue"), new Node("Avalonia"), new Node("WPF")
+                        })
+                }),
+                new Node("Games",
+                new ObservableCollection<Node>
+                {
+                    new Node("RPG",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("Genshin Impact"), new Node("Honkai Star Rail"), new Node("Persona 5")
+                        }),
+                    new Node("Sandbox",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("Minecraft"), new Node("Terraria"), new Node("Roblox")
+                        })
+                }),
+                new Node("Music",
+                new ObservableCollection<Node>
+                {
+                    new Node("Pop",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("Taylor Swift"), new Node("Ariana Grande"), new Node("Ed Sheeran")
+                        }),
+                    new Node("Anime Songs",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("YOASOBI"), new Node("Aimer"), new Node("EGOIST")
+                        })
+                }),
+                new Node("Movies",
+                new ObservableCollection<Node>
+                {
+                    new Node("Sci-Fi",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("Interstellar"), new Node("The Matrix"), new Node("Blade Runner 2049")
+                        }),
+                    new Node("Animation",
+                        new ObservableCollection<Node>
+                        {
+                            new Node("Your Name"), new Node("Spirited Away"), new Node("Suzume")
+                        })
+                })
+            };
+            
+            
+            CarouselData[] pages = new CarouselData[CarouselAllCount];
+            for (int i = 1; i <= CarouselAllCount; i++)
             {
-                _target = 1;
+                pages[i - 1] = new CarouselData($"Page {i}", GetRandomHexColor());
             }
 
-            CarouselCurrentIndex += _target;
-        };
+            CarouselItems = new ObservableCollection<CarouselData>(pages);
+        });
     }
 
     private int _target = 1;
@@ -173,6 +174,14 @@ public partial class ViewModel : ViewModelBase
     
     [ObservableProperty]
     private bool _dataGridIsReadOnly;
+
+    [ObservableProperty]
+    private bool _flipViewIsAutoPlay;
+
+    [ObservableProperty]
+    private double _flipViewAutoPlayInterval = 1500;
+
+    public double[] Intervals => [100, 200, 300, 400, 500, 1000, 1500, 2000, 5000];
 
     public DataGridGridLinesVisibility[] DataGridLineVisibilityModes =>
     [
@@ -185,7 +194,8 @@ public partial class ViewModel : ViewModelBase
     [ObservableProperty]
     private DataGridGridLinesVisibility _dataGridLinesVisibilityMode = DataGridGridLinesVisibility.All;
 
-    public ObservableCollection<Node> TreeViewItems { get; }
+    [ObservableProperty]
+    private ObservableCollection<Node> _treeViewItems;
 
     public SelectionMode[] TreeViewSelectedModes => 
     [
@@ -219,6 +229,17 @@ public partial class ViewModel : ViewModelBase
     public string CarouselCurrentIndexFormat => $"当前页面: " + (CarouselCurrentIndex + 1);
 
     public string CarouselAllCountFormat => "页面数量: " + CarouselAllCount;
+    
+
+    public ObservableCollection<FlipViewItem> FlipViewItems => 
+    [
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/mc.png")), 1000)},
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/1.png")), 1000)},
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/2.png")), 1000)},
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/3.png")), 1000)},
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/4.jpg")), 1000)},
+        new FlipViewItem{ ImageSource = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/bg.jpg")), 1000)},
+    ]; 
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CarouselAllCountFormat))]

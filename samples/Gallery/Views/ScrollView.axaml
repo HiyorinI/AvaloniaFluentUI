@@ -32,23 +32,24 @@
       </Border>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="横向平滑滚动区域">
+    <ui:CodeCard Title="单向平滑滚动区域">
       <Border
         Width="328"
         HorizontalAlignment="Left"
         VerticalAlignment="Stretch"
         ClipToBounds="True"
         CornerRadius="8">
-        <fui:SmoothScrollViewer
+        <fui:SingleDirectionScrollViewer
           HorizontalAlignment="Left"
           VerticalAlignment="Stretch"
-          HorizontalScrollBarVisibility="Visible">
+          Orientation="Horizontal">
+          <!--  HorizontalScrollBarVisibility="Visible"  -->
           <Image
             Name="HImage"
             Height="328"
             HorizontalAlignment="Left"
             Stretch="Uniform"/>
-        </fui:SmoothScrollViewer>
+        </fui:SingleDirectionScrollViewer>
       </Border>
     </ui:CodeCard>
 

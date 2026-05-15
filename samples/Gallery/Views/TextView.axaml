@@ -291,6 +291,8 @@
         <ButtonSpinner
           Grid.Column="0"
           Width="128"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
           AllowSpin="{Binding IsEnabledSpinner}"
           ButtonSpinnerLocation="{Binding SpinnerLocation}"/>
         <ui:Card Grid.Column="1">

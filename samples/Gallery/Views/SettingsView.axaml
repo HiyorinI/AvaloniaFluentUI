@@ -23,6 +23,7 @@
   </UserControl.Styles>
 
   <Grid
+    Margin="10,20,0,0"
     HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch"
     RowDefinitions="64, *">
@@ -31,8 +32,12 @@
       HorizontalAlignment="Left"
       FontSize="32"
       Text="设置"/>
-    <fui:SmoothScrollViewer Grid.Row="1" Padding="18,24,24,12">
-      <StackPanel Orientation="Vertical" Spacing="10">
+    <fui:SmoothScrollViewer Grid.Row="1" Padding="18,24,24,0">
+      <StackPanel
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Orientation="Vertical"
+        Spacing="10">
         <ui:Card>
           <Grid
             VerticalAlignment="Center"
@@ -220,7 +225,8 @@
               IsChecked="{Binding IsTopmost}"/>
           </Grid>
         </ui:Card>
-        <ui:Card>
+
+        <ui:Card Margin="0,0,0,64">
           <Grid
             VerticalAlignment="Center"
             ColumnDefinitions="*, Auto"

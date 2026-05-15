@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Animation;
@@ -78,7 +77,9 @@ public partial class MainWindow : Window
                 IsWindowEffectEnabled = svm.IsEnabledWindowEffect,
                 IsEnabledBackgroundImage = svm.IsEnabledBackgroundImage
             });
+            Console.WriteLine("Save Config Success");
         }
+        else { Console.WriteLine("Save Config Error");}
     }
 
     private void OnLoaded(object? sender, RoutedEventArgs e)

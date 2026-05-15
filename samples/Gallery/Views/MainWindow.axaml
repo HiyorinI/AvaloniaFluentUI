@@ -122,7 +122,7 @@
     <Grid
       Grid.Row="0"
       Grid.ColumnSpan="2"
-      Margin="10,15,10,0"
+      Margin="10,10,10,0"
       ColumnDefinitions="Auto, Auto"
       ColumnSpacing="5">
 
@@ -141,7 +141,10 @@
       <!-- <Label Grid.Column="2" Content="Avalonia" /> -->
 
       <Image Grid.Column="0" Source="/Assets/app.ico"/>
-      <Label Grid.Column="1" Content="Avalonia"/>
+      <Label
+        Grid.Column="1"
+        VerticalAlignment="Top"
+        Content="Avalonia"/>
     </Grid>
 
     <fui:NavigationView

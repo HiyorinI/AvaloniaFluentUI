@@ -14,7 +14,12 @@ namespace Gallery.Services;
 
 public class ThemeService
 {
-    private static string AppConfigPath { get; } = @"Config/config.json";
+    private static string ConfigDir => Path.Combine(AppContext.BaseDirectory, "Config");
+
+    private static string AppConfigPath => Path.Combine(ConfigDir, "config.json");
+
+        // private static string ConfigDir => $@"C:\AppConfig";
+        // private static string AppConfigPath => @"C:\AppConfig\config.json";
     
     public static event Action<ThemeVariant>? ThemeChanged;
     public static FluentAvaloniaTheme? FluentTheme { get; private set; }
@@ -53,16 +58,35 @@ public class ThemeService
 
     public static async Task SaveConfig(AppConfig config)
     {
-        Directory.CreateDirectory("Config"); 
-        var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-        await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
+        try
+        {
+            Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
+            Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
+            Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+        
+            Directory.CreateDirectory(ConfigDir); 
+            var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
+            
+            await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
+            // File.WriteAllText(AppConfigPath, json, Encoding.UTF8);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Write Failed");
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public static async Task<AppConfig?> LoadConfig()
     {
+        Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
+        Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
+        Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+        
         AppConfig? config;
         
-        Directory.CreateDirectory("Config");
+        Directory.CreateDirectory(ConfigDir);
         if (!File.Exists(AppConfigPath))
         {
             config = new AppConfig
@@ -74,8 +98,10 @@ public class ThemeService
             };
 
             var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-            
+
+            // File.Create(AppConfigPath);
             await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
+            // File.WriteAllText(AppConfigPath, json, Encoding.UTF8);
             
             Application.Current?.RequestedThemeVariant = ThemeVariant.Default;
             FluentTheme?.CustomAccentColor = Colors.DeepPink;

@@ -79,7 +79,7 @@ public partial class BasicInputViewModel : ViewModelBase
     private bool _splitButtonIsDisable;
 
     [ObservableProperty]
-    private bool _radiusButtonIsDisable;
+    private bool _radioButtonIsDisabled;
 
     [ObservableProperty]
     private bool _hyperlinkButtonIsDisable;
@@ -101,6 +101,33 @@ public partial class BasicInputViewModel : ViewModelBase
     private double _sliderCurrentValue;
 
     public string SliderCurrentValueFormat => "当前值" +  SliderCurrentValue.ToString("F");
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(OutlinePushButtonGroupName))]
+    private bool _outlinePushButtonIsMC = true;
+    
+    public string? OutlinePushButtonGroupName => OutlinePushButtonIsMC ? null : "OutlinePushButtonGroup1";
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(OutlineToolButtonGroupName))]
+    private bool _outlineToolButtonIsMC = true;
+    
+    public string? OutlineToolButtonGroupName => OutlineToolButtonIsMC ? null : "OutlineToolButtonGroup1";
+
+    [ObservableProperty]
+    private bool _outlineToolButtonIsDisabled;
+
+    [ObservableProperty]
+    private bool _outlinePushButtonIsDisabled;
+
+    [ObservableProperty]
+    private bool _transparentDropDownButtonIsDisable;
+
+    [ObservableProperty]
+    private bool _subTitleRadioButtonIsDisabled; 
+
+    [ObservableProperty]
+    private bool _filledButtonIsDisabled;
 
     [ObservableProperty]
     private List<string> _items = new List<string>();

@@ -123,101 +123,6 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="DropDownButtonCard" Title="带下拉菜单的按钮">
-      <Grid ColumnDefinitions="*, Auto">
-        <DropDownButton Width="128" IsEnabled="{Binding !DropDownButtonIsDisable}">
-          <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
-            <PathIcon Data="{StaticResource Mail}"/>
-            <TextBlock Grid.Column="1" Text="邮件"/>
-          </Grid>
-          <DropDownButton.Flyout>
-            <fui:FluentMenuFlyout>
-              <MenuItem Header="发送">
-                <MenuItem.Icon>
-                  <PathIcon Data="{StaticResource Send}"/>
-                </MenuItem.Icon>
-              </MenuItem>
-              <MenuItem Header="保存">
-                <MenuItem.Icon>
-                  <PathIcon Data="{StaticResource Save}"/>
-                </MenuItem.Icon>
-              </MenuItem>
-              <Separator HorizontalAlignment="Stretch"/>
-              <MenuItem Header="撤销"/>
-              <MenuItem Header="重新发送"/>
-              <MenuItem Header="保存到本地"/>
-            </fui:FluentMenuFlyout>
-          </DropDownButton.Flyout>
-        </DropDownButton>
-
-        <CheckBox
-          Grid.Column="1"
-          Content="是禁用的"
-          IsChecked="{Binding DropDownButtonIsDisable}"/>
-      </Grid>
-    </ui:CodeCard>
-
-    <ui:CodeCard Name="TransparentDropDownButtonCard" Title="带下拉菜单的透明按钮">
-      <Grid ColumnDefinitions="*, Auto">
-        <DropDownButton
-          Name="Test"
-          Width="128"
-          IsEnabled="{Binding !DropDownButtonIsDisable}"
-          Theme="{StaticResource TransparentDropDownButton}">
-          <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
-            <PathIcon Data="{StaticResource Mail}"/>
-            <TextBlock Grid.Column="1" Text="邮件"/>
-          </Grid>
-          <DropDownButton.Flyout>
-            <fui:FluentMenuFlyout>
-              <MenuItem Header="发送">
-                <MenuItem.Icon>
-                  <PathIcon Data="{StaticResource Send}"/>
-                </MenuItem.Icon>
-              </MenuItem>
-              <MenuItem Header="保存">
-                <MenuItem.Icon>
-                  <PathIcon Data="{StaticResource Save}"/>
-                </MenuItem.Icon>
-              </MenuItem>
-              <Separator HorizontalAlignment="Stretch"/>
-              <MenuItem Header="撤销"/>
-              <MenuItem Header="重新发送"/>
-              <MenuItem Header="保存到本地"/>
-            </fui:FluentMenuFlyout>
-          </DropDownButton.Flyout>
-        </DropDownButton>
-
-        <CheckBox
-          Grid.Column="1"
-          Content="是禁用的"
-          IsChecked="{Binding DropDownButtonIsDisable}"/>
-      </Grid>
-    </ui:CodeCard>
-
-    <!-- <ui:CodeCard Title="带有文本的透明标准按钮"> -->
-    <!-- <fui:PushButton Content="带有文本的透明标准按钮" Theme="{StaticResource TransparentPushButton}"/> -->
-    <!-- </ui:CodeCard> -->
-
-    <!-- <ui:CodeCard Title="带有图标文本的标准按钮"> -->
-    <!-- <fui:PushButton Content="带有图标文本的标准按钮" IconData="{StaticResource GitHub}"/> -->
-    <!-- </ui:CodeCard> -->
-
-    <!-- <ui:CodeCard Title="带有图标文本的透明标准按钮"> -->
-    <!--  <fui:PushButton  -->
-    <!--  Content="带有图标文本的透明标准按钮"  -->
-    <!--  IconData="{StaticResource GitHub}"  -->
-    <!--  Theme="{StaticResource TransparentPushButton}"/>  -->
-    <!-- </ui:CodeCard> -->
-
-    <!-- <ui:CodeCard Title="主题色标准按钮"> -->
-    <!--  <fui:PushButton  -->
-    <!--  Classes="accent"  -->
-    <!--  Content="主题色标准按钮"  -->
-    <!--  IconData="{StaticResource Home}"/>  -->
-    <!-- </ui:CodeCard> -->
-
-    <!--  //////////  -->
     <ui:CodeCard Name="ToolButtonCard" Title="工具按钮">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
@@ -277,6 +182,215 @@
         </ui:Card>
       </Grid>
     </ui:CodeCard>
+
+    <ui:CodeCard Title="填充按钮">
+      <Grid ColumnDefinitions="*, Auto">
+        <StackPanel Orientation="Vertical" Spacing="8">
+          <fui:FilledPushButton
+            Width="128"
+            Content="Information"
+            IconData="{StaticResource Robot}"
+            IsEnabled="{Binding !FilledButtonIsDisabled}"/>
+          <fui:FilledPushButton
+            Width="128"
+            Classes="success"
+            Content="Success"
+            IconData="{StaticResource Share}"
+            IsEnabled="{Binding !FilledButtonIsDisabled}"/>
+          <fui:FilledPushButton
+            Width="128"
+            Classes="attention"
+            Content="Attention"
+            IconData="{StaticResource Save}"
+            IsEnabled="{Binding !FilledButtonIsDisabled}"/>
+          <fui:FilledPushButton
+            Width="128"
+            Classes="warning"
+            Content="Warning"
+            IconData="{StaticResource SpeedHigh}"
+            IsEnabled="{Binding !FilledButtonIsDisabled}"/>
+          <fui:FilledPushButton
+            Width="128"
+            Classes="error"
+            Content="Error"
+            IconData="{StaticResource Info}"
+            IsEnabled="{Binding !FilledButtonIsDisabled}"/>
+        </StackPanel>
+        <ui:Card Grid.Column="1" Width="256">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="是禁用的" IsChecked="{Binding FilledButtonIsDisabled}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="描边按钮">
+      <Grid ColumnDefinitions="*, Auto">
+        <StackPanel
+          Grid.Column="0"
+          VerticalAlignment="Top"
+          Orientation="Horizontal"
+          Spacing="5">
+          <fui:OutlinePushButton
+            Content="音乐"
+            GroupName="{Binding OutlinePushButtonGroupName}"
+            IconData="{StaticResource Music}"
+            IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
+          <fui:OutlinePushButton
+            Content="电影和电视"
+            GroupName="{Binding OutlinePushButtonGroupName}"
+            IconData="{StaticResource Video}"
+            IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
+          <fui:OutlinePushButton
+            Content="游戏"
+            GroupName="{Binding OutlinePushButtonGroupName}"
+            IconData="{StaticResource Game}"
+            IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
+          <fui:OutlinePushButton
+            Content="GitHub"
+            GroupName="{Binding OutlinePushButtonGroupName}"
+            IconData="{StaticResource GitHub}"
+            IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
+          <fui:OutlinePushButton
+            Content="关于我们"
+            GroupName="{Binding OutlinePushButtonGroupName}"
+            IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
+        </StackPanel>
+        <ui:Card Grid.Column="1">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="可多选" IsChecked="{Binding OutlinePushButtonIsMC}"/>
+            <CheckBox Content="是禁用的" IsChecked="{Binding OutlinePushButtonIsDisabled}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="描边工具按钮">
+      <Grid ColumnDefinitions="*, Auto">
+        <StackPanel
+          Grid.Column="0"
+          VerticalAlignment="Top"
+          Orientation="Horizontal"
+          Spacing="5">
+          <fui:OutlineToolButton
+            GroupName="{Binding OutlineToolButtonGroupName}"
+            IconData="{StaticResource Add}"
+            IsEnabled="{Binding !OutlineToolButtonIsDisabled}"/>
+          <fui:OutlineToolButton
+            GroupName="{Binding OutlineToolButtonGroupName}"
+            IconData="{StaticResource Bluetooth}"
+            IsEnabled="{Binding !OutlineToolButtonIsDisabled}"/>
+          <fui:OutlineToolButton
+            GroupName="{Binding OutlineToolButtonGroupName}"
+            IconData="{StaticResource Brush}"
+            IsEnabled="{Binding !OutlineToolButtonIsDisabled}"/>
+        </StackPanel>
+        <ui:Card Grid.Column="1">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock FontWeight="Bold" Text="选项"/>
+            <CheckBox Content="可多选" IsChecked="{Binding OutlineToolButtonIsMC}"/>
+            <CheckBox Content="是禁用的" IsChecked="{Binding OutlineToolButtonIsDisabled}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="DropDownButtonCard" Title="带下拉菜单的按钮">
+      <Grid ColumnDefinitions="*, Auto">
+        <DropDownButton Width="128" IsEnabled="{Binding !DropDownButtonIsDisable}">
+          <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
+            <PathIcon Data="{StaticResource Mail}"/>
+            <TextBlock Grid.Column="1" Text="邮件"/>
+          </Grid>
+          <DropDownButton.Flyout>
+            <fui:FluentMenuFlyout>
+              <MenuItem Header="发送">
+                <MenuItem.Icon>
+                  <PathIcon Data="{StaticResource Send}"/>
+                </MenuItem.Icon>
+              </MenuItem>
+              <MenuItem Header="保存">
+                <MenuItem.Icon>
+                  <PathIcon Data="{StaticResource Save}"/>
+                </MenuItem.Icon>
+              </MenuItem>
+              <Separator HorizontalAlignment="Stretch"/>
+              <MenuItem Header="撤销"/>
+              <MenuItem Header="重新发送"/>
+              <MenuItem Header="保存到本地"/>
+            </fui:FluentMenuFlyout>
+          </DropDownButton.Flyout>
+        </DropDownButton>
+
+        <CheckBox
+          Grid.Column="1"
+          Content="是禁用的"
+          IsChecked="{Binding DropDownButtonIsDisable}"/>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Name="TransparentDropDownButtonCard" Title="带下拉菜单的透明按钮">
+      <Grid ColumnDefinitions="*, Auto">
+        <DropDownButton
+          Name="Test"
+          Width="128"
+          IsEnabled="{Binding !TransparentDropDownButtonIsDisable}"
+          Theme="{StaticResource TransparentDropDownButton}">
+          <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
+            <PathIcon Data="{StaticResource Mail}"/>
+            <TextBlock Grid.Column="1" Text="邮件"/>
+          </Grid>
+          <DropDownButton.Flyout>
+            <fui:FluentMenuFlyout>
+              <MenuItem Header="发送">
+                <MenuItem.Icon>
+                  <PathIcon Data="{StaticResource Send}"/>
+                </MenuItem.Icon>
+              </MenuItem>
+              <MenuItem Header="保存">
+                <MenuItem.Icon>
+                  <PathIcon Data="{StaticResource Save}"/>
+                </MenuItem.Icon>
+              </MenuItem>
+              <Separator HorizontalAlignment="Stretch"/>
+              <MenuItem Header="撤销"/>
+              <MenuItem Header="重新发送"/>
+              <MenuItem Header="保存到本地"/>
+            </fui:FluentMenuFlyout>
+          </DropDownButton.Flyout>
+        </DropDownButton>
+
+        <CheckBox
+          Grid.Column="1"
+          Content="是禁用的"
+          IsChecked="{Binding TransparentDropDownButtonIsDisable}"/>
+      </Grid>
+    </ui:CodeCard>
+
+    <!-- <ui:CodeCard Title="带有文本的透明标准按钮"> -->
+    <!-- <fui:PushButton Content="带有文本的透明标准按钮" Theme="{StaticResource TransparentPushButton}"/> -->
+    <!-- </ui:CodeCard> -->
+
+    <!-- <ui:CodeCard Title="带有图标文本的标准按钮"> -->
+    <!-- <fui:PushButton Content="带有图标文本的标准按钮" IconData="{StaticResource GitHub}"/> -->
+    <!-- </ui:CodeCard> -->
+
+    <!-- <ui:CodeCard Title="带有图标文本的透明标准按钮"> -->
+    <!--  <fui:PushButton  -->
+    <!--  Content="带有图标文本的透明标准按钮"  -->
+    <!--  IconData="{StaticResource GitHub}"  -->
+    <!--  Theme="{StaticResource TransparentPushButton}"/>  -->
+    <!-- </ui:CodeCard> -->
+
+    <!-- <ui:CodeCard Title="主题色标准按钮"> -->
+    <!--  <fui:PushButton  -->
+    <!--  Classes="accent"  -->
+    <!--  Content="主题色标准按钮"  -->
+    <!--  IconData="{StaticResource Home}"/>  -->
+    <!-- </ui:CodeCard> -->
+
     <!-- <ui:CodeCard Title="透明工具按钮"> -->
     <!--  <fui:ToolButton  -->
     <!--  Foreground="DeepSkyBlue"  -->
@@ -364,28 +478,67 @@
           Grid.Row="0"
           Grid.ColumnSpan="2"
           Content="扬声器"
-          IsEnabled="{Binding !RadiusButtonIsDisable}"/>
+          IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="1"
           Grid.ColumnSpan="2"
           Content="耳机"
-          IsEnabled="{Binding !RadiusButtonIsDisable}"/>
+          IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="2"
           Grid.ColumnSpan="2"
           Content="控制器"
-          IsEnabled="{Binding !RadiusButtonIsDisable}"/>
+          IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="3"
           Grid.ColumnSpan="2"
           Content="蓝牙"
-          IsEnabled="{Binding !RadiusButtonIsDisable}"/>
+          IsEnabled="{Binding !RadioButtonIsDisabled}"/>
 
         <CheckBox
           Grid.Row="0"
           Grid.Column="1"
           Content="是禁用的"
-          IsChecked="{Binding RadiusButtonIsDisable}"/>
+          IsChecked="{Binding RadioButtonIsDisabled}"/>
+      </Grid>
+    </ui:CodeCard>
+
+
+    <ui:CodeCard Title="带子标题的单选按钮">
+      <Grid
+        ColumnDefinitions="*, Auto"
+        ColumnSpacing="3"
+        RowDefinitions="Auto, Auto, Auto, Auto">
+        <fui:SubTitleRadioButton
+          Grid.Row="0"
+          Grid.ColumnSpan="2"
+          Content="扬声器"
+          IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
+          SubTitle="Realted(R) Audio"/>
+        <fui:SubTitleRadioButton
+          Grid.Row="1"
+          Grid.ColumnSpan="2"
+          Content="耳机"
+          IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
+          SubTitle="AirPods Pro 2"/>
+        <fui:SubTitleRadioButton
+          Grid.Row="2"
+          Grid.ColumnSpan="2"
+          Content="控制器"
+          IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
+          SubTitle="Xbox Wireless Controller"/>
+        <fui:SubTitleRadioButton
+          Grid.Row="3"
+          Grid.ColumnSpan="2"
+          Content="蓝牙"
+          IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
+          SubTitle="ProjectLuo M2"/>
+
+        <CheckBox
+          Grid.Row="0"
+          Grid.Column="1"
+          Content="是禁用的"
+          IsChecked="{Binding SubTitleRadioButtonIsDisabled}"/>
       </Grid>
     </ui:CodeCard>
 

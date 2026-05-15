@@ -35,11 +35,12 @@
             FontSize="48"
             Text="Fluent Gallery"/>
 
-          <fui:SmoothScrollViewer
+          <fui:SingleDirectionScrollViewer
             Grid.Row="1"
             HorizontalAlignment="Stretch"
             HorizontalScrollBarVisibility="Hidden"
-            VerticalScrollBarVisibility="Hidden">
+            Orientation="Horizontal"
+            VerticalScrollBarVisibility="Disabled">
             <StackPanel Orientation="Horizontal" Spacing="10">
               <ui:LinkCard
                 Title="Getting started"
@@ -62,7 +63,7 @@
                 Content="Help us improve PySide6-Fluent-UI by providing feedback."
                 IconData="{StaticResource Feedback}"/>
             </StackPanel>
-          </fui:SmoothScrollViewer>
+          </fui:SingleDirectionScrollViewer>
         </Grid>
       </Border>
 
