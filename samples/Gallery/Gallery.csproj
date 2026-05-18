@@ -8,44 +8,36 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>Assets\app.ico</ApplicationIcon>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-
-<!--        <PublishAot>true</PublishAot>-->
-<!--        <PublishTrimmed>true</PublishTrimmed>-->
-<!--        <TrimMode>full</TrimMode>-->
-<!--        <StripSymbols>true</StripSymbols>-->
-<!--        <DebuggerSupport>false</DebuggerSupport>-->
-<!--        <InvariantGlobalization>true</InvariantGlobalization>-->
-      
-<!--      <PublishTrimmed>true</PublishTrimmed>-->
-      <PublishReadyToRun>true</PublishReadyToRun>
-      <PublishSingleFile>false</PublishSingleFile>
-<!--      <SelfContained>true</SelfContained>-->
-      <TrimMode>partial</TrimMode>
-<!--      <TrimMode>full</TrimMode>-->
     </PropertyGroup>
+
+<!--    <PropertyGroup Condition="'$(Configuration)' == 'Release'">-->
+  <PropertyGroup>
+    
+        <PublishAot>true</PublishAot>              <!-- AOT 编译：将 IL 预编译为机器码，加快启动速度 -->
+        <PublishTrimmed>true</PublishTrimmed>      <!-- 裁剪未使用的程序集，减小发布体积 -->
+        <TrimMode>full</TrimMode>                  <!-- 裁剪模式：full 为最激进，移除所有未使用的代码 -->
+        <StripSymbols>true</StripSymbols>          <!-- 剥离调试符号文件(.pdb)，进一步减小体积 -->
+        <DebuggerSupport>false</DebuggerSupport>   <!-- 禁用调试支持，移除调试相关代码 -->
+        <PublishReadyToRun>true</PublishReadyToRun> <!-- 预编译 (R2R)：减少 JIT 编译时间，加快启动 -->
+  </PropertyGroup>
+<!--    </PropertyGroup>-->
 
     <ItemGroup>
         <Folder Include="Converters\" />
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
-  
+
     <ItemGroup>
         <PackageReference Include="Avalonia"/>
         <PackageReference Include="Avalonia.Desktop"/>
-<!--        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.12"/>-->
-<!--        <PackageReference Include="Avalonia.Fonts.Inter"/>-->
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="Avalonia.Diagnostics">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
-        
-<!--        <PackageReference Include="FluentAvaloniaUI" Version="2.5.0"/>-->
-        
-<!--        <PackageReference Include="SukiUI" Version="6.0.3"/>-->
     </ItemGroup>
-    
+
     <ItemGroup>
         <ProjectReference Include="../../src/AvaloniaFluentUI/AvaloniaFluentUI.csproj"/>
     </ItemGroup>

@@ -20,6 +20,7 @@
           Height="400"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch"
+          DecodeToHeight="800"
           ImageSource="{Binding FlipViewItems}"
           Interval="{Binding FlipViewAutoPlayInterval}"
           IsAutoPlay="{Binding FlipViewIsAutoPlay, Mode=TwoWay}"
@@ -93,7 +94,7 @@
       <Grid ColumnDefinitions="*, Auto">
         <TreeView ItemsSource="{Binding TreeViewItems}" SelectionMode="{Binding TreeViewSelectedMode}">
           <TreeView.ItemTemplate>
-            <TreeDataTemplate ItemsSource="{Binding SubNodes}">
+            <TreeDataTemplate x:DataType="viewModel:ViewModel+Node" ItemsSource="{Binding SubNodes}">
               <Border
                 Padding="15,3"
                 HorizontalAlignment="Left"

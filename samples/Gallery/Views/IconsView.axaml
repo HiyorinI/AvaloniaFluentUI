@@ -31,7 +31,7 @@
 
     <Style Selector="ui|CheckedBorder.IconCard:pointerover">
       <Setter Property="Cursor" Value="Hand"/>
-      <Setter Property="Background" Value="DeepPink"/>
+      <Setter Property="Background" Value="{DynamicResource SystemAccentColor}"/>
     </Style>
 
     <Style Selector="ui|CheckedBorder.IconCard PathIcon#PART_PathIcon">
@@ -74,7 +74,7 @@
     <!-- </Style> -->
 
     <Style Selector="ui|CheckedBorder[IsChecked=True]">
-      <Setter Property="Background" Value="DeepPink"/>
+      <Setter Property="Background" Value="{DynamicResource SystemAccentColor}"/>
     </Style>
   </UserControl.Styles>
 
@@ -129,11 +129,21 @@
       Grid.Column="0"
       Margin="0,24,0,20"
       VerticalScrollBarVisibility="Visible">
-      <UniformGrid
-        Name="UniformGrid"
-        Margin="0,0,15,0"
-        ColumnSpacing="5"
-        RowSpacing="5"/>
+      <Grid>
+        <TextBlock
+          x:Name="LoadingIndicator"
+          Margin="0,40,0,0"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Top"
+          FontSize="16"
+          Foreground="Gray"
+          Text="正在加载图标..."/>
+        <UniformGrid
+          x:Name="UniformGrid"
+          Margin="0,0,15,0"
+          ColumnSpacing="5"
+          RowSpacing="5"/>
+      </Grid>
     </fui:SmoothScrollViewer>
 
     <StackPanel

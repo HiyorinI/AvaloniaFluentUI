@@ -1,21 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
+using Avalonia.Threading;
 using Gallery.ViewModels;
 
-namespace Gallery; 
+namespace Gallery;
 
 public class ViewLocator : IDataTemplate
 {
     private readonly Dictionary<Type, Func<Control>> _factory = new();
-    private readonly Dictionary<Type, Control> _views = new();
+    private readonly Dictionary<Type, WeakReference<Control>> _views = new();
 
     public ViewLocator()
     {
         Register();
     }
-    
+
     private void Register()
     {
         _factory[typeof(HomeViewModel)] = () => new Views.HomeView();
@@ -33,12 +35,29 @@ public class ViewLocator : IDataTemplate
         _factory[typeof(SettingsViewModel)] = () => new Views.SettingsView();
     }
 
+    public async Task PreloadAllAsync()
+    {
+        foreach (var (type, factory) in _factory)
+        {
+            if (_views.TryGetValue(type, out var existing) && existing.TryGetTarget(out _))
+                continue;
+
+            await Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                var view = factory();
+                _views[type] = new WeakReference<Control>(view);
+            }, DispatcherPriority.Background);
+
+            await Task.Delay(15);
+        }
+    }
+
     public Control? Build(object? param)
     {
         Console.WriteLine(param);
         if (param is null) { return null; }
         var vmType = param.GetType();
-        
+
         if (!_factory.TryGetValue(vmType, out var creator))
         {
             return new TextBlock
@@ -47,13 +66,13 @@ public class ViewLocator : IDataTemplate
             };
         }
 
-        if (_views.TryGetValue(vmType, out var view))
+        if (_views.TryGetValue(vmType, out var weakRef) && weakRef.TryGetTarget(out var view))
         {
             return view;
         }
-        
+
         view = creator();
-        _views[vmType] = view;
+        _views[vmType] = new WeakReference<Control>(view);
         return view;
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
@@ -10,6 +11,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using AvaloniaFluentUI.UI.Controls;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Messages;
@@ -24,7 +26,6 @@ public partial class MainWindow : Window
     private IPageTransition? _currentPageTransition;
 
     private bool _isEnabledWindowEffect;
-    // private IPageTransition? _currentPageTransition = new PageSlide { Orientation = PageSlide.SlideAxis.Horizontal, Duration = TimeSpan.FromMilliseconds(250) };
     private readonly MainWindowMessageHandler _messageHandler;
 
     public MainWindow()
@@ -34,18 +35,17 @@ public partial class MainWindow : Window
 #endif
 
         InitializeComponent();
-        
+
          _messageHandler = new MainWindowMessageHandler(this);
          RegisterAllMessage();
-         // Set Background Image
+
          BackgroundImage.Source = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/bg.jpg")), 1024);
-         
-        // Set Default Page Toggled Animation
+
         SetPageTransition(null);
 
         Loaded += OnLoaded;
         ThemeService.ThemeChanged += _ => { EnableWindowEffect(_isEnabledWindowEffect); };
-        
+
         WeakReferenceMessenger.Default.Register<JumpToControlMessage>(this, OnJumpToControl);
     }
 
@@ -60,7 +60,7 @@ public partial class MainWindow : Window
                     NavigationView.SelectedItem = nvi;
                 }
             }
-        } 
+        }
     }
 
     protected override void OnClosing(WindowClosingEventArgs e)
@@ -88,7 +88,7 @@ public partial class MainWindow : Window
         base.OnClosing(e);
     }
 
-    private void OnLoaded(object? sender, RoutedEventArgs e)
+    private async void OnLoaded(object? sender, RoutedEventArgs e)
     {
         NavigationView.SettingsItem.Tag = "Settings";
 
@@ -97,13 +97,29 @@ public partial class MainWindow : Window
             var svm = viewModel.SettingsViewModel;
             EnableWindowEffect(svm.IsEnabledWindowEffect);
             BackgroundImage.IsVisible = svm.IsEnabledBackgroundImage;
-            // viewModel.ViewModelChangedEvent += OnViewModelChanged;
-            // TransitioningContentControlPanel.PageTransition = new PageSlide
-            // {
-                // Orientation = svm.AnimationSlideAxis, 
-                // SlideInEasing = new CubicEaseIn(),
-                // Duration = TimeSpan.FromMilliseconds(svm.AnimationDuration)
-            // };
+        }
+
+        // 后台预加载所有 View，避免首次页面切换卡顿
+        await PreloadViewsAsync();
+    }
+
+    private async Task PreloadViewsAsync()
+    {
+        // 延迟 500ms 确保主窗口渲染完成
+        await Task.Delay(500);
+
+        var app = Application.Current;
+        if (app == null) return;
+
+        foreach (var template in app.DataTemplates)
+        {
+            if (template is ViewLocator locator)
+            {
+                await Dispatcher.UIThread.InvokeAsync(
+                    () => locator.PreloadAllAsync(),
+                    DispatcherPriority.Background);
+                break;
+            }
         }
     }
 
@@ -121,30 +137,24 @@ public partial class MainWindow : Window
     }
 
     private void RegisterAllMessage() => _messageHandler.RegisterAllMessage();
-    
+
     private void InitControls()
     {
-        // Apply Icon
-        // ReturnButton.PathData = StreamGeometry.Parse(FluentIcon.Return);
-
-        // Set Default Navigation Item
-        // NavigationViewPanel.SetCurrentItemByContent("Home");
     }
 
     public void SetPageTransition(IPageTransition? pageTransition)
     {
-        // TransitioningContentControlPanel.PageTransition = pageTransition;
         _currentPageTransition = pageTransition;
     }
 
     public IPageTransition? CurrentPageTransition => _currentPageTransition;
-    
+
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
         InitControls();
     }
-    
+
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
@@ -168,10 +178,7 @@ public partial class MainWindow : Window
     {
         BackgroundImage.IsVisible = visible;
     }
-    
-    /// <summary>
-    ///     Enable Window Effect
-    /// </summary>
+
     public void EnableWindowEffect(bool enable = true)
     {
         if (enable)

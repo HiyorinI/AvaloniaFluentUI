@@ -32,13 +32,13 @@ public partial class StatusAndInformationViewModel : ViewModelBase
     }
 
     [ObservableProperty]
-    private bool _progressBarIsIndeterminate;
+    private bool _progressBarIsIndeterminate = true;
 
     [ObservableProperty]
     private double _progressBarCurrentValue = 24.0;
 
     [ObservableProperty]
-    private bool _progressRingIsIndeterminate;
+    private bool _progressRingIsIndeterminate = true;
 
     [ObservableProperty]
     private double _progressRingCurrentValue = 24.0;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,13 +15,14 @@ namespace Gallery.Services;
 public class ThemeService
 {
     private static string ConfigDir => Path.Combine(AppContext.BaseDirectory, "Config");
-    // private static string ConfigDir => Path.Combine("/home/interval", "Config");
-
     private static string AppConfigPath => Path.Combine(ConfigDir, "config.json");
 
-        // private static string ConfigDir => $@"C:\AppConfig";
-        // private static string AppConfigPath => @"C:\AppConfig\config.json";
-    
+    private static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        WriteIndented = true,
+        TypeInfoResolver = ConfigJsonContext.Default
+    };
+
     public static event Action<ThemeVariant>? ThemeChanged;
     public static FluentAvaloniaTheme? FluentTheme { get; private set; }
 
@@ -50,7 +51,7 @@ public class ThemeService
     {
         FluentTheme?.CustomAccentColor = color;
     }
-    
+
     public static void ToggleTheme()
     {
         var theme = IsDarkTheme() ? ThemeVariant.Light : ThemeVariant.Dark;
@@ -64,11 +65,9 @@ public class ThemeService
             Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
             Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
             Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
-        
-            Directory.CreateDirectory(ConfigDir); 
-            var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-            
-            // await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
+
+            Directory.CreateDirectory(ConfigDir);
+            var json = JsonSerializer.Serialize(config, ConfigJsonContext.Default.AppConfig);
             File.WriteAllText(AppConfigPath, json, Encoding.UTF8);
         }
         catch (Exception e)
@@ -84,46 +83,43 @@ public class ThemeService
         Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
         Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
         Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
-        
-        AppConfig? config;
-        
+
         Directory.CreateDirectory(ConfigDir);
+
         if (!File.Exists(AppConfigPath))
         {
-            config = new AppConfig
+            var config = new AppConfig
             {
                 Theme = "Default",
-                AccentColor =  "#FFFF1493",
+                AccentColor = "#FFFF1493",
                 IsWindowEffectEnabled = true,
                 IsEnabledBackgroundImage = false
             };
 
-            var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-
-            // File.Create(AppConfigPath);
+            var json = JsonSerializer.Serialize(config, ConfigJsonContext.Default.AppConfig);
             await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
-            // File.WriteAllText(AppConfigPath, json, Encoding.UTF8);
-            
+
             Application.Current?.RequestedThemeVariant = ThemeVariant.Default;
             FluentTheme?.CustomAccentColor = Colors.DeepPink;
-        }
-        else
-        {
-            string file = await File.ReadAllTextAsync(AppConfigPath);
-            config = JsonSerializer.Deserialize<AppConfig>(file);
-            if (config != null)
-            {
-                Application.Current?.RequestedThemeVariant = config.Theme switch
-                {
-                    "Light" => ThemeVariant.Light,
-                    "Dark" => ThemeVariant.Dark,
-                    _ => ThemeVariant.Default
-                };
-                FluentTheme?.CustomAccentColor = Color.Parse(config.AccentColor);
-            }
+
+            return config;
         }
 
-        return config;
+        string file = await File.ReadAllTextAsync(AppConfigPath);
+        var loaded = JsonSerializer.Deserialize(file, ConfigJsonContext.Default.AppConfig);
+
+        if (loaded != null)
+        {
+            Application.Current?.RequestedThemeVariant = loaded.Theme switch
+            {
+                "Light" => ThemeVariant.Light,
+                "Dark" => ThemeVariant.Dark,
+                _ => ThemeVariant.Default
+            };
+            FluentTheme?.CustomAccentColor = Color.Parse(loaded.AccentColor);
+        }
+
+        return loaded;
     }
 
     public static bool IsDarkTheme() => Application.Current?.RequestedThemeVariant == ThemeVariant.Dark;

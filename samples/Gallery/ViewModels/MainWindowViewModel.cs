@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -13,7 +12,8 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     private readonly List<string> _history = new();
 
-    private readonly Dictionary<string, ViewModelBase> _viewModels;
+    private readonly Dictionary<string, Func<ViewModelBase>> _viewModelFactories;
+    private readonly Dictionary<string, ViewModelBase> _viewModels = new();
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(GoBackCommand))]
@@ -24,126 +24,107 @@ public partial class MainWindowViewModel : ViewModelBase
 
     partial void OnNavigationViewSelectedItemChanged(object value)
     {
-        // Console.WriteLine(value.GetType());
         if (value is AvaloniaFluentUI.UI.Controls.NavigationViewItem item)
         {
-            // Console.WriteLine(item.Tag);
-            TogglePage(item.Tag+"");
+            TogglePage(item.Tag + "");
         }
     }
 
     [ObservableProperty]
     private ViewModelBase? _currentViewModel;
 
-    // public event Action<string, string>? ViewModelChangedEvent;
-
     public MainWindowViewModel()
     {
 #if DEBUG
         Debug.WriteLine("MainWindowViewModel Init");
 #endif
-        
-        // _viewModels = new Dictionary<string, ViewModelBase>()
-        // {
-            // {"Home", HomeViewModel},
-        // }
-        
-        _viewModels = new Dictionary<string, ViewModelBase>
-        {
-            // { "Home", HomeViewModel },
-            // { "Settings", SettingsViewModel },
-            // { "ListBox", ListBoxViewModel },
-            // { "Icons", IconsViewModel },
-            // { "NavigationDemo", NavigationDemoViewModel },
-            // { "DatePicker", DatePickerViewModel },
-            // { "BaseInput", BaseInputViewModel },
-            // { "Panel", PanelViewModel},
-            // { "DrawRect", DrawRectViewModel},
-            // { "LayoutControls", LayoutControlsViewModel},
-            // { "Buttons", ButtonViewModel},
-            // { "DuplicateDataControls", DuplicateDataControlsViewModel},
-            // { "TextDisplayAndEditing", TextDisplayAndEditingViewModel},
-            // { "ValueSelection", ValueSelectionViewModel},
-            // { "Image", DisplayImageViewModel},
-            // { "MenusAndPopups", MenusAndPopupsViewModel}
-            
-            { "Home", HomeViewModel },
-            { "Icons", IconsViewModel },
-            { "BasicInput", BasicInputViewModel },
-            { "DialogBoxAndPopup", DialogBoxAndPopupViewModel },
-            { "Layout", LayoutViewModel },
-            { "Navigation", NavigationViewModel },
-            { "Text", TextViewModel },
-            { "View", ViewModel },
-            { "Scroll", ScrollViewModel },
-            { "StatusAndInformation", StatusAndInformationViewModel},
-            { "MenuAndToolBar", MenuAndToolBarViewModel },
-            { "DateTime", DateTimeViewModel },
-            { "Settings", SettingsViewModel },
-        };
-        
-        HomeViewModel.GotoControlEvent += (page, name) =>
+
+        var homeVm = new HomeViewModel();
+        homeVm.GotoControlEvent += (page, name) =>
         {
             TogglePage(page);
             WeakReferenceMessenger.Default.Send(new JumpToControlMessage(page, name));
-            // ViewModelChangedEvent?.Invoke(page, name);
         };
-        CurrentViewModel = HomeViewModel;
+        _viewModels["Home"] = homeVm;
+        _homeViewModel = homeVm;
+
+        _viewModelFactories = new Dictionary<string, Func<ViewModelBase>>
+        {
+            { "Icons", () => new IconsViewModel() },
+            { "BasicInput", () => new BasicInputViewModel() },
+            { "DialogBoxAndPopup", () => new DialogBoxAndPopupViewModel() },
+            { "Layout", () => new LayoutViewModel() },
+            { "Navigation", () => new NavigationViewModel() },
+            { "Text", () => new TextViewModel() },
+            { "View", () => new ViewModel() },
+            { "Scroll", () => new ScrollViewModel() },
+            { "StatusAndInformation", () => new StatusAndInformationViewModel() },
+            { "MenuAndToolBar", () => new MenuAndToolBarViewModel() },
+            { "DateTime", () => new DateTimeViewModel() },
+            { "Settings", () => new SettingsViewModel() },
+        };
+
+        CurrentViewModel = _viewModels["Home"];
     }
 
-    // private HomeViewModel HomeViewModel { get; } = new();
-    // private IconsViewModel IconsViewModel { get; } = new();
-    // private NavigationDemoViewModel NavigationDemoViewModel { get; } = new();
-    // private DatePickerViewModel DatePickerViewModel { get; } = new();
-    // private BaseInputViewModel BaseInputViewModel { get; } = new();
-    // private ListBoxViewModel ListBoxViewModel { get; } = new();
-    // private SettingsViewModel SettingsViewModel { get; } = new();
-    // private PanelViewModel PanelViewModel { get; } = new();
-    // private DrawRectViewModel DrawRectViewModel { get; } = new();
-    // private LayoutControlsViewModel LayoutControlsViewModel { get; } = new();
-    // private ButtonViewModel ButtonViewModel { get; } = new();
-    // private DuplicateDataControlsViewModel DuplicateDataControlsViewModel { get; } = new();
-    // private TextDisplayAndEditingViewModel TextDisplayAndEditingViewModel { get; } = new();
-    // private ValueSelectionViewModel ValueSelectionViewModel { get; } = new();
-    // private DisplayImageViewModel DisplayImageViewModel { get; } = new();
-    // private MenusAndPopupsViewModel MenusAndPopupsViewModel { get; } = new();
+    private ViewModelBase GetOrCreateViewModel(string key)
+    {
+        if (_viewModels.TryGetValue(key, out var vm))
+            return vm;
 
-    private HomeViewModel HomeViewModel { get; } = new();
-    private IconsViewModel IconsViewModel { get; } = new();
-    private BasicInputViewModel BasicInputViewModel { get; } = new();
-    private DialogBoxAndPopupViewModel DialogBoxAndPopupViewModel { get; } = new();
-    private LayoutViewModel  LayoutViewModel { get; } = new();
-    private NavigationViewModel  NavigationViewModel { get; } = new();
-    private TextViewModel  TextViewModel { get; } = new();
-    private ViewModel ViewModel  { get; } = new();
-    private ScrollViewModel  ScrollViewModel { get; } = new();
-    private StatusAndInformationViewModel StatusAndInformationViewModel { get; } = new();
-    private MenuAndToolBarViewModel  MenuAndToolBarViewModel { get; } = new();
-    private DateTimeViewModel   DateTimeViewModel { get; } = new();
+        if (_viewModelFactories.TryGetValue(key, out var factory))
+        {
+            vm = factory();
+            _viewModels[key] = vm;
+            return vm;
+        }
 
-    public SettingsViewModel SettingsViewModel { get; } = new();
-    
-    // [ObservableProperty]
-    // private PageSlide.SlideAxis _transitioningOrientation = PageSlide.SlideAxis.Vertical;
-    //
-    // [ObservableProperty]
-    // private TimeSpan _transitioningDuration = TimeSpan.FromMilliseconds(500);
+        throw new KeyNotFoundException($"ViewModel not found for key: {key}");
+    }
+
+    private HomeViewModel _homeViewModel;
+
+    public SettingsViewModel SettingsViewModel
+    {
+        get
+        {
+            if (!_viewModels.TryGetValue("Settings", out var vm))
+            {
+                vm = new SettingsViewModel();
+                _viewModels["Settings"] = vm;
+            }
+            return (SettingsViewModel)vm;
+        }
+    }
 
     [RelayCommand]
     private void TogglePage(string page)
     {
-        _viewModels.TryGetValue(page, out var target);
-        if (target == CurrentViewModel)
+        ViewModelBase target;
+        try
+        {
+            target = GetOrCreateViewModel(page);
+        }
+        catch (KeyNotFoundException)
         {
             return;
         }
-        
+
+        if (target == CurrentViewModel)
+            return;
+
+        if (CurrentViewModel is HomeViewModel homeVm && CurrentViewModel != target)
+        {
+            homeVm.ReleaseImages();
+        }
+
         if (CurrentViewModel != null)
         {
-            // 把当前页加入历史
-            var currentPageKey = _viewModels.FirstOrDefault(x => x.Value == CurrentViewModel).Key;
+            var currentPageKey = GetKeyByViewModel(CurrentViewModel);
             if (currentPageKey != null)
+            {
                 _history.Add(currentPageKey);
+            }
         }
 
         CurrentViewModel = target;
@@ -165,14 +146,22 @@ public partial class MainWindowViewModel : ViewModelBase
         var last = _history[^1];
         _history.RemoveAt(_history.Count - 1);
 
-        _viewModels.TryGetValue(last, out var view);
-        CurrentViewModel = view;
+        if (GetOrCreateViewModel(last) is { } view)
+        {
+            CurrentViewModel = view;
+        }
 
         WeakReferenceMessenger.Default.Send(new JumpToControlMessage(last, null));
-        // ViewModelChangedEvent?.Invoke(last, "");
-        // Send Navigation GoBack Message
-        // WeakReferenceMessenger.Default.Send(new NavigationGoBackMessage(last));
 
         CanGoBack = _history.Count > 0;
+    }
+
+    private string? GetKeyByViewModel(ViewModelBase vm)
+    {
+        foreach (var kvp in _viewModels)
+        {
+            if (kvp.Value == vm) return kvp.Key;
+        }
+        return null;
     }
 }

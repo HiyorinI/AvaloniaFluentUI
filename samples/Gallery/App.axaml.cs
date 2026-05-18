@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -15,13 +16,7 @@ public class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-
-
-
-        Console.WriteLine(FluentAvaloniaTheme);
     }
-
-    public static FluentAvaloniaTheme? FluentAvaloniaTheme { get; private set; }
 
     public override void OnFrameworkInitializationCompleted()
     {
@@ -35,8 +30,20 @@ public class App : Application
                 DataContext = new MainWindowViewModel()
             };
         }
-
+        
+        // SetLanguage("zh-CN");
         base.OnFrameworkInitializationCompleted();
+    }
+
+    private void SetLanguage(string language)
+    {
+        var culture = new CultureInfo(language);
+        
+        CultureInfo.CurrentCulture = culture;
+        CultureInfo.CurrentUICulture = culture;
+        
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
     }
 
     private void DisableAvaloniaDataAnnotationValidation()
