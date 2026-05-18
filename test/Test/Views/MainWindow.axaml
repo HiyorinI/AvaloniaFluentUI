@@ -1,0 +1,48 @@
+<Window
+  x:Class="Test.Views.MainWindow"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:page="clr-namespace:Test.Pages"
+  xmlns:vm="using:Test.ViewModels"
+  Title="Test"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  x:DataType="vm:MainWindowViewModel"
+  Icon="/Assets/avalonia-logo.ico"
+  mc:Ignorable="d">
+
+  <Design.DataContext>
+    <!--
+      This only sets the DataContext for the previewer in an IDE,
+      to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+    -->
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+  <ScrollViewer>
+    <Grid RowDefinitions="*, Auto">
+      <Grid Name="Grid">
+        <!-- <page:FlipViewPage/> -->
+      </Grid>
+      <StackPanel Grid.Row="1">
+        <Button Click="Toggle" Content="切换 content"/>
+        <Button Click="ChangeImage" Content="切换 image"/>
+        <Button Click="ChangeOr" Content="改变方向"/>
+        <TextBox
+          Name="DW"
+          Text="0"
+          Watermark="W"/>
+        <TextBox
+          Name="DH"
+          Text="0"
+          Watermark="H"/>
+        <Button Click="OnClick" Content="确定"/>
+        <TextBox Name="itb"/>
+        <Button Click="CITB" Content="inter"/>
+        <CheckBox Click="CBC" Content="AutoPlay"/>
+      </StackPanel>
+    </Grid>
+  </ScrollViewer>
+
+</Window>

@@ -1,0 +1,124 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="clr-namespace:Test.Controls"
+  xmlns:ui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI">
+
+  <ControlTheme x:Key="{x:Type controls:FlipViewMMMM}" TargetType="controls:FlipViewMMMM">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="ClipToBounds" Value="True"/>
+    <Setter Property="Width" Value="800"/>
+    <Setter Property="Height" Value="521"/>
+    <Setter Property="ImageInterpolationMode" Value="MediumQuality"/>
+    <Setter Property="Stretch" Value="UniformToFill"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid
+          Width="{TemplateBinding Width}"
+          Height="{TemplateBinding Height}"
+          Margin="0"
+          RowDefinitions="*, Auto"
+          RowSpacing="8">
+          <Border
+            Grid.Row="0"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            ClipToBounds="{TemplateBinding ClipToBounds}"
+            CornerRadius="{TemplateBinding CornerRadius}">
+            <Grid>
+              <Image
+                Name="PART_CurrentImage"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Stretch="{TemplateBinding Stretch}"/>
+              <Image
+                Name="PART_NextImage"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                IsVisible="False"
+                Stretch="{TemplateBinding Stretch}"/>
+            </Grid>
+          </Border>
+
+          <ui:ToolButton
+            Name="PART_PreviousButton"
+            Width="20"
+            Height="36"
+            Margin="5,0,0,0"
+            Padding="5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            IconData="{StaticResource Previous}"
+            IconHeight="10"
+            IconWidth="10"
+            IsVisible="False"
+            ZIndex="10"/>
+          <ui:ToolButton
+            Name="PART_NextButton"
+            Width="20"
+            Height="36"
+            Margin="0,0,5,0"
+            Padding="5"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            IconData="{StaticResource Next}"
+            IconHeight="10"
+            IconWidth="10"
+            IsVisible="False"
+            ZIndex="10"/>
+
+          <ui:PipsPager
+            Name="PART_PipsPager"
+            Grid.Row="1"
+            MinWidth="128"
+            MaxWidth="256"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderThickness="0"
+            ItemsSource="{TemplateBinding ImageSources}"
+            ScrollViewer.BringIntoViewOnFocusChange="False"
+            SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^ /template/ ui|ToolButton#PART_PreviousButton">
+      <Setter Property="RenderTransformOrigin" Value="50%, 50%"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition
+            Easing="CubicEaseOut"
+            Property="RenderTransform"
+            Duration="00:00:0.15"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
+    <Style Selector="^ /template/ ui|ToolButton#PART_NextButton">
+      <Setter Property="RenderTransformOrigin" Value="50%, 50%"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition
+            Easing="CubicEaseOut"
+            Property="RenderTransform"
+            Duration="00:00:0.15"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
+    <Style Selector="^ /template/ ui|ToolButton#PART_PreviousButton:pressed">
+      <Setter Property="RenderTransform" Value="scale(0.85, 1.0)"/>
+    </Style>
+
+    <Style Selector="^ /template/ ui|ToolButton#PART_NextButton:pressed">
+      <Setter Property="RenderTransform" Value="scale(0.85, 1.0)"/>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>
+

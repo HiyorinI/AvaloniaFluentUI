@@ -1,0 +1,43 @@
+﻿<UserControl
+  x:Class="Test.Pages.FlipViewPage"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+  <Grid RowDefinitions="*, Auto">
+    <Border
+      Name="Grid"
+      ClipToBounds="True"
+      CornerRadius="8">
+      <Grid>
+        <Image
+          Name="CurrentImage"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
+          RenderOptions.BitmapInterpolationMode="MediumQuality"
+          Stretch="UniformToFill"/>
+        <Image
+          Name="NextImage"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
+          IsVisible="False"
+          RenderOptions.BitmapInterpolationMode="MediumQuality"
+          Stretch="UniformToFill"/>
+      </Grid>
+    </Border>
+
+    <StackPanel
+      Grid.Row="1"
+      HorizontalAlignment="Center"
+      Orientation="Horizontal"
+      Spacing="5">
+      <Button Name="PB" Content="上一个"/>
+      <Button Name="NB" Content="下一个"/>
+    </StackPanel>
+  </Grid>
+</UserControl>
+
