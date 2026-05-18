@@ -36,14 +36,12 @@
                 Name="PART_CurrentImage"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                RenderOptions.BitmapInterpolationMode="{TemplateBinding ImageInterpolationMode}"
                 Stretch="{TemplateBinding Stretch}"/>
               <Image
                 Name="PART_NextImage"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 IsVisible="False"
-                RenderOptions.BitmapInterpolationMode="{TemplateBinding ImageInterpolationMode}"
                 Stretch="{TemplateBinding Stretch}"/>
             </Grid>
           </Border>

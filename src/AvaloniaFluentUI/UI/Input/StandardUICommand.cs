@@ -56,109 +56,109 @@ public class StandardUICommand : XamlUICommand
                 break;
 
             case StandardUICommandKind.Cut:
-                Label = "Cut";
+                Label = "剪切";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Cut };
-                Description = "Remove the selected content and put it on the clipboard";
+                Description = "删除选定的内容并放到剪贴板上";
                 HotKey = new KeyGesture(Key.X, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Copy:
-                Label = "Copy";
+                Label = "复制";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Copy };
-                Description = "Copy the selected content to the clipboard";
+                Description = "将选定的内容复制到剪贴板上";
                 HotKey = new KeyGesture(Key.C, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Paste:
-                Label = "Paste";
+                Label = "粘贴";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Paste };
-                Description = "Insert the contents of the clipboard at the current location";
+                Description = "将剪贴板内容插入当前位置";
                 HotKey = new KeyGesture(Key.V, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.SelectAll:
-                Label = "Select All";
+                Label = "全部选择";
                 IconSource = new SymbolIconSource { Symbol = Symbol.SelectAll };
-                Description = "Select all content";
+                Description = "选择所有内容";
                 HotKey = new KeyGesture(Key.A, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Delete:
-                Label = "Delete";
+                Label = "删除";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Delete };
-                Description = "Delete the selected content";
+                Description = "删除选中的内容";
                 HotKey = new KeyGesture(Key.Delete);
                 break;
 
             case StandardUICommandKind.Share:
-                Label = "Share";
+                Label = "共享";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Share };
-                Description = "Share the selected content";
+                Description = "分享精选内容";
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Save:
-                Label = "Save";
+                Label = "保存";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Save };
-                Description = "Save your changes";
+                Description = "保存你的更改";
                 HotKey = new KeyGesture(Key.S, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Open:
-                Label = Description = "Open";
+                Label = Description = "打开";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Open };
                 HotKey = new KeyGesture(Key.O, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Close:
-                Label = Description = "Close";
+                Label = Description = "关闭";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Dismiss };
                 HotKey = new KeyGesture(Key.W, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Pause:
-                Label = Description = "Pause";
+                Label = Description = "暂停";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Pause };
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Play:
-                Label = Description = "Play";
+                Label = Description = "播放";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Play };
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Stop:
-                Label = Description = "Stop";
+                Label = Description = "停止";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Stop };
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Forward:
-                Label = "Forward";
+                Label = "前进";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Forward };
-                Description = "Go to the next item";
+                Description = "进入下一个项目";
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Backward:
-                Label = "Backward";
+                Label = "后退";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Back };
-                Description = "Back";
+                Description = "返回";
                 // No HotKey
                 break;
 
             case StandardUICommandKind.Undo:
-                Label = "Undo";
+                Label = "撤销";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Undo };
-                Description = "Reverse the most recent action";
+                Description = "逆转最近的行动";
                 HotKey = new KeyGesture(Key.Z, KeyModifiers.Control);
                 break;
 
             case StandardUICommandKind.Redo:
-                Label = "Redo";
+                Label = "重来";
                 IconSource = new SymbolIconSource { Symbol = Symbol.Redo };
-                Description = "Repeat the most recently undone action";
+                Description = "重复最近一次撤销的动作";
                 HotKey = new KeyGesture(Key.Y, KeyModifiers.Control);
                 break;
 

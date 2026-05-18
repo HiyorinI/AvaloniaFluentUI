@@ -21,7 +21,7 @@ public class ToolTipSlider : Slider
 
     public ToolTipSlider()
     {
-        _timer.Interval = TimeSpan.FromMilliseconds(300);
+        _timer.Interval = TimeSpan.FromMilliseconds(200);
         _timer.Tick += ClosePopup;
     }
 
