@@ -141,6 +141,7 @@
         <MergeResourceInclude Source="/Styling/ControlThemes/FAControls/Pager/PipsPagerStyle.axaml"/>
         <MergeResourceInclude Source="/Styling/ControlThemes/FAControls/View/FlipViewStyle.axaml"/>
         <MergeResourceInclude Source="/Styling/ControlThemes/FAControls/ListBox/RoundListBoxStyle.axaml"/>
+        <MergeResourceInclude Source="/Styling/ControlThemes/FAControls/Segmented/SegmentedViewStyle.axaml"/>
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Styles.Resources>
