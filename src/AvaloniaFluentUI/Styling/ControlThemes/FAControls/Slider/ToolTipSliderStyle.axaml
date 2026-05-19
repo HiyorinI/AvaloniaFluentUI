@@ -23,7 +23,6 @@
               CornerRadius="{DynamicResource SliderTrackCornerRadius}">
 
               <Grid
-                Name="grid"
                 Margin="{TemplateBinding Padding}"
                 ClipToBounds="False"
                 RowDefinitions="Auto, *">
@@ -142,7 +141,7 @@
                       </Track.IncreaseButton>
 
                       <Thumb
-                        Name="Thumb"
+                        Name="PART_Thumb"
                         Width="{DynamicResource SliderHorizontalThumbWidth}"
                         Height="{DynamicResource SliderHorizontalThumbHeight}"
                         Margin="0"
@@ -151,7 +150,7 @@
                         Theme="{StaticResource SliderThumbStyle}"/>
                     </Track>
 
-                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding #Thumb}">
+                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding #PART_Thumb}">
                       <Border
                         Padding="{StaticResource PopupBorderPadding}"
                         Background="{DynamicResource ToolTipBackgroundBrush}"
@@ -293,7 +292,7 @@
                         </RepeatButton>
                       </Track.IncreaseButton>
                       <Thumb
-                        Name="Thumb"
+                        Name="PART_Thumb"
                         Width="{DynamicResource SliderVerticalThumbWidth}"
                         Height="{DynamicResource SliderVerticalThumbHeight}"
                         Margin="0"
@@ -302,7 +301,7 @@
                         Theme="{StaticResource SliderThumbStyle}"/>
                     </Track>
 
-                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding #Thumb}">
+                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding #PART_Thumb}">
                       <Border
                         Padding="{StaticResource PopupBorderPadding}"
                         Background="{DynamicResource ToolTipBackgroundBrush}"
