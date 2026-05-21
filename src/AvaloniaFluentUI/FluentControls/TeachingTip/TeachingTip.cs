@@ -1100,15 +1100,10 @@ public partial class TeachingTip : ContentControl
         {
             if (_popup != null)
             {
-                // We have to do this so styles inherit 
+                // We have to do this so styles inherit
                 ((ISetLogicalParent)_popup).SetParent(_target ?? (Control)VisualRoot);
 
-                // HACK
-                if (_repositionOnNextOpen)
-                {
-                    _repositionOnNextOpen = false;
-                    PositionPopup();
-                }
+                PositionPopup();
 
                 if (!_popup.IsOpen)
                 {
@@ -1612,10 +1607,6 @@ public partial class TeachingTip : ContentControl
         }
         else
         {
-            // HACK: if the target is changed when the teaching tip is closed, it won't open at the new target
-            //       Not sure how WinUI handles this, or if its a bug in general, so I'm just tacking this
-            //       hack fix in here to get around this until I can look into this more
-            _repositionOnNextOpen = true;
             _currentTargetBoundsInCoreWindowSpace = default;
         }
     }
@@ -2385,9 +2376,6 @@ public partial class TeachingTip : ContentControl
     private bool _ignoreNextIsOpenChanged;
     private bool _isTemplateApplied;
     private bool _createNewPopupOnOpen;
-
-    // HACK
-    private bool _repositionOnNextOpen;
 
     private bool _isExpandAnimationPlaying;
     private bool _isContractAnimationPlaying;
