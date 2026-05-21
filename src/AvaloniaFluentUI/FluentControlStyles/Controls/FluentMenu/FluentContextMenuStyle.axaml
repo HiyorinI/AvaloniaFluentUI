@@ -38,8 +38,8 @@
   <Thickness x:Key="MenuFlyoutScrollerMargin">0,4,0,4</Thickness>
 
   <ControlTheme x:Key="{x:Type ui:FluentContextMenu}" TargetType="ui:FluentContextMenu">
-    <Setter Property="Background" Value="{DynamicResource MenuFlyoutPresenterBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource MenuFlyoutPresenterBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}"/>
     <Setter Property="Focusable" Value="True"/>

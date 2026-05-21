@@ -7,9 +7,9 @@
     <Setter Property="Padding" Value="{DynamicResource ComboBoxPadding}"/>
     <Setter Property="Margin" Value="2 0"/>
     <Setter Property="MaxDropDownHeight" Value="504"/>
-    <Setter Property="Foreground" Value="{DynamicResource ComboBoxForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource ComboBoxBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThemeThickness}"/>
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -17,7 +17,7 @@
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-    <Setter Property="PlaceholderForeground" Value="{DynamicResource ComboBoxPlaceHolderForeground}"/>
+    <Setter Property="PlaceholderForeground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     <Setter Property="Template">
       <ControlTemplate>
         <DataValidationErrors>
@@ -48,8 +48,8 @@
               Grid.Row="1"
               Grid.Column="0"
               Grid.ColumnSpan="2"
-              Background="{DynamicResource ComboBoxBackgroundFocused}"
-              BorderBrush="{DynamicResource ComboBoxBackgroundBorderBrushFocused}"
+              Background="{DynamicResource ControlFillColorDefaultBrush}"
+              BorderBrush="{DynamicResource FocusStrokeColorOuterBrush}"
               BorderThickness="{DynamicResource ComboBoxBackgroundBorderThicknessFocused}"
               Opacity="0"/>
 
@@ -102,7 +102,7 @@
               VerticalAlignment="Center"
               FontFamily="{DynamicResource SymbolThemeFontFamily}"
               FontSize="12"
-              Foreground="{DynamicResource ComboBoxDropDownGlyphForeground}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Glyph="&#xE70D;"
               IsHitTestVisible="False"/>
 
@@ -120,9 +120,9 @@
                 x:Name="PopupBorder"
                 Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                 HorizontalAlignment="Stretch"
-                Background="{DynamicResource ComboBoxDropDownBackground}"
+                Background="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
                 BackgroundSizing="InnerBorderEdge"
-                BorderBrush="{DynamicResource ComboBoxDropDownBorderBrush}"
+                BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
                 BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
                 CornerRadius="{DynamicResource OverlayCornerRadius}">
                 <ui:SmoothScrollViewer
@@ -144,42 +144,42 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#Background">
-        <Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#Background">
-        <Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxHeaderForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#Background">
-        <Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxBorderBrushDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#DropDownGlyph">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 
@@ -188,13 +188,13 @@
         <Setter Property="Opacity" Value="1"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundFocused}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxPlaceHolderForegroundFocused}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#DropDownGlyph">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxDropDownGlyphForegroundFocused}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 

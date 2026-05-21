@@ -15,9 +15,9 @@
 
 
   <ControlTheme x:Key="{x:Type ui:NavigationViewItem}" TargetType="ui:NavigationViewItem">
-    <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource NavigationViewItemBorderBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource NavigationViewItemBorderThickness}"/>
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontWeight" Value="Normal"/>
@@ -72,7 +72,7 @@
 
     <Style Selector="^:topprimary /template/ uip|NavigationViewItemPresenter">
       <Setter Property="Margin" Value="{DynamicResource TopNavigationViewItemMargin}"/>
-      <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForeground}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
 
     <Style Selector="^:topnav /template/ uip|NavigationViewItemPresenter">

@@ -15,8 +15,8 @@
 
     <ControlTheme x:Key="{x:Type uip:TaskDialogCommandHost}" TargetType="uip:TaskDialogCommandHost"
                   x:DataType="ui:TaskDialogCommand">
-        <Setter Property="Background" Value="{DynamicResource TaskDialogCommandBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TaskDialogCommandBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlTransparentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlTransparentBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource TaskDialogCommandBorderThickness}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
@@ -44,12 +44,12 @@
                             <TextBlock Text="{Binding Text}"
                                        FontWeight="SemiBold"
                                        Name="Text"
-                                       Foreground="{DynamicResource TaskDialogCommandTextForeground}"/>
+                                       Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"/>
                             <TextBlock Text="{Binding Description}"
                                        FontSize="12"
                                        TextWrapping="Wrap"
                                        Name="Description"
-                                       Foreground="{DynamicResource TaskDialogCommandDescriptionForeground}"
+                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                        IsVisible="{Binding Description, Converter={x:Static ObjectConverters.IsNotNull}}"/>
                         </StackPanel>
                     </Grid>
@@ -63,37 +63,37 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource TaskDialogCommandBackgroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Text">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandTextForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Description">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandDescriptionForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource TaskDialogCommandBackgroundPressed}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Text">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandTextForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorSecondaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Description">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandDescriptionForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource TaskDialogCommandBackgroundDisabled}" />
+                <Setter Property="Background" Value="{DynamicResource SystemControlTransparentBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Text">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandTextForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorDisabledBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#Description">
-                <Setter Property="Foreground" Value="{DynamicResource TaskDialogCommandDescriptionForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
     </ControlTheme>

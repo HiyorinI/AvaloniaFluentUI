@@ -66,45 +66,6 @@ public partial class FluentAvaloniaTheme
         return theme;
     }
 
-    private void TryLoadHighContrastThemeColors()
-    {
-        IUISettings settings;
-        try
-        {
-            settings = WinRTInterop.CreateInstance<IUISettings>("Windows.UI.ViewManagement.UISettings");
-        }
-        catch
-        {
-            Logger.TryGet(LogEventLevel.Information, "FluentAvaloniaTheme")?
-                .Log("FluentAvaloniaTheme", "Loading high contrast theme resources failed. Unable to create ComObject IUISettings");
-            return;
-        }
-
-        void TryAddResource(string resKey, UIElementType element)
-        {
-            try
-            {
-                var color = (Color)settings.UIElementColor(element);
-                var res = Resources.MergedDictionaries[0] as ResourceDictionary;
-                (res.ThemeDictionaries[HighContrastTheme] as ResourceDictionary)[resKey] = color;
-            }
-            catch
-            {
-                Logger.TryGet(LogEventLevel.Information, "FluentAvaloniaTheme")?
-                .Log("FluentAvaloniaTheme", $"Loading high contrast theme resources failed. Unable to load {resKey} resource");
-            }
-        }
-
-        TryAddResource("SystemColorWindowTextColor", UIElementType.WindowText);
-        TryAddResource("SystemColorGrayTextColor", UIElementType.GrayText);
-        TryAddResource("SystemColorButtonFaceColor", UIElementType.ButtonFace);
-        TryAddResource("SystemColorWindowColor", UIElementType.Window);
-        TryAddResource("SystemColorButtonTextColor", UIElementType.ButtonText);
-        TryAddResource("SystemColorHighlightColor", UIElementType.Highlight);
-        TryAddResource("SystemColorHighlightTextColor", UIElementType.HighlightText);
-        TryAddResource("SystemColorHotlightColor", UIElementType.Hotlight);
-    }
-
     private void TryLoadWindowsAccentColor()
     {
         try

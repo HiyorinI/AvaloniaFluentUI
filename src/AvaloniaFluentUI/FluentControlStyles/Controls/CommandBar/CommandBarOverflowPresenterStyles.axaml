@@ -5,8 +5,8 @@
   x:CompileBindings="True">
 
   <ControlTheme x:Key="{x:Type ui:CommandBarOverflowPresenter}" TargetType="ui:CommandBarOverflowPresenter">
-    <Setter Property="Background" Value="{DynamicResource CommandBarOverflowPresenterBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource CommandBarOverflowPresenterBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="Padding" Value="{DynamicResource CommandBarOverflowPresenterBorderPadding}"/>
     <Setter Property="MaxWidth" Value="{DynamicResource CommandBarOverflowMaxWidth}"/>
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>

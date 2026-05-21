@@ -12,7 +12,7 @@
                 <Panel Name="NVISeparatorRootGrid">
                     <Rectangle Name="SeparatorLine"
                                Height="{DynamicResource NavigationViewItemSeparatorHeight}"
-                               Fill="{DynamicResource NavigationViewItemSeparatorForeground}"
+                               Fill="{DynamicResource DividerStrokeColorDefaultBrush}"
                                Margin="{DynamicResource NavigationViewItemSeparatorMargin}"/>
                 </Panel>
             </ControlTemplate>
@@ -27,7 +27,7 @@
             <Setter Property="Width" Value="{DynamicResource TopNavigationViewItemSeparatorWidth}" />
             <Setter Property="Margin" Value="{DynamicResource TopNavigationViewItemSeparatorMargin}" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Fill" Value="{DynamicResource TopNavigationViewItemSeparatorForeground}" />
+            <Setter Property="Fill" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
         </Style>
 
     </ControlTheme>

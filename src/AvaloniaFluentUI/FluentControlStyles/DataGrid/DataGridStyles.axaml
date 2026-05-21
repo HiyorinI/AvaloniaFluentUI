@@ -11,7 +11,11 @@
   </ResourceDictionary.MergedDictionaries>
 
 
-  <ControlTheme x:Key="{x:Type DataGrid}" TargetType="DataGrid">
+  
+  <!-- Control-specific resources -->
+  <SolidColorBrush x:Key="DataGridDropLocationIndicatorBackground" Color="#3F4346"/>
+  <SolidColorBrush x:Key="DataGridDisabledVisualElementBackground" Color="#8CFFFFFF"/>
+<ControlTheme x:Key="{x:Type DataGrid}" TargetType="DataGrid">
     <Setter Property="RowBackground" Value="Transparent"/>
     <Setter Property="HeadersVisibility" Value="Column"/>
     <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
@@ -20,8 +24,8 @@
     <Setter Property="GridLinesVisibility" Value="None"/>
     <Setter Property="ClipToBounds" Value="True"/>
     <Setter Property="CornerRadius" Value="8"/>
-    <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}"/>
-    <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}"/>
+    <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}"/>
+    <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}"/>
     <Setter Property="DropLocationIndicatorTemplate">
       <Template>
         <Rectangle Width="2" Fill="{DynamicResource DataGridDropLocationIndicatorBackground}"/>
@@ -50,7 +54,7 @@
               Grid.ColumnSpan="3"
               Height="1"
               VerticalAlignment="Bottom"
-              Fill="{DynamicResource DataGridGridLinesBrush}"/>
+              Fill="{DynamicResource DividerStrokeColorDefaultBrush}"/>
 
             <DataGridRowsPresenter
               Name="PART_RowsPresenter"
@@ -66,7 +70,7 @@
               Name="PART_BottomRightCorner"
               Grid.Row="2"
               Grid.Column="2"
-              Fill="{DynamicResource DataGridScrollBarsSeparatorBackground}"/>
+              Fill="{DynamicResource ControlFillColorTertiaryBrush}"/>
             <ScrollBar
               Name="PART_VerticalScrollbar"
               Grid.Row="1"

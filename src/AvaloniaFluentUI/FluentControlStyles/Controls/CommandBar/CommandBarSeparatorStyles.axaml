@@ -12,7 +12,7 @@
 
     <ControlTheme x:Key="{x:Type ui:CommandBarSeparator}"
                   TargetType="ui:CommandBarSeparator">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarSeparatorForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
         <Setter Property="Padding" Value="{DynamicResource AppBarSeparatorMargin}" />
         <Setter Property="Template">
             <ControlTemplate>

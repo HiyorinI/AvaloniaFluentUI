@@ -48,9 +48,9 @@
   <x:Double x:Key="ToolTipContentThemeFontSize">12</x:Double>
 
   <ControlTheme x:Key="{x:Type ToolTip}" TargetType="ToolTip">
-    <Setter Property="Foreground" Value="{DynamicResource ToolTipForegroundBrush}"/>
-    <Setter Property="Background" Value="{DynamicResource ToolTipBackgroundBrush}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ToolTipBorderBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ToolTipBorderThemeThickness}"/>
     <Setter Property="FontSize" Value="{DynamicResource ToolTipContentThemeFontSize}"/>
     <Setter Property="Padding" Value="{DynamicResource ToolTipBorderPadding}"/>

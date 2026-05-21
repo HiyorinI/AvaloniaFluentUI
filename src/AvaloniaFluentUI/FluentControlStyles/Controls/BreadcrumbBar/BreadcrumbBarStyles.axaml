@@ -2,7 +2,20 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ui="using:AvaloniaFluentUI.Controls">
 
-    <ControlTheme TargetType="ui:BreadcrumbBar"
+    
+  <!-- Control-specific resources -->
+  <x:Double x:Key="BreadcrumbBarChevronFontSize">12</x:Double>
+
+  <Thickness x:Key="BreadcrumbBarChevronPadding">2,0</Thickness>
+  <Thickness x:Key="BreadcrumbBarEllipsisFlyoutPresenterBorderThemeThickness">1</Thickness>
+
+  <x:String x:Key="BreadcrumbBarChevronLeftToRight">&#xE974;</x:String>
+
+  <FontWeight x:Key="BreadcrumbBarItemFontWeight">Normal</FontWeight>
+
+  <SolidColorBrush x:Key="BreadcrumbBarBackgroundBrush" Color="Transparent"/>
+  <SolidColorBrush x:Key="BreadcrumbBarBorderBrush" Color="Transparent"/>
+<ControlTheme TargetType="ui:BreadcrumbBar"
                   x:Key="{x:Type ui:BreadcrumbBar}">
         <!--<Setter Property="AutomationProperties.LandmarkType" Value="Navigation" />-->
         <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />

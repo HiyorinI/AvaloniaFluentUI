@@ -45,9 +45,23 @@
     headaches for me in trying to make this work :D
   -->
 
-  <ControlTheme x:Key="CBEllipsisButton" TargetType="Button">
-    <Setter Property="Background" Value="{DynamicResource AppBarButtonBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrush}"/>
+  
+  <!-- Control-specific resources -->
+  <x:Double x:Key="CommandBarOverflowMinWidth">160</x:Double>
+  <x:Double x:Key="CommandBarOverflowTouchMinWidth">240</x:Double>
+  <x:Double x:Key="CommandBarOverflowMaxWidth">480</x:Double>
+  <x:Double x:Key="CommandBarOverflowMaxHeight">198</x:Double>
+  <x:Double x:Key="AppBarButtonSecondarySubItemChevronFontSize">14</x:Double>
+  <Thickness x:Key="AppBarButtonSubItemChevronMargin">-23,20,12,0</Thickness>
+  <Thickness x:Key="AppBarButtonSubItemChevronLabelOnRightMargin">-7,20,12,0</Thickness>
+  <Thickness x:Key="AppBarButtonSecondarySubItemChevronMargin">0,0,16,0</Thickness>
+
+  <Thickness x:Key="CommandBarBorderThicknessOpen">1</Thickness>
+  <Thickness x:Key="CommandBarOverflowPresenterBorderPadding">0</Thickness>
+  <Thickness x:Key="CommandBarOverflowPresenterBorderThickness">1</Thickness>
+<ControlTheme x:Key="CBEllipsisButton" TargetType="Button">
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Padding" Value="0"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -79,26 +93,26 @@
     </Setter>
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPressed}"/>
-      <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundDisabled}"/>
-      <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundDisabled}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushDisabled}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     </Style>
   </ControlTheme>
 
 
   <ControlTheme x:Key="{x:Type ui:CommandBar}" TargetType="ui:CommandBar">
-    <Setter Property="Background" Value="{DynamicResource CommandBarBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource CommandBarForeground}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Padding" Value="4,0,0,0"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -171,7 +185,7 @@
                 Name="OpenBorder"
                 Grid.ColumnSpan="2"
                 VerticalAlignment="Stretch"
-                BorderBrush="{DynamicResource CommandBarBorderBrushOpen}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
                 BorderThickness="{DynamicResource CommandBarBorderThicknessOpen}"
                 CornerRadius="{TemplateBinding CornerRadius}"
                 IsVisible="False"/>
@@ -197,7 +211,7 @@
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ Button#MoreButton ui|SymbolIcon">
-        <Setter Property="Foreground" Value="{DynamicResource CommandBarEllipsisIconForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 
@@ -271,7 +285,7 @@
     <!--  Compact (closed is default state)  -->
     <Style Selector="^:compact">
       <Style Selector="^:open /template/ Border#ContentRootBorder">
-        <Setter Property="Background" Value="{DynamicResource CommandBarBackgroundOpen}"/>
+        <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
       </Style>
       <Style Selector="^:open /template/ Border#OpenBorder">

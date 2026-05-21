@@ -29,9 +29,9 @@
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Width" Value="{DynamicResource TabViewItemHeaderCloseButtonWidth}" />
         <Setter Property="Height" Value="{DynamicResource TabViewItemHeaderCloseButtonHeight}" />
-        <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderCloseButtonBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderThickness}" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -49,14 +49,14 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderCloseButtonBackgroundPointerOver}" />
-            <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPointerOver}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderBrushPointerOver}" />
+            <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         </Style>
         <Style Selector="^:pressed /template/ ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderCloseButtonBackgroundPressed}" />
-            <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderCloseButtonForegroundPressed}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource TabViewItemHeaderCloseButtonBorderBrushPressed}" />
+            <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         </Style>
     </ControlTheme>
 
@@ -117,7 +117,7 @@
                             <ContentControl Name="IconControl"
                                             Content="{Binding TabViewTemplateSettings.IconElement, RelativeSource={RelativeSource TemplatedParent}}"
                                             KeyboardNavigation.IsTabStop="False"
-                                            Foreground="{DynamicResource TabViewItemIconForeground}"/>
+                                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
                         </Viewbox>
 
                         <!-- If we template bind the ContentPresenter's Content property to the TabViewItem.Header property
@@ -133,7 +133,7 @@
                                           ContentTemplate="{TemplateBinding HeaderTemplate}"
                                           FontWeight="{TemplateBinding FontWeight}"
                                           FontSize="{DynamicResource TabViewItemHeaderFontSize}"
-                                          Foreground="{DynamicResource TabViewItemHeaderForeground}"/>
+                                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
 
                         <Button Name="CloseButton"
                                 Grid.Column="2"
@@ -153,13 +153,13 @@
     
    
     <ControlTheme x:Key="{x:Type ui:TabViewItem}" TargetType="ui:TabViewItem">
-        <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackground}" />
+        <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="{DynamicResource TabViewItemMinHeight}" />
         <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}" />
         <Setter Property="BorderThickness" Value="{DynamicResource TabViewItemBorderThickness}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TabViewItemBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         <Setter Property="ClipToBounds" Value="False" />
 
         <!--Normal template for Horizontal Tabs-->
@@ -175,7 +175,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Name="BottomBorderLine" 
-                            Background="{DynamicResource TabViewBorderBrush}" 
+                            Background="{DynamicResource CardStrokeColorDefaultBrush}" 
                             Height="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" />
  
                     <!--Note: WinUI doesn't set a Zindex here, but if we dont then the paths get clipped
@@ -190,7 +190,7 @@
                               present in WinUI, so I've fixed something even upstream has :)
                     -->
                     <Path Name="LeftRadiusRenderArc" ZIndex="1"
-                          Fill="{DynamicResource TabViewBorderBrush}" Stretch="Fill"
+                          Fill="{DynamicResource CardStrokeColorDefaultBrush}" Stretch="Fill"
                           VerticalAlignment="Bottom" 
                           IsVisible="False" 
                           Margin="-4,0,0,1" Height="4" Width="4"
@@ -198,7 +198,7 @@
                     
                     <Path Name="RightRadiusRenderArc" ZIndex="1"
                           Grid.Column="2" IsVisible="False" Stretch="Fill"
-                          Fill="{DynamicResource TabViewBorderBrush}" VerticalAlignment="Bottom" 
+                          Fill="{DynamicResource CardStrokeColorDefaultBrush}" VerticalAlignment="Bottom" 
                           Margin="0,0,-4,1" Height="4" Width="4" 
                           Data="M0 0C0 1.19469 0.523755 2.26706 1.35418 3H4C2.34315 3 1 1.65685 1 0H0Z" />
                     
@@ -206,7 +206,7 @@
                     -->
                     <Canvas Grid.ColumnSpan="3" Name="SelectedBackgroundPathHost">
                         <Path Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TabViewTemplateSettings.TabGeometry}" 
-                              Fill="{DynamicResource TabViewItemHeaderBackground}" 
+                              Fill="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}" 
                               VerticalAlignment="Bottom"
                               IsVisible="False" Opacity="1"
                               Margin="-4,0"
@@ -215,14 +215,14 @@
 
                     <Border Name="TabSeparator" HorizontalAlignment="Right" 
                             Width="1" Grid.Column="1" 
-                            Background="{DynamicResource TabViewItemSeparator}" 
+                            Background="{DynamicResource DividerStrokeColorDefaultBrush}" 
                             Margin="{DynamicResource TabViewItemSeparatorMargin}" />
                     
                     <Border Name="TabDragVisualContainer"
                             Grid.Column="1"
                             IsVisible="False"
-                            Background="{DynamicResource TabViewItemHeaderDragBackground}"
-                            BorderBrush="{DynamicResource TabViewBorderBrush}"
+                            Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}"
+                            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}">
                     </Border>
@@ -249,7 +249,7 @@
                                 <ContentControl x:Name="IconControl"
                                                 Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TabViewTemplateSettings.IconElement}"
                                                 IsTabStop="False"
-                                                Foreground="{DynamicResource TabViewItemIconForeground}" />
+                                                Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                             </Viewbox>
 
                             <!-- If we template bind the ContentPresenter's Content property to the TabViewItem.Header property
@@ -262,7 +262,7 @@
                                               Content="" ContentTemplate="{TemplateBinding HeaderTemplate}"
                                               FontWeight="{TemplateBinding FontWeight}"
                                               FontSize="{DynamicResource TabViewItemHeaderFontSize}"
-                                              Foreground="{DynamicResource TabViewItemHeaderForeground}" />
+                                              Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                             <Button Name="CloseButton" Grid.Column="2"
                                     Margin="{DynamicResource TabViewItemHeaderCloseMargin}"
                                     Content="&#xE711;"
@@ -280,17 +280,17 @@
         <Style Selector="^:top, ^:bottom">
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPointerOver}" />
+                    <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#TabSeparator">
                     <Setter Property="Opacity" Value="0" />
@@ -299,17 +299,17 @@
 
             <Style Selector="^:pressed">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPressed}" />
+                    <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorDefaultBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPressed}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPressed}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#TabSeparator">
                     <Setter Property="Opacity" Value="0" />
@@ -328,25 +328,25 @@
                 </Style>
                 <Style Selector="^ /template/ Path#SelectedBackgroundPath">
                     <Setter Property="IsVisible" Value="True" />
-                    <Setter Property="Fill" Value="{DynamicResource TabViewItemHeaderBackgroundSelected}" />
+                    <Setter Property="Fill" Value="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#TabContainerBorder">
                     <Setter Property="Margin" Value="{DynamicResource TabViewSelectedItemHeaderMargin}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource TabViewSelectedItemBorderBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource LayerFillColorAltBrush}" />
                     <Setter Property="BorderThickness" Value="{DynamicResource TabViewSelectedItemBorderThickness}" />
                     <Setter Property="Padding" Value="{DynamicResource TabViewSelectedItemHeaderPadding}" />
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundSelected}" />
+                    <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundSelected}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundSelected}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#LayoutRootBorder">
                     <Setter Property="Background" Value="Transparent" />
@@ -361,18 +361,18 @@
 
             <Style Selector="^:disabled">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundDisabled}" />
+                    <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
             </Style>
 
@@ -407,22 +407,22 @@
         </Style>
 
         <Style Selector="^:left,^:right">
-            <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackground}" />
+            <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}" />
             <Setter Property="Template" Value="{DynamicResource VerticalTabViewTabItemTemplate}" />
 
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundPointerOver}" />
+                    <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemIconForegroundPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
@@ -437,25 +437,25 @@
                     <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:selected">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderSelectedCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Rectangle#SelectionIndicator">
                     <Setter Property="IsVisible" Value="True" />
@@ -465,51 +465,51 @@
 
                 <Style Selector="^:pointerover">
                     <Style Selector="^ /template/ Border#TabContainerBorder">
-                        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPointerOver}" />
+                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ ContentControl#IconControl">
-                        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ Button#CloseButton">
-                        <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonBackground}" />
-                        <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPointerOverCloseButtonForeground}" />
+                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                 </Style>
 
                 <Style Selector="^:pressed">
                     <Style Selector="^ /template/ Border#TabContainerBorder">
-                        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPressed}" />
+                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ ContentControl#IconControl">
-                        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                     <Style Selector="^ /template/ Button#CloseButton">
-                        <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonBackground}" />
-                        <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderPressedCloseButtonForeground}" />
+                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Style>
                 </Style>
             </Style>
 
             <Style Selector="^:disabled">
                 <Style Selector="^ /template/ Border#TabContainerBorder">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderBackgroundDisabled}" />
+                    <Setter Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorTransparentBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Style>
                 <Style Selector="^ /template/ ContentControl#IconControl">
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderForegroundDisabled}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Button#CloseButton">
-                    <Setter Property="Background" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonBackground}" />
-                    <Setter Property="Foreground" Value="{DynamicResource TabViewItemHeaderDisabledCloseButtonForeground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
             </Style>
         </Style>

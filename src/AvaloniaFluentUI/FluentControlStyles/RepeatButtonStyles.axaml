@@ -18,9 +18,9 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type RepeatButton}" TargetType="RepeatButton">
-        <Setter Property="Background" Value="{DynamicResource RepeatButtonBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource RepeatButtonForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
@@ -57,32 +57,32 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource RepeatButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushPointerOver}" />
-                <Setter Property="Foreground" Value="{DynamicResource RepeatButtonForegroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource RepeatButtonBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushPressed}" />
-                <Setter Property="Foreground" Value="{DynamicResource RepeatButtonForegroundPressed}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource RepeatButtonBackgroundDisabled}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource RepeatButtonBorderBrushDisabled}" />
-                <Setter Property="Foreground" Value="{DynamicResource RepeatButtonForegroundDisabled}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="TransparentRepeatButton" TargetType="RepeatButton">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />

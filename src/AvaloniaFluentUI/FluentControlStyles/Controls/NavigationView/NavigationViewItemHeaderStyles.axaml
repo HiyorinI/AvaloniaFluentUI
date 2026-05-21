@@ -8,7 +8,7 @@
         <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemHeaderForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="NVIHeaderRootGrid">

@@ -19,7 +19,10 @@
     <converters:MarginMultiplierConverter x:Key="SecondaryButtonBorderMultiplier" Right="True" Top="True" Bottom="True" Indent="1" />
     <converters:MarginMultiplierConverter x:Key="SeparatorBorderMultiplier" Top="True" Bottom="True" Indent="1" />
 
-    <ControlTheme x:Key="FluentSplitButtonComponent" TargetType="Button">
+    
+  <!-- Control-specific resources -->
+  <Thickness x:Key="SplitButtonBorderThemeThickness">1</Thickness>
+<ControlTheme x:Key="FluentSplitButtonComponent" TargetType="Button">
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -48,82 +51,82 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPointerOver}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPressed}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundDisabled}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushDisabled}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundDisabled}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^[Tag=flyout-open]">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushPressed}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundPressed}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Style>
         </Style>
 
 
         <Style Selector="^[Tag=checked]">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundChecked}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushChecked}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundChecked}" />
+                <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
             </Style>
             
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundCheckedPointerOver}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushCheckedPointerOver}" />
-                    <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPointerOver}" />
+                    <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:pressed">
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundCheckedPressed}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushCheckedPressed}" />
-                    <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
+                    <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:disabled">
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundCheckedDisabled}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushCheckedDisabled}" />
-                    <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedDisabled}" />
+                    <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
             </Style>
         </Style>
 
         <Style Selector="^[Tag=checked-flyout-open] /template/ ContentPresenter">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SplitButtonBackgroundCheckedPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrushCheckedPressed}" />
-                <Setter Property="Foreground" Value="{DynamicResource SplitButtonForegroundCheckedPressed}" />
+                <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" />
             </Style>
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type SplitButton}" TargetType="SplitButton">
-    <Setter Property="Background" Value="{DynamicResource SplitButtonBackground}" />
-    <Setter Property="Foreground" Value="{DynamicResource SplitButtonForeground}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource SplitButtonBorderBrush}" />
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
     <Setter Property="BorderThickness" Value="{DynamicResource SplitButtonBorderThemeThickness}" />
     <Setter Property="MinHeight" Value="{DynamicResource SplitButtonMinHeight}" />
     <Setter Property="HorizontalAlignment" Value="Left" />

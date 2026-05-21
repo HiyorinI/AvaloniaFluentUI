@@ -90,7 +90,7 @@
   -->
   <ControlTheme x:Key="{x:Type ui:PipsPagerItem}" TargetType="ui:PipsPagerItem">
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{DynamicResource ListViewItemForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
     <Setter Property="Width" Value="5"/>
@@ -107,10 +107,10 @@
     </Setter>
 
     <Style Selector="^ /template/ ui|ToolButton#PART_PreviousButton:pointerover">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^ /template/ ui|ToolButton#PART_NextButton:pointerover">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
     </Style>
 
     <Style Selector="^:disabled">

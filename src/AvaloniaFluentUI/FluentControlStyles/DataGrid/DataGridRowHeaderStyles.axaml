@@ -3,7 +3,7 @@
 
     <ControlTheme x:Key="{x:Type DataGridRowHeader}" TargetType="DataGridRowHeader">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="SeparatorBrush" Value="{DynamicResource DataGridGridLinesBrush}" />
+        <Setter Property="SeparatorBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
         <Setter Property="AreSeparatorsVisible" Value="False" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -17,10 +17,10 @@
                         <Grid Background="{TemplateBinding Background}">
                             <Rectangle Name="RowInvalidVisualElement"
                                        Opacity="0"
-                                       Fill="{DynamicResource DataGridRowInvalidBrush}"
+                                       Fill="{DynamicResource SystemFillColorCriticalBackgroundBrush}"
                                        Stretch="Fill" />
                             <Rectangle Name="BackgroundRectangle"
-                                       Fill="{DynamicResource DataGridRowBackgroundBrush}"
+                                       Fill="{DynamicResource SubtleFillColorTransparentBrush}"
                                        Stretch="Fill" />
                         </Grid>
                     </Border>

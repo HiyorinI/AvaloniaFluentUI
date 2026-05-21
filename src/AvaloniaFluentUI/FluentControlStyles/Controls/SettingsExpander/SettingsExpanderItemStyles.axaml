@@ -32,7 +32,7 @@
     <x:Double x:Key="SettingsExpanderItemAdaptiveWidthTrigger">460</x:Double>
 
     <ControlTheme x:Key="{x:Type ui:SettingsExpanderItem}" TargetType="ui:SettingsExpanderItem">
-        <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}" />
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
         <Setter Property="Padding" Value="{DynamicResource SettingsExpanderItemPadding}" />
         <Setter Property="MinHeight" Value="{DynamicResource SettingsExpanderItemMinHeight}" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />

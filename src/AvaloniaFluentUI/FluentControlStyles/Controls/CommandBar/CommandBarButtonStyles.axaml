@@ -67,10 +67,13 @@
   <x:Double x:Key="AppBarButtonContentHeight">20</x:Double>
 
 
-  <ControlTheme x:Key="{x:Type ui:CommandBarButton}" TargetType="ui:CommandBarButton">
-    <Setter Property="Background" Value="{DynamicResource AppBarButtonBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrush}"/>
+  
+  <!-- Control-specific resources -->
+  <x:String x:Key="AppBarButtonOverflowFlyoutGlyph">&#xE974;</x:String>
+<ControlTheme x:Key="{x:Type ui:CommandBarButton}" TargetType="ui:CommandBarButton">
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
@@ -149,7 +152,7 @@
               Margin="24,0,12,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
-              Foreground="{DynamicResource AppBarButtonKeyboardAcceleratorTextForeground}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               IsVisible="False"
               Text="{TemplateBinding HotKey,
                                      Converter={StaticResource KeyGestureConverter}}"
@@ -162,7 +165,7 @@
               VerticalAlignment="Top"
               FontFamily="{StaticResource SymbolThemeFontFamily}"
               FontSize="14"
-              Foreground="{DynamicResource AppBarButtonSubItemChevronForeground}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Glyph="{DynamicResource AppBarButtonOverflowFlyoutGlyph}"
               IsVisible="False"/>
 
@@ -175,70 +178,70 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-        <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#Content">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#TextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
         <!--  WinUI #6831  -->
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-        <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#Content">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#TextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
         <!--  WinUI #6831  -->
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-        <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#Content">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#TextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
         <!--  WinUI #6831  -->
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 
@@ -259,7 +262,7 @@
         <Setter Property="IsVisible" Value="True"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
-        <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
         <Setter Property="Margin" Value="{DynamicResource AppBarButtonSecondarySubItemChevronMargin}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="{DynamicResource AppBarButtonSecondarySubItemChevronFontSize}"/>
@@ -268,67 +271,67 @@
 
       <Style Selector="^:pointerover">
         <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-          <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPointerOver}"/>
-          <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPointerOver}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter#Content">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#TextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
       </Style>
 
       <Style Selector="^:pressed">
         <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-          <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundPressed}"/>
-          <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushPressed}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter#Content">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#TextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
         </Style>
       </Style>
 
       <Style Selector="^:submenuopen">
         <Style Selector="^ /template/ Border#AppBarButtonInnerBorder">
-          <Setter Property="Background" Value="{DynamicResource AppBarButtonBackgroundSubMenuOpened}"/>
-          <Setter Property="BorderBrush" Value="{DynamicResource AppBarButtonBorderBrushSubMenuOpened}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter#Content">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundSubMenuOpened}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#TextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundSubMenuOpened}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#OverflowTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonForegroundSubMenuOpened}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ TextBlock#KeyboardAcceleratorTextLabel">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonKeyboardAcceleratorTextForegroundSubMenuOpened}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ui|FontIcon#SubItemChevron">
-          <Setter Property="Foreground" Value="{DynamicResource AppBarButtonSubItemChevronForegroundSubMenuOpened}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         </Style>
       </Style>
 

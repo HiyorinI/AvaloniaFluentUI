@@ -18,8 +18,12 @@
   <!--  Not forced as of v2, but available if still wanted  -->
   <x:Double x:Key="ToggleSwitchThemeMinWidth">154</x:Double>
 
-  <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
-    <Setter Property="Foreground" Value="{DynamicResource ToggleSwitchContentForeground}"/>
+  
+  <!-- Control-specific resources -->
+  <Thickness x:Key="ToggleSwitchOnStrokeThickness">0</Thickness>
+  <Thickness x:Key="ToggleSwitchOuterBorderStrokeThickness">1</Thickness>
+<ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
     <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -70,7 +74,7 @@
               Grid.RowSpan="3"
               Grid.ColumnSpan="3"
               Margin="0,5"
-              Background="{DynamicResource ToggleSwitchContainerBackground}"
+              Background="{DynamicResource SubtleFillColorTransparentBrush}"
               CornerRadius="{TemplateBinding CornerRadius}"
               TemplatedControl.IsTemplateFocusTarget="True"/>
 
@@ -97,8 +101,8 @@
               Grid.Row="1"
               Width="40"
               Height="20"
-              Background="{DynamicResource ToggleSwitchFillOff}"
-              BorderBrush="{DynamicResource ToggleSwitchStrokeOff}"
+              Background="{DynamicResource ControlAltFillColorSecondaryBrush}"
+              BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
               BorderThickness="{DynamicResource ToggleSwitchOuterBorderStrokeThickness}"
               CornerRadius="10">
               <Border.Transitions>
@@ -114,8 +118,8 @@
               Grid.Row="1"
               Width="40"
               Height="20"
-              Background="{DynamicResource ToggleSwitchFillOn}"
-              BorderBrush="{DynamicResource ToggleSwitchStrokeOn}"
+              Background="{DynamicResource AccentFillColorDefaultBrush}"
+              BorderBrush="{DynamicResource AccentFillColorDefaultBrush}"
               BorderThickness="{DynamicResource ToggleSwitchOnStrokeThickness}"
               CornerRadius="10">
               <Border.Transitions>
@@ -142,7 +146,7 @@
                   x:Name="SwitchKnobOn"
                   Width="12"
                   Height="12"
-                  Fill="{DynamicResource ToggleSwitchKnobFillOn}">
+                  Fill="{DynamicResource TextOnAccentFillColorPrimaryBrush}">
                   <Ellipse.Transitions>
                     <Transitions>
                       <DoubleTransition
@@ -161,7 +165,7 @@
                   x:Name="SwitchKnobOff"
                   Width="12"
                   Height="12"
-                  Fill="{DynamicResource ToggleSwitchKnobFillOff}">
+                  Fill="{DynamicResource TextFillColorSecondaryBrush}">
                   <Ellipse.Transitions>
                     <Transitions>
                       <DoubleTransition
@@ -185,68 +189,68 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#OuterBorder">
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOffPointerOver}"/>
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOffPointerOver}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOff">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOffPointerOver}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         <Setter Property="Width" Value="14"/>
         <Setter Property="Height" Value="14"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOn">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOnPointerOver}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Width" Value="14"/>
         <Setter Property="Height" Value="14"/>
       </Style>
       <Style Selector="^ /template/ Border#SwitchKnobBounds">
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOnPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOnPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#SwitchAreaGrid">
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchContainerBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#OuterBorder">
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOffPressed}"/>
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOffPressed}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#SwitchKnobBounds">
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOnPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOnPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOff">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOffPressed}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         <Setter Property="Width" Value="17"/>
         <Setter Property="Height" Value="14"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOn">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOnPressed}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Width" Value="17"/>
         <Setter Property="Height" Value="14"/>
       </Style>
       <Style Selector="^ /template/ Border#SwitchAreaGrid">
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchContainerBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
-      <Setter Property="Foreground" Value="{DynamicResource ToggleSwitchHeaderForegroundDisabled}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
 
       <Style Selector="^ /template/ Border#OuterBorder">
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOffDisabled}"/>
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOffPressed}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDisabledBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOff">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOffDisabled}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#SwitchKnobOn">
-        <Setter Property="Fill" Value="{DynamicResource ToggleSwitchKnobFillOnDisabled}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#SwitchKnobBounds">
-        <Setter Property="Background" Value="{DynamicResource ToggleSwitchFillOnDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchStrokeOnDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
       </Style>
     </Style>
 

@@ -29,10 +29,10 @@
   <conv:ScrollViewerVisibilityToBoolConverter x:Key="SVVTBC"/>
 
   <ControlTheme x:Key="TabViewScrollButtonTheme" TargetType="RepeatButton">
-    <Setter Property="Background" Value="{DynamicResource TabViewScrollButtonBackground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource TabViewButtonBorderThickness}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource TabViewScrollButtonBorderBrush}"/>
-    <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForeground}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
     <Setter Property="FontSize" Value="{DynamicResource TabViewItemScrollButtonFontSize}"/>
     <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}"/>
@@ -54,19 +54,19 @@
     </Setter>
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundPointerOver}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource TabViewScrollButtonBorderBrushPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundPressed}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource TabViewScrollButtonBorderBrushPressed}"/>
-      <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource TabViewScrollButtonBackgroundDisabled}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource TabViewScrollButtonBackgroundPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource TabViewScrollButtonForegroundDisabled}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
   </ControlTheme>
 
@@ -98,14 +98,14 @@
               Name="LeftBottomBorderLine"
               Height="1"
               VerticalAlignment="Bottom"
-              Fill="{DynamicResource TabViewBorderBrush}"/>
+              Fill="{DynamicResource CardStrokeColorDefaultBrush}"/>
 
             <Rectangle
               Name="RightBottomBorderLine"
               Grid.Column="2"
               Height="1"
               VerticalAlignment="Bottom"
-              Fill="{DynamicResource TabViewBorderBrush}"/>
+              Fill="{DynamicResource CardStrokeColorDefaultBrush}"/>
 
             <Border
               Name="ScrollDecreaseButtonContainer"
@@ -258,7 +258,7 @@
                   Height="1"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Bottom"
-                  Background="{DynamicResource TabViewBorderBrush}"/>
+                  Background="{DynamicResource CardStrokeColorDefaultBrush}"/>
               </Grid>
               <Grid
                 Name="RightLineHost"
@@ -271,7 +271,7 @@
                   Height="1"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Bottom"
-                  Background="{DynamicResource TabViewBorderBrush}"/>
+                  Background="{DynamicResource CardStrokeColorDefaultBrush}"/>
               </Grid>
 
               <ItemsPresenter Name="TabItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"/>

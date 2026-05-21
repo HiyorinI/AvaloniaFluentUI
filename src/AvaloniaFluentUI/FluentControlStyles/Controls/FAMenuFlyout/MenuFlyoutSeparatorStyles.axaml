@@ -14,7 +14,7 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type ui:MenuFlyoutSeparator}" TargetType="ui:MenuFlyoutSeparator">
-        <Setter Property="Background" Value="{DynamicResource MenuFlyoutSeparatorBackground}" />
+        <Setter Property="Background" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
         <Setter Property="Padding" Value="{StaticResource MenuFlyoutSeparatorThemePadding}" />
         <Setter Property="Template">
             <ControlTemplate>

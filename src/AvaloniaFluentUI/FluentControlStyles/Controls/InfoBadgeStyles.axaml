@@ -45,8 +45,8 @@
         <Setter Property="MinHeight" Value="{DynamicResource InfoBadgeMinHeight}"/>
         <Setter Property="MinWidth" Value="{DynamicResource InfoBadgeMinWidth}"/>
         <Setter Property="MaxHeight" Value="{DynamicResource InfoBadgeMaxHeight}"/>
-        <Setter Property="Background" Value="{DynamicResource InfoBadgeBackground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource InfoBadgeForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Padding" Value="{DynamicResource InfoBadgePadding}"/>
         <Setter Property="Template">
             <ControlTemplate>

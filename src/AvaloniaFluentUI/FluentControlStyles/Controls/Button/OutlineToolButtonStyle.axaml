@@ -4,9 +4,9 @@
   xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls">
 
   <ControlTheme x:Key="{x:Type ui:OutlineToolButton}" TargetType="ui:OutlineToolButton">
-    <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="BorderThickness" Value="1"/>
     <Setter Property="IconWidth" Value="16"/>
     <Setter Property="IconHeight" Value="16"/>
@@ -59,23 +59,23 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Path#PART_Icon">
-        <Setter Property="Fill" Value="{DynamicResource ButtonForegroundPointerOver}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Path#PART_Icon">
-        <Setter Property="Fill" Value="{DynamicResource ButtonForegroundPointerOver}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
@@ -91,12 +91,12 @@
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Path#PART_Icon">
-        <Setter Property="Fill" Value="{DynamicResource ButtonForegroundDisabled}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
   </ControlTheme>

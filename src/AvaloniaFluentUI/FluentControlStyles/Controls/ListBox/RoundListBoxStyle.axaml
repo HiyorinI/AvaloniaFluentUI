@@ -16,9 +16,9 @@
 
   <!--  ListBox comes from WinUI ListBox style  -->
   <ControlTheme x:Key="{x:Type ui:RoundListBox}" TargetType="ui:RoundListBox">
-    <Setter Property="Foreground" Value="{DynamicResource ListBoxForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource ListBoxBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ListBoxBorder}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource SystemControlTransparentBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ListBoxBorderThemeThickness}"/>
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -59,14 +59,14 @@
   <ControlTheme x:Key="{x:Type ui:RoundListBoxItem}" TargetType="ui:RoundListBoxItem">
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
-    <Setter Property="Foreground" Value="{DynamicResource ListViewItemForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Padding" Value="16,0,12,0"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
     <Setter Property="MinWidth" Value="{DynamicResource ListViewItemMinWidth}"/>
 
-    <Setter Property="Background" Value="{DynamicResource ListViewItemBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="MinHeight" Value="55"/>
     <Setter Property="ClipToBounds" Value="True"/>
     <Setter Property="CornerRadius" Value="8"/>
@@ -118,35 +118,35 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:selected">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Border#PART_Border">
@@ -155,19 +155,19 @@
 
       <Style Selector="^:pointerover">
         <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-          <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPointerOver}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter">
-          <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
       </Style>
 
       <Style Selector="^:pressed">
         <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-          <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPressed}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-          <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
       </Style>
     </Style>

@@ -14,7 +14,7 @@
   <ControlTheme x:Key="FlyoutAcceptDismiss" TargetType="Button">
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="VerticalAlignment" Value="Stretch"/>
-    <Setter Property="Background" Value="{DynamicResource PickerFlyoutPresenterAcceptDismissBackground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="BorderBrush" Value="{x:Null}"/>
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
@@ -36,10 +36,10 @@
     </Setter>
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource PickerFlyoutPresenterAcceptDismissBackgroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource PickerFlyoutPresenterAcceptDismissBackgroundPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
   </ControlTheme>
@@ -47,8 +47,8 @@
   <ControlTheme x:Key="{x:Type ui:PickerFlyoutPresenter}" TargetType="ui:PickerFlyoutPresenter">
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-    <Setter Property="Background" Value="{DynamicResource FlyoutPresenterBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource FlyoutBorderThemeBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="BorderThickness" Value="{StaticResource FlyoutBorderThemeThickness}"/>
     <Setter Property="Padding" Value="0"/>
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -96,7 +96,7 @@
             <Rectangle
               Height="1"
               DockPanel.Dock="Bottom"
-              Fill="{DynamicResource PickerFlyoutPresenterDivider}"/>
+              Fill="{DynamicResource DividerStrokeColorDefaultBrush}"/>
 
             <ui:SmoothScrollViewer
               Name="ScrollViewer"

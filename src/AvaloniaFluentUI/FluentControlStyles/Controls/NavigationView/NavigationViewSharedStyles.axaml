@@ -103,8 +103,8 @@
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
-    <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForeground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource NavigationViewToggleBorderThickness}"/>
     <Setter Property="Template">
       <ControlTemplate>
@@ -156,36 +156,36 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#LayoutRoot">
-        <Setter Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#LayoutRoot">
-        <Setter Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <!--  WinUI uses AnimatedIcon here, but we can fake that by using simple scale transform  -->
       <Style Selector="^ /template/ TextBlock#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         <Setter Property="RenderTransform" Value="scaleX(0.5)"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ Border#LayoutRoot">
-        <Setter Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 
@@ -205,8 +205,8 @@
     <Setter Property="Content" Value="&#xE11A;"/>
     <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource NavigationViewToggleBorderThickness}"/>
-    <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForeground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Center"/>
 
     <!--
@@ -216,19 +216,19 @@
       aren't aware of theme changes, so we override here
     -->
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="BorderBrush" Value="{DynamicResource NavigationViewItemBorderBrushPointerOver}"/>
-      <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackgroundPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForegroundPointerOver}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="BorderBrush" Value="{DynamicResource NavigationViewItemBorderBrushPressed}"/>
-      <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackgroundPressed}"/>
-      <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForegroundPressed}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ContentPresenter">
-      <Setter Property="BorderBrush" Value="{DynamicResource NavigationViewItemBorderBrushDisabled}"/>
-      <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackgroundDisabled}"/>
-      <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForegroundDisabled}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorDisabledBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
   </ControlTheme>
 
@@ -238,9 +238,9 @@
   <!--  - - - - - - - - - - - - - - - - - - -  -->
 
   <ControlTheme x:Key="NavigationViewOverflowButtonStyleWhenPaneOnTop" TargetType="Button">
-    <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource NavigationViewItemBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="{StaticResource NavigationViewItemBorderThickness}"/>
     <Setter Property="Height" Value="{StaticResource TopNavigationViewOverflowButtonHeight}"/>
     <Setter Property="Width" Value="{StaticResource TopNavigationViewOverflowButtonWidth}"/>
@@ -273,31 +273,31 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Rectangle#PointerRectangle">
-        <Setter Property="Fill" Value="{DynamicResource NavigationViewItemBackgroundPointerOver}"/>
+        <Setter Property="Fill" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Panel#RootGrid">
-        <Setter Property="Background" Value="{DynamicResource TopNavigationViewItemBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Rectangle#PointerRectangle">
-        <Setter Property="Fill" Value="{DynamicResource NavigationViewItemBackgroundPressed}"/>
+        <Setter Property="Fill" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Panel#RootGrid">
-        <Setter Property="Background" Value="{DynamicResource TopNavigationViewItemBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ ui|FontIcon#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ ui|FontIcon#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 

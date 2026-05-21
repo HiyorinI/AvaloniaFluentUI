@@ -17,9 +17,9 @@
     <x:Double x:Key="NavigationBackButtonHeight">36</x:Double>
 
     <ControlTheme x:Key="NavigationBackButtonNormalStyle" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource NavigationViewBackButtonBackground}" />
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-        <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="{DynamicResource NavigationBackButtonHeight}" />
@@ -57,28 +57,28 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Style>
             <Style Selector="^ /template/ ui|FontIcon#Content">
-                <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPressed}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
             </Style>
 
             <!-- Another faked AnimatedIcon, this isn't perfect but pretty close... -->
             <Style Selector="^ /template/ ui|FontIcon#Content">
-                <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 <Setter Property="RenderTransform" Value="scaleX(0.75) scaleY(0.95)" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ ui|FontIcon#Content">
-                <Setter Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
     </ControlTheme>

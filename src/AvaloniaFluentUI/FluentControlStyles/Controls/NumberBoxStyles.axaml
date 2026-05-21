@@ -61,7 +61,12 @@
   <x:Double x:Key="NumberBoxPopupShadowDepth">16</x:Double>
   <Thickness x:Key="NumberBoxPopupIndicatorMargin">0,0,8,0</Thickness>
 
-  <ControlTheme x:Key="NumberBoxSpinButtonStyle" TargetType="RepeatButton">
+  
+  <!-- Control-specific resources -->
+  <Thickness x:Key="NumberBoxPopupSpinButtonBorderThickness">0</Thickness>
+
+  <Thickness x:Key="NumberBoxPopupBorderThickness">1</Thickness>
+<ControlTheme x:Key="NumberBoxSpinButtonStyle" TargetType="RepeatButton">
     <Setter Property="MinWidth" Value="32"/>
     <Setter Property="Padding" Value="0"/>
     <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -88,12 +93,12 @@
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
       <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparent}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
       <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparent}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ContentPresenter">
@@ -142,7 +147,7 @@
                       Name="PART_Watermark"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                      Foreground="{DynamicResource TextControlPlaceholderForeground}"
+                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                       IsHitTestVisible="False"
                       IsVisible="{TemplateBinding Text,
                                                   Converter={x:Static StringConverters.IsNullOrEmpty}}"
@@ -184,7 +189,7 @@
                   <ui:FontIcon
                     FontFamily="{DynamicResource SymbolThemeFontFamily}"
                     FontSize="24"
-                    Foreground="{DynamicResource NumberBoxPopupIndicatorForeground}"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                     Glyph="&#xEC8F;"/>
                 </Viewbox>
               </StackPanel>
@@ -203,7 +208,7 @@
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type ui:NumberBox}" TargetType="ui:NumberBox">
-    <Setter Property="SelectionHighlightColor" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
+    <Setter Property="SelectionHighlightColor" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -263,8 +268,8 @@
               <Border
                 Name="PopupContentRoot"
                 Padding="6"
-                Background="{DynamicResource NumberBoxPopupBackground}"
-                BorderBrush="{DynamicResource NumberBoxPopupBorderBrush}"
+                Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
                 BorderThickness="{DynamicResource NumberBoxPopupBorderThickness}"
                 CornerRadius="{DynamicResource OverlayCornerRadius}">
 
@@ -400,7 +405,7 @@
                       Name="PART_Watermark"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                      Foreground="{DynamicResource TextControlPlaceholderForeground}"
+                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                       IsHitTestVisible="False"
                       IsVisible="{TemplateBinding Text,
                                                   Converter={x:Static StringConverters.IsNullOrEmpty}}"
@@ -462,7 +467,7 @@
   </ControlTheme>
 
   <ControlTheme x:Key="CompactNumberBoxStyle" TargetType="ui:NumberBox">
-    <Setter Property="SelectionHighlightColor" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
+    <Setter Property="SelectionHighlightColor" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -523,8 +528,8 @@
               <Border
                 Name="PopupContentRoot"
                 Padding="6"
-                Background="{DynamicResource NumberBoxPopupBackground}"
-                BorderBrush="{DynamicResource NumberBoxPopupBorderBrush}"
+                Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
                 BorderThickness="{DynamicResource NumberBoxPopupBorderThickness}"
                 CornerRadius="{DynamicResource OverlayCornerRadius}">
 

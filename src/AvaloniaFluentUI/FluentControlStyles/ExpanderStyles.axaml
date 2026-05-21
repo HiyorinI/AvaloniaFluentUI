@@ -46,11 +46,15 @@
     <Thickness x:Key="ExpanderContentLeftBorderThickness">1,1,0,1</Thickness>
 
     <!-- Header Toggle Button Style -->
-    <ControlTheme TargetType="ToggleButton" x:Key="ExpanderToggleButtonTheme">
-        <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+    
+  <!-- Control-specific resources -->
+  <Thickness x:Key="ExpanderHeaderBorderThickness">1</Thickness>
+  <Thickness x:Key="ExpanderChevronBorderThickness">0</Thickness>
+<ControlTheme TargetType="ToggleButton" x:Key="ExpanderToggleButtonTheme">
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ExpanderHeaderBorderThickness}" />
-        <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Padding" Value="{DynamicResource ExpanderHeaderPadding}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -86,16 +90,16 @@
                                 Height="{DynamicResource ExpanderChevronButtonSize}"
                                 Margin="{DynamicResource ExpanderChevronMargin}"
                                 CornerRadius="{DynamicResource ControlCornerRadius}"
-                                BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
+                                BorderBrush="{DynamicResource SubtleFillColorTransparentBrush}"
                                 BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
-                                Background="{DynamicResource ExpanderChevronBackground}">
+                                Background="{DynamicResource SubtleFillColorTransparentBrush}">
 
                             <TextBlock Name="ExpandCollapseChevron"
                                        FontFamily="{DynamicResource SymbolThemeFontFamily}"
                                        FontSize="15"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       Foreground="{DynamicResource ExpanderChevronForeground}"
+                                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                        RenderTransform="none">
                                 <TextBlock.Transitions>
                                     <Transitions>
@@ -111,17 +115,17 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
             <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
-                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
@@ -130,30 +134,30 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
             <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
-                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
             <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
                 <Setter Property="BorderBrush" Value="{DynamicResource ExpanderDisabledBorderBrush}" />
-                <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
 
@@ -163,61 +167,61 @@
 
         <Style Selector="^:checked">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
             <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
-                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
-                <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
 
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ Border#Root">
-                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
-                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
-                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                    <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:pressed">
                 <Style Selector="^ /template/ Border#Root">
-                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
-                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
-                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
-                    <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:disabled">
                 <Style Selector="^ /template/ Border#Root">
-                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
                 <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
                     <Setter Property="BorderBrush" Value="{DynamicResource ExpanderDisabledBorderBrush}" />
-                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
                     <Setter Property="Foreground" Value="{DynamicResource ExpanderDisabledForeground}" />
@@ -251,10 +255,10 @@
     </ControlTheme>
 
     <ControlTheme TargetType="Expander" x:Key="{x:Type Expander}">
-        <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorSecondaryBrush}" />
         <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
         <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -376,10 +380,10 @@
     
     <!-- Special ControlTheme which activates a WinUI style animation for the Expander -->
     <ControlTheme TargetType="Expander" x:Key="ExpanderWinUIAnimationStyle">
-        <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorSecondaryBrush}" />
         <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
         <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />

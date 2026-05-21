@@ -51,9 +51,32 @@
         <x:String x:Key="ScrollBarContractDuration">00:00:00.167</x:String>
      -->
 
-    <ControlTheme x:Key="ScrollBarThumb" TargetType="Thumb">
-        <Setter Property="Background" Value="{DynamicResource ScrollBarPanningThumbBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarThumbBorderBrush}" />
+    
+  <!-- Control-specific resources -->
+  <x:Double x:Key="ScrollBarTrackBorderThemeThickness">0</x:Double>
+  <Thickness x:Key="ScrollBarPanningBorderThemeThickness">1</Thickness>
+
+  <!-- Control-specific resources -->
+  <SolidColorBrush x:Key="ScrollBarButtonForegroundThemeBrush" Color="#99000000"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPointerOverBackgroundThemeBrush" Color="#FFDADADA"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPointerOverBorderThemeBrush" Color="#FFDADADA"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPointerOverForegroundThemeBrush" Color="#FF000000"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPressedBackgroundThemeBrush" Color="#99000000"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPressedBorderThemeBrush" Color="#99000000"/>
+  <SolidColorBrush x:Key="ScrollBarButtonPressedForegroundThemeBrush" Color="#FFFFFFFF"/>
+  <SolidColorBrush x:Key="ScrollBarPanningBackgroundThemeBrush" Color="#FFCDCDCD"/>
+  <SolidColorBrush x:Key="ScrollBarPanningBorderThemeBrush" Color="#7D9A9A9A"/>
+  <SolidColorBrush x:Key="ScrollBarThumbBackgroundThemeBrush" Color="#FFCDCDCD"/>
+  <SolidColorBrush x:Key="ScrollBarThumbBorderThemeBrush" Color="#3B555555"/>
+  <SolidColorBrush x:Key="ScrollBarThumbPointerOverBackgroundThemeBrush" Color="#FFDADADA"/>
+  <SolidColorBrush x:Key="ScrollBarThumbPointerOverBorderThemeBrush" Color="#6BB7B7B7"/>
+  <SolidColorBrush x:Key="ScrollBarThumbPressedBackgroundThemeBrush" Color="#99000000"/>
+  <SolidColorBrush x:Key="ScrollBarThumbPressedBorderThemeBrush" Color="#ED555555"/>
+  <SolidColorBrush x:Key="ScrollBarTrackBackgroundThemeBrush" Color="#59D5D5D5"/>
+  <SolidColorBrush x:Key="ScrollBarTrackBorderThemeBrush" Color="#59D5D5D5"/>
+<ControlTheme x:Key="ScrollBarThumb" TargetType="Thumb">
+        <Setter Property="Background" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -74,13 +97,13 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ Rectangle">
-            <Setter Property="Fill" Value="{DynamicResource ScrollBarThumbFillPointerOver}" />
+            <Setter Property="Fill" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
         </Style>
         <Style Selector="^:pressed  /template/ Rectangle">
-            <Setter Property="Fill" Value="{DynamicResource ScrollBarThumbFillPressed}" />
+            <Setter Property="Fill" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
         </Style>
         <Style Selector="^:disabled  /template/ Rectangle">
-            <Setter Property="Fill" Value="{DynamicResource ScrollBarThumbFillDisabled}" />
+            <Setter Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
         </Style>
     </ControlTheme>
 
@@ -100,14 +123,14 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Root"
-                        Background="{DynamicResource ScrollBarButtonBackground}"
-                        BorderBrush="{DynamicResource ScrollBarButtonBorderBrush}"
+                        Background="{DynamicResource SubtleFillColorTransparentBrush}"
+                        BorderBrush="{DynamicResource SubtleFillColorTransparentBrush}"
                         CornerRadius="{DynamicResource ScrollBarCornerRadius}"
                         Padding="-1">
                     <ui:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                  Name="ArrowGlyph"
                                  FontSize="{DynamicResource ScrollBarButtonArrowIconFontSize}"
-                                 Foreground="{DynamicResource ScrollBarButtonArrowForeground}"
+                                 Foreground="{DynamicResource ControlStrongFillColorDefaultBrush}"
                                  Glyph="{TemplateBinding Content}"
                                  RenderTransform="none"
                                  RenderTransformOrigin="50%,50%">
@@ -129,23 +152,23 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ ui|FontIcon">
-            <Setter Property="Foreground" Value="{DynamicResource ScrollBarButtonArrowForegroundPointerOver}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         </Style>
         <Style Selector="^:pressed /template/ ui|FontIcon">
             <Setter Property="RenderTransform" Value="scale(0.875)" />
-            <Setter Property="Foreground" Value="{DynamicResource ScrollBarButtonArrowForegroundPressed}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         </Style>
         <Style Selector="^:disabled /template/ ui|FontIcon">
-            <Setter Property="Foreground" Value="{DynamicResource ScrollBarButtonArrowForegroundDisabled}" />
+            <Setter Property="Foreground" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
         </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
         <Setter Property="MinWidth" Value="{DynamicResource ScrollBarSize}" />
         <Setter Property="MinHeight" Value="{DynamicResource ScrollBarSize}" />
-        <Setter Property="Background" Value="{DynamicResource ScrollBarBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource ScrollBarForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ScrollBarBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource ScrollBarCornerRadius}" />
 
         <Style Selector="^:vertical">
@@ -158,8 +181,8 @@
                             <Grid RowDefinitions="Auto,*,Auto">
 
                                 <Rectangle Name="TrackRect" 
-                                           Fill="{DynamicResource ScrollBarTrackFill}"
-                                           Stroke="{DynamicResource ScrollBarTrackStroke}"
+                                           Fill="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
+                                           Stroke="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
                                            StrokeThickness="{DynamicResource ScrollBarTrackBorderThemeThickness}"
                                            Opacity="0"
                                            RadiusX="{Binding Source={StaticResource ScrollBarCornerRadius2x}, Converter={StaticResource TopLeftCornerRadiusToDoubleConv}}"
@@ -208,8 +231,8 @@
                                     </Track.IncreaseButton>
                                     <Thumb Theme="{StaticResource ScrollBarThumb}"
                                            Opacity="1"
-                                           Background="{DynamicResource ScrollBarPanningThumbBackground}"
-                                           BorderBrush="{DynamicResource ScrollBarThumbBorderBrush}"
+                                           Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
+                                           BorderBrush="{DynamicResource ControlFillColorTransparentBrush}"
                                            Width="{StaticResource ScrollBarVerticalThumbMinWidth}"
                                            MinHeight="{StaticResource ScrollBarVerticalThumbMinHeight}"
                                            CornerRadius="{TemplateBinding CornerRadius}"
@@ -249,8 +272,8 @@
                             <Grid ColumnDefinitions="Auto,*,Auto">
 
                                 <Rectangle Name="TrackRect"
-                                           Fill="{DynamicResource ScrollBarTrackFill}"
-                                           Stroke="{DynamicResource ScrollBarTrackStroke}"
+                                           Fill="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
+                                           Stroke="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
                                            StrokeThickness="{DynamicResource ScrollBarTrackBorderThemeThickness}"
                                            Opacity="0"
                                            RadiusX="{Binding Source={StaticResource ScrollBarCornerRadius2x}, Converter={StaticResource TopLeftCornerRadiusToDoubleConv}}"
@@ -298,8 +321,8 @@
                                     </Track.IncreaseButton>
                                     <Thumb Theme="{StaticResource ScrollBarThumb}"
                                            Opacity="1"
-                                           Background="{DynamicResource ScrollBarPanningThumbBackground}"
-                                           BorderBrush="{DynamicResource ScrollBarThumbBorderBrush}"
+                                           Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
+                                           BorderBrush="{DynamicResource ControlFillColorTransparentBrush}"
                                            MinWidth="{DynamicResource ScrollBarHorizontalThumbMinWidth}"
                                            Height="{DynamicResource ScrollBarHorizontalThumbMinHeight}"
                                            CornerRadius="{TemplateBinding CornerRadius}"
@@ -331,16 +354,16 @@
 
         <Style Selector="^[IsExpanded=true]">
             <Style Selector="^ /template/ Grid#Root">
-                <Setter Property="Background" Value="{DynamicResource ScrollBarBackgroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
             </Style>
             <Style Selector="^ /template/ Rectangle#TrackRect">
-                <Setter Property="Fill" Value="{DynamicResource ScrollBarTrackFillPointerOver}" />
-                <Setter Property="Stroke" Value="{DynamicResource ScrollBarTrackStrokePointerOver}" />
+                <Setter Property="Fill" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}" />
+                <Setter Property="Stroke" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}" />
                 <Setter Property="Opacity" Value="1" />
             </Style>
             <Style Selector="^ /template/ Thumb">
                 <Setter Property="RenderTransform" Value="none" />
-                <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
             </Style>
             <Style Selector="^ /template/ RepeatButton">
                 <Setter Property="Opacity" Value="1" />

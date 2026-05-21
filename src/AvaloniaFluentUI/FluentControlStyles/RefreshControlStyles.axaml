@@ -40,8 +40,8 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="IsHitTestVisible" Value="False"/>
         <Setter Property="Height" Value="100"/>
-        <Setter Property="Background"  Value="{DynamicResource RefreshVisualizerBackground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource RefreshVisualizerForeground}"/>
+        <Setter Property="Background"  Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid Name="PART_Root"

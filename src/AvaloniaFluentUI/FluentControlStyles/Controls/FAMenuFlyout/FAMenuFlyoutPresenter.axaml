@@ -4,8 +4,8 @@
   xmlns:ui="using:AvaloniaFluentUI.Controls">
 
   <ControlTheme x:Key="{x:Type ui:FAMenuFlyoutPresenter}" TargetType="ui:FAMenuFlyoutPresenter">
-    <Setter Property="Background" Value="{DynamicResource MenuFlyoutPresenterBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource MenuFlyoutPresenterBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"/>
     <Setter Property="Padding" Value="{DynamicResource MenuFlyoutPresenterThemePadding}"/>
     <Setter Property="MaxWidth" Value="{DynamicResource FlyoutThemeMaxWidth}"/>

@@ -102,7 +102,7 @@
                   Height="48"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Top"
-                  Background="{DynamicResource ColorViewTabBackgroundBrush}"
+                  Background="{DynamicResource ControlFillColorDefaultBrush}"
                   BorderBrush="{DynamicResource ColorViewTabBorderBrush}"
                   CornerRadius="{DynamicResource ColorViewTabBackgroundCornerRadius}"/>
                 <Border
@@ -293,15 +293,15 @@
                           <Border
                             Grid.Column="0"
                             Height="32"
-                            Background="{DynamicResource TextControlBackgroundDisabled}"
-                            BorderBrush="{DynamicResource TextControlBorderBrush}"
+                            Background="{DynamicResource ControlFillColorDisabledBrush}"
+                            BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
                             BorderThickness="1,1,0,1"
                             CornerRadius="4,0,0,4">
                             <TextBlock
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               FontWeight="SemiBold"
-                              Foreground="{DynamicResource TextControlForegroundDisabled}"
+                              Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                               Text="#"/>
                           </Border>
                           <!--  Color updated in code-behind  -->
@@ -324,15 +324,15 @@
                         Width="{DynamicResource ColorViewComponentLabelWidth}"
                         Height="{Binding ElementName=Component1NumericUpDown, Path=Bounds.Height}"
                         VerticalAlignment="Center"
-                        Background="{DynamicResource TextControlBackgroundDisabled}"
-                        BorderBrush="{DynamicResource TextControlBorderBrush}"
+                        Background="{DynamicResource ControlFillColorDisabledBrush}"
+                        BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
                         BorderThickness="1,1,0,1"
                         CornerRadius="4,0,0,4"
                         IsVisible="{TemplateBinding IsComponentTextInputVisible}">
                         <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Rgba},
@@ -340,7 +340,7 @@
                             Text="R"/>
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Hsva},
@@ -386,15 +386,15 @@
                         Width="{DynamicResource ColorViewComponentLabelWidth}"
                         Height="{Binding ElementName=Component2NumericUpDown, Path=Bounds.Height}"
                         VerticalAlignment="Center"
-                        Background="{DynamicResource TextControlBackgroundDisabled}"
-                        BorderBrush="{DynamicResource TextControlBorderBrush}"
+                        Background="{DynamicResource ControlFillColorDisabledBrush}"
+                        BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
                         BorderThickness="1,1,0,1"
                         CornerRadius="4,0,0,4"
                         IsVisible="{TemplateBinding IsComponentTextInputVisible}">
                         <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Rgba},
@@ -402,7 +402,7 @@
                             Text="G"/>
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Hsva},
@@ -448,15 +448,15 @@
                         Width="{DynamicResource ColorViewComponentLabelWidth}"
                         Height="{Binding ElementName=Component3NumericUpDown, Path=Bounds.Height}"
                         VerticalAlignment="Center"
-                        Background="{DynamicResource TextControlBackgroundDisabled}"
-                        BorderBrush="{DynamicResource TextControlBorderBrush}"
+                        Background="{DynamicResource ControlFillColorDisabledBrush}"
+                        BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
                         BorderThickness="1,1,0,1"
                         CornerRadius="4,0,0,4"
                         IsVisible="{TemplateBinding IsComponentTextInputVisible}">
                         <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Rgba},
@@ -464,7 +464,7 @@
                             Text="B"/>
                           <TextBlock
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource TextControlForegroundDisabled}"
+                            Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                             IsVisible="{TemplateBinding ColorModel,
                                                         Converter={StaticResource EnumToBoolConverter},
                                                         ConverterParameter={x:Static controls:ColorModel.Hsva},
@@ -510,8 +510,8 @@
                         Width="{DynamicResource ColorViewComponentLabelWidth}"
                         Height="{Binding ElementName=AlphaComponentNumericUpDown, Path=Bounds.Height}"
                         VerticalAlignment="Center"
-                        Background="{DynamicResource TextControlBackgroundDisabled}"
-                        BorderBrush="{DynamicResource TextControlBorderBrush}"
+                        Background="{DynamicResource ControlFillColorDisabledBrush}"
+                        BorderBrush="{DynamicResource ControlFillColorDefaultBrush}"
                         BorderThickness="1,1,0,1"
                         CornerRadius="4,0,0,4"
                         IsEnabled="{TemplateBinding IsAlphaEnabled}">
@@ -520,7 +520,7 @@
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           FontWeight="SemiBold"
-                          Foreground="{DynamicResource TextControlForegroundDisabled}"
+                          Foreground="{DynamicResource TemporaryTextFillColorDisabled}"
                           Text="A"/>
                         <Border.IsVisible>
                           <MultiBinding Converter="{x:Static BoolConverters.And}">

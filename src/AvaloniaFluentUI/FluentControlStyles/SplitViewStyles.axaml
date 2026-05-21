@@ -21,11 +21,19 @@
         <sys:TimeSpan x:Key="SplitViewPaneAnimationOpenPreDuration">00:00:00.19999</sys:TimeSpan>
         <sys:TimeSpan x:Key="SplitViewPaneAnimationCloseDuration">00:00:00.1</sys:TimeSpan>
 
-    <ControlTheme x:Key="{x:Type SplitView}" TargetType="SplitView">
+    
+  <!-- Control-specific resources -->
+  <x:Double x:Key="SplitViewOpenPaneThemeLength">320</x:Double>
+  <x:Double x:Key="SplitViewCompactPaneThemeLength">48</x:Double>
+  <Thickness x:Key="SplitViewLeftBorderThemeThickness">0,0,1,0</Thickness>
+  <Thickness x:Key="SplitViewRightBorderThemeThickness">1,0,0,0</Thickness>
+
+  <SolidColorBrush x:Key="SplitViewLightDismissOverlayBackground" Color="Transparent"/>
+<ControlTheme x:Key="{x:Type SplitView}" TargetType="SplitView">
         <Setter Property="OpenPaneLength" Value="{DynamicResource SplitViewOpenPaneThemeLength}" />
         <Setter Property="CompactPaneLength" Value="{DynamicResource SplitViewCompactPaneThemeLength}" />
         <!-- TODO: SplitView hasn't been updated yet, so I'm using this temporarily -->
-        <Setter Property="PaneBackground" Value="{DynamicResource SolidBackgroundFillColorBase}" />
+        <Setter Property="PaneBackground" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource SystemControlTransparentBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource SplitViewPaneRootCornerRadius}" />
 

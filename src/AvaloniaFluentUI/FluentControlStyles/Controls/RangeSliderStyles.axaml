@@ -30,9 +30,9 @@
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type ui:RangeSlider}" TargetType="ui:RangeSlider">
-    <Setter Property="Background" Value="{DynamicResource SliderTrackFill}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlStrongFillColorDefaultBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource SliderBorderThemeThickness}"/>
-    <Setter Property="Foreground" Value="{DynamicResource SliderTrackValueFill}"/>
+    <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
@@ -104,15 +104,15 @@
     </Setter>
 
     <Style Selector="^:disabled /template/ Rectangle#BackgroundElement">
-      <Setter Property="Fill" Value="{DynamicResource SliderTrackFillDisabled}"/>
+      <Setter Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}"/>
     </Style>
 
     <Style Selector="^:disabled /template/ Rectangle#ActiveRectangle">
-      <Setter Property="Fill" Value="{DynamicResource SliderTrackValueFillDisabled}"/>
+      <Setter Property="Fill" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
     </Style>
 
     <Style Selector="^:disabled /template/ Thumb">
-      <Setter Property="Background" Value="{DynamicResource SliderThumbBackgroundDisabled}"/>
+      <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
     </Style>
   </ControlTheme>
 </ResourceDictionary>

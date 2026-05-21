@@ -26,8 +26,8 @@
 
     <ControlTheme x:Key="{x:Type DataGridRowGroupHeader}" TargetType="DataGridRowGroupHeader">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Foreground" Value="{DynamicResource DataGridRowGroupHeaderForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource DataGridRowGroupHeaderBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Template">
@@ -77,7 +77,7 @@
                                VerticalAlignment="Stretch"
                                Fill="Transparent"
                                IsHitTestVisible="False"
-                               Stroke="{DynamicResource DataGridCurrencyVisualPrimaryBrush}"
+                               Stroke="{DynamicResource SubtleFillColorTransparentBrush}"
                                StrokeThickness="1" />
                     <Grid Name="FocusVisual"
                           Grid.ColumnSpan="5"
@@ -87,14 +87,14 @@
                                    VerticalAlignment="Stretch"
                                    Fill="Transparent"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCellFocusVisualPrimaryBrush}"
+                                   Stroke="{DynamicResource FocusStrokeColorOuterBrush}"
                                    StrokeThickness="2" />
                         <Rectangle Margin="2"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    Fill="Transparent"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCellFocusVisualSecondaryBrush}"
+                                   Stroke="{DynamicResource FocusStrokeColorInnerBrush}"
                                    StrokeThickness="1" />
                     </Grid>
 

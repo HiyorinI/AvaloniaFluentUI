@@ -4,9 +4,9 @@
   xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls">
 
   <ControlTheme x:Key="{x:Type ui:SubTitleRadioButton}" TargetType="ui:SubTitleRadioButton">
-    <Setter Property="Background" Value="{DynamicResource RadioButtonBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource RadioButtonForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource RadioButtonBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     <!--  Amended padding to add 8px right, to account for no forced MinWidth any more  -->
     <Setter Property="Padding" Value="8,6,8,0"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -34,8 +34,8 @@
                 Name="OuterEllipse"
                 Width="20"
                 Height="20"
-                Fill="{DynamicResource RadioButtonOuterEllipseFill}"
-                Stroke="{DynamicResource RadioButtonOuterEllipseStroke}"
+                Fill="{DynamicResource ControlAltFillColorSecondaryBrush}"
+                Stroke="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
                 StrokeThickness="{DynamicResource RadioButtonBorderThemeThickness}"
                 UseLayoutRounding="False"/>
 
@@ -44,9 +44,9 @@
                 Name="CheckOuterEllipse"
                 Width="20"
                 Height="20"
-                Fill="{DynamicResource RadioButtonOuterEllipseCheckedFill}"
+                Fill="{DynamicResource AccentFillColorDefaultBrush}"
                 Opacity="0"
-                Stroke="{DynamicResource RadioButtonOuterEllipseCheckedStroke}"
+                Stroke="{DynamicResource AccentFillColorDefaultBrush}"
                 StrokeThickness="{DynamicResource RadioButtonBorderThemeThickness}"
                 UseLayoutRounding="False"/>
 
@@ -54,10 +54,10 @@
                 Name="CheckGlyph"
                 Width="12"
                 Height="12"
-                Fill="{DynamicResource RadioButtonCheckGlyphFill}"
+                Fill="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
                 Opacity="0"
                 RenderTransform="scaleX(0.86) scaleY(0.86)"
-                Stroke="{DynamicResource RadioButtonCheckGlyphStroke}"
+                Stroke="{DynamicResource CircleElevationBorderBrush}"
                 UseLayoutRounding="False">
                 <Ellipse.Transitions>
                   <Transitions>
@@ -74,8 +74,8 @@
                 Name="PressedCheckGlyph"
                 Width="4"
                 Height="4"
-                Background="{DynamicResource RadioButtonCheckGlyphFill}"
-                BorderBrush="{DynamicResource RadioButtonCheckGlyphStroke}"
+                Background="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                BorderBrush="{DynamicResource CircleElevationBorderBrush}"
                 CornerRadius="6"
                 Opacity="0"
                 RenderTransform="scaleX(0.86) scaleY(0.86)"
@@ -115,26 +115,26 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#SubTitle">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#Root">
-        <Setter Property="Background" Value="{DynamicResource RadioButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource RadioButtonBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#OuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseStrokePointerOver}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseFillPointerOver}"/>
+        <Setter Property="Stroke" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource ControlAltFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckOuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseCheckedStrokePointerOver}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseCheckedFillPointerOver}"/>
+        <Setter Property="Stroke" Value="{DynamicResource AccentFillColorSecondaryBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource AccentFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckGlyph">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonCheckGlyphStrokePointerOver}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonCheckGlyphFillPointerOver}"/>
+        <Setter Property="Stroke" Value="{DynamicResource CircleElevationBorderBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Opacity" Value="0"/>
         <Setter Property="RenderTransform" Value="scaleX(1.167) scaleY(1.167)"/>
         <Setter Property="Transitions">
@@ -150,26 +150,26 @@
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#SubTitle">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#Root">
-        <Setter Property="Background" Value="{DynamicResource RadioButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource RadioButtonBorderBrushPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#OuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseStrokePressed}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseFillPressed}"/>
+        <Setter Property="Stroke" Value="{DynamicResource ControlStrongStrokeColorDisabledBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckOuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseCheckedStrokePressed}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseCheckedFillPressed}"/>
+        <Setter Property="Stroke" Value="{DynamicResource AccentFillColorTertiaryBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource AccentFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckGlyph">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonCheckGlyphStrokePressed}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonCheckGlyphFillPressed}"/>
+        <Setter Property="Stroke" Value="{DynamicResource CircleElevationBorderBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Opacity" Value="0"/>
         <Setter Property="RenderTransform" Value="scaleX(0.71) scaleY(0.71)"/>
         <Setter Property="Transitions">
@@ -189,27 +189,27 @@
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#SubTitle">
-        <Setter Property="Foreground" Value="{DynamicResource RadioButtonForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Border#Root">
-        <Setter Property="Background" Value="{DynamicResource RadioButtonBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource RadioButtonBorderBrushDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#OuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseStrokeDisabled}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseFillDisabled}"/>
+        <Setter Property="Stroke" Value="{DynamicResource ControlStrongStrokeColorDisabledBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource ControlAltFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckOuterEllipse">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonOuterEllipseCheckedStrokeDisabled}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseCheckedFillDisabled}"/>
+        <Setter Property="Stroke" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource AccentFillColorDisabledBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#CheckGlyph">
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonCheckGlyphStrokeDisabled}"/>
-        <Setter Property="Fill" Value="{DynamicResource RadioButtonCheckGlyphFillDisabled}"/>
+        <Setter Property="Stroke" Value="{DynamicResource CircleElevationBorderBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
         <Setter Property="Opacity" Value="0"/>
         <Setter Property="RenderTransform" Value="scaleX(1.167) scaleY(1.167)"/>
       </Style>
@@ -218,7 +218,7 @@
     <Style Selector="^:checked">
       <Style Selector="^ /template/ Ellipse#CheckGlyph">
         <Setter Property="Opacity" Value="1"/>
-        <Setter Property="Stroke" Value="{DynamicResource RadioButtonCheckGlyphStrokeChecked}"/>
+        <Setter Property="Stroke" Value="{DynamicResource AccentControlElevationBorderBrush}"/>
       </Style>
       <Style Selector="^ /template/ Ellipse#OuterEllipse">
         <Setter Property="Opacity" Value="0"/>

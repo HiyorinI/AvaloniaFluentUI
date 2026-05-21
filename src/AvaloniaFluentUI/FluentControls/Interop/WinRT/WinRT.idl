@@ -1,4 +1,4 @@
-﻿@clr-namespace AvaloniaFluentUI.Interop.WinRT
+﻿@clr-namespace AvaloniaFluentUI.Controls.Interop.WinRT
 @clr-access internal
 @clr-map FLOAT float
 @clr-map HSTRING IntPtr
@@ -20,8 +20,8 @@
 @clr-map DOUBLE double
 @clr-map GUID System.Guid
 @clr-map WCHAR System.Char
-@clr-map Color AvaloniaFluentUI.Interop.WinRT.WinRTColor
-@clr-map Size AvaloniaFluentUI.Interop.WinRT.WinRTSize
+@clr-map Color AvaloniaFluentUI.Controls.Interop.WinRT.WinRTColor
+@clr-map Size AvaloniaFluentUI.Controls.Interop.WinRT.WinRTSize
 @clr-map ULONGLONG ulong
 @clr-map HIMAGELIST IntPtr
 @clr-map THUMBBUTTONFLAGS int
@@ -32,7 +32,7 @@
 @clr-map LPTHUMBBUTTON int
 @clr-map HICON void*
 @clr-map LPCWSTR ushort*
-@clr-map RECT AvaloniaFluentUI.Interop.Win32.RECT
+@clr-map RECT AvaloniaFluentUI.Controls.Interop.Win32.RECT
 
 
 enum TrustLevel

@@ -28,8 +28,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <AvaloniaResource Include="Assets\*.*" />
-    <AvaloniaResource Include="Fonts\*.*" />
+    <AvaloniaResource Include="Assets\**\*.*" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +40,7 @@
     <PackageReference Include="Avalonia.Controls.DataGrid" />
     <PackageReference Include="MicroCom.CodeGenerator.MSBuild" PrivateAssets="All" />
     <PackageReference Include="MicroCom.Runtime" />
-    <MicroComIdl Include="$(MSBuildThisFileDirectory)\Interop\WinRT\WinRT.idl" CSharpInteropPath="$(MSBuildThisFileDirectory)\Interop\WinRT\WinRT.Generated.cs" />
+    <MicroComIdl Include="$(MSBuildThisFileDirectory)\FluentControls\Interop\WinRT\WinRT.idl" CSharpInteropPath="$(MSBuildThisFileDirectory)\FluentControls\Interop\WinRT\WinRT.Generated.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,7 +48,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Styling\StylesV2\Icon\FluentIcon.axaml" />
+    <AdditionalFiles Include="FluentControlStyles\Themes\Icon\FluentIcon.axaml" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Locale\" />
+  </ItemGroup>
+
 
 </Project>

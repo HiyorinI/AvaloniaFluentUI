@@ -19,14 +19,14 @@
   <Thickness x:Key="BreadcrumbButtonPadding">0</Thickness>
 
   <ControlTheme x:Key="BreadcrumbButtonStyle" TargetType="Button">
-    <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarNormalForegroundBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarBorderBrush}"/>
     <Setter Property="Background" Value="{DynamicResource BreadcrumbBarBackgroundBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontWeight" Value="Normal"/>
-    <Setter Property="FontSize" Value="{DynamicResource BreadcrumbBarItemThemeFontSize}"/>
+    <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
     <!--<Setter Property="UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />-->
     <Setter Property="Padding" Value="{DynamicResource BreadcrumbButtonPadding}"/>
     <Setter Property="Template">
@@ -49,49 +49,49 @@
     <Style Selector="^:not(:lastItem)">
 
       <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarHoverForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BreadcrumbBarBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarBorderBrush}"/>
       </Style>
 
       <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarPressedForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BreadcrumbBarBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarBorderBrush}"/>
       </Style>
 
       <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarDisabledForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
 
       <!--<Style Selector="^:focus /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarFocusForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>-->
     </Style>
 
     <Style Selector="^:lastItem">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarCurrentNormalForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarCurrentHoverForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BreadcrumbBarBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarBorderBrush}"/>
       </Style>
 
       <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarCurrentPressedForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
       </Style>
 
       <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarCurrentDisabledForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
 
       <!--<Style Selector="^:focus /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarCurrentFocusForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>-->
     </Style>
   </ControlTheme>
@@ -110,8 +110,8 @@
           <Flyout x:Key="PART_EllipsisFlyout">
             <Flyout.FlyoutPresenterTheme>
               <ControlTheme TargetType="FlyoutPresenter">
-                <Setter Property="Background" Value="{DynamicResource BreadcrumbBarEllipsisFlyoutPresenterBackground}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarEllipsisFlyoutPresenterBorderBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
                 <Setter Property="BorderThickness" Value="{DynamicResource BreadcrumbBarEllipsisFlyoutPresenterBorderThemeThickness}"/>
                 <Setter Property="Padding" Value="0,2"/>
                 <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -190,7 +190,7 @@
           Content="{TemplateBinding Content}"
           ContentTemplate="{TemplateBinding ContentTemplate}"
           CornerRadius="{TemplateBinding CornerRadius}"
-          Foreground="{DynamicResource BreadcrumbBarCurrentNormalForegroundBrush}"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
           IsVisible="False"
           LineHeight="{DynamicResource EllipsisItemPresenterLineHeight}"/>
 
@@ -204,7 +204,7 @@
           AutomationProperties.AccessibilityView="Raw"
           FontFamily="{DynamicResource SymbolThemeFontFamily}"
           FontSize="{DynamicResource BreadcrumbBarChevronFontSize}"
-          Foreground="{DynamicResource BreadcrumbBarNormalForegroundBrush}"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
           Text="&#xE76C;"/>
       </Grid>
     </Border>
@@ -245,9 +245,9 @@
     <Setter Property="BorderBrush" Value="{DynamicResource BreadcrumbBarBorderBrush}"/>
     <!--<Setter Property="FocusVisualMargin" Value="1" />-->
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
-    <Setter Property="FontSize" Value="{DynamicResource BreadcrumbBarItemThemeFontSize}"/>
+    <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
     <Setter Property="FontWeight" Value="{DynamicResource BreadcrumbBarItemFontWeight}"/>
-    <Setter Property="Foreground" Value="{DynamicResource BreadcrumbBarForegroundBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="IsTabStop" Value="True"/>
@@ -302,18 +302,18 @@
       </Style>
 
       <Style Selector="^:pointerover /template/ Border#LayoutRoot">
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemForegroundPointerOver}"/>
-        <Setter Property="Background" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemBackgroundPointerOver}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
 
       <Style Selector="^:pressed /template/ Border#LayoutRoot">
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemForegroundPressed}"/>
-        <Setter Property="Background" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemBackgroundPressed}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       </Style>
 
       <Style Selector="^:disabled /template/ Border#LayoutRoot">
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemForegroundDisabled}"/>
-        <Setter Property="Background" Value="{DynamicResource BreadcrumbBarEllipsisDropDownItemBackgroundDisabled}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
     </Style>
   </ControlTheme>

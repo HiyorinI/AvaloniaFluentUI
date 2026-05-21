@@ -31,7 +31,7 @@
                                 <Panel x:Name="PART_HeaderBar" 
                                        Height="4" 
                                        DockPanel.Dock="Top"
-                                       Background="{DynamicResource InfoBarInformationalSeverityIconBackground}"/>
+                                       Background="{DynamicResource SystemFillColorAttentionBrush}"/>
                                 <ContentControl Name="PART_Content" 
                                                 Content="{TemplateBinding Content}"
                                                 MinHeight="64"/>
@@ -93,16 +93,16 @@
         </Style>
 
         <Style Selector="^:information /template/ Panel#PART_HeaderBar">
-            <Setter Property="Background" Value="{DynamicResource InfoBarInformationalSeverityIconBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource SystemFillColorAttentionBrush}"/>
         </Style>
         <Style Selector="^:success /template/ Panel#PART_HeaderBar">
-            <Setter Property="Background" Value="{DynamicResource InfoBarSuccessSeverityIconBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource SystemFillColorSuccessBrush}"/>
         </Style>
         <Style Selector="^:warning /template/ Panel#PART_HeaderBar">
-            <Setter Property="Background" Value="{DynamicResource InfoBarWarningSeverityIconBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource SystemFillColorCautionBrush}"/>
         </Style>
         <Style Selector="^:error /template/ Panel#PART_HeaderBar">
-            <Setter Property="Background" Value="{DynamicResource InfoBarErrorSeverityIconBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource SystemFillColorCriticalBrush}"/>
         </Style>
     </ControlTheme> 
 </ResourceDictionary>

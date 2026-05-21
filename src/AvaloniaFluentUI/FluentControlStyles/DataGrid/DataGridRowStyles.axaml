@@ -16,13 +16,13 @@
                                         RowDefinitions="*,Auto,Auto">
 
                         <Rectangle Name="BackgroundRectangle"
-                                   Fill="{DynamicResource DataGridRowBackgroundBrush}"
+                                   Fill="{DynamicResource SubtleFillColorTransparentBrush}"
                                    Grid.RowSpan="2"
                                    Grid.ColumnSpan="2" />
                         <Rectangle Name="InvalidVisualElement"
                                    Opacity="0"
                                    Grid.ColumnSpan="2"
-                                   Fill="{DynamicResource DataGridRowInvalidBrush}" />
+                                   Fill="{DynamicResource SystemFillColorCriticalBackgroundBrush}" />
 
                         <DataGridRowHeader Name="PART_RowHeader"
                                            Grid.RowSpan="3"
@@ -33,7 +33,7 @@
                         <DataGridDetailsPresenter Name="PART_DetailsPresenter"
                                                   Grid.Row="1"
                                                   Grid.Column="1"
-                                                  Background="{DynamicResource DataGridDetailsPresenterBackgroundBrush}" />
+                                                  Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
                         <Rectangle Name="PART_BottomGridLine"
                                    Grid.Row="2"
                                    Grid.Column="1"
@@ -55,25 +55,25 @@
         </Style>
 
         <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-            <Setter Property="Fill" Value="{DynamicResource DataGridRowHoveredBackgroundColor}" />
+            <Setter Property="Fill" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
         </Style>
 
         <Style Selector="^:selected">
             <Style Selector="^ /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundOpacity}" />
+                <Setter Property="Fill" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource ListAccentLowOpacity}" />
             </Style>
             <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
+                <Setter Property="Fill" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource ListAccentMediumOpacity}" />
             </Style>
             <Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedBackgroundBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedBackgroundOpacity}" />
+                <Setter Property="Fill" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource ListAccentLowOpacity}" />
             </Style>
             <Style Selector="^:pointerover:focus /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundOpacity}" />
+                <Setter Property="Fill" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="Opacity" Value="{DynamicResource ListAccentMediumOpacity}" />
             </Style>
         </Style>
     </ControlTheme>

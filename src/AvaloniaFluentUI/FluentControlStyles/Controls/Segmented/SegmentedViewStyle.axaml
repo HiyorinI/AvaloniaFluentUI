@@ -17,7 +17,7 @@
           CornerRadius="{TemplateBinding CornerRadius}">
           <Grid RowDefinitions="Auto,*">
             <Border
-              BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+              BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
               BorderThickness="1"
               CornerRadius="5">
               <ui:SingleDirectionScrollViewer
@@ -35,7 +35,7 @@
                     Height="3"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
-                    Fill="{DynamicResource PivotHeaderItemSelectedPipeFill}"
+                    Fill="{DynamicResource AccentFillColorDefaultBrush}"
                     IsVisible="False"
                     RadiusX="2"
                     RadiusY="2"/>
@@ -115,7 +115,7 @@
     </Style>
 
     <Style Selector="^:selected">
-      <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}"/>
+      <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}"/>
       <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>

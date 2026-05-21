@@ -45,8 +45,19 @@
   <x:String x:Key="DatePickerDayTextPlaceholder">day</x:String>
   <x:String x:Key="DatePickerYearTextPlaceholder">year</x:String>
 
-  <ControlTheme x:Key="DateTimePickerItem" TargetType="ListBoxItem">
-    <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorItemForeground}"/>
+  
+  <!-- Control-specific resources -->
+  <Thickness x:Key="DatePickerBorderThemeThickness">1</Thickness>
+
+  <!-- Control-specific resources -->
+  <x:Double x:Key="DatePickerSelectorThemeMinWidth">80</x:Double>
+  <x:Double x:Key="DatePickerSpacerThemeWidth">1</x:Double>
+  <x:Double x:Key="DatePickerSpacingThemeWidth">20</x:Double>
+  <x:Double x:Key="DatePickerSpacingThemeHeight">20</x:Double>
+  <Thickness x:Key="DatePickerHeaderThemeMargin">0,0,0,4</Thickness>
+  <FontWeight x:Key="DatePickerHeaderThemeFontWeight">Normal</FontWeight>
+<ControlTheme x:Key="DateTimePickerItem" TargetType="ListBoxItem">
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Padding" Value="{DynamicResource DatePickerFlyoutPresenterItemPadding}"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -74,12 +85,12 @@
     </Setter>
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource LoopingSelectorItemBackgroundPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorItemForegroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource LoopingSelectorItemBackgroundPressed}"/>
-      <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorItemForegroundPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
 
     <Style Selector="^:selected">
@@ -87,7 +98,7 @@
 
       <Style Selector="^ /template/ ContentPresenter">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorItemForegroundSelected}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
@@ -101,7 +112,7 @@
 
   <!--  This is the accept/dismiss buttons in the flyout  -->
   <ControlTheme x:Key="DateTimeFlyoutButtonStyle" TargetType="Button">
-    <Setter Property="Background" Value="{DynamicResource DateTimePickerFlyoutButtonBackground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -114,7 +125,7 @@
             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
             Background="{TemplateBinding Background}"
-            BorderBrush="{DynamicResource DateTimePickerFlyoutButtonBorderBrush}"
+            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
             BorderThickness="{DynamicResource DateTimeFlyoutButtonBorderThickness}"
             Content="{TemplateBinding Content}"
             ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -124,15 +135,15 @@
     </Setter>
 
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource DateTimePickerFlyoutButtonBackgroundPointerOver}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource DateTimePickerFlyoutButtonBorderBrushPointerOver}"/>
-      <Setter Property="Foreground" Value="{DynamicResource DateTimePickerFlyoutButtonForegroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
 
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource DateTimePickerFlyoutButtonBackgroundPressed}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource DateTimePickerFlyoutButtonBorderBrushPressed}"/>
-      <Setter Property="Foreground" Value="{DynamicResource DateTimePickerFlyoutButtonForegroundPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
 
   </ControlTheme>
@@ -140,7 +151,7 @@
 
   <!--  This is the up/down buttons in the looping selectors  -->
   <ControlTheme x:Key="DateTimePickerFlyoutLoopingNavButton" TargetType="RepeatButton">
-    <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorUpDownButtonForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     <Setter Property="Height" Value="{DynamicResource LoopingSelectorUpDownButtonHeight}"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
     <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -155,12 +166,12 @@
         -->
         <Border
           Name="ForcedOpaqueBorder"
-          Background="{DynamicResource DatePickerFlyoutPresenterBackground}"
+          Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
           CornerRadius="{DynamicResource OverlayCornerRadius}">
           <Border
             Name="RootBorder"
             Padding="{TemplateBinding Padding}"
-            Background="{DynamicResource LoopingSelectorUpDownButtonBackground}">
+            Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}">
             <TextBlock
               Name="Content"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -183,19 +194,19 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#RootBorder">
-        <Setter Property="Background" Value="{DynamicResource LoopingSelectorUpDownButtonBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#Content">
-        <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorUpDownButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#RootBorder">
-        <Setter Property="Background" Value="{DynamicResource LoopingSelectorUpDownButtonBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       </Style>
       <Style Selector="^ /template/ TextBlock#Content">
-        <Setter Property="Foreground" Value="{DynamicResource LoopingSelectorUpDownButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ TextBlock#Content">
@@ -207,7 +218,7 @@
       <Setter Property="VerticalAlignment" Value="Top"/>
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="Focusable" Value="False"/>
-      <Setter Property="Background" Value="{DynamicResource LoopingSelectorUpDownButtonBackground}"/>
+      <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"/>
       <Setter Property="Margin" Value="{DynamicResource LoopingSelectorUpDownButtonMargin}"/>
       <Setter Property="Content">&#xEDDB;</Setter>
       <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}"/>
@@ -216,7 +227,7 @@
       <Setter Property="VerticalAlignment" Value="Bottom"/>
       <Setter Property="HorizontalAlignment" Value="Stretch"/>
       <Setter Property="Focusable" Value="False"/>
-      <Setter Property="Background" Value="{DynamicResource LoopingSelectorUpDownButtonBackground}"/>
+      <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"/>
       <Setter Property="Margin" Value="{DynamicResource LoopingSelectorUpDownButtonMargin}"/>
       <Setter Property="Content">&#xEDDC;</Setter>
       <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}"/>
@@ -234,25 +245,25 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource DatePickerButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource DatePickerButtonBorderBrushPointerOver}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource DatePickerButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource DatePickerButtonBorderBrushPressed}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource DatePickerButtonBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource DatePickerButtonBorderBrushDisabled}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
   </ControlTheme>
@@ -260,9 +271,9 @@
   <ControlTheme x:Key="{x:Type DatePicker}" TargetType="DatePicker">
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
-    <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource DatePickerButtonBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource DatePickerButtonBorderBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource DatePickerBorderThemeThickness}"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -315,13 +326,13 @@
                   Grid.Column="1"
                   Width="1"
                   HorizontalAlignment="Center"
-                  Fill="{DynamicResource DatePickerSpacerFill}"/>
+                  Fill="{DynamicResource ControlStrokeColorDefaultBrush}"/>
                 <Rectangle
                   x:Name="PART_SecondSpacer"
                   Grid.Column="3"
                   Width="1"
                   HorizontalAlignment="Center"
-                  Fill="{DynamicResource DatePickerSpacerFill}"/>
+                  Fill="{DynamicResource ControlStrokeColorDefaultBrush}"/>
               </Grid>
             </Button>
 
@@ -341,21 +352,21 @@
 
     <Style Selector="^:disabled">
       <Style Selector="^ /template/ Rectangle">
-        <Setter Property="Fill" Value="{DynamicResource DatePickerSpacerFillDisabled}"/>
+        <Setter Property="Fill" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:hasnodate">
       <!--  Changes foreground for watermark text when SelectedDate is null  -->
       <Style Selector="^ /template/ Button#PART_FlyoutButton TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundDefault}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
       <!--  Add this here to override the :hasnodate & still allow :pointerover to activate to match WinUI  -->
       <Style Selector="^ /template/ Button#PART_FlyoutButton:pointerover TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ Button#PART_FlyoutButton:pressed TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource DatePickerButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
@@ -372,8 +383,8 @@
     <Setter Property="FontWeight" Value="Normal"/>
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
-    <Setter Property="Background" Value="{DynamicResource DatePickerFlyoutPresenterBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource DatePickerFlyoutPresenterBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorFlyoutBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource DateTimeFlyoutBorderThickness}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}"/>
     <Setter Property="Template">
@@ -457,7 +468,7 @@
                 Height="{DynamicResource DatePickerFlyoutPresenterHighlightHeight}"
                 Margin="4,2"
                 VerticalAlignment="Center"
-                Background="{DynamicResource DatePickerFlyoutPresenterHighlightFill}"
+                Background="{DynamicResource AccentFillColorDefaultBrush}"
                 CornerRadius="{DynamicResource ControlCornerRadius}"
                 IsHitTestVisible="False"
                 ZIndex="-1"/>
@@ -466,13 +477,13 @@
                 Grid.Column="1"
                 Width="{DynamicResource DatePickerSpacerThemeWidth}"
                 HorizontalAlignment="Center"
-                Fill="{DynamicResource DatePickerFlyoutPresenterSpacerFill}"/>
+                Fill="{DynamicResource DividerStrokeColorDefaultBrush}"/>
               <Rectangle
                 Name="PART_SecondSpacer"
                 Grid.Column="3"
                 Width="{DynamicResource DatePickerSpacerThemeWidth}"
                 HorizontalAlignment="Center"
-                Fill="{DynamicResource DatePickerFlyoutPresenterSpacerFill}"/>
+                Fill="{DynamicResource DividerStrokeColorDefaultBrush}"/>
             </Grid>
             <Grid
               Name="AcceptDismissGrid"
@@ -483,7 +494,7 @@
                 Grid.ColumnSpan="2"
                 Height="{DynamicResource DatePickerSpacerThemeWidth}"
                 VerticalAlignment="Top"
-                Fill="{DynamicResource DatePickerFlyoutPresenterSpacerFill}"/>
+                Fill="{DynamicResource DividerStrokeColorDefaultBrush}"/>
               <Button
                 Name="PART_AcceptButton"
                 Grid.Column="0"

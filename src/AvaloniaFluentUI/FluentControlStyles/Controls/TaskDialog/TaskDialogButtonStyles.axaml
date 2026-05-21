@@ -6,8 +6,8 @@
                     x:CompileBindings="True">
 
     <ControlTheme x:Key="{x:Type uip:TaskDialogButtonHost}" TargetType="uip:TaskDialogButtonHost">
-        <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
@@ -52,48 +52,48 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ Border#Root">
-                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+                <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
 
         <!--Accent Button-->
         <Style Selector="^.accent /template/ Border#Root">
-            <Setter Property="Background" Value="{DynamicResource AccentButtonBackground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrush}" />
-            <Setter Property="TextElement.Foreground" Value="{DynamicResource AccentButtonForeground}" />
+            <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
         </Style>
         <Style Selector="^.accent:pointerover /template/ Border#Root">
-            <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPointerOver}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPointerOver}" />
-            <Setter Property="TextElement.Foreground" Value="{DynamicResource AccentButtonForegroundPointerOver}" />
+            <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
         </Style>
         <Style Selector="^.accent:pressed /template/ Border#Root">
-            <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundPressed}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushPressed}" />
-            <Setter Property="TextElement.Foreground" Value="{DynamicResource AccentButtonForegroundPressed}" />
+            <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" />
         </Style>
         <Style Selector="^.accent:disabled /template/ Border#Root">
-            <Setter Property="Background" Value="{DynamicResource AccentButtonBackgroundDisabled}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AccentButtonBorderBrushDisabled}" />
-            <Setter Property="TextElement.Foreground" Value="{DynamicResource AccentButtonForegroundDisabled}" />
+            <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorDisabledBrush}" />
         </Style>
     </ControlTheme>
 

@@ -24,10 +24,41 @@
   <x:Double x:Key="TextBoxIconFontSize">12</x:Double>
   <ui:TextCommandBarFlyout x:Key="DefaultTextBoxContextFlyout"/>
 
+
+  <!--  TextBox-specific resources  -->
+  <LinearGradientBrush x:Key="TextControlElevationBorderBrush" TransformOrigin="50%,50%" StartPoint="0,0" EndPoint="0,2">
+    <LinearGradientBrush.Transform>
+      <ScaleTransform ScaleY="-1"/>
+    </LinearGradientBrush.Transform>
+    <LinearGradientBrush.GradientStops>
+      <GradientStop Offset="0.5" Color="{DynamicResource ControlStrongStrokeColorDefault}"/>
+      <GradientStop Offset="1.0" Color="{DynamicResource ControlStrokeColorDefault}"/>
+    </LinearGradientBrush.GradientStops>
+  </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="TextControlElevationBorderFocusedBrush" TransformOrigin="50%,50%" StartPoint="0,1.5" EndPoint="0,2.5">
+    <LinearGradientBrush.Transform>
+      <ScaleTransform ScaleY="-1"/>
+    </LinearGradientBrush.Transform>
+    <LinearGradientBrush.GradientStops>
+      <GradientStop Offset="1.0" Color="{DynamicResource SystemAccentColorDark1}"/>
+      <GradientStop Offset="1.0" Color="{DynamicResource ControlStrokeColorDefault}"/>
+    </LinearGradientBrush.GradientStops>
+  </LinearGradientBrush>
+
+  <SolidColorBrush x:Key="TemporaryTextFillColorDisabled" Color="#5C010101"/>
+
+  <!--  Control-specific resources  -->
+  <Thickness x:Key="TextControlBorderThemeThickness">1</Thickness>
+  <Thickness x:Key="TextControlBorderThemeThicknessFocused">1,1,1,2</Thickness>
+  <Thickness x:Key="TextControlThemePadding">10,5,6,6</Thickness>
+
+  <!--  Control-specific resources  -->
+  <x:Double x:Key="AutoSuggestBoxIconFontSize">12</x:Double>
   <ControlTheme x:Key="TextBoxDeleteButtonStyle" TargetType="Button">
-    <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Template">
       <ControlTemplate>
@@ -55,23 +86,23 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#ButtonLayoutGrid">
-        <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ ui|SymbolIcon#Glyph">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#ButtonLayoutGrid">
-        <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ ui|SymbolIcon#Glyph">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
     </Style>
 
@@ -81,9 +112,9 @@
   </ControlTheme>
 
   <ControlTheme x:Key="TextBoxPasswordButtonStyle" TargetType="ToggleButton">
-    <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Template">
       <ControlTemplate>
@@ -111,23 +142,23 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#ButtonLayoutGrid">
-        <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ ui|FontIcon#Glyph">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#ButtonLayoutGrid">
-        <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPressed}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ ui|FontIcon#Glyph">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
     </Style>
 
@@ -137,10 +168,10 @@
       of the glyph when checked so there is a distinct visual state
     -->
     <Style Selector="^:checked /template/ ui|FontIcon#Glyph">
-      <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPressed}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
     </Style>
     <Style Selector="^:checked:pressed /template/ ui|FontIcon#Glyph">
-      <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForegroundPointerOver}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
 
     <Style Selector="^:disabled /template/ Border#ButtonLayoutGrid">
@@ -149,11 +180,11 @@
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource TextControlBackground}"/>
-    <Setter Property="CaretBrush" Value="{DynamicResource TextControlForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}"/>
-    <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="CaretBrush" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource TextControlElevationBorderBrush}"/>
+    <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}"/>
     <Setter Property="SelectionForegroundBrush" Value="{DynamicResource TextOnAccentFillColorSelectedTextBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThickness}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
@@ -206,7 +237,7 @@
                         Name="PART_Watermark"
                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Foreground="{DynamicResource TextControlPlaceholderForeground}"
+                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                         Text="{TemplateBinding Watermark}"
                         TextAlignment="{TemplateBinding TextAlignment}"
                         TextWrapping="{TemplateBinding TextWrapping}">
@@ -257,43 +288,43 @@
 
     <!--  Disabled State  -->
     <Style Selector="^:disabled">
-      <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundDisabled}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TemporaryTextFillColorDisabled}"/>
 
       <Style Selector="^ /template/ Border#PART_BorderElement">
-        <Setter Property="Background" Value="{DynamicResource TextControlBackgroundDisabled}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushDisabled}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ TextBlock#PART_Watermark, ^ /template/ TextBlock#PART_FloatingWatermark">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundDisabled}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
       </Style>
     </Style>
 
     <!--  PointerOver State  -->
     <Style Selector="^:pointerover">
-      <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
 
       <Style Selector="^ /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushPointerOver}"/>
-        <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextControlElevationBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ TextBlock#PART_Watermark">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
       </Style>
     </Style>
 
     <!--  Focused State  -->
     <Style Selector="^:focus">
-      <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
 
       <Style Selector="^ /template/ TextBlock#PART_Watermark">
-        <Setter Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundFocused}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}"/>
       </Style>
 
       <Style Selector="^ /template/ Border#PART_BorderElement">
-        <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorInputActiveBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextControlElevationBorderFocusedBrush}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}"/>
       </Style>
     </Style>
@@ -306,7 +337,7 @@
       <Setter Property="IsVisible" Value="True"/>
     </Style>
 
-    <Style Selector="^.revealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
+    <Style Selector="^.Password[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
       <Setter Property="InnerRightContent">
         <Template>
           <ToggleButton
@@ -324,7 +355,7 @@
       </Setter>
     </Style>
 
-    <Style Selector="^.clearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
+    <Style Selector="^.Clear[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
       <Setter Property="InnerRightContent">
         <Template>
           <Button

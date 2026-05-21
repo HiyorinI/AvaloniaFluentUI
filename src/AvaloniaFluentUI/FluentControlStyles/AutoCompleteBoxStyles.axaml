@@ -26,9 +26,9 @@
 
   <ControlTheme x:Key="{x:Type AutoCompleteBox}" TargetType="AutoCompleteBox">
     <Setter Property="VerticalAlignment" Value="Top"/>
-    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}"/>
-    <Setter Property="Background" Value="{DynamicResource TextControlBackground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource TextControlElevationBorderBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThickness}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
     <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}"/>
@@ -68,8 +68,8 @@
             <Border
               Name="PART_SuggestionsContainer"
               Padding="{DynamicResource AutoSuggestListMargin}"
-              Background="{DynamicResource AutoSuggestBoxSuggestionsListBackground}"
-              BorderBrush="{DynamicResource AutoSuggestBoxSuggestionsListBorderBrush}"
+              Background="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}"
+              BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
               BorderThickness="{DynamicResource AutoSuggestListBorderThemeThickness}"
               CornerRadius="{DynamicResource OverlayCornerRadius}">
               <ListBox

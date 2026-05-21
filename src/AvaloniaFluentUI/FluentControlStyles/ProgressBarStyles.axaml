@@ -19,11 +19,14 @@
     <!--<CornerRadius x:Key="ProgressBarCornerRadius">1.5</CornerRadius>-->
     <CornerRadius x:Key="ProgressBarTrackCornerRadius">0.5</CornerRadius>
 
-    <ControlTheme TargetType="ProgressBar" x:Key="{x:Type ProgressBar}">
-        <Setter Property="Foreground" Value="{DynamicResource ProgressBarForeground}" />
-        <Setter Property="Background" Value="{DynamicResource ProgressBarBackground}" />
+    
+  <!-- Control-specific resources -->
+  <Thickness x:Key="ProgressBarBorderThemeThickness">0</Thickness>
+<ControlTheme TargetType="ProgressBar" x:Key="{x:Type ProgressBar}">
+        <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ProgressBarBorderThemeThickness}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ProgressBarBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Template">

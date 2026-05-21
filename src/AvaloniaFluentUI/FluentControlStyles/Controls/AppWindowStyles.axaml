@@ -104,8 +104,8 @@
     </ControlTheme>
 
     <ControlTheme TargetType="wnd:AppSplashScreen" x:Key="{x:Type wnd:AppSplashScreen}">
-        <Setter Property="Background" Value="{DynamicResource CoreSplashScreenBackground}" />
-        <Setter Property="Foreground" Value="{DynamicResource CoreSplashScreenForeground}" />
+        <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="Root"

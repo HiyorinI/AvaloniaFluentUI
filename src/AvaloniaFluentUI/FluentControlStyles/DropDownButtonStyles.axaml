@@ -7,9 +7,9 @@
   <x:Double x:Key="DropDownButtonMinHeight">32</x:Double>
 
   <ControlTheme x:Key="{x:Type DropDownButton}" TargetType="DropDownButton">
-    <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
-    <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}"/>
     <Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
     <Setter Property="MinHeight" Value="{DynamicResource DropDownButtonMinHeight}"/>
@@ -53,7 +53,7 @@
               VerticalAlignment="Center"
               FontFamily="{DynamicResource SymbolThemeFontFamily}"
               FontSize="12"
-              Foreground="{DynamicResource ComboBoxDropDownGlyphForeground}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Glyph="&#xE70D;"
               IsHitTestVisible="False"
               UseLayoutRounding="False"/>
@@ -64,33 +64,33 @@
 
     <!--  PointerOver State  -->
     <Style Selector="^:pointerover /template/ Border#RootBorder">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}"/>
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPointerOver}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
 
     <!--  Pressed State  -->
     <Style Selector="^:pressed /template/ Border#RootBorder">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}"/>
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPressed}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
 
     <!--  Disabled State  -->
     <Style Selector="^:disabled /template/ Border#RootBorder">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}"/>
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundDisabled}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ui|FontIcon#DropDownGlyph">
-      <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
   </ControlTheme>
 
 
   <ControlTheme x:Key="TransparentDropDownButton" TargetType="DropDownButton">
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
@@ -135,7 +135,7 @@
               VerticalAlignment="Center"
               FontFamily="{DynamicResource SymbolThemeFontFamily}"
               FontSize="12"
-              Foreground="{DynamicResource ComboBoxDropDownGlyphForeground}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Glyph="&#xE70D;"
               IsHitTestVisible="False"
               UseLayoutRounding="False"/>
@@ -147,21 +147,21 @@
     <!--  PointerOver State  -->
     <Style Selector="^:pointerover /template/ Border#RootBorder">
       <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPointerOver}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
 
     <!--  Pressed State  -->
     <Style Selector="^:pressed /template/ Border#RootBorder">
       <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundPressed}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
     </Style>
 
     <!--  Disabled State  -->
     <Style Selector="^:disabled /template/ Border#RootBorder">
-      <Setter Property="TextElement.Foreground" Value="{DynamicResource ButtonForegroundDisabled}"/>
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
     <Style Selector="^:disabled /template/ ui|FontIcon#DropDownGlyph">
-      <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}"/>
+      <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
     </Style>
   </ControlTheme>
 

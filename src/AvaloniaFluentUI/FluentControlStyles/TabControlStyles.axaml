@@ -93,7 +93,7 @@
                                           FontSize="{TemplateBinding FontSize}"
                                           FontWeight="{TemplateBinding FontWeight}" />
                         <Rectangle Name="PART_SelectedPipe"
-                                   Fill="{DynamicResource PivotHeaderItemSelectedPipeFill}"
+                                   Fill="{DynamicResource AccentFillColorDefaultBrush}"
                                    IsVisible="False"
                                    Opacity="0.0"
                                    RadiusX="2"

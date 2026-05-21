@@ -6,8 +6,8 @@
   <ControlTheme x:Key="{x:Type ui:MultiSelectionComboBox}" TargetType="ui:MultiSelectionComboBox">
     <Setter Property="Height" Value="42"/>
     <Setter Property="Padding" Value="0 0 5 0"/>
-    <Setter Property="Background" Value="{DynamicResource MultiSelectionComboBoxBrush}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource MultiSelectionComboBoxBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
     <Setter Property="Template">
       <ControlTemplate>
         <Border
@@ -79,8 +79,8 @@
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type ui:MultiSelectionView}" TargetType="ui:MultiSelectionView">
-    <Setter Property="BorderBrush" Value="{DynamicResource MultiSelectionViewBorderBrush}"/>
-    <Setter Property="Background" Value="{DynamicResource MultiSelectionViewBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource AcrylicInAppFillColorDefaultBrush}"/>
     <Setter Property="BorderThickness" Value="2"/>
     <Setter Property="CornerRadius" Value="8"/>
 
@@ -143,9 +143,9 @@
   <ControlTheme x:Key="{x:Type ui:MultiSelectionComboBoxItem}" TargetType="ui:MultiSelectionComboBoxItem">
     <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
     <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
-    <Setter Property="Background" Value="{DynamicResource ListViewItemBackground}"/>
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-    <Setter Property="Foreground" Value="{DynamicResource ListViewItemForeground}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Padding" Value="12,0,12,0"/>
     <Setter Property="Height" Value="38"/>
     <Setter Property="Margin" Value="10 4 2 4"/>
@@ -186,52 +186,52 @@
 
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundPointerOver}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPointerOver}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:pressed">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundPressed}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPressed}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
     </Style>
 
     <Style Selector="^:selected">
       <Style Selector="^ /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^ /template/ ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^:not(:focus) /template/ Border#PART_Border">
-        <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelected}"/>
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
       </Style>
       <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
       <Style Selector="^:pointerover">
         <Style Selector="^ /template/ Border#PART_Border">
-          <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPointerOver}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter">
-          <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
       </Style>
 
       <Style Selector="^:pressed">
         <Style Selector="^ /template/ Border#PART_Border">
-          <Setter Property="Background" Value="{DynamicResource ListViewItemBackgroundSelectedPressed}"/>
+          <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
         </Style>
         <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-          <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}"/>
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
       </Style>
     </Style>

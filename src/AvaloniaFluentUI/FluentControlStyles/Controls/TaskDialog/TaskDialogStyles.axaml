@@ -75,8 +75,11 @@
   <FontWeight x:Key="TaskDialogSubHeaderFontWeight">Normal</FontWeight>
   <x:Double x:Key="TaskDialogSubHeaderFontSize">16</x:Double>
 
-  <ControlTheme x:Key="TaskDialogMoreDetailsButton" TargetType="Button">
-    <Setter Property="Foreground" Value="{DynamicResource TaskDialogFooterButtonForeground}"/>
+  
+  <Thickness x:Key="TaskDialogBorderWidth">1</Thickness>
+  <Thickness x:Key="TaskDialogCommandBorderThickness">0</Thickness>
+<ControlTheme x:Key="TaskDialogMoreDetailsButton" TargetType="Button">
+    <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}"/>
     <Setter Property="Template">
       <ControlTemplate>
         <Border Background="Transparent">
@@ -86,15 +89,15 @@
     </Setter>
 
     <Style Selector="^ /template/ TextBlock">
-      <Setter Property="Foreground" Value="{DynamicResource TaskDialogFooterButtonForegroundPointerOver}"/>
+      <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}"/>
     </Style>
     <Style Selector="^ /template/ TextBlock">
-      <Setter Property="Foreground" Value="{DynamicResource TaskDialogFooterButtonForegroundPressed}"/>
+      <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}"/>
     </Style>
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type ui:TaskDialog}" TargetType="ui:TaskDialog">
-    <Setter Property="Background" Value="{DynamicResource ContentDialogBackground}"/>
+    <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}"/>
     <Setter Property="BackgroundSizing" Value="InnerBorderEdge"/>
     <Setter Property="Template">
       <ControlTemplate>
@@ -287,13 +290,13 @@
     </Style>
 
     <Style Selector="^:progressError /template/ ProgressBar#ProgressBar">
-      <Setter Property="Foreground" Value="{DynamicResource TaskDialogProgressBarErrorColor}"/>
-      <Setter Property="Background" Value="{DynamicResource TaskDialogProgressBarErrorBackgroundColor}"/>
+      <Setter Property="Foreground" Value="{DynamicResource SystemFillColorCriticalBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource SystemFillColorCriticalBackgroundBrush}"/>
     </Style>
 
     <Style Selector="^:progressSuspend /template/ ProgressBar#ProgressBar">
-      <Setter Property="Foreground" Value="{DynamicResource TaskDialogProgressBarSuspendColor}"/>
-      <Setter Property="Background" Value="{DynamicResource TaskDialogProgressBarSuspendBackgroundColor}"/>
+      <Setter Property="Foreground" Value="{DynamicResource SystemFillColorCautionBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource SystemFillColorCautionBackgroundBrush}"/>
     </Style>
 
     <Style Selector="^:headerForeground /template/ TextBlock#HeaderText">
@@ -307,10 +310,10 @@
 
     <Style Selector="^:hosted">
       <Style Selector="^ /template/ Panel#LayoutRoot">
-        <Setter Property="Background" Value="{DynamicResource TaskDialogSmokeFill}"/>
+        <Setter Property="Background" Value="{DynamicResource SmokeFillColorDefaultBrush}"/>
       </Style>
       <Style Selector="^ /template/ Border#ContentRoot">
-        <Setter Property="BorderBrush" Value="{DynamicResource TaskDialogBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultBrush}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource TaskDialogBorderWidth}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>

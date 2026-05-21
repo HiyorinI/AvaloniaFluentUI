@@ -4,8 +4,8 @@
 
     <ControlTheme x:Key="{x:Type ui:FAComboBoxItem}"
                  TargetType="ui:FAComboBoxItem">
-        <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForeground}" />
-        <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
         <Setter Property="Padding" Value="{DynamicResource ComboBoxItemThemePadding}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="CornerRadius" Value="{DynamicResource ComboBoxItemCornerRadius}" />
@@ -56,45 +56,45 @@
 
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#LayoutRoot">
-                <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushPointerOver}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPointerOver}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ Border#LayoutRoot">
-                <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundPressed}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushPressed}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundPressed}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ Border#LayoutRoot">
-                <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundDisabled}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushDisabled}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Style>
         </Style>
 
         <Style Selector="^:selected">
             <Style Selector="^ /template/ Border#LayoutRoot">
-                <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelected}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelected}" />
+                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelected}" />
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Style>
 
             <Style Selector="^ /template/ Rectangle#Pill">
@@ -105,12 +105,12 @@
 
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ Border#LayoutRoot">
-                    <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedPointerOver}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedPointerOver}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
                 </Style>
 
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPointerOver}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                 </Style>
             </Style>
 
@@ -119,23 +119,23 @@
                     <Setter Property="RenderTransform" Value="scaleY(0.625)" />
                 </Style>
                 <Style Selector="^ /template/ Border#LayoutRoot">
-                    <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedPressed}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedPressed}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                 </Style>
 
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPressed}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                 </Style>
             </Style>
 
             <Style Selector="^:disabled">
                 <Style Selector="^ /template/ Border#LayoutRoot">
-                    <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackgroundSelectedDisabled}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxItemBorderBrushSelectedDisabled}" />
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                 </Style>
 
                 <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
-                    <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedDisabled}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                 </Style>
             </Style>
 

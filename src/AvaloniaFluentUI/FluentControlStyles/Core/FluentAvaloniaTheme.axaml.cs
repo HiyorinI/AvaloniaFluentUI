@@ -171,13 +171,6 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         // explicitly disabled to enable setting the theme manually
         ResolveThemeAndInitializeSystemResources();
 
-        if (OperatingSystem.IsWindows())
-        {
-            // Load this in all cases since with ThemeDictionaries, we always have a ref to the 
-            // HighContrast dictionary
-            TryLoadHighContrastThemeColors();
-        }
-
         SetTextAlignmentOverrides();
 
         _hasLoaded = true;
@@ -230,17 +223,13 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
 
     private void OnPlatformColorValuesChanged(object sender, PlatformColorValues e)
     {
-        if (OperatingSystem.IsWindows())
-        {
-            TryLoadHighContrastThemeColors();
-        }
-
         if (PreferSystemTheme)
         {
             ThemeVariant theme;
             if (e.ContrastPreference == ColorContrastPreference.High)
             {
-                theme = HighContrastTheme;
+                theme = e.ThemeVariant == PlatformThemeVariant.Light ?
+                    ThemeVariant.Light : ThemeVariant.Dark;
             }
             else
             {
@@ -341,7 +330,8 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         }
         else
         {
-            return HighContrastTheme;
+            return platformColors.ThemeVariant == PlatformThemeVariant.Light ?
+                ThemeVariant.Light : ThemeVariant.Dark;
         }
     }
 

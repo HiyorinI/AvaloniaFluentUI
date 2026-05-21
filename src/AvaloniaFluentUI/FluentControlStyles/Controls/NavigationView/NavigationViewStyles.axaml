@@ -15,7 +15,9 @@
     </Border>
   </Design.PreviewWith>
 
-  <ControlTheme x:Key="{x:Type ui:NavigationView}" TargetType="ui:NavigationView">
+    <Thickness x:Key="NavigationViewItemExpandedChevronMargin">0,12,0,0</Thickness>
+
+<ControlTheme x:Key="{x:Type ui:NavigationView}" TargetType="ui:NavigationView">
     <!--<Setter Property="KeyboardNavigation.IsTabStop" Value="False" />-->
     <Setter Property="CompactPaneLength" Value="{DynamicResource NavigationViewCompactPaneLength}"/>
     <Setter Property="Template">
@@ -93,14 +95,14 @@
               Grid.Row="0"
               HorizontalAlignment="Stretch"
               VerticalAlignment="Top"
-              Background="{DynamicResource NavigationViewTopPaneBackground}"
+              Background="{DynamicResource ControlFillColorTransparentBrush}"
               ZIndex="1">
               <Rectangle
                 Name="TopNavTopPadding"
                 Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.TopPadding}"
                 IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.TopPaneVisibility}"/>
 
-              <Border Margin="{DynamicResource TopNavigationViewTopNavGridMargin}" BorderBrush="{DynamicResource NavigationViewItemSeparatorForeground}">
+              <Border Margin="{DynamicResource TopNavigationViewTopNavGridMargin}" BorderBrush="{DynamicResource DividerStrokeColorDefaultBrush}">
                 <Grid
                   Name="TopNavGrid"
                   Height="{DynamicResource NavigationViewTopPaneHeight}"
@@ -230,7 +232,7 @@
               Name="RootSplitView"
               Grid.Row="1"
               Background="{TemplateBinding Background}"
-              BorderBrush="{DynamicResource NavigationViewItemSeparatorForeground}"
+              BorderBrush="{DynamicResource DividerStrokeColorDefaultBrush}"
               BorderThickness="{DynamicResource NavigationViewBorderThickness}"
               CompactPaneLength="{TemplateBinding CompactPaneLength}"
               CornerRadius="{Binding Source={StaticResource OverlayCornerRadius}, Converter={StaticResource RightCornerRadiusFilterConverter}}"
@@ -239,7 +241,7 @@
                                            Mode=TwoWay}"
               KeyboardNavigation.IsTabStop="False"
               OpenPaneLength="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.OpenPaneWidth}"
-              PaneBackground="{DynamicResource NavigationViewDefaultPaneBackground}">
+              PaneBackground="{DynamicResource SolidBackgroundFillColorBaseBrush}">
 
               <SplitView.Pane>
                 <Grid
@@ -392,8 +394,8 @@
                 <Border
                   Name="ContentGridBorder"
                   Margin="{DynamicResource NavigationViewContentMargin}"
-                  Background="{DynamicResource NavigationViewContentBackground}"
-                  BorderBrush="{DynamicResource NavigationViewContentGridBorderBrush}"
+                  Background="{DynamicResource LayerFillColorDefaultBrush}"
+                  BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                   BorderThickness="{DynamicResource NavigationViewContentGridBorderThickness}"
                   ClipToBounds="True"
                   CornerRadius="{DynamicResource NavigationViewContentGridCornerRadius}">
@@ -550,7 +552,7 @@
     <Style Selector="^:panenotoverlaying">
       <Style Selector="^ /template/ SplitView#RootSplitView">
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="PaneBackground" Value="{DynamicResource NavigationViewExpandedPaneBackground}"/>
+        <Setter Property="PaneBackground" Value="{DynamicResource SolidBackgroundFillColorTransparent}"/>
       </Style>
       <Style Selector="^ /template/ Border#ShadowCaster">
         <Setter Property="Transitions">
