@@ -1,16 +1,10 @@
 <Application
-  x:Class="Test.App"
+  x:Class="LocaleTest.App"
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Styling;assembly=AvaloniaFluentUI"
-  RequestedThemeVariant="Dark">
+  RequestedThemeVariant="Light">
   <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
-
-  <Application.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries/>
-    </ResourceDictionary>
-  </Application.Resources>
 
   <Application.Styles>
     <fui:FluentAvaloniaTheme/>

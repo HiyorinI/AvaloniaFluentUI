@@ -8,13 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Assets\demo\" />
-        <Folder Include="Controls\" />
         <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 
-    <ItemGroup>
+   <ItemGroup>
         <PackageReference Include="Avalonia"/>
         <PackageReference Include="Avalonia.Desktop"/>
         <PackageReference Include="Avalonia.Diagnostics">
@@ -22,8 +20,8 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
-
-</ItemGroup>
+   </ItemGroup>
+  
   
     <ItemGroup>
         <ProjectReference Include="../../src/AvaloniaFluentUI/AvaloniaFluentUI.csproj"/>

@@ -1,94 +1,19 @@
+<!--  <wnd:AppWindow  -->
 <Window
   x:Class="Test.Views.MainWindow"
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:page="clr-namespace:Test.Pages"
-  xmlns:ui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:view="clr-namespace:Test.Views"
   xmlns:vm="using:Test.ViewModels"
+  xmlns:wnd="clr-namespace:AvaloniaFluentUI.Controls.Windowing;assembly=AvaloniaFluentUI"
   Title="Test"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="vm:MainWindowViewModel"
-  ExtendClientAreaToDecorationsHint="True"
   Icon="/Assets/avalonia-logo.ico"
-  mc:Ignorable="d">
-
-  <Design.DataContext>
-    <!--
-      This only sets the DataContext for the previewer in an IDE,
-      to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
-    -->
-    <vm:MainWindowViewModel/>
-  </Design.DataContext>
-  <Grid RowDefinitions="30, *">
-    <Grid Grid.Row="0" Margin="0,0,140,0">
-      <ui:ToolButton
-        Width="45"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Click="OnToggleTheme"
-        IconData="{StaticResource Constract}"
-        Theme="{StaticResource TransparentToolButton}"/>
-    </Grid>
-    <Grid Grid.Row="1">
-      <Grid Margin="35,25,25,10" RowDefinitions="Auto, *">
-        <!--  Frame MVVM 导航示例  -->
-        <Border
-          Grid.Row="0"
-          Margin="0,0,0,10"
-          Padding="10"
-          Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
-          CornerRadius="8">
-          <StackPanel Orientation="Horizontal" Spacing="8">
-            <Button
-              Padding="12,6"
-              Command="{Binding NavigateToCommand}"
-              CommandParameter="{x:Type page:PageA}"
-              Content="Page A"
-              FontSize="14"/>
-            <Button
-              Padding="12,6"
-              Command="{Binding NavigateToCommand}"
-              CommandParameter="{x:Type page:PageB}"
-              Content="Page B"
-              FontSize="14"/>
-            <Button Command="{Binding #Frame.GoBack}" Content="返回"/>
-            <Button Command="{Binding #Frame.GoForward}" Content="前进"/>
-            <TextBlock
-              Margin="20,0,0,0"
-              VerticalAlignment="Center"
-              FontSize="13"
-              Foreground="{DynamicResource TextFillColorSecondaryBrush}">
-              当前:<Run FontWeight="Bold" Text="{Binding CurrentPageType.Name}"/>
-            </TextBlock>
-          </StackPanel>
-        </Border>
-
-        <!--  Frame 通过 SourcePageType 绑定实现 MVVM 导航  -->
-        <ui:Frame
-          Name="Frame"
-          Grid.Row="1"
-          Focusable="False"
-          SourcePageType="{Binding CurrentPageType}"/>
-
-        <!--  切换动画说明  -->
-        <Border
-          Grid.Row="1"
-          Margin="0,0,10,10"
-          Padding="8,4"
-          HorizontalAlignment="Right"
-          VerticalAlignment="Bottom"
-          Background="#AA000000"
-          CornerRadius="4"
-          IsHitTestVisible="False">
-          <TextBlock
-            FontSize="11"
-            Foreground="White"
-            Text="默认 EntranceNavigationTransitionInfo 动画"/>
-        </Border>
-      </Grid>
-    </Grid>
-  </Grid>
-</Window>
+  mc:Ignorable="d"/>
