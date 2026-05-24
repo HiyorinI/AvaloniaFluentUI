@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Avalonia.Controls;
+using AvaloniaFluentUI.Locale;
 
 namespace Gallery.Views;
 
@@ -11,6 +12,8 @@ public partial class SettingsView : UserControl
         Debug.WriteLine("SettingsView Init");
 #endif
         InitializeComponent();
+        
+        TbTitle.Text = LocalizationService.Instance.GetString("Setting");
 
         // this.AttachedToLogicalTree += (s, e) =>
         // {

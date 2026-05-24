@@ -3,11 +3,10 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="对话框和弹出窗口"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:DialogBoxAndPopupViewModel"
@@ -188,14 +187,28 @@
       IsLightDismissEnabled="True"
       IsOpen="{Binding TeachingTipIsOpen}"
       IsVisible="False"
-      PreferredPlacement="Top"
+      PreferredPlacement="{Binding TeachingTipPlacement}"
       Subtitle="最短的捷径就是绕远路, 绕远路才是我的最短捷径."
       Target="{Binding ElementName=TeachingTipButton}"/>
     <ui:CodeCard Name="TeachingTipCard" Title="气泡弹窗">
-      <Button
-        Name="TeachingTipButton"
-        Command="{Binding ShowTeachingTipCommand}"
-        Content="显示气泡弹窗"/>
+      <Grid ColumnDefinitions="*, Auto">
+        <Button
+          Name="TeachingTipButton"
+          Command="{Binding ShowTeachingTipCommand}"
+          Content="显示气泡弹窗"/>
+
+        <StackPanel
+          Grid.Column="1"
+          Width="128"
+          Orientation="Horizontal"
+          Spacing="3">
+          <TextBlock VerticalAlignment="Center" Text="位置"/>
+          <fui:FluentComboBox
+            VerticalAlignment="Center"
+            ItemsSource="{Binding TeachingTipPlacements}"
+            SelectedItem="{Binding TeachingTipPlacement}"/>
+        </StackPanel>
+      </Grid>
     </ui:CodeCard>
 
     <ui:CodeCard Title="颜色选择器">

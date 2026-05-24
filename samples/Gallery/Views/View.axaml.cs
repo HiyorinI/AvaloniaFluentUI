@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Avalonia.VisualTree;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Locale;
 using Gallery.Controls;
 
 namespace Gallery.Views;
@@ -17,6 +11,9 @@ public partial class View : ViewBase
     public View() : base("View")
     {
         InitializeComponent();
+        
+        Title = LocalizationService.Instance.GetString("View");
+        
         Carousel.AddHandler(
             PointerWheelChangedEvent,
             (_, e) =>

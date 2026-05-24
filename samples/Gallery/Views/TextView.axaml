@@ -3,11 +3,10 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="文本"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:TextViewModel"
@@ -221,14 +220,12 @@
     <!--  TextBox  -->
     <ui:CodeCard Name="TextBoxCard" Title="文本输入框">
       <Grid ColumnDefinitions="*, Auto">
-
         <TextBox
           Width="256"
           HorizontalAlignment="Left"
           VerticalAlignment="Top"
           AcceptsReturn="{Binding IsAccentReturn}"
           AcceptsTab="{Binding IsAcceptTab}"
-          Classes="clearButton"
           Watermark="{Binding Watermark}"/>
         <ui:Card
           Grid.Column="1"
@@ -251,7 +248,7 @@
       <TextBox
         Width="256"
         HorizontalAlignment="Left"
-        Classes="clearButton"
+        Classes="Clear"
         Watermark="带清空按钮的输入框"/>
     </ui:CodeCard>
 
@@ -259,9 +256,33 @@
       <TextBox
         Width="256"
         HorizontalAlignment="Left"
-        Classes="revealPasswordButton"
+        Classes="Password"
         PasswordChar="*"
         Watermark="请输入密码"/>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="搜索框">
+      <Grid ColumnDefinitions="*, Auto, Auto">
+        <fui:SearchTextBox
+          Width="256"
+          HorizontalAlignment="Left"
+          KeyDown="OnSearchKeyDown"
+          SearchCommand="{Binding SearchCommand}"
+          Watermark="请输入要搜索的内容"/>
+
+        <CheckBox
+          Name="StbCheBox"
+          Grid.Column="1"
+          VerticalAlignment="Center"
+          Content="回车搜索"/>
+
+        <TextBlock
+          Name="SearchResult"
+          Grid.Column="2"
+          VerticalAlignment="Center"
+          Foreground="OrangeRed"
+          Text="{Binding SearchContent}"/>
+      </Grid>
     </ui:CodeCard>
 
     <ui:CodeCard Name="NumberBoxCard" Title="数字编辑框">
@@ -289,12 +310,14 @@
     <ui:CodeCard Title="按钮微调器">
       <Grid ColumnDefinitions="*, Auto">
         <ButtonSpinner
+          Name="ButtonSpinner"
           Grid.Column="0"
           Width="128"
           HorizontalAlignment="Left"
           VerticalAlignment="Top"
           AllowSpin="{Binding IsEnabledSpinner}"
-          ButtonSpinnerLocation="{Binding SpinnerLocation}"/>
+          ButtonSpinnerLocation="{Binding SpinnerLocation}"
+          Spin="OnSpin"/>
         <ui:Card Grid.Column="1">
           <StackPanel Orientation="Vertical" Spacing="3">
             <TextBlock FontWeight="Bold" Text="选项"/>

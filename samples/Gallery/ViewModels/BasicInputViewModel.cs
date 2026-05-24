@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using Avalonia.Controls;
 using Avalonia.Layout;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -21,59 +20,19 @@ public partial class BasicInputViewModel : ViewModelBase
     ];
 
     #region PushButton
-    
-    [ObservableProperty]
-    private double _pushButtonWidth = 256;
-    
-    [ObservableProperty]
-    private double _pushButtonHeight = 35;
-
     [ObservableProperty]
     private HorizontalAlignment _pushButtonContentAlignment = HorizontalAlignment.Center;
 
     [ObservableProperty]
     private bool _pushButtonIsDisable;
-
-    [ObservableProperty]
-    private double _pushButtonMinimumWidth = 256;
-
-    [ObservableProperty]
-    private double _pushButtonMinimumHeight = 35;
-
-    [ObservableProperty]
-    private double _pushButtonMaximumWidth = 512;
-
-    [ObservableProperty]
-    private double _pushButtonMaximumHeight = 128;
-    
     #endregion
 
     #region ToolButton 
-
-    [ObservableProperty]
-    private double _toolButtonWidth = 64;
-
-    [ObservableProperty]
-    private double _toolButtonHeight = 35;
-    
     [ObservableProperty]
     private HorizontalAlignment _toolButtonContentAlignment = HorizontalAlignment.Center;
-
-    [ObservableProperty]
-    private double _toolButtonMinimumWidth = 40;
-
-    [ObservableProperty]
-    private double _toolButtonMaximumWidth = 512;
-
-    [ObservableProperty]
-    private double _toolButtonMinimumHeight = 35;
-
-    [ObservableProperty]
-    private double _toolButtonMaximumHeight = 128;
-
+    
     [ObservableProperty]
     private bool _toolButtonIsDisable;
-
     #endregion
 
     [ObservableProperty]
@@ -120,6 +79,23 @@ public partial class BasicInputViewModel : ViewModelBase
 
     private string[] _multiSelectionItems = new string[32];
     public string[] MultiSelectionItems => _multiSelectionItems;
+
+    [ObservableProperty]
+    private Orientation _toolTipSliderOrientation = Orientation.Horizontal;
+
+    public Orientation[] Orientations => [Orientation.Horizontal, Orientation.Vertical];
+
+    [ObservableProperty]
+    private bool _toolTipSliderIsDisabled; 
+
+    [ObservableProperty]
+    private bool _chipsRadioButtonIsEnabled;
+
+    [ObservableProperty]
+    private bool _outlinedClassButtonIsDisabled; 
+
+    [ObservableProperty]
+    private bool _roundButtonIsDisabled; 
 
     [RelayCommand]
     private void ClearMultiSelectionSelectedItem() => MultiSelectionSelectedItems.Clear();

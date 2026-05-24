@@ -1,6 +1,6 @@
 ﻿using System;
 using Avalonia.Media;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 

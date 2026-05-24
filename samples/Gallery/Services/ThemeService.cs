@@ -1,12 +1,13 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Media;
 using Avalonia.Styling;
+using AvaloniaFluentUI.Locale;
 using AvaloniaFluentUI.Styling;
 using Gallery.Models;
 
@@ -62,9 +63,11 @@ public class ThemeService
     {
         try
         {
-            Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
-            Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
-            Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+#if DEBUG
+            Debug.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
+            Debug.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
+            Debug.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+#endif
 
             Directory.CreateDirectory(ConfigDir);
             var json = JsonSerializer.Serialize(config, ConfigJsonContext.Default.AppConfig);
@@ -72,17 +75,20 @@ public class ThemeService
         }
         catch (Exception e)
         {
-            Console.WriteLine("Write Failed");
-            Console.WriteLine(e);
-            throw;
+#if DEBUG
+            Debug.WriteLine("Write Failed");
+            Debug.WriteLine(e);
+#endif
         }
     }
 
-    public static async Task<AppConfig?> LoadConfig()
+    public static AppConfig? LoadConfig()
     {
-        Console.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
-        Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
-        Console.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+#if DEBUG
+        Debug.WriteLine("BaseDirectory: " + AppContext.BaseDirectory);
+        Debug.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
+        Debug.WriteLine("FullPath: " + Path.GetFullPath(AppConfigPath));
+#endif
 
         Directory.CreateDirectory(ConfigDir);
 
@@ -93,19 +99,20 @@ public class ThemeService
                 Theme = "Default",
                 AccentColor = "#FFFF1493",
                 IsWindowEffectEnabled = true,
-                IsEnabledBackgroundImage = false
+                IsEnabledBackgroundImage = false,
+                Language = "zn-CN"
             };
 
             var json = JsonSerializer.Serialize(config, ConfigJsonContext.Default.AppConfig);
-            await File.WriteAllTextAsync(AppConfigPath, json, Encoding.UTF8);
+            File.WriteAllText(AppConfigPath, json, Encoding.UTF8);
 
             Application.Current?.RequestedThemeVariant = ThemeVariant.Default;
             FluentTheme?.CustomAccentColor = Colors.DeepPink;
-
+            
             return config;
         }
 
-        string file = await File.ReadAllTextAsync(AppConfigPath);
+        string file = File.ReadAllText(AppConfigPath);
         var loaded = JsonSerializer.Deserialize(file, ConfigJsonContext.Default.AppConfig);
 
         if (loaded != null)

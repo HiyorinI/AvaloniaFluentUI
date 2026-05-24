@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AvaloniaFluentUI.Locale;
 using Gallery.Controls;
 
 namespace Gallery.Views;
@@ -8,6 +9,9 @@ public partial class StatusAndInformationView : ViewBase
     public StatusAndInformationView() : base("StatusAndInformation")
     {
         InitializeComponent();
+        
+        Title = LocalizationService.Instance.GetString("StatusAndInformation");
+        
         CodeCards = new Dictionary<string, CodeCard>()
         {
             {"ToolTip", ToolTipCard},

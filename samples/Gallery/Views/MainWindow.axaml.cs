@@ -1,10 +1,10 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Animation;
-using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
@@ -12,7 +12,9 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Controls.Windowing;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Messages;
 using Gallery.Models;
@@ -21,7 +23,20 @@ using Gallery.ViewModels;
 
 namespace Gallery.Views;
 
-public partial class MainWindow : Window
+public class MainWindowSplashScreen : IApplicationSplashScreen
+{
+    public string AppName => "Avalonia Fluent UI Gallery";
+    public IImage AppIcon => new Bitmap(AssetLoader.Open(new Uri("avares://Gallery/Assets/app.ico")));
+    public object SplashScreenContent => null;
+    public Task RunTasks(CancellationToken cancellationToken)
+    {
+        return Task.Delay(600, cancellationToken);
+    }
+
+    public int MinimumShowTime => 1500;
+}
+
+public partial class MainWindow : AppWindow 
 {
     private IPageTransition? _currentPageTransition;
 
@@ -29,24 +44,30 @@ public partial class MainWindow : Window
     private readonly MainWindowMessageHandler _messageHandler;
 
     public MainWindow()
-    {
-#if DEBUG
-        Debug.WriteLine("MainWindow Init");
-#endif
-
+    { 
+        SplashScreen = new MainWindowSplashScreen();
         InitializeComponent();
-
-         _messageHandler = new MainWindowMessageHandler(this);
-         RegisterAllMessage();
-
-         BackgroundImage.Source = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/bg.jpg")), 1024);
+        
+        _messageHandler = new MainWindowMessageHandler(this); 
+        RegisterAllMessage();
+        
+        BackgroundImage.Source = Bitmap.DecodeToHeight(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/bg.jpg")), 1024);
 
         SetPageTransition(null);
+
+        // ExtendClientAreaToDecorationsHint = true;
 
         Loaded += OnLoaded;
         ThemeService.ThemeChanged += _ => { EnableWindowEffect(_isEnabledWindowEffect); };
 
         WeakReferenceMessenger.Default.Register<JumpToControlMessage>(this, OnJumpToControl);
+
+        Dispatcher.UIThread.Post(async () =>
+        {
+            await Task.Delay(3000);
+            // Background = Brushes.DeepPink;
+        }, DispatcherPriority.Background);
+        
     }
 
     private void OnJumpToControl(object recipient, JumpToControlMessage message)
@@ -75,7 +96,8 @@ public partial class MainWindow : Window
                     AccentColor = svm.IsDefaultAccentColor ? ThemeService.FluentTheme?.CustomAccentColor.ToString() : svm.SelectedAccentColor.ToString(),
                     Theme = Application.Current?.RequestedThemeVariant.ToString(),
                     IsWindowEffectEnabled = svm.IsEnabledWindowEffect,
-                    IsEnabledBackgroundImage = svm.IsEnabledBackgroundImage
+                    IsEnabledBackgroundImage = svm.IsEnabledBackgroundImage,
+                    Language = svm.CurrentLanguage
                 });
                 Console.WriteLine("Save Config Success");
             }
@@ -99,13 +121,16 @@ public partial class MainWindow : Window
             BackgroundImage.IsVisible = svm.IsEnabledBackgroundImage;
         }
 
-        // 后台预加载所有 View，避免首次页面切换卡顿
+        // PlatformFeatures?.SetTaskBarProgressBarState(TaskBarProgressBarState.Normal); 
+        // PlatformFeatures?.SetTaskBarProgressBarValue(50, 100);
+        TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
+        // ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.PreferSystemChrome;
+        
         await PreloadViewsAsync();
     }
 
     private async Task PreloadViewsAsync()
     {
-        // 延迟 500ms 确保主窗口渲染完成
         await Task.Delay(500);
 
         var app = Application.Current;
@@ -207,5 +232,10 @@ public partial class MainWindow : Window
         }
 
         _isEnabledWindowEffect = enable;
+    }
+
+    private void OnClicked(object? sender, RoutedEventArgs e)
+    {
+        LocalizationService.Instance.SetCulture("en-US");
     }
 }

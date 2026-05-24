@@ -6,16 +6,19 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
 using Avalonia.Media;
 using Avalonia.Styling;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Controls;
 using Gallery.Messages.IconViewMessages;
 using Gallery.Themes;
+using StackPanel = Avalonia.Controls.StackPanel;
 
 namespace Gallery.Views;
 
@@ -26,6 +29,7 @@ public partial class IconsView : UserControl
     private readonly int _iconHeight = 92;
 
     private CheckedBorder? _currentItem;
+    private readonly List<CheckedBorder> _allCards = new();
 
     public IconsView()
     {
@@ -35,11 +39,15 @@ public partial class IconsView : UserControl
 
         InitializeComponent();
 
-        Loaded += OnLoaded;
+        TbTitle.Text = LocalizationService.Instance.GetString("Icon");
+        OlText.Text = LocalizationService.Instance.GetString("OnlineDocument");
+        ScText.Text = LocalizationService.Instance.GetString("SourceCode");
     }
 
-    private async void OnLoaded(object? sender, RoutedEventArgs e)
+    protected async override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
+        base.OnApplyTemplate(e);
+
         await LoadIconsAsync();
     }
 
@@ -47,8 +55,6 @@ public partial class IconsView : UserControl
     {
         var allIcons = GetAllIcons();
         var iconList = allIcons.ToList();
-        var total = iconList.Count;
-        var loaded = 0;
 
         foreach (var chunk in Chunk(iconList, BatchSize))
         {
@@ -56,19 +62,14 @@ public partial class IconsView : UserControl
             {
                 var iconCard = CreateIconCard(name, path);
                 UniformGrid.Children.Add(iconCard);
-                loaded++;
+                _allCards.Add(iconCard);
             }
-
-            LoadingIndicator.Text = $"正在加载图标... {loaded}/{total}";
 
             await Task.Delay(1);
         }
-
-        LoadingIndicator.IsVisible = false;
     }
 
-    private static IEnumerable<List<KeyValuePair<string, string>>> Chunk(
-        List<KeyValuePair<string, string>> source, int batchSize)
+    private static IEnumerable<List<KeyValuePair<string, string>>> Chunk(List<KeyValuePair<string, string>> source, int batchSize)
     {
         for (int i = 0; i < source.Count; i += batchSize)
             yield return source.GetRange(i, Math.Min(batchSize, source.Count - i));
@@ -139,6 +140,17 @@ public partial class IconsView : UserControl
         UniformGrid.Columns = columns;
     }
 
+    private void ApplyFilter(string searchText)
+    {
+        foreach (var card in _allCards)
+        {
+            if (card.FindLogicalDescendantOfType<TextBlock>() is { Name: "PART_Name" } tb)
+                card.IsVisible = tb.Text.Contains(searchText, StringComparison.OrdinalIgnoreCase);
+            else
+                card.IsVisible = false;
+        }
+    }
+
     private void OnToggleThemeClicked(object? sender, RoutedEventArgs e)
     {
         var app = Application.Current;
@@ -146,6 +158,14 @@ public partial class IconsView : UserControl
         {
             var theme = app.RequestedThemeVariant == ThemeVariant.Light ? ThemeVariant.Dark : ThemeVariant.Light;
             app.RequestedThemeVariant = theme;
+        }
+    }
+
+    private void OnSearchTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        if (sender is SearchTextBox tb)
+        {
+            ApplyFilter(tb.Text);
         }
     }
 }

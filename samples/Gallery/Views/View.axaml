@@ -3,12 +3,11 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:models="clr-namespace:Gallery.Models"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="视图"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:ViewModel"
@@ -24,6 +23,7 @@
           ImageSource="{Binding FlipViewItems}"
           Interval="{Binding FlipViewAutoPlayInterval}"
           IsAutoPlay="{Binding FlipViewIsAutoPlay, Mode=TwoWay}"
+          Orientation="{Binding CurrentFlipOrientation}"
           SelectedIndex="0"/>
         <ui:Card
           Grid.Column="1"
@@ -32,14 +32,24 @@
           <StackPanel Orientation="Vertical" Spacing="3">
             <TextBlock Text="选项"/>
             <CheckBox Content="自动播放" IsChecked="{Binding FlipViewIsAutoPlay}"/>
-            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="3">
+
+            <StackPanel Orientation="Horizontal" Spacing="3">
               <TextBlock VerticalAlignment="Center" Text="间隔"/>
               <fui:FluentComboBox
-                Grid.Column="1"
+                Width="200"
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding Intervals}"
                 SelectedItem="{Binding FlipViewAutoPlayInterval}"/>
-            </Grid>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock VerticalAlignment="Center" Text="方向"/>
+              <fui:FluentComboBox
+                Width="200"
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding FlipOrientations}"
+                SelectedItem="{Binding CurrentFlipOrientation}"/>
+            </StackPanel>
           </StackPanel>
         </ui:Card>
       </Grid>
@@ -204,7 +214,7 @@
         <fui:SettingsExpanderItem Content="This one has footer content" Description="Device Name">
           <fui:SettingsExpanderItem.Footer>
             <fui:PushButton
-              Classes="accent"
+              Classes="Accent"
               Content="添加设备"
               IconData="{DynamicResource Add}"/>
           </fui:SettingsExpanderItem.Footer>

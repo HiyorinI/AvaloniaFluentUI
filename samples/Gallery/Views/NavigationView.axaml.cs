@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using AvaloniaFluentUI.UI.Controls;
-using AvaloniaFluentUI.UI.Media.Animation;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
+using AvaloniaFluentUI.Media.Animation;
 using Gallery.Controls;
 using Gallery.Models;
 using Gallery.Pages;
@@ -17,6 +18,9 @@ public partial class NavigationView : ViewBase
     public NavigationView() : base("Navigation")
     {
         InitializeComponent();
+        
+        Title = LocalizationService.Instance.GetString("Navigation");
+        
         CodeCards = new Dictionary<string, CodeCard>()
         {
             {"NavigationView", NavigationViewCard},

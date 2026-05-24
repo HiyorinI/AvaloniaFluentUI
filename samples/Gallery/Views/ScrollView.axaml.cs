@@ -2,6 +2,7 @@ using System;
 using Avalonia;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using AvaloniaFluentUI.Locale;
 using Gallery.Controls;
 
 namespace Gallery.Views;
@@ -14,6 +15,8 @@ public partial class ScrollView : ViewBase
     public ScrollView()
     {
         InitializeComponent();
+
+        Title = LocalizationService.Instance.GetString("Scroll");
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

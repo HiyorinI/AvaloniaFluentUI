@@ -1,13 +1,13 @@
 using System;
-using System.Globalization;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using AvaloniaFluentUI.Styling;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
 using Gallery.Pages;
+using Gallery.Services;
 using Gallery.ViewModels;
 using Gallery.Views;
 
@@ -20,8 +20,29 @@ public class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
+    private void InitializeCulture()
+    {
+        LocalizationService.Instance.AddValues(
+            ["zh-CN:Home", "zh-CN:Icon", "zh-CN:BasicInput", "zh-CN:DialogAndPopup", "zh-CN:Layout", "zh-CN:Navigation", "zh-CN:Text", "zh-CN:View", "zh-CN:Scroll", "zh-CN:Setting", "zh-CN:StatusAndInformation", "zh-CN:MenuAndToolBar", "zh-CN:DateTime", "zh-CN:OnlineDocument", "zh-CN:SourceCode"],
+            ["主页", "图标", "基本输入", "对话框和弹出窗口", "布局", "导航", "文本", "视图", "滚动", "设置", "状态和信息", "菜单和工具栏", "日期和时间", "在线文档", "源代码"]
+            );
+        LocalizationService.Instance.AddValues(
+            ["en-US:Home", "en-US:Icon", "en-US:BasicInput", "en-US:DialogAndPopup", "en-US:Layout", "en-US:Navigation", "en-US:Text", "en-US:View", "en-US:Scroll", "en-US:Setting", "en-US:StatusAndInformation", "en-US:MenuAndToolBar", "en-US:DateTime", "en-US:OnlineDocument", "en-US:SourceCode"],
+            ["Home", "Icon", "Basic Input", "Dialog and Popup", "Layout", "Navigation", "Text", "View", "Scroll", "Settings", "Status and Information", "Menu and ToolBar", "Date and Time", "Online documentation", "Source Code"]
+        );
+
+        LocalizationService.Instance.AddValues(
+            ["ja-JP:Home", "ja-JP:Icon", "ja-JP:BasicInput", "ja-JP:DialogAndPopup", "ja-JP:Layout", "ja-JP:Navigation", "ja-JP:Text", "ja-JP:View", "ja-JP:Scroll", "ja-JP:Setting", "ja-JP:StatusAndInformation", "ja-JP:MenuAndToolBar", "ja-JP:DateTime", "ja-JP:OnlineDocument", "ja-JP:SourceCode"],
+            ["ホーム", "アイコン", "基本入力", "ダイアログとポップアップ", "レイアウト", "ナビゲーション", "テキスト", "ビュー", "スクロール", "設定", "状態と情報", "メニューとツールバー", "日時", "オンラインドキュメント", "ソースコード"]
+        );
+    }
+
     public override void OnFrameworkInitializationCompleted()
     {
+        var config = ThemeService.LoadConfig();
+        LocalizationService.Instance.SetCulture(config?.Language);
+        InitializeCulture();
+        
         try
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -31,14 +52,14 @@ public class App : Application
                 DisableAvaloniaDataAnnotationValidation();
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel()
+                    DataContext = new MainWindowViewModel(config)
                 };
             }
             else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
             {
                 singleView.MainView = new MainView
                 {
-                    DataContext = new MainWindowViewModel()
+                    DataContext = new MainWindowViewModel(config)
                 };
             }
             else
@@ -50,26 +71,13 @@ public class App : Application
             Frame.RegisterPage<FramePage2>();
             Frame.RegisterPage<FramePage3>();
             Frame.RegisterPage<FramePage4>();
-
-            // SetLanguage("zh-CN");
         }
         catch (Exception ex)
         {
             Console.Error.WriteLine($"FATAL: App initialization failed: {ex}");
         }
-
+        
         base.OnFrameworkInitializationCompleted();
-    }
-
-    private void SetLanguage(string language)
-    {
-        var culture = new CultureInfo(language);
-        
-        CultureInfo.CurrentCulture = culture;
-        CultureInfo.CurrentUICulture = culture;
-        
-        CultureInfo.DefaultThreadCurrentCulture = culture;
-        CultureInfo.DefaultThreadCurrentUICulture = culture;
     }
 
     private void DisableAvaloniaDataAnnotationValidation()

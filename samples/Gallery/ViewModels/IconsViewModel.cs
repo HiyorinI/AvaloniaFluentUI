@@ -7,14 +7,14 @@ using Gallery.Messages.IconViewMessages;
 
 namespace Gallery.ViewModels;
 
-public partial class IconsViewModel : ViewModelBase, IRecipient<CheckedIconChangedMessage>
+public partial class IconsViewModel : ViewModelBase 
 {
     public IconsViewModel()
     {
 #if DEBUG
         Debug.WriteLine("IconViewModel Init");
 #endif
-        WeakReferenceMessenger.Default.RegisterAll(this);
+        WeakReferenceMessenger.Default.Register<CheckedIconChangedMessage>(this, OnCheckedIconChanged);
     }
 
     [ObservableProperty]
@@ -25,14 +25,9 @@ public partial class IconsViewModel : ViewModelBase, IRecipient<CheckedIconChang
     private Geometry? _currentIconData;
     
     public string CurrentItemEnumName => CurrentIconName == "" ? "" : $"Fluent.{CurrentIconName}";
-    
-    public void Receive(CheckedIconChangedMessage message)
+
+    private void OnCheckedIconChanged(object? sender, CheckedIconChangedMessage message)
     {
-#if DEBUG
-        Debug.WriteLine(message.Name);
-        Debug.WriteLine(message.Data);
-#endif
-        
         CurrentIconName = message.Name;
         CurrentIconData = message.Data;
     }

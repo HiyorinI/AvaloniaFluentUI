@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -96,6 +96,25 @@ public partial class NavigationViewModel : ViewModelBase
     }
 
     public string[] BreadcrumbBarItemSource => @"C:\Users\Administrator\OneDrive\Pictures\Camera Roll".Split("\\");
+
+    [ObservableProperty]
+    private Dock _tabStripPlacement = Dock.Top;
+
+    public Dock[] TabStripPlacements => [ Dock.Top, Dock.Left, Dock.Right, Dock.Bottom];
+
+    [ObservableProperty]
+    private object _segmentedToggleSelectedItem;
+    
+    [ObservableProperty]
+    private string _segmentedSelectedItemFormat = "Null";
+
+    partial void OnSegmentedToggleSelectedItemChanged(object value)
+    {
+        if (value is SegmentedItem item)
+        {
+            SegmentedSelectedItemFormat = $"当前选中页面: " + item.Content;
+        }
+    }
 
     [ObservableProperty]
     private object _segmentedSelectedItem;

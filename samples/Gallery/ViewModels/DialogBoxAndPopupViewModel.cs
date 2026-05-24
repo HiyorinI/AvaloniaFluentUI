@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Controls;
+using AvaloniaFluentUI.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -23,6 +24,11 @@ public partial class DialogBoxAndPopupViewModel : ViewModelBase
 
     [ObservableProperty]
     private bool _fluentFlyoutIsOpen;
+
+    public TeachingTipPlacementMode[] TeachingTipPlacements => [ TeachingTipPlacementMode.Auto, TeachingTipPlacementMode.Bottom, TeachingTipPlacementMode.BottomLeft, TeachingTipPlacementMode.BottomRight, TeachingTipPlacementMode.Center, TeachingTipPlacementMode.Left, TeachingTipPlacementMode.LeftBottom, TeachingTipPlacementMode.LeftTop, TeachingTipPlacementMode.Right, TeachingTipPlacementMode.RightBottom, TeachingTipPlacementMode.RightTop, TeachingTipPlacementMode.Top, TeachingTipPlacementMode.TopLeft, TeachingTipPlacementMode.TopRight]; 
+    
+    [ObservableProperty]
+    private TeachingTipPlacementMode _teachingTipPlacement = TeachingTipPlacementMode.Top;
 
     [RelayCommand]
     private void CloseFlyout() => FluentFlyoutIsOpen = false;

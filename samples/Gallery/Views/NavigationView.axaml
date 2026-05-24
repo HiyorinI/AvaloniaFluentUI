@@ -3,11 +3,10 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="导航"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:NavigationViewModel"
@@ -128,23 +127,61 @@
       </Grid>
     </ui:CodeCard>
 
+    <ui:CodeCard Title="选项卡">
+      <Grid ColumnDefinitions="*, Auto">
+        <TabControl Grid.Column="0" TabStripPlacement="{Binding TabStripPlacement}">
+          <TabItem Header="Home"/>
+          <TabItem Header="GitHub"/>
+          <TabItem Header="Video"/>
+          <TabItem Header="Music"/>
+        </TabControl>
+        <StackPanel
+          Grid.Column="1"
+          Orientation="Horizontal"
+          Spacing="5">
+          <TextBlock VerticalAlignment="Center" Text="位置"/>
+          <fui:FluentComboBox
+            Width="100"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding TabStripPlacements}"
+            SelectedItem="{Binding TabStripPlacement}"/>
+        </StackPanel>
+      </Grid>
+    </ui:CodeCard>
+
     <ui:CodeCard
       Name="SegmentedCard"
       Title="分段导航栏"
       Height="400">
-      <fui:SegmentedView SelectedItem="{Binding SegmentedSelectedItem}">
-        <fui:SegmentedItem Content="Segmented Item 1" IsSelected="True"/>
-        <fui:SegmentedItem Content="Item 2"/>
-        <fui:SegmentedItem Content="Segmented Item 3"/>
-        <fui:SegmentedItem Content="Item 4"/>
-        <fui:SegmentedItem Content="Segmented Item 5"/>
-        <fui:SegmentedItem Content="Item 6"/>
-        <fui:SegmentedItem Content="Segmented Item 7"/>
-        <fui:SegmentedItem Content="Item 8"/>
-        <fui:SegmentedItem Content="Segmented Item 9"/>
-        <fui:SegmentedItem Content="Item 10"/>
-        <fui:SegmentedItem Content="Segmented Item 11"/>
-        <fui:SegmentedItem Content="Item 12"/>
+      <fui:SegmentedView SelectedIndex="0" SelectedItem="{Binding SegmentedSelectedItem}">
+        <fui:SegmentedItem Content="主页" IsSelected="True"/>
+        <fui:SegmentedItem Content="文件"/>
+        <fui:SegmentedItem Content="编辑"/>
+        <fui:SegmentedItem>
+          <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+            <PathIcon Data="{StaticResource View}"/>
+            <TextBlock Grid.Column="1" Text="视图"/>
+          </Grid>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem Content="基本输入"/>
+        <fui:SegmentedItem Content="对话框和弹出窗口"/>
+        <fui:SegmentedItem Content="运行"/>
+        <fui:SegmentedItem Content="窗口"/>
+        <fui:SegmentedItem Content="视频历史"/>
+        <fui:SegmentedItem Content="音频历史"/>
+        <fui:SegmentedItem Content="浏览历史"/>
+        <fui:SegmentedItem Content="帮助"/>
+        <fui:SegmentedItem Content="设置"/>
+        <fui:SegmentedItem Content="关于"/>
+        <fui:SegmentedItem>
+          <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+            <PathIcon Data="{StaticResource Send}"/>
+            <TextBlock Grid.Column="1" Text="发送"/>
+          </Grid>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem Content="文件"/>
+        <fui:SegmentedItem Content="文件夹"/>
+        <fui:SegmentedItem Content="应用"/>
         <fui:SegmentedView.Content>
           <TextBlock
             HorizontalAlignment="Center"
@@ -154,6 +191,52 @@
             TextAlignment="Center"/>
         </fui:SegmentedView.Content>
       </fui:SegmentedView>
+    </ui:CodeCard>
+
+
+    <ui:CodeCard Title="分段切换导航栏" Height="400">
+      <fui:SegmentedToggleView SelectedIndex="0" SelectedItem="{Binding SegmentedToggleSelectedItem}">
+        <fui:SegmentedItem Content="主页" IsSelected="True"/>
+        <fui:SegmentedItem Content="文件"/>
+        <fui:SegmentedItem>
+          <PathIcon Data="{StaticResource Edit}"/>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem>
+          <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+            <PathIcon Data="{StaticResource View}"/>
+            <TextBlock Grid.Column="1" Text="视图"/>
+          </Grid>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem Content="基本输入"/>
+        <fui:SegmentedItem Content="对话框和弹出窗口"/>
+        <fui:SegmentedItem Content="运行"/>
+        <fui:SegmentedItem Content="窗口"/>
+        <fui:SegmentedItem Content="视频历史"/>
+        <fui:SegmentedItem Content="音频历史"/>
+        <fui:SegmentedItem Content="浏览历史"/>
+        <fui:SegmentedItem Content="帮助"/>
+        <fui:SegmentedItem>
+          <PathIcon Data="{StaticResource Setting}"/>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem Content="关于"/>
+        <fui:SegmentedItem>
+          <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+            <PathIcon Data="{StaticResource Send}"/>
+            <TextBlock Grid.Column="1" Text="发送"/>
+          </Grid>
+        </fui:SegmentedItem>
+        <fui:SegmentedItem Content="文件"/>
+        <fui:SegmentedItem Content="文件夹"/>
+        <fui:SegmentedItem Content="应用"/>
+        <fui:SegmentedView.Content>
+          <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"
+            Text="{Binding SegmentedSelectedItemFormat}"
+            TextAlignment="Center"/>
+        </fui:SegmentedView.Content>
+      </fui:SegmentedToggleView>
     </ui:CodeCard>
 
     <ui:CodeCard Name="PageTransitionCard" Title="Frame">

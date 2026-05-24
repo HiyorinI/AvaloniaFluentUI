@@ -1,37 +1,38 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Media;
 using Avalonia.Styling;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Messages.MainWindowMessages;
+using Gallery.Models;
 using Gallery.Services;
 
 namespace Gallery.ViewModels;
 
 public partial class SettingsViewModel : ViewModelBase
 {
-    public SettingsViewModel()
+    public SettingsViewModel(AppConfig? config)
     {
 #if DEBUG
         Debug.WriteLine("SettingsViewModel Init");
 #endif
         ThemeService.ThemeChanged += OnThemeChanged;
-        _=InitAsync();
+
+        LoadSetting(config);
     }
 
-    private async Task InitAsync()
+    private void LoadSetting (AppConfig? config)
     {
-        var config = await ThemeService.LoadConfig();
         if (config != null)
         {
-            // await Task.Delay(200);
             IsEnabledWindowEffect = config.IsWindowEffectEnabled;
             IsEnabledBackgroundImage = config.IsEnabledBackgroundImage;
+            CurrentLanguage =  config.Language;
         }
     }
 
@@ -77,7 +78,7 @@ public partial class SettingsViewModel : ViewModelBase
     }
 
     [ObservableProperty]
-    private Color _selectedAccentColor = Colors.Transparent;
+    private Color _selectedAccentColor = Colors.DeepPink;
 
     partial void OnSelectedAccentColorChanged(Color value)
     {
@@ -112,6 +113,16 @@ public partial class SettingsViewModel : ViewModelBase
     private bool _isEnabledWindowEffect = true;
 
     public bool WindowEffectCardIsEnabled => !IsEnabledBackgroundImage && RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+    public string[] Languages => ["en-US", "zh-CN", "ja-JP"];
+
+    [ObservableProperty]
+    private string _currentLanguage;
+
+    partial void OnCurrentLanguageChanged(string value)
+    {
+        LocalizationService.Instance.SetCulture(value);
+    }
 
     [ObservableProperty]
     private bool _isCustomColor;

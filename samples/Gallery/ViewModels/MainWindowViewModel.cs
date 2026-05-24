@@ -1,15 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Messages;
+using Gallery.Models;
+using Gallery.Services;
 
 namespace Gallery.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    public string Home => LocalizationService.Instance.GetString("Home");
+    public string Icon => LocalizationService.Instance.GetString("Icon");
+    public string BasicInput => LocalizationService.Instance.GetString("BasicInput");
+    public string DialogAndPopup => LocalizationService.Instance.GetString("DialogAndPopup");
+    public string Layout => LocalizationService.Instance.GetString("Layout");
+    public string Navigation => LocalizationService.Instance.GetString("Navigation");
+    public string Text => LocalizationService.Instance.GetString("Text");
+    public string View => LocalizationService.Instance.GetString("View");
+    public string Scroll => LocalizationService.Instance.GetString("Scroll");
+    public string StatusAndInformation => LocalizationService.Instance.GetString("StatusAndInformation");
+    public string MenuAndToolBar => LocalizationService.Instance.GetString("MenuAndToolBar");
+    public string DateTime => LocalizationService.Instance.GetString("DateTime");
+    
     private readonly List<string> _history = new();
 
     private readonly Dictionary<string, Func<ViewModelBase>> _viewModelFactories;
@@ -24,7 +41,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     partial void OnNavigationViewSelectedItemChanged(object value)
     {
-        if (value is AvaloniaFluentUI.UI.Controls.NavigationViewItem item)
+        if (value is AvaloniaFluentUI.Controls.NavigationViewItem item)
         {
             TogglePage(item.Tag + "");
         }
@@ -32,8 +49,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]
     private ViewModelBase? _currentViewModel;
+    
+    private AppConfig? _config;
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(AppConfig? config)
     {
 #if DEBUG
         Debug.WriteLine("MainWindowViewModel Init");
@@ -61,10 +80,30 @@ public partial class MainWindowViewModel : ViewModelBase
             { "StatusAndInformation", () => new StatusAndInformationViewModel() },
             { "MenuAndToolBar", () => new MenuAndToolBarViewModel() },
             { "DateTime", () => new DateTimeViewModel() },
-            { "Settings", () => new SettingsViewModel() },
+            { "Settings", () => new SettingsViewModel(config) },
         };
-
+        
+        _config = config;
         CurrentViewModel = _viewModels["Home"];
+
+
+        LocalizationService.Instance.PropertyChanged += OnLanguageChanged;
+    }
+
+    private void OnLanguageChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(Home));
+        OnPropertyChanged(nameof(Icon));
+        OnPropertyChanged(nameof(BasicInput));
+        OnPropertyChanged(nameof(DialogAndPopup));
+        OnPropertyChanged(nameof(Layout));
+        OnPropertyChanged(nameof(Navigation));
+        OnPropertyChanged(nameof(Text));
+        OnPropertyChanged(nameof(View));
+        OnPropertyChanged(nameof(Scroll));
+        OnPropertyChanged(nameof(StatusAndInformation));
+        OnPropertyChanged(nameof(MenuAndToolBar));
+        OnPropertyChanged(nameof(DateTime));
     }
 
     private ViewModelBase GetOrCreateViewModel(string key)
@@ -90,12 +129,15 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             if (!_viewModels.TryGetValue("Settings", out var vm))
             {
-                vm = new SettingsViewModel();
+                vm = new SettingsViewModel(_config);
                 _viewModels["Settings"] = vm;
             }
             return (SettingsViewModel)vm;
         }
     }
+
+    [RelayCommand]
+    private void ToggleTheme() => ThemeService.ToggleTheme();
 
     [RelayCommand]
     private void TogglePage(string page)

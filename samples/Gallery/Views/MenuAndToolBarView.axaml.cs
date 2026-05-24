@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Avalonia.Input;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Controls;
 using Gallery.Messages;
@@ -15,6 +16,8 @@ public partial class MenuAndToolBarView : ViewBase
     public MenuAndToolBarView() : base("MenuAndToolBar")
     {
         InitializeComponent();
+        
+        Title = LocalizationService.Instance.GetString("MenuAndToolBar");
         
         Image.Source = Bitmap.DecodeToWidth(AssetLoader.Open(new Uri("avares://Gallery/Assets/Images/0.jpg")), 512);
         Image.PointerReleased += OnImagePointerReleased;

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
+using AvaloniaFluentUI.Controls.Enums;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Gallery.Models;
@@ -239,6 +240,11 @@ public partial class ViewModel : ViewModelBase
     public string CarouselCurrentIndexFormat => $"当前页面: " + (CarouselCurrentIndex + 1);
 
     public string CarouselAllCountFormat => "页面数量: " + CarouselAllCount;
+
+    public FlipOrientation[] FlipOrientations => [ FlipOrientation.Horizontal, FlipOrientation.Vertical ];
+    
+    [ObservableProperty]
+    private FlipOrientation _currentFlipOrientation = FlipOrientation.Horizontal;
 
     [ObservableProperty]
     private ObservableCollection<string> _flipViewItems;

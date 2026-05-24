@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Controls;
 using Gallery.Extensions;
@@ -17,6 +18,8 @@ public partial class LayoutView : ViewBase
     public LayoutView() : base("Layout")
     {
         InitializeComponent();
+
+        Title = LocalizationService.Instance.GetString("Layout");
         
         InitUniformGridPanel();
         InitWrapPanel();

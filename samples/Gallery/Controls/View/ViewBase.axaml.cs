@@ -8,7 +8,8 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Helpers;
 using Gallery.Messages;
@@ -54,6 +55,12 @@ public class ViewBase : ContentControl
         //////
         var db = e.NameScope.Find<Button>("DocumentButton")!;
         var sb = e.NameScope.Find<Button>("SourceCodeButton")!;
+
+        var ol = e.NameScope.Find<TextBlock>("OlText");
+        var sc = e.NameScope.Find<TextBlock>("ScText");
+
+        ol?.Text = LocalizationService.Instance.GetString("OnlineDocument");
+        sc?.Text = LocalizationService.Instance.GetString("SourceCode");
 
         db.Click -= OnClicked;
         sb.Click -= OnClicked;

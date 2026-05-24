@@ -3,11 +3,10 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="布局"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:LayoutViewModel"
@@ -312,7 +311,7 @@
               Grid.Row="4"
               Grid.Column="0"
               HorizontalAlignment="Stretch"
-              Classes="accent"
+              Classes="Accent"
               Content="应用"/>
             <Button
               Grid.Row="4"
@@ -481,7 +480,7 @@
         PanePlacement="Right">
         <SplitView.Pane>
           <Grid>
-            <Button
+            <fui:ToolButton
               Width="32"
               Height="32"
               Margin="8,8,8,8"
@@ -489,14 +488,7 @@
               VerticalAlignment="Top"
               BorderThickness="0"
               Command="{Binding TogglePanelCommand}"
-              Theme="{StaticResource TransparentButton}">
-              <Path
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Data="{StaticResource Menu}"
-                Fill="{DynamicResource TextControlForeground}"
-                Stretch="Uniform"/>
-            </Button>
+              IconData="{StaticResource Menu}"/>
             <TextBlock
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
@@ -627,7 +619,7 @@
               SelectedItem="{Binding AddCount}"/>
             <Button
               HorizontalAlignment="Stretch"
-              Classes="accent"
+              Classes="Accent"
               Command="{Binding AddItemCommand}"
               Content="添加"/>
           </StackPanel>

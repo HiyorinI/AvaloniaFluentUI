@@ -2,7 +2,7 @@
   x:Class="Gallery.Views.SettingsView"
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:vm="clr-namespace:Gallery.ViewModels"
   x:DataType="vm:SettingsViewModel">
@@ -28,10 +28,10 @@
     VerticalAlignment="Stretch"
     RowDefinitions="64, *">
     <TextBlock
+      Name="TbTitle"
       Grid.Row="0"
       HorizontalAlignment="Left"
-      FontSize="32"
-      Text="设置"/>
+      FontSize="32"/>
     <fui:SmoothScrollViewer Grid.Row="1" Padding="18,24,24,0">
       <StackPanel
         HorizontalAlignment="Stretch"
@@ -227,6 +227,32 @@
               HorizontalAlignment="Right"
               IsChecked="{Binding IsTopmost}"/>
           </Grid>
+        </ui:Card>
+
+        <ui:Card>
+          <Grid
+            VerticalAlignment="Center"
+            ColumnDefinitions="*, Auto"
+            RowDefinitions="*, *">
+            <TextBlock
+              Grid.Row="0"
+              Grid.Column="0"
+              Classes="Title"
+              Text="语言"/>
+            <TextBlock
+              Grid.Row="1"
+              Grid.Column="0"
+              Classes="Content"
+              Text="设置应用语言(需重启)"/>
+            <fui:FluentComboBox
+              Grid.RowSpan="2"
+              Grid.Column="1"
+              Width="128"
+              HorizontalAlignment="Right"
+              ItemsSource="{Binding Languages}"
+              SelectedItem="{Binding CurrentLanguage}"/>
+          </Grid>
+
         </ui:Card>
 
         <ui:Card Margin="0,0,0,64">

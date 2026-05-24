@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Media;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -213,6 +213,15 @@ public partial class TextViewModel : ViewModelBase
     private Location _spinnerLocation = Location.Right;
 
     public Location[] SpinnerLocations => [Location.Left, Location.Right];
+
+    [RelayCommand]
+    private void Search(object value)
+    {
+        SearchContent = $"搜索的内容: {value}";
+    }
+
+    [ObservableProperty]
+    private string _searchContent = "搜索的内容: Null";
 
     [ObservableProperty]
     private bool _isEnabledSpinner = true;

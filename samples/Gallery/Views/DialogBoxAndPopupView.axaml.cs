@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Controls;
 using Gallery.Messages;
@@ -15,6 +16,8 @@ public partial class DialogBoxAndPopupView : ViewBase
     public DialogBoxAndPopupView() : base("DialogBoxAndPopup")
     {
         InitializeComponent();
+
+        Title = LocalizationService.Instance.GetString("DialogAndPopup");
 
         CodeCards = new Dictionary<string, CodeCard>()
         {

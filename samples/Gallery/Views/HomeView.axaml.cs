@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
-using AvaloniaFluentUI.UI.Controls;
+using AvaloniaFluentUI.Controls;
 using Gallery.Helpers;
 
 namespace Gallery.Views;

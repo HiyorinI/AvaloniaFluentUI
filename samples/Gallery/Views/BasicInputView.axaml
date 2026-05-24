@@ -3,11 +3,10 @@
   xmlns="https://github.com/avaloniaui"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:fui="clr-namespace:AvaloniaFluentUI.UI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
-  Title="基本输入"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="viewModel:BasicInputViewModel"
@@ -29,6 +28,7 @@
     </Style>
   </ui:ViewBase.Styles>
 
+  <!--  标准按钮  -->
   <StackPanel Spacing="50">
     <ui:CodeCard Name="StandardButtonCard" Title="标准按钮">
       <Grid ColumnDefinitions="*, Auto">
@@ -37,8 +37,8 @@
           Orientation="Vertical"
           Spacing="8">
           <fui:PushButton
-            Width="{Binding PushButtonWidth}"
-            Height="{Binding PushButtonHeight}"
+            Width="256"
+            Height="35"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
@@ -46,18 +46,8 @@
             IsEnabled="{Binding !PushButtonIsDisable}"/>
 
           <fui:PushButton
-            Width="{Binding PushButtonWidth}"
-            Height="{Binding PushButtonHeight}"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Content="带有文本的透明标准按钮"
-            IsEnabled="{Binding !PushButtonIsDisable}"
-            Theme="{StaticResource TransparentPushButton}"/>
-
-          <fui:PushButton
-            Width="{Binding PushButtonWidth}"
-            Height="{Binding PushButtonHeight}"
+            Width="256"
+            Height="35"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
@@ -66,8 +56,29 @@
             IsEnabled="{Binding !PushButtonIsDisable}"/>
 
           <fui:PushButton
-            Width="{Binding PushButtonWidth}"
-            Height="{Binding PushButtonHeight}"
+            Width="256"
+            Height="35"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
+            Classes="Accent"
+            Content="主题色标准按钮"
+            IconData="{StaticResource Home}"
+            IsEnabled="{Binding !PushButtonIsDisable}"/>
+
+          <fui:PushButton
+            Width="256"
+            Height="35"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
+            Content="带有文本的透明标准按钮"
+            IsEnabled="{Binding !PushButtonIsDisable}"
+            Theme="{StaticResource TransparentPushButton}"/>
+
+          <fui:PushButton
+            Width="256"
+            Height="35"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
@@ -75,41 +86,17 @@
             IconData="{StaticResource GitHub}"
             IsEnabled="{Binding !PushButtonIsDisable}"
             Theme="{StaticResource TransparentPushButton}"/>
-
-          <fui:PushButton
-            Width="{Binding PushButtonWidth}"
-            Height="{Binding PushButtonHeight}"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Classes="accent"
-            Content="主题色标准按钮"
-            IconData="{StaticResource Home}"
-            IsEnabled="{Binding !PushButtonIsDisable}"/>
         </StackPanel>
 
         <ui:Card
           Grid.Column="1"
-          Width="256"
+          Width="150"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical">
             <TextBlock
               HorizontalAlignment="Left"
               FontWeight="Bold"
               Text="选项"/>
-
-            <TextBlock HorizontalAlignment="Left" Text="宽度"/>
-            <fui:ToolTipSlider
-              Maximum="{Binding PushButtonMaximumWidth}"
-              Minimum="{Binding PushButtonMinimumWidth}"
-              Value="{Binding PushButtonWidth}"/>
-
-            <TextBlock HorizontalAlignment="Left" Text="高度"/>
-            <fui:ToolTipSlider
-              Maximum="{Binding PushButtonMaximumHeight}"
-              Minimum="{Binding PushButtonMinimumHeight}"
-              Value="{Binding PushButtonHeight}"/>
-
             <TextBlock HorizontalAlignment="Left" Text="内容对齐方式"/>
             <fui:FAComboBox
               Margin="0,1"
@@ -123,6 +110,82 @@
       </Grid>
     </ui:CodeCard>
 
+    <ui:CodeCard Title="圆角按钮">
+      <Grid
+        ColumnDefinitions="*, Auto"
+        RowDefinitions="Auto, Auto, Auto, Auto"
+        RowSpacing="8">
+        <fui:PushButton
+          Grid.Row="0"
+          Classes="Round"
+          Content="圆角按钮"
+          IsEnabled="{Binding !RoundButtonIsDisabled}"/>
+        <fui:PushButton
+          Grid.Row="1"
+          Classes="Accent Round"
+          Content="圆角主题色按钮"
+          IsEnabled="{Binding !RoundButtonIsDisabled}"/>
+
+        <fui:ToolButton
+          Grid.Row="2"
+          Classes="Round"
+          IconData="{StaticResource GitHub}"
+          IsEnabled="{Binding !RoundButtonIsDisabled}"/>
+        <fui:ToolButton
+          Grid.Row="3"
+          Classes="Accent Round"
+          IconData="{StaticResource Wifi}"
+          IsEnabled="{Binding !RoundButtonIsDisabled}"/>
+
+        <CheckBox
+          Grid.RowSpan="4"
+          Grid.Column="1"
+          Content="是禁用的"
+          IsChecked="{Binding RoundButtonIsDisabled}"/>
+      </Grid>
+    </ui:CodeCard>
+
+    <ui:CodeCard Title="轮廓按钮">
+      <Grid
+        ColumnDefinitions="*, Auto"
+        RowDefinitions="Auto, Auto, Auto, Auto"
+        RowSpacing="8">
+        <fui:PushButton
+          Width="256"
+          Classes="Outlined"
+          Content="轮廓按钮"
+          IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
+        <fui:PushButton
+          Grid.Row="1"
+          Width="256"
+          Classes="Outlined Round"
+          Content="圆角轮廓按钮"
+          IconData="{StaticResource Menu}"
+          IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
+
+        <fui:ToolButton
+          Grid.Row="2"
+          Width="128"
+          Height="38"
+          Classes="Outlined"
+          IconData="{StaticResource Send}"
+          IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
+        <fui:ToolButton
+          Grid.Row="3"
+          Width="128"
+          Classes="Outlined Round"
+          IconData="{StaticResource View}"
+          IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
+
+        <CheckBox
+          Grid.RowSpan="4"
+          Grid.Column="1"
+          Content="是禁用的"
+          IsChecked="{Binding OutlinedClassButtonIsDisabled}"/>
+      </Grid>
+    </ui:CodeCard>
+
+    <!--  工具按钮  -->
     <ui:CodeCard Name="ToolButtonCard" Title="工具按钮">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
@@ -130,14 +193,14 @@
           Orientation="Vertical"
           Spacing="8">
           <fui:ToolButton
-            Width="{Binding ToolButtonWidth}"
-            Height="{Binding ToolButtonHeight}"
+            Width="256"
+            Height="35"
             HorizontalContentAlignment="{Binding ToolButtonContentAlignment}"
             IconData="{StaticResource Setting}"
             IsEnabled="{Binding !ToolButtonIsDisable}"/>
           <fui:ToolButton
-            Width="{Binding ToolButtonWidth}"
-            Height="{Binding ToolButtonHeight}"
+            Width="256"
+            Height="35"
             HorizontalContentAlignment="{Binding ToolButtonContentAlignment}"
             Foreground="DeepSkyBlue"
             IconData="{StaticResource Save}"
@@ -145,31 +208,20 @@
             Theme="{StaticResource TransparentToolButton}"/>
 
           <fui:ToolButton
-            Width="{Binding ToolButtonWidth}"
-            Height="{Binding ToolButtonHeight}"
+            Width="256"
+            Height="35"
             HorizontalContentAlignment="{Binding ToolButtonContentAlignment}"
-            Classes="accent"
+            Classes="Accent"
+            Foreground="OrangeRed"
             IconData="{StaticResource Wifi}"
             IsEnabled="{Binding !ToolButtonIsDisable}"/>
         </StackPanel>
         <ui:Card
           Grid.Column="1"
-          Width="256"
+          Width="150"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical">
             <TextBlock FontWeight="Bold" Text="选项"/>
-
-            <TextBlock HorizontalAlignment="Left" Text="宽度"/>
-            <fui:ToolTipSlider
-              Maximum="{Binding ToolButtonMaximumWidth}"
-              Minimum="{Binding ToolButtonMinimumWidth}"
-              Value="{Binding ToolButtonWidth}"/>
-
-            <TextBlock HorizontalAlignment="Left" Text="高度"/>
-            <fui:ToolTipSlider
-              Maximum="{Binding ToolButtonMaximumHeight}"
-              Minimum="{Binding ToolButtonMinimumHeight}"
-              Value="{Binding ToolButtonHeight}"/>
 
             <TextBlock HorizontalAlignment="Left" Text="内容对齐方式"/>
             <fui:FAComboBox
@@ -183,40 +235,41 @@
       </Grid>
     </ui:CodeCard>
 
+    <!--  填充按钮  -->
     <ui:CodeCard Title="填充按钮">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel Orientation="Vertical" Spacing="8">
           <fui:FilledPushButton
-            Width="128"
+            Width="256"
             Content="Information"
             IconData="{StaticResource Robot}"
             IsEnabled="{Binding !FilledButtonIsDisabled}"/>
           <fui:FilledPushButton
-            Width="128"
-            Classes="success"
+            Width="256"
+            Classes="Success"
             Content="Success"
             IconData="{StaticResource Share}"
             IsEnabled="{Binding !FilledButtonIsDisabled}"/>
           <fui:FilledPushButton
-            Width="128"
-            Classes="attention"
+            Width="256"
+            Classes="Attention"
             Content="Attention"
             IconData="{StaticResource Save}"
             IsEnabled="{Binding !FilledButtonIsDisabled}"/>
           <fui:FilledPushButton
-            Width="128"
-            Classes="warning"
+            Width="256"
+            Classes="Warning"
             Content="Warning"
             IconData="{StaticResource SpeedHigh}"
             IsEnabled="{Binding !FilledButtonIsDisabled}"/>
           <fui:FilledPushButton
-            Width="128"
-            Classes="error"
+            Width="256"
+            Classes="Error"
             Content="Error"
             IconData="{StaticResource Info}"
             IsEnabled="{Binding !FilledButtonIsDisabled}"/>
         </StackPanel>
-        <ui:Card Grid.Column="1" Width="256">
+        <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
             <TextBlock FontWeight="Bold" Text="选项"/>
             <CheckBox Content="是禁用的" IsChecked="{Binding FilledButtonIsDisabled}"/>
@@ -257,7 +310,7 @@
             GroupName="{Binding OutlinePushButtonGroupName}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
         </StackPanel>
-        <ui:Card Grid.Column="1">
+        <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
             <TextBlock FontWeight="Bold" Text="选项"/>
             <CheckBox Content="可多选" IsChecked="{Binding OutlinePushButtonIsMC}"/>
@@ -287,7 +340,7 @@
             IconData="{StaticResource Brush}"
             IsEnabled="{Binding !OutlineToolButtonIsDisabled}"/>
         </StackPanel>
-        <ui:Card Grid.Column="1">
+        <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
             <TextBlock FontWeight="Bold" Text="选项"/>
             <CheckBox Content="可多选" IsChecked="{Binding OutlineToolButtonIsMC}"/>
@@ -299,7 +352,7 @@
 
     <ui:CodeCard Name="DropDownButtonCard" Title="带下拉菜单的按钮">
       <Grid ColumnDefinitions="*, Auto">
-        <DropDownButton Width="128" IsEnabled="{Binding !DropDownButtonIsDisable}">
+        <DropDownButton Width="256" IsEnabled="{Binding !DropDownButtonIsDisable}">
           <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
             <PathIcon Data="{StaticResource Mail}"/>
             <TextBlock Grid.Column="1" Text="邮件"/>
@@ -339,7 +392,7 @@
       <Grid ColumnDefinitions="*, Auto">
         <DropDownButton
           Name="Test"
-          Width="128"
+          Width="256"
           IsEnabled="{Binding !TransparentDropDownButtonIsDisable}"
           Theme="{StaticResource TransparentDropDownButton}">
           <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
@@ -511,6 +564,36 @@
       </Grid>
     </ui:CodeCard>
 
+    <ui:CodeCard Title="胶囊单选按钮">
+      <Grid ColumnDefinitions="Auto, Auto, Auto, Auto, *" ColumnSpacing="8">
+        <RadioButton
+          Grid.Column="0"
+          Content="Options 1"
+          IsEnabled="{Binding !ChipsRadioButtonIsEnabled}"
+          Theme="{StaticResource ChipsRadioButton}"/>
+        <RadioButton
+          Grid.Column="1"
+          Content="Options 2"
+          IsEnabled="{Binding !ChipsRadioButtonIsEnabled}"
+          Theme="{StaticResource ChipsRadioButton}"/>
+        <RadioButton
+          Grid.Column="2"
+          Content="Options 3"
+          IsEnabled="{Binding !ChipsRadioButtonIsEnabled}"
+          Theme="{StaticResource ChipsRadioButton}"/>
+        <RadioButton
+          Grid.Column="3"
+          Content="Options 4"
+          IsEnabled="{Binding !ChipsRadioButtonIsEnabled}"
+          Theme="{StaticResource ChipsRadioButton}"/>
+
+        <CheckBox
+          Grid.Column="4"
+          HorizontalAlignment="Right"
+          Content="是禁用的"
+          IsChecked="{Binding ChipsRadioButtonIsEnabled}"/>
+      </Grid>
+    </ui:CodeCard>
 
     <ui:CodeCard Title="带子标题的单选按钮">
       <Grid
@@ -650,11 +733,26 @@
     </ui:CodeCard>
 
     <ui:CodeCard Name="ToolTipSliderCard" Title="带工具提示的滑动条">
-      <fui:ToolTipSlider
-        Width="328"
-        HorizontalAlignment="Left"
-        Maximum="100"
-        Minimum="0"/>
+      <Grid ColumnDefinitions="*, Auto">
+        <fui:ToolTipSlider
+          Width="328"
+          HorizontalAlignment="Left"
+          IsEnabled="{Binding !ToolTipSliderIsDisabled}"
+          Maximum="100"
+          Minimum="0"
+          Orientation="{Binding ToolTipSliderOrientation}"/>
+
+        <ui:Card Grid.Column="1">
+          <StackPanel Orientation="Vertical" Spacing="3">
+            <TextBlock Text="选项"/>
+            <StackPanel Orientation="Horizontal" Spacing="3">
+              <TextBlock Text="方向"/>
+              <fui:FluentComboBox ItemsSource="{Binding Orientations}" SelectedItem="{Binding ToolTipSliderOrientation}"/>
+            </StackPanel>
+            <CheckBox Content="是禁用的" IsChecked="{Binding ToolTipSliderIsDisabled}"/>
+          </StackPanel>
+        </ui:Card>
+      </Grid>
     </ui:CodeCard>
 
     <ui:CodeCard Name="RangeSliderCard" Title="范围滑动条">
