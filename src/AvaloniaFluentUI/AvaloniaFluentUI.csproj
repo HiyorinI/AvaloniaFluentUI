@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Locale\" />
+    <Folder Include="FluentControls\Toast\" />
   </ItemGroup>
 
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Styling;
@@ -8,7 +7,7 @@ using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Media;
 
-namespace AvaloniaFluentUI.Animations;
+namespace AvaloniaFluentUI.Media.Animation;
 
 public class FluentAnimation
 {
@@ -24,7 +23,7 @@ public class FluentAnimation
     /// <param name="duration">持续时间（毫秒）</param>
     public static async Task AnimateAsync(Animatable target, AvaloniaProperty property, object fromValue, object toValue, double duration = 250D)
     {
-        var animation = new Animation
+        var animation = new Avalonia.Animation.Animation
         {
             Duration = TimeSpan.FromMilliseconds(duration),
             Easing = new CubicEaseOut(),
@@ -79,7 +78,7 @@ public class FluentAnimation
             }
         };
 
-        var animation = new Animation
+        var animation = new Avalonia.Animation.Animation
         {
             Duration = TimeSpan.FromMilliseconds(300),
             Easing = new SplineEasing(0.1, 0.9, 0.5, 1.0),
@@ -113,11 +112,14 @@ public class FluentAnimation
 
     public static async Task CenterScaleAsync(Visual target, double offset, AvaloniaProperty? property = null, double duration = 200D)
     {
+        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource = new CancellationTokenSource();
+        
         target.Opacity = 0;
         property = property ?? ScaleTransform.ScaleYProperty;
         target.RenderTransformOrigin = new RelativePoint(1, 0.5, RelativeUnit.Relative);
 
-        var animation = new Animation
+        var animation = new Avalonia.Animation.Animation
         {
             Duration = TimeSpan.FromMilliseconds(200),
             // Easing = new QuarticEaseOut(),
@@ -145,19 +147,21 @@ public class FluentAnimation
                 }
             }
         };
-        await animation.RunAsync(target);
+        await animation.RunAsync(target, cancellationToken: _cancellationTokenSource.Token);
     }
 
     /// <summary>
     /// 从下方滑入
     /// </summary>
-    public static async Task SlideInAsync(Visual target, double offset, AvaloniaProperty? property = null,
-        double duration = 250D)
+    public static async Task SlideInAsync(Visual target, double offset, AvaloniaProperty? property = null, double duration = 250D)
     {
+        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource = new CancellationTokenSource();
+        
         target.Opacity = 0;
         property = property ?? TranslateTransform.YProperty;
 
-        var animation = new Animation
+        var animation = new Avalonia.Animation.Animation
         {
             Duration = TimeSpan.FromMilliseconds(duration),
             Easing = new CubicEaseOut(),
@@ -176,36 +180,6 @@ public class FluentAnimation
                 }
             }
         };
-        await animation.RunAsync(target);
-    }
-
-    /// <summary>
-    /// 自定义动画：可以指定多个属性同时变化
-    /// </summary>
-    public static async Task CustomAnimationAsync(
-        Animatable target,
-        IReadOnlyList<(AvaloniaProperty Property, object FromValue, object ToValue)> properties,
-        double duration = 250D,
-        Easing? easing = null)
-    {
-        var animation = new Animation
-        {
-            Duration = TimeSpan.FromMilliseconds(duration),
-            Easing = easing ?? new CubicEaseOut(),
-        };
-
-        var fromFrame = new KeyFrame { Cue = new Cue(0d) };
-        var toFrame = new KeyFrame { Cue = new Cue(1d) };
-
-        foreach (var (prop, fromVal, toVal) in properties)
-        {
-            fromFrame.Setters.Add(new Setter(prop, fromVal));
-            toFrame.Setters.Add(new Setter(prop, toVal));
-        }
-
-        animation.Children.Add(fromFrame);
-        animation.Children.Add(toFrame);
-
-        await animation.RunAsync(target);
+        await animation.RunAsync(target, cancellationToken: _cancellationTokenSource.Token);
     }
 }
