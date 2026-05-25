@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="using:Gallery.Controls"
   xmlns:vm="using:Gallery.ViewModels"
@@ -132,7 +133,7 @@
       Margin="0,12,0,0"
       HorizontalAlignment="Left"
       TextChanged="OnSearchTextChanged"
-      Watermark="搜索图标"/>
+      Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[IV_SearchIcon]}"/>
 
     <fui:SmoothScrollViewer
       Grid.Row="2"
@@ -164,13 +165,13 @@
         Data="{Binding CurrentIconData, Mode=TwoWay}"/>
       <!--  Stretch="Uniform"  -->
 
-      <TextBlock FontSize="16" Text="图标名字"/>
+      <TextBlock FontSize="16" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[IV_IconName]}"/>
       <TextBlock FontSize="12" Text="{Binding CurrentIconName}"/>
 
       <TextBlock
         Margin="0,20,0,0"
         FontSize="16"
-        Text="枚举成员"/>
+        Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[IV_EnumMember]}"/>
       <TextBlock FontSize="12" Text="{Binding CurrentItemEnumName}"/>
     </StackPanel>
   </Grid>

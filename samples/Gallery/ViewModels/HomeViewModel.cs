@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
+using AvaloniaFluentUI.Locale;
 using CommunityToolkit.Mvvm.Input;
 using Gallery.Models;
 
@@ -16,6 +18,8 @@ public partial class HomeViewModel : ViewModelBase
 #if DEBUG
         Debug.WriteLine("HomeViewModel Init");
 #endif
+        LocalizationService.Instance.PropertyChanged += OnLanguageChanged;
+
         ButtonItemSource = new List<ButtonItemModel>()
         {
             new("Button", "Button", "A control that responds to user input and emit clicked signal."),
@@ -146,4 +150,46 @@ public partial class HomeViewModel : ViewModelBase
     public List<ButtonItemModel> StatusAndInformationItemSource { get; }
     public List<ButtonItemModel> TextItemSource { get; }
     public List<ButtonItemModel> ViewItemSource { get; }
+
+    // Localized string properties
+    public string FluentGalleryTitle => LocalizationService.Instance.GetString("FluentGallery");
+    public string GettingStartedTitle => LocalizationService.Instance.GetString("GettingStarted");
+    public string GettingStartedContent => LocalizationService.Instance.GetString("GettingStartedContent");
+    public string GitHubRepoTitle => LocalizationService.Instance.GetString("GitHubRepo");
+    public string GitHubRepoContent => LocalizationService.Instance.GetString("GitHubRepoContent");
+    public string CodeSamplesTitle => LocalizationService.Instance.GetString("CodeSamples");
+    public string CodeSamplesContent => LocalizationService.Instance.GetString("CodeSamplesContent");
+    public string SendFeedbackTitle => LocalizationService.Instance.GetString("SendFeedback");
+    public string SendFeedbackContent => LocalizationService.Instance.GetString("SendFeedbackContent");
+    public string SectionBasicInput => LocalizationService.Instance.GetString("Section_BasicInput");
+    public string SectionDateTime => LocalizationService.Instance.GetString("Section_DateTime");
+    public string SectionDialog => LocalizationService.Instance.GetString("Section_Dialog");
+    public string SectionLayout => LocalizationService.Instance.GetString("Section_Layout");
+    public string SectionMenuAndToolBar => LocalizationService.Instance.GetString("Section_MenuAndToolBar");
+    public string SectionNavigationView => LocalizationService.Instance.GetString("Section_NavigationView");
+    public string SectionStatusAndInformation => LocalizationService.Instance.GetString("Section_StatusAndInformation");
+    public string SectionText => LocalizationService.Instance.GetString("Section_Text");
+    public string SectionView => LocalizationService.Instance.GetString("Section_View");
+
+    private void OnLanguageChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(FluentGalleryTitle));
+        OnPropertyChanged(nameof(GettingStartedTitle));
+        OnPropertyChanged(nameof(GettingStartedContent));
+        OnPropertyChanged(nameof(GitHubRepoTitle));
+        OnPropertyChanged(nameof(GitHubRepoContent));
+        OnPropertyChanged(nameof(CodeSamplesTitle));
+        OnPropertyChanged(nameof(CodeSamplesContent));
+        OnPropertyChanged(nameof(SendFeedbackTitle));
+        OnPropertyChanged(nameof(SendFeedbackContent));
+        OnPropertyChanged(nameof(SectionBasicInput));
+        OnPropertyChanged(nameof(SectionDateTime));
+        OnPropertyChanged(nameof(SectionDialog));
+        OnPropertyChanged(nameof(SectionLayout));
+        OnPropertyChanged(nameof(SectionMenuAndToolBar));
+        OnPropertyChanged(nameof(SectionNavigationView));
+        OnPropertyChanged(nameof(SectionStatusAndInformation));
+        OnPropertyChanged(nameof(SectionText));
+        OnPropertyChanged(nameof(SectionView));
+    }
 }

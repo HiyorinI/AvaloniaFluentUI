@@ -1,8 +1,11 @@
+using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Styling;
 using AvaloniaFluentUI.Controls.Windowing;
 using AvaloniaFluentUI.Locale;
+using AvaloniaFluentUI.Styling;
 
 namespace LocaleTest.Views;
 
@@ -30,5 +33,9 @@ public partial class MainWindow : AppWindow
         base.OnLoaded(e);
 
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
+    }
+
+    private void OnSearch(string value)
+    {
     }
 }

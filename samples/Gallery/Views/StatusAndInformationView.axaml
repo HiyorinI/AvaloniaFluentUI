@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -12,15 +13,15 @@
   x:DataType="viewModel:StatusAndInformationViewModel"
   mc:Ignorable="d">
   <StackPanel Spacing="50">
-    <ui:CodeCard Name="ToolTipCard" Title="带工具提示的按钮">
-      <Button Content="带工具提示的按钮">
+    <ui:CodeCard Name="ToolTipCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_ToolTipButton]}">
+      <Button Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_ToolTipButton]}">
         <ToolTip.Tip>
-          <ToolTip Content="我是工具提示"/>
+          <ToolTip Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_ToolTipText]}"/>
         </ToolTip.Tip>
       </Button>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="InfoBadgeCard" Title="信息徽章">
+    <ui:CodeCard Name="InfoBadgeCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_InfoBadge]}">
       <StackPanel Orientation="Horizontal" Spacing="10">
         <fui:InfoBadge Classes="Attention" Value="10"/>
         <fui:InfoBadge Classes="Informational" Value="50"/>
@@ -30,21 +31,21 @@
       </StackPanel>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="InfoBarCard" Title="消息条">
+    <ui:CodeCard Name="InfoBarCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_InfoBar]}">
       <Grid ColumnDefinitions="*, Auto">
         <fui:InfoBar
-          Title="保存成功"
+          Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_SaveSuccess]}"
           Grid.Column="0"
           Margin="0,10,10,0"
           IsClosable="{Binding InfoBarIsClosable}"
           IsOpen="{Binding InfoBarIsOpen, Mode=TwoWay}"
-          Message="文件已成功保存到服务器"
+          Message="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_FileSaved]}"
           Severity="{Binding CurrentInfoBarSeverity}">
           <fui:InfoBar.ActionButton>
             <Button
               Padding="20,5,20,6"
               HorizontalAlignment="Right"
-              Content="Action"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Action]}"/>
           </fui:InfoBar.ActionButton>
         </fui:InfoBar>
         <ui:Card Grid.Column="1" Width="256">
@@ -53,12 +54,12 @@
               Grid.Row="0"
               Grid.Column="0"
               FontWeight="Bold"
-              Text="选项"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Options]}"/>
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
               VerticalAlignment="Center"
-              Text="样式: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Style]}"/>
             <fui:FluentComboBox
               Grid.Row="1"
               Grid.Column="1"
@@ -67,7 +68,7 @@
             <CheckBox
               Grid.Row="2"
               Grid.ColumnSpan="2"
-              Content="是可关闭的"
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_IsClosable]}"
               IsChecked="{Binding InfoBarIsClosable}"/>
             <Button
               Grid.Row="3"
@@ -75,13 +76,13 @@
               HorizontalAlignment="Stretch"
               Classes="accent"
               Command="{Binding ResetInfoBarCommand}"
-              Content="重置"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Restore]}"/>
           </Grid>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ProgressBarCard" Title="进度条">
+    <ui:CodeCard Name="ProgressBarCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_ProgressBar]}">
       <Grid ColumnDefinitions="*, Auto">
         <ProgressBar
           Width="256"
@@ -93,10 +94,10 @@
           Value="{Binding ProgressBarCurrentValue}"/>
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="是不确定的" IsChecked="{Binding ProgressBarIsIndeterminate}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_IsIndeterminate]}" IsChecked="{Binding ProgressBarIsIndeterminate}"/>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock VerticalAlignment="Center" Text="进度: "/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Progress]}"/>
 
               <fui:NumberBox
                 HorizontalAlignment="Stretch"
@@ -110,7 +111,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ProgressRingCard" Title="进度环">
+    <ui:CodeCard Name="ProgressRingCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_ProgressRing]}">
       <Grid ColumnDefinitions="*, Auto">
         <fui:ProgressRing
           Width="128"
@@ -124,10 +125,10 @@
 
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="是不确定的" IsChecked="{Binding ProgressRingIsIndeterminate}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_IsIndeterminate]}" IsChecked="{Binding ProgressRingIsIndeterminate}"/>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock VerticalAlignment="Center" Text="进度: "/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_Progress]}"/>
 
               <fui:NumberBox
                 HorizontalAlignment="Stretch"
@@ -137,7 +138,7 @@
                 Value="{Binding ProgressRingCurrentValue}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock VerticalAlignment="Center" Text="背景色: "/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SI_BgColor]}"/>
               <ColorPicker HorizontalAlignment="Left" Color="{Binding ProgressRingColor, Mode=TwoWay}"/>
             </StackPanel>
           </StackPanel>

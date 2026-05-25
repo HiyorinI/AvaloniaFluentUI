@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -30,7 +31,7 @@
 
   <!--  标准按钮  -->
   <StackPanel Spacing="50">
-    <ui:CodeCard Name="StandardButtonCard" Title="标准按钮">
+    <ui:CodeCard Name="StandardButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StandardButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
           Grid.Column="0"
@@ -42,7 +43,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Content="标准按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StandardButton]}"
             IsEnabled="{Binding !PushButtonIsDisable}"/>
 
           <fui:PushButton
@@ -51,7 +52,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Content="带有图标文本的标准按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StandardButtonWithIcon]}"
             IconData="{StaticResource GitHub}"
             IsEnabled="{Binding !PushButtonIsDisable}"/>
 
@@ -62,7 +63,7 @@
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
             Classes="Accent"
-            Content="主题色标准按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_AccentStandardButton]}"
             IconData="{StaticResource Home}"
             IsEnabled="{Binding !PushButtonIsDisable}"/>
 
@@ -72,7 +73,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Content="带有文本的透明标准按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentStandardButton]}"
             IsEnabled="{Binding !PushButtonIsDisable}"
             Theme="{StaticResource TransparentPushButton}"/>
 
@@ -82,7 +83,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             HorizontalContentAlignment="{Binding PushButtonContentAlignment}"
-            Content="带有图标文本的透明标准按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentStandardButtonWithIcon]}"
             IconData="{StaticResource GitHub}"
             IsEnabled="{Binding !PushButtonIsDisable}"
             Theme="{StaticResource TransparentPushButton}"/>
@@ -96,21 +97,21 @@
             <TextBlock
               HorizontalAlignment="Left"
               FontWeight="Bold"
-              Text="选项"/>
-            <TextBlock HorizontalAlignment="Left" Text="内容对齐方式"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
+            <TextBlock HorizontalAlignment="Left" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ContentAlignment]}"/>
             <fui:FAComboBox
               Margin="0,1"
               HorizontalAlignment="Stretch"
               ItemsSource="{Binding HorizontalAlignments}"
               SelectedItem="{Binding PushButtonContentAlignment}"/>
 
-            <CheckBox Content="是禁用的" IsChecked="{Binding PushButtonIsDisable}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding PushButtonIsDisable}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="圆角按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_RoundButton]}">
       <Grid
         ColumnDefinitions="*, Auto"
         RowDefinitions="Auto, Auto, Auto, Auto"
@@ -118,12 +119,12 @@
         <fui:PushButton
           Grid.Row="0"
           Classes="Round"
-          Content="圆角按钮"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_RoundButton]}"
           IsEnabled="{Binding !RoundButtonIsDisabled}"/>
         <fui:PushButton
           Grid.Row="1"
           Classes="Accent Round"
-          Content="圆角主题色按钮"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_AccentRoundButton]}"
           IsEnabled="{Binding !RoundButtonIsDisabled}"/>
 
         <fui:ToolButton
@@ -140,12 +141,12 @@
         <CheckBox
           Grid.RowSpan="4"
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding RoundButtonIsDisabled}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="轮廓按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_OutlineButton]}">
       <Grid
         ColumnDefinitions="*, Auto"
         RowDefinitions="Auto, Auto, Auto, Auto"
@@ -153,13 +154,13 @@
         <fui:PushButton
           Width="256"
           Classes="Outlined"
-          Content="轮廓按钮"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_OutlineButton]}"
           IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
         <fui:PushButton
           Grid.Row="1"
           Width="256"
           Classes="Outlined Round"
-          Content="圆角轮廓按钮"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_RoundOutlineButton]}"
           IconData="{StaticResource Menu}"
           IsEnabled="{Binding !OutlinedClassButtonIsDisabled}"/>
 
@@ -180,13 +181,13 @@
         <CheckBox
           Grid.RowSpan="4"
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding OutlinedClassButtonIsDisabled}"/>
       </Grid>
     </ui:CodeCard>
 
     <!--  工具按钮  -->
-    <ui:CodeCard Name="ToolButtonCard" Title="工具按钮">
+    <ui:CodeCard Name="ToolButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToolButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
           Grid.Column="0"
@@ -221,22 +222,22 @@
           Width="150"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
 
-            <TextBlock HorizontalAlignment="Left" Text="内容对齐方式"/>
+            <TextBlock HorizontalAlignment="Left" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ContentAlignment]}"/>
             <fui:FAComboBox
               Margin="0,1"
               HorizontalAlignment="Stretch"
               ItemsSource="{Binding HorizontalAlignments}"
               SelectedItem="{Binding ToolButtonContentAlignment}"/>
-            <CheckBox Content="是禁用的" IsChecked="{Binding ToolButtonIsDisable}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding ToolButtonIsDisable}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
     <!--  填充按钮  -->
-    <ui:CodeCard Title="填充按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_FilledButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel Orientation="Vertical" Spacing="8">
           <fui:FilledPushButton
@@ -271,14 +272,14 @@
         </StackPanel>
         <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="是禁用的" IsChecked="{Binding FilledButtonIsDisabled}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding FilledButtonIsDisabled}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="描边按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StrokeButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
           Grid.Column="0"
@@ -286,41 +287,41 @@
           Orientation="Horizontal"
           Spacing="5">
           <fui:OutlinePushButton
-            Content="音乐"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Music]}"
             GroupName="{Binding OutlinePushButtonGroupName}"
             IconData="{StaticResource Music}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
           <fui:OutlinePushButton
-            Content="电影和电视"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_MovieAndTV]}"
             GroupName="{Binding OutlinePushButtonGroupName}"
             IconData="{StaticResource Video}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
           <fui:OutlinePushButton
-            Content="游戏"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Game]}"
             GroupName="{Binding OutlinePushButtonGroupName}"
             IconData="{StaticResource Game}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
           <fui:OutlinePushButton
-            Content="GitHub"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[GitHubRepo]}"
             GroupName="{Binding OutlinePushButtonGroupName}"
             IconData="{StaticResource GitHub}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
           <fui:OutlinePushButton
-            Content="关于我们"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_AboutUs]}"
             GroupName="{Binding OutlinePushButtonGroupName}"
             IsEnabled="{Binding !OutlinePushButtonIsDisabled}"/>
         </StackPanel>
         <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="可多选" IsChecked="{Binding OutlinePushButtonIsMC}"/>
-            <CheckBox Content="是禁用的" IsChecked="{Binding OutlinePushButtonIsDisabled}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsMultiSelect]}" IsChecked="{Binding OutlinePushButtonIsMC}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding OutlinePushButtonIsDisabled}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="描边工具按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StrokeToolButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel
           Grid.Column="0"
@@ -342,53 +343,53 @@
         </StackPanel>
         <ui:Card Grid.Column="1" Width="128">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="可多选" IsChecked="{Binding OutlineToolButtonIsMC}"/>
-            <CheckBox Content="是禁用的" IsChecked="{Binding OutlineToolButtonIsDisabled}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsMultiSelect]}" IsChecked="{Binding OutlineToolButtonIsMC}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding OutlineToolButtonIsDisabled}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="DropDownButtonCard" Title="带下拉菜单的按钮">
+    <ui:CodeCard Name="DropDownButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_DropDownButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <DropDownButton Width="256" IsEnabled="{Binding !DropDownButtonIsDisable}">
           <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
             <PathIcon Data="{StaticResource Mail}"/>
-            <TextBlock Grid.Column="1" Text="邮件"/>
+            <TextBlock Grid.Column="1" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Mail]}"/>
           </Grid>
           <DropDownButton.Flyout>
             <fui:FluentMenuFlyout>
-              <MenuItem Header="发送">
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Send]}">
                 <MenuItem.Icon>
                   <PathIcon Data="{StaticResource Send}"/>
                 </MenuItem.Icon>
                 <MenuItem.Items>
-                  <MenuItem Header="发送到本地"/>
-                  <MenuItem Header="发送到网络"/>
+                  <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SendToLocal]}"/>
+                  <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SendToNetwork]}"/>
                 </MenuItem.Items>
               </MenuItem>
-              <MenuItem Header="保存">
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Save]}">
                 <MenuItem.Icon>
                   <PathIcon Data="{StaticResource Save}"/>
                 </MenuItem.Icon>
               </MenuItem>
               <Separator HorizontalAlignment="Stretch"/>
-              <MenuItem Header="撤销"/>
-              <MenuItem Header="重新发送"/>
-              <MenuItem Header="保存到本地"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Resend]}"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SaveToLocal]}"/>
             </fui:FluentMenuFlyout>
           </DropDownButton.Flyout>
         </DropDownButton>
 
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding DropDownButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="TransparentDropDownButtonCard" Title="带下拉菜单的透明按钮">
+    <ui:CodeCard Name="TransparentDropDownButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentDropDownButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <DropDownButton
           Name="Test"
@@ -397,50 +398,50 @@
           Theme="{StaticResource TransparentDropDownButton}">
           <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
             <PathIcon Data="{StaticResource Mail}"/>
-            <TextBlock Grid.Column="1" Text="邮件"/>
+            <TextBlock Grid.Column="1" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Mail]}"/>
           </Grid>
           <DropDownButton.Flyout>
             <fui:FluentMenuFlyout>
-              <MenuItem Header="发送">
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Send]}">
                 <MenuItem.Icon>
                   <PathIcon Data="{StaticResource Send}"/>
                 </MenuItem.Icon>
                 <MenuItem.Items>
-                  <MenuItem Header="发送到本地"/>
-                  <MenuItem Header="发送到网络"/>
+                  <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SendToLocal]}"/>
+                  <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SendToNetwork]}"/>
                 </MenuItem.Items>
               </MenuItem>
-              <MenuItem Header="保存">
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Save]}">
                 <MenuItem.Icon>
                   <PathIcon Data="{StaticResource Save}"/>
                 </MenuItem.Icon>
               </MenuItem>
               <Separator HorizontalAlignment="Stretch"/>
-              <MenuItem Header="撤销"/>
-              <MenuItem Header="重新发送"/>
-              <MenuItem Header="保存到本地"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Resend]}"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SaveToLocal]}"/>
             </fui:FluentMenuFlyout>
           </DropDownButton.Flyout>
         </DropDownButton>
 
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding TransparentDropDownButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
     <!-- <ui:CodeCard Title="带有文本的透明标准按钮"> -->
-    <!-- <fui:PushButton Content="带有文本的透明标准按钮" Theme="{StaticResource TransparentPushButton}"/> -->
+    <!-- <fui:PushButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentStandardButton]}" Theme="{StaticResource TransparentPushButton}"/> -->
     <!-- </ui:CodeCard> -->
 
     <!-- <ui:CodeCard Title="带有图标文本的标准按钮"> -->
-    <!-- <fui:PushButton Content="带有图标文本的标准按钮" IconData="{StaticResource GitHub}"/> -->
+    <!-- <fui:PushButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_StandardButtonWithIcon]}" IconData="{StaticResource GitHub}"/> -->
     <!-- </ui:CodeCard> -->
 
     <!-- <ui:CodeCard Title="带有图标文本的透明标准按钮"> -->
     <!--  <fui:PushButton  -->
-    <!--  Content="带有图标文本的透明标准按钮"  -->
+    <!--  Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentStandardButtonWithIcon]}"  -->
     <!--  IconData="{StaticResource GitHub}"  -->
     <!--  Theme="{StaticResource TransparentPushButton}"/>  -->
     <!-- </ui:CodeCard> -->
@@ -448,7 +449,7 @@
     <!-- <ui:CodeCard Title="主题色标准按钮"> -->
     <!--  <fui:PushButton  -->
     <!--  Classes="accent"  -->
-    <!--  Content="主题色标准按钮"  -->
+    <!--  Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_AccentStandardButton]}"  -->
     <!--  IconData="{StaticResource Home}"/>  -->
     <!-- </ui:CodeCard> -->
 
@@ -464,73 +465,73 @@
 
     <!--  //////////  -->
 
-    <ui:CodeCard Name="ToggleButtonCard" Title="状态开关按钮">
+    <ui:CodeCard Name="ToggleButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleButton]}">
       <Grid ColumnDefinitions="*, Auto">
         <StackPanel Orientation="Vertical" Spacing="8">
-          <ToggleButton Content="开关按钮" IsEnabled="{Binding !StatusSwitchButtonIsDisable}"/>
+          <ToggleButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleButton]}" IsEnabled="{Binding !StatusSwitchButtonIsDisable}"/>
           <ToggleButton
-            Content="透明状态开关按钮"
+            Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentToggleButton]}"
             IsEnabled="{Binding !StatusSwitchButtonIsDisable}"
             Theme="{StaticResource TransparentToggleButton}"/>
-          <ToggleSplitButton Content="分割状态开关按钮" IsEnabled="{Binding !StatusSwitchButtonIsDisable}">
+          <ToggleSplitButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleSplitButton]}" IsEnabled="{Binding !StatusSwitchButtonIsDisable}">
             <ToggleSplitButton.Flyout>
               <fui:FluentMenuFlyout>
-                <MenuItem Header="复制" InputGesture="Ctrl+C"/>
-                <MenuItem Header="剪切" InputGesture="Ctrl+X"/>
-                <MenuItem Header="粘贴" InputGesture="Ctrl+V"/>
-                <MenuItem Header="撤销" InputGesture="Ctrl+Z"/>
+                <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Copy]}" InputGesture="Ctrl+C"/>
+                <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Cut]}" InputGesture="Ctrl+X"/>
+                <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Paste]}" InputGesture="Ctrl+V"/>
+                <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}" InputGesture="Ctrl+Z"/>
               </fui:FluentMenuFlyout>
             </ToggleSplitButton.Flyout>
           </ToggleSplitButton>
         </StackPanel>
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding StatusSwitchButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
-    <!-- <ui:CodeCard Title="状态开关按钮"> -->
-    <!--   <ToggleButton Content="开关按钮"/> -->
+    <!-- <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleButton]}"> -->
+    <!--   <ToggleButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleButton]}"/> -->
     <!-- </ui:CodeCard> -->
     <!--    -->
     <!-- <ui:CodeCard Title="透明状态开关按钮"> -->
-    <!--   <ToggleButton Content="透明状态开关按钮" Theme="{StaticResource TransparentToggleButton}"/> -->
+    <!--   <ToggleButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_TransparentToggleButton]}" Theme="{StaticResource TransparentToggleButton}"/> -->
     <!-- </ui:CodeCard> -->
     <!--    -->
     <!-- <ui:CodeCard Title="分割状态开关按钮"> -->
     <!--   <ToggleSplitButton Content="分割按钮"> -->
     <!--     <ToggleSplitButton.Flyout> -->
     <!--       <MenuFlyout> -->
-    <!--         <MenuItem Header="复制" InputGesture="Ctrl+C"/> -->
-    <!--         <MenuItem Header="剪切" InputGesture="Ctrl+X"/> -->
-    <!--         <MenuItem Header="粘贴" InputGesture="Ctrl+V"/> -->
-    <!--         <MenuItem Header="撤销" InputGesture="Ctrl+Z"/> -->
+    <!--         <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Copy]}" InputGesture="Ctrl+C"/> -->
+    <!--         <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Cut]}" InputGesture="Ctrl+X"/> -->
+    <!--         <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Paste]}" InputGesture="Ctrl+V"/> -->
+    <!--         <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}" InputGesture="Ctrl+Z"/> -->
     <!--       </MenuFlyout> -->
     <!--     </ToggleSplitButton.Flyout> -->
     <!--   </ToggleSplitButton> -->
     <!-- </ui:CodeCard> -->
 
-    <ui:CodeCard Name="SplitButtonCard" Title="拆分按钮">
+    <ui:CodeCard Name="SplitButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SplitButton]}">
       <Grid ColumnDefinitions="*, Auto">
-        <SplitButton Content="复制" IsEnabled="{Binding !SplitButtonIsDisable}">
+        <SplitButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Copy]}" IsEnabled="{Binding !SplitButtonIsDisable}">
           <SplitButton.Flyout>
             <fui:FluentMenuFlyout>
-              <MenuItem Header="复制" InputGesture="Ctrl+C"/>
-              <MenuItem Header="剪切" InputGesture="Ctrl+X"/>
-              <MenuItem Header="粘贴" InputGesture="Ctrl+V"/>
-              <MenuItem Header="撤销" InputGesture="Ctrl+Z"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Copy]}" InputGesture="Ctrl+C"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Cut]}" InputGesture="Ctrl+X"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Paste]}" InputGesture="Ctrl+V"/>
+              <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}" InputGesture="Ctrl+Z"/>
             </fui:FluentMenuFlyout>
           </SplitButton.Flyout>
         </SplitButton>
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding SplitButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="RadioButtonCard" Title="单选按钮">
+    <ui:CodeCard Name="RadioButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_RadioButton]}">
       <Grid
         ColumnDefinitions="*, Auto"
         ColumnSpacing="3"
@@ -538,33 +539,33 @@
         <RadioButton
           Grid.Row="0"
           Grid.ColumnSpan="2"
-          Content="扬声器"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Speakers]}"
           IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="1"
           Grid.ColumnSpan="2"
-          Content="耳机"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Headphones]}"
           IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="2"
           Grid.ColumnSpan="2"
-          Content="控制器"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Controller]}"
           IsEnabled="{Binding !RadioButtonIsDisabled}"/>
         <RadioButton
           Grid.Row="3"
           Grid.ColumnSpan="2"
-          Content="蓝牙"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Bluetooth]}"
           IsEnabled="{Binding !RadioButtonIsDisabled}"/>
 
         <CheckBox
           Grid.Row="0"
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding RadioButtonIsDisabled}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="胶囊单选按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ChipsRadioButton]}">
       <Grid ColumnDefinitions="Auto, Auto, Auto, Auto, *" ColumnSpacing="8">
         <RadioButton
           Grid.Column="0"
@@ -590,12 +591,12 @@
         <CheckBox
           Grid.Column="4"
           HorizontalAlignment="Right"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding ChipsRadioButtonIsEnabled}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="带子标题的单选按钮">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SubTitleRadioButton]}">
       <Grid
         ColumnDefinitions="*, Auto"
         ColumnSpacing="3"
@@ -603,66 +604,66 @@
         <fui:SubTitleRadioButton
           Grid.Row="0"
           Grid.ColumnSpan="2"
-          Content="扬声器"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Speakers]}"
           IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
           SubTitle="Realted(R) Audio"/>
         <fui:SubTitleRadioButton
           Grid.Row="1"
           Grid.ColumnSpan="2"
-          Content="耳机"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Headphones]}"
           IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
           SubTitle="AirPods Pro 2"/>
         <fui:SubTitleRadioButton
           Grid.Row="2"
           Grid.ColumnSpan="2"
-          Content="控制器"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Controller]}"
           IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
           SubTitle="Xbox Wireless Controller"/>
         <fui:SubTitleRadioButton
           Grid.Row="3"
           Grid.ColumnSpan="2"
-          Content="蓝牙"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Bluetooth]}"
           IsEnabled="{Binding !SubTitleRadioButtonIsDisabled}"
           SubTitle="ProjectLuo M2"/>
 
         <CheckBox
           Grid.Row="0"
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding SubTitleRadioButtonIsDisabled}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="HyperlinkButtonCard" Title="超链接按钮">
+    <ui:CodeCard Name="HyperlinkButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_HyperlinkButton]}">
       <Grid ColumnDefinitions="*, Auto">
 
         <HyperlinkButton
           Grid.Column="0"
-          Content="我是超链接按钮"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IAmHyperlink]}"
           IsEnabled="{Binding !HyperlinkButtonIsDisable}"
           NavigateUri="https://mikuas.top"/>
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding HyperlinkButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ToggleSwitchButtonCard" Title="开关按钮">
+    <ui:CodeCard Name="ToggleSwitchButtonCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToggleSwitch]}">
       <Grid ColumnDefinitions="*, Auto">
         <ToggleSwitch
           Grid.Column="0"
-          Content="开启蓝牙"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_EnableBluetooth]}"
           IsEnabled="{Binding !ToggleSwitchButtonIsDisable}"/>
         <CheckBox
           Grid.Column="1"
-          Content="是禁用的"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}"
           IsChecked="{Binding ToggleSwitchButtonIsDisable}"/>
       </Grid>
     </ui:CodeCard>
 
     <!--  //////////  -->
-    <ui:CodeCard Name="CheckBoxCard" Title="复选框">
+    <ui:CodeCard Name="CheckBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_CheckBox]}">
       <Grid ColumnDefinitions="*, Auto">
         <CheckBox
           Grid.Column="0"
@@ -676,23 +677,23 @@
           Width="256"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
 
-            <CheckBox Content="启用三态" IsChecked="{Binding CheckBoxIsThreeState}"/>
-            <CheckBox Content="是禁用的" IsChecked="{Binding CheckBoxIsDisable}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_EnableThreeState]}" IsChecked="{Binding CheckBoxIsThreeState}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding CheckBoxIsDisable}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ComboBoxCard" Title="下拉框">
+    <ui:CodeCard Name="ComboBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ComboBox]}">
       <fui:FluentComboBox
         Width="256"
         ItemsSource="{Binding Items}"
         SelectedIndex="0"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="多选下拉框">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_MultiSelectionComboBox]}">
       <Grid ColumnDefinitions="*, Auto" ColumnSpacing="8">
         <fui:MultiSelectionComboBox
           VerticalAlignment="Top"
@@ -700,22 +701,22 @@
           SelectedItems="{Binding MultiSelectionSelectedItems}"/>
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="6">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <Button
               Command="{Binding SelectOddOrEventNumberItemsCommand}"
               CommandParameter="1"
-              Content="选中奇数项目"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SelectOddItems]}"/>
             <Button
               Command="{Binding SelectOddOrEventNumberItemsCommand}"
               CommandParameter="0"
-              Content="选中偶数项目"/>
-            <Button Command="{Binding ClearMultiSelectionSelectedItemCommand}" Content="清空选定的项目"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_SelectEvenItems]}"/>
+            <Button Command="{Binding ClearMultiSelectionSelectedItemCommand}" Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ClearSelectedItems]}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="SliderCard" Title="滑动条">
+    <ui:CodeCard Name="SliderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Slider]}">
       <Grid ColumnDefinitions="*, Auto">
         <Slider
           Grid.Column="0"
@@ -732,7 +733,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ToolTipSliderCard" Title="带工具提示的滑动条">
+    <ui:CodeCard Name="ToolTipSliderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ToolTipSlider]}">
       <Grid ColumnDefinitions="*, Auto">
         <fui:ToolTipSlider
           Width="328"
@@ -744,18 +745,18 @@
 
         <ui:Card Grid.Column="1">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock Text="选项"/>
+            <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock Text="方向"/>
+              <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Direction]}"/>
               <fui:FluentComboBox ItemsSource="{Binding Orientations}" SelectedItem="{Binding ToolTipSliderOrientation}"/>
             </StackPanel>
-            <CheckBox Content="是禁用的" IsChecked="{Binding ToolTipSliderIsDisabled}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_IsDisabled]}" IsChecked="{Binding ToolTipSliderIsDisabled}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="RangeSliderCard" Title="范围滑动条">
+    <ui:CodeCard Name="RangeSliderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_RangeSlider]}">
       <fui:RangeSlider
         Width="328"
         HorizontalAlignment="Left"
@@ -763,7 +764,7 @@
         Minimum="0"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ColorSliderCard" Title="颜色滑动条">
+    <ui:CodeCard Name="ColorSliderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_ColorSlider]}">
       <ColorSlider
         Width="328"
         HorizontalAlignment="Left"

@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -12,7 +13,7 @@
   x:DataType="viewModel:ScrollViewModel"
   mc:Ignorable="d">
   <StackPanel Orientation="Vertical" Spacing="50">
-    <ui:CodeCard Title="平滑滚动区域">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SC_SmoothScrollArea]}">
       <Border
         Height="328"
         HorizontalAlignment="Stretch"
@@ -31,7 +32,7 @@
       </Border>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="单向平滑滚动区域">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SC_SingleDirection]}">
       <Border
         Width="328"
         HorizontalAlignment="Left"
@@ -52,7 +53,7 @@
       </Border>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="双向滚动区域">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[SC_Bidirectional]}">
       <Border
         Width="512"
         Height="404"

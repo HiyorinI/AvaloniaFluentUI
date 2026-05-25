@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Animation;
@@ -24,6 +25,30 @@ public partial class SettingsViewModel : ViewModelBase
         ThemeService.ThemeChanged += OnThemeChanged;
 
         LoadSetting(config);
+        LocalizationService.Instance.PropertyChanged += OnLanguageChanged;
+    }
+
+    private void OnLanguageChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(SettingsTitle));
+        OnPropertyChanged(nameof(WindowEffect));
+        OnPropertyChanged(nameof(WindowEffectDescription));
+        OnPropertyChanged(nameof(AppearanceDescription));
+        OnPropertyChanged(nameof(AppThemeDescription));
+        OnPropertyChanged(nameof(ThemeColor));
+        OnPropertyChanged(nameof(ThemeColorDescription));
+        OnPropertyChanged(nameof(CustomColor));
+        OnPropertyChanged(nameof(DefaultColor));
+        OnPropertyChanged(nameof(SelectColor));
+        OnPropertyChanged(nameof(PinToTop));
+        OnPropertyChanged(nameof(PinToTopDescription));
+        OnPropertyChanged(nameof(Language));
+        OnPropertyChanged(nameof(LanguageDescription));
+        OnPropertyChanged(nameof(BackgroundImage));
+        OnPropertyChanged(nameof(EnableBackgroundImage));
+        OnPropertyChanged(nameof(Light));
+        OnPropertyChanged(nameof(Dark));
+        OnPropertyChanged(nameof(FollowSystem));
     }
 
     private void LoadSetting (AppConfig? config)
@@ -115,6 +140,27 @@ public partial class SettingsViewModel : ViewModelBase
     public bool WindowEffectCardIsEnabled => !IsEnabledBackgroundImage && RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
     public string[] Languages => ["en-US", "zh-CN", "ja-JP"];
+
+    // Localized string properties
+    public string SettingsTitle => LocalizationService.Instance.GetString("Settings");
+    public string WindowEffect => LocalizationService.Instance.GetString("SV_WindowEffect");
+    public string WindowEffectDescription => LocalizationService.Instance.GetString("SV_WindowEffectDescription");
+    public string AppearanceDescription => LocalizationService.Instance.GetString("SV_Appearance");
+    public string AppThemeDescription => LocalizationService.Instance.GetString("SV_AppTheme");
+    public string ThemeColor => LocalizationService.Instance.GetString("SV_ThemeColor");
+    public string ThemeColorDescription => LocalizationService.Instance.GetString("SV_ThemeColorDescription");
+    public string CustomColor => LocalizationService.Instance.GetString("SV_CustomColor");
+    public string DefaultColor => LocalizationService.Instance.GetString("SV_DefaultColor");
+    public string SelectColor => LocalizationService.Instance.GetString("SV_SelectColor");
+    public string PinToTop => LocalizationService.Instance.GetString("SV_PinToTop");
+    public string PinToTopDescription => LocalizationService.Instance.GetString("SV_PinToTopDescription");
+    public string Language => LocalizationService.Instance.GetString("SV_Language");
+    public string LanguageDescription => LocalizationService.Instance.GetString("SV_LanguageDescription");
+    public string BackgroundImage => LocalizationService.Instance.GetString("SV_BackgroundImage");
+    public string EnableBackgroundImage => LocalizationService.Instance.GetString("SV_EnableBackgroundImage");
+    public string Light => LocalizationService.Instance.GetString("LV_Light");
+    public string Dark => LocalizationService.Instance.GetString("LV_Dark");
+    public string FollowSystem => LocalizationService.Instance.GetString("LV_FollowSystem");
 
     [ObservableProperty]
     private string _currentLanguage;

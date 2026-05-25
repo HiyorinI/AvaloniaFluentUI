@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -46,20 +47,20 @@
       Placement="Right"
       ShowMode="Transient">
       <fui:CommandBarFlyout.PrimaryCommands>
-        <fui:CommandBarButton IconSource="Copy" Label="复制"/>
-        <fui:CommandBarButton IconSource="Save" Label="保存"/>
-        <fui:CommandBarButton IconSource="Delete" Label="删除"/>
-        <fui:CommandBarButton IconSource="Share" Label="分享"/>
+        <fui:CommandBarButton IconSource="Copy" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Copy]}"/>
+        <fui:CommandBarButton IconSource="Save" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Save]}"/>
+        <fui:CommandBarButton IconSource="Delete" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Delete]}"/>
+        <fui:CommandBarButton IconSource="Share" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Share]}"/>
       </fui:CommandBarFlyout.PrimaryCommands>
       <fui:CommandBarFlyout.SecondaryCommands>
         <fui:CommandBarButton
           HotKey="Ctrl+S"
           IconSource="Setting"
-          Label="设置"/>
+          Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Settings]}"/>
         <fui:CommandBarButton
           HotKey="Ctrl+Z"
           IconSource="Redo"
-          Label="撤销"/>
+          Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}"/>
       </fui:CommandBarFlyout.SecondaryCommands>
     </fui:CommandBarFlyout>
   </ui:ViewBase.Resources>
@@ -67,21 +68,21 @@
   <StackPanel Spacing="50">
 
     <!--  Menu  -->
-    <ui:CodeCard Name="MenuBarCard" Title="菜单">
+    <ui:CodeCard Name="MenuBarCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Menu]}">
       <DockPanel>
         <Menu DockPanel.Dock="Top">
-          <MenuItem Header="文件(_F)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_FileMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="新建解决方案"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_NewSolution]}"
               HotKey="Ctrl+Alt+Shift+C"
               InputGesture="Ctrl+Alt+Shift+C"/>
-            <MenuItem Header="打开">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Open]}">
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="打开.."
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Open]}"
                 HotKey="Ctrl+Shift+O"
                 InputGesture="Ctrl+Shift+O">
                 <MenuItem.Icon>
@@ -91,43 +92,43 @@
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="从版本控制中获取..."/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_GetFromVersionControl]}"/>
             </MenuItem>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="关闭解决方案"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CloseSolution]}"
               HotKey="Ctrl+Alt+Shift+Q"
               InputGesture="Ctrl+Alt+Shift+Q"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="远程开发..."/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RemoteDevelopment]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="全部保存"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SaveAll]}"
               HotKey="Ctrl+S"
               InputGesture="Ctrl+S"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="从磁盘全部重新加载"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ReloadAllFromDisk]}"
               HotKey="Ctrl+Alt+Y"
               InputGesture="Ctrl+Alt+Y"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="导出"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Export]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="打印"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Print]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="文件编码"/>
-            <MenuItem Header="行分隔符">
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_FileEncoding]}"/>
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_LineEndings]}">
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
@@ -144,12 +145,12 @@
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="将文件设置为只读"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SetReadOnly]}"/>
             <Separator/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="设置"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Settings]}"
               HotKey="Ctrl+Alt+S"
               InputGesture="Ctrl+Alt+S">
               <MenuItem.Icon>
@@ -159,43 +160,43 @@
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="新建项目设置"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_NewProjectSettings]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="管理IDE设置"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ManageIDESettings]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="省电模式"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_PowerSaveMode]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="使缓存失效"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_InvalidateCache]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="退出"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Exit]}"/>
           </MenuItem>
 
           <!--  Edit  -->
-          <MenuItem Header="编辑(_E)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_EditMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="撤销"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Undo]}"
               HotKey="Ctrl+Z"
               InputGesture="Ctrl+Z"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="重做"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Redo]}"
               HotKey="Ctrl+Shift+Z"
               InputGesture="Ctrl+Shift+Z"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="剪切"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Cut]}"
               HotKey="Ctrl+X"
               InputGesture="Ctrl+X"/>
             <MenuItem
@@ -207,11 +208,11 @@
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="复制为纯文本"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CopyPlainText]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="粘贴"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Paste]}"
               HotKey="Ctrl+V"
               InputGesture="Ctrl+V"/>
             <Separator/>
@@ -224,262 +225,262 @@
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="在所选内容中搜索"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SearchSelection]}"
               HotKey="Ctrl+Alt+E"
               InputGesture="Ctrl+Alt+E"/>
-            <MenuItem Header="查找">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Find]}">
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="查找"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Find]}"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="替换"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Replace]}"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="查找下一个匹配项"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_FindNext]}"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="查找上一个匹配项"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_FindPrevious]}"/>
               <Separator/>
 
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="选择所有匹配项"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SelectAllMatches]}"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="将下一个匹配项添加到选择"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_AddNextMatch]}"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="取消选择的匹配项"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CancelSelectedMatch]}"/>
             </MenuItem>
-            <MenuItem Header="查找用法">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_FindUsages]}">
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="下一个高亮显示用例"
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_NextHighlightedUsage]}"
                 IsEnabled="False"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="转到上一个高亮的元素用法"
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_PreviousHighlightedUsage]}"
                 IsEnabled="False"/>
               <MenuItem
                 Command="{Binding ClickedMenuItemCommand}"
                 CommandParameter="{Binding $self.Header}"
-                Header="最近的查找用法"/>
+                Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RecentFindUsages]}"/>
             </MenuItem>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="全选"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SelectAll]}"
               HotKey="Ctrl+A"
               InputGesture="Ctrl+A"/>
           </MenuItem>
 
           <!--  View  -->
-          <MenuItem Header="视图(_V)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ViewMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="工具窗口"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ToolWindow]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="外观"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Appearance]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="快速定义"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_QuickDefinition]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="快速定义类型"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_QuickDefinitionType]}"/>
             <Separator/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="最近的位置"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RecentLocations]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="最近的文件"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RecentFiles]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="最近更改的文件"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RecentlyChangedFiles]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="最近的更改"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RecentChanges]}"/>
           </MenuItem>
 
           <!--  Navigation  -->
-          <MenuItem Header="导航(_N)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_NavigationMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="后退"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Back]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="前进"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Forward]}"
               IsEnabled="False"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="随处搜索"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SearchEverywhere]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="类"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Class]}"
               HotKey="Ctrl+N"
               InputGesture="Ctrl+N"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="文件"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_File]}"
               HotKey="Ctrl+Shift+N"
               InputGesture="Ctrl+Shift+N"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="符号"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Symbol]}"
               HotKey="Ctrl+Alt+Shift+N"
               InputGesture="Ctrl+Alt+Shift+N"/>
           </MenuItem>
 
           <!--  Code  -->
-          <MenuItem Header="代码(_C)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CodeMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="代码补全"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CodeCompletion]}"
               IsEnabled="False"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="检查代码"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_InspectCode]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="分析代码"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_AnalyzeCode]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="插入实时模板"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_InsertLiveTemplate]}"
               HotKey="Ctrl+J"
               InputGesture="Ctrl+J"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="保存为实时模板"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SaveAsLiveTemplate]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="使用模板包围"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_SurroundWithTemplate]}"
               HotKey="Ctrl+Alt+T"
               InputGesture="Ctrl+Alt+T"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="解包/移除"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_UnwrapRemove]}"
               HotKey="Ctrl+Shift+Delete"
               InputGesture="Ctrl+Shift+Delete"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="折叠"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Collapse]}"/>
           </MenuItem>
 
           <!--  Refactoring  -->
-          <MenuItem Header="重构(_R)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RefactorMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="重命名"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Rename]}"
               HotKey="Shift+F6"
               InputGesture="Shift+F6"/>
           </MenuItem>
 
           <!--  Build  -->
-          <MenuItem Header="构建(_B)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_BuildMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="构建解决方案"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_BuildSolution]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="重新构建解决方案"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RebuildSolution]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="清理解决方案"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CleanSolution]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="构建当前项目"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_BuildCurrentProject]}"
               IsEnabled="False"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="构建启动项目: Gallery"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_BuildStartupProject]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="高级构建操作"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_AdvancedBuild]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="更改解决方案配置"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ChangeSolutionConfig]}"/>
           </MenuItem>
 
           <!--  Run  -->
-          <MenuItem Header="运行(_U)">
+          <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RunMenu]}">
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="重新运行.'NET项目: Gallery'"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RerunProject]}"
               HotKey="Shift+F10"
               InputGesture="Shift+F10"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="调试'Gallery'"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_DebugGallery]}"
               HotKey="Shift+F9"
               InputGesture="Shift+F9"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="使用分析器运行"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RunWithProfiler]}"
               IsEnabled="False"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="分析'Gallery'(使用 时间线)"/>
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_AnalyzeGallery]}"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="运行"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Run2]}"
               HotKey="Alt+Shift+F10"
               InputGesture="Alt+Shift+F10"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="调试"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Debug]}"
               HotKey="Alt+Shift+F9"
               InputGesture="Alt+Shift+F9"/>
             <MenuItem
               Command="{Binding ClickedMenuItemCommand}"
               CommandParameter="{Binding $self.Header}"
-              Header="附加到进程"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_AttachToProcess]}"
               HotKey="Ctrl+Alt+F5"
               InputGesture="Ctrl+Alt+F5"/>
           </MenuItem>
@@ -490,13 +491,13 @@
           Margin="10"
           HorizontalAlignment="Left"
           VerticalAlignment="Center">
-          <Run Text="执行的命令: "/>
+          <Run Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CommandText]}"/>
           <Run Foreground="OrangeRed" Text="{Binding CommandText}"/>
         </TextBlock>
       </ui:CodeCard.CodeContent>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="MenuCard" Title="自定义控件菜单">
+    <ui:CodeCard Name="MenuCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ContextMenu]}">
       <Border
         Height="256"
         Margin="24"
@@ -522,40 +523,40 @@
                 Margin="11,0,0,0"
                 VerticalAlignment="Center"
                 FontSize="18"
-                Text="妃爱亲"/>
+                Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_LoginName]}"/>
               <TextBlock
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="11,0,0,0"
                 VerticalAlignment="Center"
                 FontSize="12"
-                Text="hanserinterval@hotmail.com"/>
+                Text="hanserinterval@outlook.com"/>
               <Button
                 Grid.Row="2"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
-                Content="注销"
+                Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Logout]}"
                 Foreground="{DynamicResource SystemAccentColor}"
                 Theme="{StaticResource TransparentButton}"/>
             </Grid>
             <Separator HorizontalAlignment="Stretch"/>
-            <MenuItem Header="管理账户和设置">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ManageAccounts]}">
               <MenuItem.Icon>
                 <PathIcon Data="{StaticResource People}"/>
               </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="支付方式">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_PaymentMethods]}">
               <MenuItem.Icon>
                 <PathIcon Data="{StaticResource ShoppingCart}"/>
               </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="兑换代码和礼品卡">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_RedeemCode]}">
               <MenuItem.Icon>
                 <PathIcon Data="{StaticResource Code}"/>
               </MenuItem.Icon>
             </MenuItem>
             <Separator HorizontalAlignment="Stretch"/>
-            <MenuItem Header="设置">
+            <MenuItem Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Settings]}">
               <MenuItem.Icon>
                 <PathIcon Data="{StaticResource Setting}"/>
               </MenuItem.Icon>
@@ -571,7 +572,7 @@
     </ui:CodeCard>
 
 
-    <ui:CodeCard Title="可选中菜单">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Sort]}">
       <Border
         Height="256"
         Margin="24"
@@ -581,31 +582,31 @@
           <fui:FluentContextMenu>
             <MenuItem
               GroupName="Top"
-              Header="创建日期"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CreationDate]}"
               IsChecked="True"
               ToggleType="CheckBox"/>
             <MenuItem
               GroupName="Top"
-              Header="拍摄日期"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_TakeDate]}"
               ToggleType="CheckBox"/>
             <MenuItem
               GroupName="Top"
-              Header="修改日期"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ModificationDate]}"
               ToggleType="CheckBox"/>
             <MenuItem
               GroupName="Top"
-              Header="名称"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Name]}"
               ToggleType="CheckBox"/>
 
             <Separator HorizontalAlignment="Stretch"/>
 
             <MenuItem
               GroupName="Bottom"
-              Header="升序"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Ascending]}"
               ToggleType="Radio"/>
             <MenuItem
               GroupName="Bottom"
-              Header="降序"
+              Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Descending]}"
               IsChecked="True"
               ToggleType="Radio"/>
           </fui:FluentContextMenu>
@@ -619,7 +620,7 @@
     </ui:CodeCard>
 
     <!--  ContextMenu  -->
-    <ui:CodeCard Title="上下文菜单">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ContextMenu]}">
       <Border
         MinHeight="256"
         Margin="24"
@@ -653,58 +654,58 @@
       </Border>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="CommandBarCard" Title="命令栏">
+    <ui:CodeCard Name="CommandBarCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CommandBar]}">
       <fui:CommandBar DefaultLabelPosition="Right">
         <fui:CommandBar.PrimaryCommands>
-          <fui:CommandBarButton IconSource="Add" Label="添加"/>
-          <fui:CommandBarButton IconSource="RotateClockwise" Label="旋转"/>
-          <fui:CommandBarButton IconSource="ZoomIn" Label="放大"/>
-          <fui:CommandBarButton IconSource="ZoomOut" Label="缩小"/>
+          <fui:CommandBarButton IconSource="Add" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Add]}"/>
+          <fui:CommandBarButton IconSource="RotateClockwise" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Rotate]}"/>
+          <fui:CommandBarButton IconSource="ZoomIn" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ZoomIn]}"/>
+          <fui:CommandBarButton IconSource="ZoomOut" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ZoomOut]}"/>
 
           <fui:CommandBarSeparator VerticalAlignment="Stretch"/>
 
           <fui:CommandBarToggleButton
             IconSource="Edit"
             IsChecked="True"
-            Label="编辑"/>
-          <fui:CommandBarButton IconSource="M16 12.8l0.209 0.020 0.195 0.059 0.18 0.099 0.166 0.139 0.139 0.166 0.099 0.18 0.059 0.195 0.020 0.209v8.533l-0.020 0.209-0.059 0.195-0.099 0.18-0.139 0.166-0.166 0.139-0.18 0.099-0.195 0.059-0.209 0.020-0.209-0.020-0.195-0.059-0.18-0.099-0.166-0.139-0.139-0.166-0.099-0.18-0.059-0.195-0.020-0.209v-8.533l0.020-0.209 0.059-0.195 0.099-0.18 0.139-0.166 0.166-0.139 0.18-0.099 0.195-0.059 0.209-0.020zM16 8l0.321 0.029 0.296 0.088 0.271 0.146 0.246 0.204 0.204 0.246 0.146 0.271 0.087 0.296 0.029 0.321-0.029 0.321-0.087 0.296-0.146 0.271-0.204 0.246-0.246 0.204-0.271 0.146-0.296 0.088-0.321 0.029-0.321-0.029-0.296-0.088-0.271-0.146-0.246-0.204-0.204-0.246-0.146-0.271-0.088-0.296-0.029-0.321 0.029-0.321 0.088-0.296 0.146-0.271 0.204-0.246 0.246-0.204 0.271-0.146 0.296-0.088 0.321-0.029zM16 2.133l-0.949 0.031-0.932 0.092-0.914 0.154-0.896 0.215-0.873 0.272-0.844 0.324-0.815 0.376-0.785 0.428-0.753 0.476-0.718 0.52-0.682 0.564-0.647 0.607-0.607 0.647-0.564 0.682-0.52 0.718-0.476 0.753-0.428 0.785-0.376 0.815-0.324 0.844-0.272 0.873-0.215 0.896-0.154 0.914-0.092 0.932-0.031 0.949 0.031 0.949 0.092 0.932 0.154 0.914 0.215 0.896 0.271 0.873 0.322 0.844 0.373 0.815 0.424 0.785 0.473 0.754 0.519 0.719 0.565 0.685 0.61 0.651 0.651 0.61 0.685 0.565 0.719 0.519 0.754 0.473 0.785 0.424 0.815 0.373 0.844 0.322 0.873 0.271 0.896 0.215 0.914 0.154 0.932 0.092 0.949 0.031 0.949-0.031 0.932-0.092 0.914-0.154 0.896-0.215 0.873-0.271 0.844-0.322 0.815-0.373 0.785-0.424 0.754-0.473 0.719-0.519 0.685-0.565 0.651-0.61 0.61-0.651 0.565-0.685 0.519-0.719 0.473-0.754 0.424-0.785 0.373-0.815 0.322-0.844 0.271-0.873 0.215-0.896 0.154-0.914 0.092-0.932 0.031-0.949-0.031-0.949-0.092-0.932-0.154-0.914-0.215-0.896-0.272-0.873-0.324-0.844-0.376-0.815-0.428-0.785-0.476-0.753-0.52-0.718-0.564-0.682-0.607-0.647-0.647-0.607-0.682-0.564-0.718-0.52-0.753-0.476-0.785-0.428-0.815-0.376-0.844-0.324-0.873-0.272-0.896-0.215-0.914-0.154-0.932-0.092-0.949-0.031zM16 0l1.097 0.035 1.076 0.106 1.054 0.177 1.032 0.248 1.005 0.313 0.972 0.372 0.94 0.432 0.908 0.491 0.871 0.547 0.831 0.599 0.79 0.651 0.749 0.703 0.703 0.749 0.651 0.79 0.599 0.831 0.547 0.871 0.491 0.908 0.432 0.94 0.372 0.972 0.313 1.005 0.248 1.032 0.177 1.054 0.106 1.076 0.035 1.097-0.036 1.097-0.108 1.076-0.18 1.054-0.252 1.032-0.317 1.004-0.375 0.971-0.433 0.938-0.492 0.904-0.547 0.868-0.599 0.828-0.651 0.789-0.703 0.749-0.749 0.703-0.789 0.651-0.828 0.599-0.868 0.547-0.905 0.492-0.939 0.433-0.973 0.375-1.008 0.317-1.034 0.252-1.053 0.18-1.072 0.108-1.091 0.036-1.098-0.035-1.077-0.106-1.056-0.177-1.035-0.248-1.008-0.313-0.973-0.372-0.939-0.432-0.905-0.491-0.868-0.547-0.828-0.599-0.789-0.651-0.749-0.703-0.703-0.749-0.651-0.789-0.599-0.828-0.547-0.868-0.491-0.905-0.432-0.939-0.372-0.973-0.313-1.008-0.248-1.035-0.177-1.056-0.106-1.077-0.035-1.098 0.035-1.097 0.106-1.076 0.177-1.054 0.248-1.032 0.313-1.005 0.372-0.972 0.432-0.94 0.491-0.908 0.547-0.871 0.599-0.831 0.651-0.79 0.703-0.749 0.749-0.703 0.79-0.651 0.831-0.599 0.871-0.547 0.908-0.491 0.94-0.432 0.972-0.372 1.005-0.313 1.032-0.248 1.054-0.177 1.076-0.106 1.097-0.035z" Label="信息"/>
-          <fui:CommandBarButton IconSource="Delete" Label="删除"/>
-          <fui:CommandBarButton IconSource="Share" Label="分享"/>
+            Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Edit]}"/>
+          <fui:CommandBarButton IconSource="M16 12.8l0.209 0.020 0.195 0.059 0.18 0.099 0.166 0.139 0.139 0.166 0.099 0.18 0.059 0.195 0.020 0.209v8.533l-0.020 0.209-0.059 0.195-0.099 0.18-0.139 0.166-0.166 0.139-0.18 0.099-0.195 0.059-0.209 0.020-0.209-0.020-0.195-0.059-0.18-0.099-0.166-0.139-0.139-0.166-0.099-0.18-0.059-0.195-0.020-0.209v-8.533l0.020-0.209 0.059-0.195 0.099-0.18 0.139-0.166 0.166-0.139 0.18-0.099 0.195-0.059 0.209-0.020zM16 8l0.321 0.029 0.296 0.088 0.271 0.146 0.246 0.204 0.204 0.246 0.146 0.271 0.087 0.296 0.029 0.321-0.029 0.321-0.087 0.296-0.146 0.271-0.204 0.246-0.246 0.204-0.271 0.146-0.296 0.088-0.321 0.029-0.321-0.029-0.296-0.088-0.271-0.146-0.246-0.204-0.204-0.246-0.146-0.271-0.088-0.296-0.029-0.321 0.029-0.321 0.088-0.296 0.146-0.271 0.204-0.246 0.246-0.204 0.271-0.146 0.296-0.088 0.321-0.029zM16 2.133l-0.949 0.031-0.932 0.092-0.914 0.154-0.896 0.215-0.873 0.272-0.844 0.324-0.815 0.376-0.785 0.428-0.753 0.476-0.718 0.52-0.682 0.564-0.647 0.607-0.607 0.647-0.564 0.682-0.52 0.718-0.476 0.753-0.428 0.785-0.376 0.815-0.324 0.844-0.272 0.873-0.215 0.896-0.154 0.914-0.092 0.932-0.031 0.949 0.031 0.949 0.092 0.932 0.154 0.914 0.215 0.896 0.271 0.873 0.322 0.844 0.373 0.815 0.424 0.785 0.473 0.754 0.519 0.719 0.565 0.685 0.61 0.651 0.651 0.61 0.685 0.565 0.719 0.519 0.754 0.473 0.785 0.424 0.815 0.373 0.844 0.322 0.873 0.271 0.896 0.215 0.914 0.154 0.932 0.092 0.949 0.031 0.949-0.031 0.932-0.092 0.914-0.154 0.896-0.215 0.873-0.271 0.844-0.322 0.815-0.373 0.785-0.424 0.754-0.473 0.719-0.519 0.685-0.565 0.651-0.61 0.61-0.651 0.565-0.685 0.519-0.719 0.473-0.754 0.424-0.785 0.373-0.815 0.322-0.844 0.271-0.873 0.215-0.896 0.154-0.914 0.092-0.932 0.031-0.949-0.031-0.949-0.092-0.932-0.154-0.914-0.215-0.896-0.272-0.873-0.324-0.844-0.376-0.815-0.428-0.785-0.476-0.753-0.52-0.718-0.564-0.682-0.607-0.647-0.647-0.607-0.682-0.564-0.718-0.52-0.753-0.476-0.785-0.428-0.815-0.376-0.844-0.324-0.873-0.272-0.896-0.215-0.914-0.154-0.932-0.092-0.949-0.031zM16 0l1.097 0.035 1.076 0.106 1.054 0.177 1.032 0.248 1.005 0.313 0.972 0.372 0.94 0.432 0.908 0.491 0.871 0.547 0.831 0.599 0.79 0.651 0.749 0.703 0.703 0.749 0.651 0.79 0.599 0.831 0.547 0.871 0.491 0.908 0.432 0.94 0.372 0.972 0.313 1.005 0.248 1.032 0.177 1.054 0.106 1.076 0.035 1.097-0.036 1.097-0.108 1.076-0.18 1.054-0.252 1.032-0.317 1.004-0.375 0.971-0.433 0.938-0.492 0.904-0.547 0.868-0.599 0.828-0.651 0.789-0.703 0.749-0.749 0.703-0.789 0.651-0.828 0.599-0.868 0.547-0.905 0.492-0.939 0.433-0.973 0.375-1.008 0.317-1.034 0.252-1.053 0.18-1.072 0.108-1.091 0.036-1.098-0.035-1.077-0.106-1.056-0.177-1.035-0.248-1.008-0.313-0.973-0.372-0.939-0.432-0.905-0.491-0.868-0.547-0.828-0.599-0.789-0.651-0.749-0.703-0.703-0.749-0.651-0.789-0.599-0.828-0.547-0.868-0.491-0.905-0.432-0.939-0.372-0.973-0.313-1.008-0.248-1.035-0.177-1.056-0.106-1.077-0.035-1.098 0.035-1.097 0.106-1.076 0.177-1.054 0.248-1.032 0.313-1.005 0.372-0.972 0.432-0.94 0.491-0.908 0.547-0.871 0.599-0.831 0.651-0.79 0.703-0.749 0.749-0.703 0.79-0.651 0.831-0.599 0.871-0.547 0.908-0.491 0.94-0.432 0.972-0.372 1.005-0.313 1.032-0.248 1.054-0.177 1.076-0.106 1.097-0.035z" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Info]}"/>
+          <fui:CommandBarButton IconSource="Delete" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Delete]}"/>
+          <fui:CommandBarButton IconSource="Share" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Share]}"/>
           <fui:CommandBarElementContainer>
             <DropDownButton Theme="{StaticResource TransparentDropDownButton}">
               <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
                 <PathIcon Data="{StaticResource Scroll}"/>
-                <TextBlock Grid.Column="1" Text="排序"/>
+                <TextBlock Grid.Column="1" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Sort]}"/>
               </Grid>
               <DropDownButton.Flyout>
                 <fui:FluentMenuFlyout>
                   <MenuItem
                     GroupName="Top"
-                    Header="创建日期"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CreationDate]}"
                     IsSelected="True"
                     ToggleType="Radio"/>
                   <MenuItem
                     GroupName="Top"
-                    Header="拍摄日期"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_TakeDate]}"
                     ToggleType="Radio"/>
                   <MenuItem
                     GroupName="Top"
-                    Header="修改日期"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_ModificationDate]}"
                     ToggleType="Radio"/>
                   <MenuItem
                     GroupName="Top"
-                    Header="名称"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Name]}"
                     ToggleType="Radio"/>
 
                   <Separator HorizontalAlignment="Stretch"/>
 
                   <MenuItem
                     GroupName="Bottom"
-                    Header="升序"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Ascending]}"
                     ToggleType="Radio"/>
                   <MenuItem
                     GroupName="Bottom"
-                    Header="降序"
+                    Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Descending]}"
                     IsChecked="True"
                     ToggleType="Radio"/>
                 </fui:FluentMenuFlyout>
@@ -714,12 +715,12 @@
         </fui:CommandBar.PrimaryCommands>
 
         <fui:CommandBar.SecondaryCommands>
-          <fui:CommandBarButton IconSource="Setting" Label="设置"/>
+          <fui:CommandBarButton IconSource="Setting" Label="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Settings]}"/>
         </fui:CommandBar.SecondaryCommands>
       </fui:CommandBar>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="CommandBarFlyoutCard" Title="浮出命令栏">
+    <ui:CodeCard Name="CommandBarFlyoutCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_CommandBarFlyout]}">
       <Image
         Name="Image"
         Width="512"

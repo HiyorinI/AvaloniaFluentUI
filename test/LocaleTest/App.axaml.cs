@@ -1,7 +1,10 @@
+using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using AvaloniaFluentUI.Locale;
+using AvaloniaFluentUI.Styling;
 using LocaleTest.ViewModels;
 using LocaleTest.Views;
 
@@ -23,6 +26,8 @@ public partial class App : Application
         // 通过RESX文件
         // LocalizationService.Instance.LoadResxDirectory(@"C:\Projects\C#\AvaloniaFluentUi\test\Test\Assets\Locale");
         LocalizationService.Instance.SetCulture("ja-JP");
+        
+        // 直接绑定xaml
         
         // 通过字典
         LocalizationService.Instance

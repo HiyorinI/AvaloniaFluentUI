@@ -26,6 +26,8 @@ public partial class MainWindowViewModel : ViewModelBase
     public string StatusAndInformation => LocalizationService.Instance.GetString("StatusAndInformation");
     public string MenuAndToolBar => LocalizationService.Instance.GetString("MenuAndToolBar");
     public string DateTime => LocalizationService.Instance.GetString("DateTime");
+    public string Title => LocalizationService.Instance.GetString("MV_Title");
+    public string SearchWatermark => LocalizationService.Instance.GetString("MV_SearchWatermark");
     
     private readonly List<string> _history = new();
 
@@ -104,6 +106,8 @@ public partial class MainWindowViewModel : ViewModelBase
         OnPropertyChanged(nameof(StatusAndInformation));
         OnPropertyChanged(nameof(MenuAndToolBar));
         OnPropertyChanged(nameof(DateTime));
+        OnPropertyChanged(nameof(Title));
+        OnPropertyChanged(nameof(SearchWatermark));
     }
 
     private ViewModelBase GetOrCreateViewModel(string key)

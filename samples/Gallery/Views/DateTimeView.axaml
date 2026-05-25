@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -34,7 +35,7 @@
 
   <StackPanel Spacing="50">
     <!--  Calender  -->
-    <ui:CodeCard Title="日历选择器">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_CalendarPicker]}">
       <Grid ColumnDefinitions="*, Auto">
         <Calendar
           Grid.Column="0"
@@ -51,7 +52,7 @@
           <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="设置选择模式: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_SelectMode]}"/>
           <fui:FluentComboBox
             Grid.Row="0"
             Grid.Column="1"
@@ -62,7 +63,7 @@
           <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="设置显示模式: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_DisplayMode]}"/>
           <fui:FluentComboBox
             Grid.Row="1"
             Grid.Column="1"
@@ -81,7 +82,7 @@
     </ui:CodeCard>
 
     <!--  CalenderDatePicker  -->
-    <ui:CodeCard Name="CalendarDatePickerCard" Title="弹出日历选择器">
+    <ui:CodeCard Name="CalendarDatePickerCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_CalendarDatePicker]}">
       <CalendarDatePicker SelectedDate="{Binding CalenderDatePickerSelectedDate}"/>
       <ui:CodeCard.CodeContent>
         <TextBlock
@@ -93,7 +94,7 @@
     </ui:CodeCard>
 
     <!--  ColorPicker  -->
-    <ui:CodeCard Title="颜色选择器">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_ColorPicker]}">
       <ColorPicker HorizontalAlignment="Left" Color="{Binding ColorPickerSelectedColor}"/>
       <ui:CodeCard.CodeContent>
         <TextBlock
@@ -105,7 +106,7 @@
     </ui:CodeCard>
 
     <!--  DatePicker  -->
-    <ui:CodeCard Name="DatePickerCard" Title="日期选择器">
+    <ui:CodeCard Name="DatePickerCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_DatePicker]}">
       <Grid ColumnDefinitions="*, Auto">
         <DatePicker
           Grid.Column="0"
@@ -121,7 +122,7 @@
           <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="显示日: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_ShowDay]}"/>
           <ToggleSwitch
             Grid.Row="0"
             Grid.Column="1"
@@ -130,7 +131,7 @@
           <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="显示月: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_ShowMonth]}"/>
           <ToggleSwitch
             Grid.Row="1"
             Grid.Column="1"
@@ -139,7 +140,7 @@
           <TextBlock
             Grid.Row="2"
             Grid.Column="0"
-            Text="显示年: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_ShowYear]}"/>
           <ToggleSwitch
             Grid.Row="2"
             Grid.Column="1"
@@ -156,7 +157,7 @@
     </ui:CodeCard>
 
     <!--  TimePicker  -->
-    <ui:CodeCard Name="TimePickerCard" Title="时间选择器">
+    <ui:CodeCard Name="TimePickerCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_TimePicker]}">
       <Grid ColumnDefinitions="*, Auto">
         <TimePicker
           ClockIdentifier="{Binding TimePickerCurrentClockIdentifier}"
@@ -171,7 +172,7 @@
           <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="选择时间格式: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_TimeFormat]}"/>
           <fui:FluentComboBox
             Grid.Row="0"
             Grid.Column="1"
@@ -182,7 +183,7 @@
           <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="默认时间增量: "/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DT_DefaultIncrement]}"/>
           <fui:FluentComboBox
             Grid.Row="1"
             Grid.Column="1"

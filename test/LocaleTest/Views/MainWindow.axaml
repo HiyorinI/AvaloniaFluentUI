@@ -47,7 +47,8 @@
     <ui:SearchTextBox
       Grid.Row="0"
       Width="256"
-      HorizontalAlignment="Center"/>
+      HorizontalAlignment="Center"
+      OnSearchTriggered="OnSearch"/>
 
     <StackPanel
       Grid.Row="1"

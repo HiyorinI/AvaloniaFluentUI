@@ -8,7 +8,7 @@
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:view="clr-namespace:AvaloniaFluentUI.Controls.Windowing;assembly=AvaloniaFluentUI"
   xmlns:vm="using:Gallery.ViewModels"
-  Title="Avalonia Fluent UI Gallery"
+  Title="{Binding Title}"
   Width="1200"
   Height="800"
   MinWidth="750"
@@ -121,7 +121,7 @@
         Margin="0,10,0,0"
         HorizontalAlignment="Center"
         VerticalAlignment="Top"
-        Watermark="请输入要搜索的内容"/>
+        Watermark="{Binding SearchWatermark}"/>
 
       <fui:ToolButton
         Width="46"
@@ -261,7 +261,7 @@
       <!-- <fui:NavigationView.SettingsItem> -->
       <!-- </fui:NavigationView.SettingsItem> -->
       <fui:NavigationView.Content>
-        <fui:StackPanel Content="{Binding CurrentViewModel}"/>
+        <fui:StackContent Content="{Binding CurrentViewModel}"/>
         <!-- <fui:Frame Content="{Binding CurrentViewModel}"/> -->
         <!-- <TransitioningContentControl x:Name="TransitioningContentControlPanel" Content="{Binding CurrentViewModel}"/> -->
       </fui:NavigationView.Content>

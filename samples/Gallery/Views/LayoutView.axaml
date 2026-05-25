@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -60,7 +61,7 @@
   <StackPanel Spacing="50">
 
     <!--  Border  -->
-    <ui:CodeCard Name="BorderCard" Title="边框">
+    <ui:CodeCard Name="BorderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Border]}">
       <ui:CodeCard.Content>
         <Grid ColumnDefinitions="*, Auto">
           <Border
@@ -76,12 +77,12 @@
             Width="256"
             VerticalAlignment="Stretch">
             <StackPanel Spacing="10">
-              <TextBlock FontWeight="Bold" Text="选项"/>
-              <ToggleSwitch Content="是否启用阴影" IsChecked="{Binding IsEnableBorderShadow}"/>
-              <TextBox Text="{Binding BorderBrushHex}" Watermark="边框颜色(16进制)"/>
-              <TextBox Text="{Binding BorderBackgroundHex}" Watermark="背景颜色(16进制)"/>
-              <TextBox Text="{Binding BorderWidth}" Watermark="边框宽度"/>
-              <TextBox Text="{Binding Br}" Watermark="圆角弧度"/>
+              <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
+              <ToggleSwitch Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_EnableShadow]}" IsChecked="{Binding IsEnableBorderShadow}"/>
+              <TextBox Text="{Binding BorderBrushHex}" Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BorderColorHex]}"/>
+              <TextBox Text="{Binding BorderBackgroundHex}" Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BgColorHex]}"/>
+              <TextBox Text="{Binding BorderWidth}" Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BorderWidth]}"/>
+              <TextBox Text="{Binding Br}" Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BorderRadius]}"/>
             </StackPanel>
           </ui:Card>
         </Grid>
@@ -113,7 +114,7 @@
     </ui:CodeCard>
 
     <!--  Canvas  -->
-    <ui:CodeCard Name="CanvasCard" Title="画布">
+    <ui:CodeCard Name="CanvasCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Canvas]}">
       <Grid ColumnDefinitions="*, Auto">
         <Border
           Grid.Column="0"
@@ -158,11 +159,11 @@
               Grid.Row="0"
               Grid.ColumnSpan="2"
               FontWeight="Bold"
-              Text="选项"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
-              Text="Left | Right"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_LeftRight]}"/>
             <fui:ToolTipSlider
               Grid.Row="1"
               Grid.Column="1"
@@ -174,7 +175,7 @@
             <TextBlock
               Grid.Row="2"
               Grid.Column="0"
-              Text="Top | Bottom"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_TopBottom]}"/>
             <fui:ToolTipSlider
               Grid.Row="2"
               Grid.Column="1"
@@ -188,7 +189,7 @@
     </ui:CodeCard>
 
     <!--  DockPanel  -->
-    <ui:CodeCard Title="停靠面板">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_DockPanel]}">
       <Grid ColumnDefinitions="*, Auto">
         <Border
           Grid.Column="0"
@@ -228,57 +229,57 @@
               Grid.Row="0"
               Grid.ColumnSpan="2"
               FontWeight="Bold"
-              Text="选项"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
 
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
-              Text="Left Width: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_LeftWidth]}"/>
             <TextBox
               Grid.Row="1"
               Grid.Column="1"
               Text="{Binding InputDockLeftWidth}"
-              Watermark="Left Width"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_LeftWidth]}"/>
 
             <TextBlock
               Grid.Row="2"
               Grid.Column="0"
-              Text="Right Width: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_RightWidth]}"/>
             <TextBox
               Grid.Row="2"
               Grid.Column="1"
               Text="{Binding InputDockRightWidth}"
-              Watermark="Right Width"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_RightWidth]}"/>
 
 
             <TextBlock
               Grid.Row="3"
               Grid.Column="0"
-              Text="Top Width: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_TopHeight]}"/>
             <TextBox
               Grid.Row="3"
               Grid.Column="1"
               Text="{Binding InputDockTopHeight}"
-              Watermark="Top Height"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_TopHeight]}"/>
 
             <TextBlock
               Grid.Row="4"
               Grid.Column="0"
-              Text="Bottom Width: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BottomHeight]}"/>
             <TextBox
               Grid.Row="4"
               Grid.Column="1"
               Text="{Binding InputDockBottomHeight}"
-              Watermark="Bottom Height"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_BottomHeight]}"/>
           </Grid>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
     <!--  Expander  -->
-    <ui:CodeCard Name="ExpanderCard" Title="展开卡片">
+    <ui:CodeCard Name="ExpanderCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Expander]}">
       <Grid RowDefinitions="*, *" RowSpacing="15">
-        <Expander Grid.Row="0" Header="对齐">
+        <Expander Grid.Row="0" Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Alignment]}">
           <Grid
             ColumnDefinitions="*, *"
             ColumnSpacing="10"
@@ -287,7 +288,7 @@
             <TextBlock
               Grid.Row="0"
               Grid.ColumnSpan="2"
-              Text="对齐方式"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Alignment]}"/>
             <fui:FluentComboBox
               Grid.Row="1"
               Grid.ColumnSpan="2"
@@ -302,7 +303,7 @@
             <TextBlock
               Grid.Row="2"
               Grid.ColumnSpan="2"
-              Text="不透明度"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Opacity]}"/>
             <fui:ToolTipSlider
               Grid.Row="3"
               Grid.ColumnSpan="2"
@@ -312,29 +313,29 @@
               Grid.Column="0"
               HorizontalAlignment="Stretch"
               Classes="Accent"
-              Content="应用"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Apply]}"/>
             <Button
               Grid.Row="4"
               Grid.Column="1"
               HorizontalAlignment="Stretch"
-              Content="重置"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Reset]}"/>
           </Grid>
         </Expander>
-        <Expander Grid.Row="1" Header="应用主题">
+        <Expander Grid.Row="1" Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_AppTheme]}">
           <StackPanel
             Margin="10"
             HorizontalAlignment="Left"
             Spacing="8">
-            <RadioButton Content="浅色"/>
-            <RadioButton Content="深色"/>
-            <RadioButton Content="跟随系统设置"/>
+            <RadioButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Light]}"/>
+            <RadioButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Dark]}"/>
+            <RadioButton Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_FollowSystem]}"/>
           </StackPanel>
         </Expander>
       </Grid>
     </ui:CodeCard>
 
     <!--  Grid  -->
-    <ui:CodeCard Name="GridCard" Title="网格布局">
+    <ui:CodeCard Name="GridCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_GridLayout]}">
       <Grid ColumnDefinitions="*, Auto">
         <Border
           Grid.Column="0"
@@ -359,35 +360,35 @@
             <TextBlock
               Grid.ColumnSpan="2"
               FontWeight="Bold"
-              Text="选项"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
-              Text="Rows: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SetGridRow]}"/>
             <TextBox
               x:Name="RowsEdit"
               Grid.Row="1"
               Grid.Column="1"
               TextChanged="OnRowsChanged"
-              Watermark="设置当前Grid的行"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SetGridRow]}"/>
 
             <TextBlock
               Grid.Row="2"
               Grid.Column="0"
-              Text="Columns: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SetGridColumn]}"/>
             <TextBox
               x:Name="ColumnsEdit"
               Grid.Row="2"
               Grid.Column="1"
               TextChanged="OnColumnsChanged"
-              Watermark="设置当前Grid的列"/>
+              Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SetGridColumn]}"/>
           </Grid>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
     <!--  GridSplitter  -->
-    <ui:CodeCard Title="网格分割器" Height="328">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_GridSplitter]}" Height="328">
       <Grid ColumnDefinitions="*, Auto, *">
         <Border
           Grid.Column="0"
@@ -409,7 +410,7 @@
     </ui:CodeCard>
 
     <!--  Panel  -->
-    <ui:CodeCard Title="面板布局">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_Panel]}">
       <Panel Width="300" Height="300">
         <Rectangle
           Height="100"
@@ -433,7 +434,7 @@
     </ui:CodeCard>
 
     <!--  RelativePanel  -->
-    <ui:CodeCard Name="RelativePanelCard" Title="绝对面板布局">
+    <ui:CodeCard Name="RelativePanelCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_RelativePanel]}">
       <Border
         Width="300"
         Height="300"
@@ -470,7 +471,7 @@
     </ui:CodeCard>
 
     <!--  SplitView  -->
-    <ui:CodeCard Name="SplitViewCard" Title="分割视图">
+    <ui:CodeCard Name="SplitViewCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SplitView]}">
       <SplitView
         Height="328"
         CornerRadius="12"
@@ -493,7 +494,7 @@
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               IsVisible="{Binding IsPaneOpen}"
-              Text="Settings"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Settings]}"/>
           </Grid>
         </SplitView.Pane>
 
@@ -501,13 +502,13 @@
           <TextBlock
             HorizontalAlignment="Center"
             FontSize="24"
-            Text="Content"/>
+            Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[Text]}"/>
         </Grid>
       </SplitView>
     </ui:CodeCard>
 
     <!--  StackPanel  -->
-    <ui:CodeCard Name="StackPanelCard" Title="堆栈布局">
+    <ui:CodeCard Name="StackPanelCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_StackPanel]}">
       <Grid Height="288" ColumnDefinitions="*, Auto">
         <StackPanel
           Grid.Column="0"
@@ -551,7 +552,7 @@
         <ui:Card Grid.Column="1" Width="200">
           <fui:FluentComboBox
             HorizontalAlignment="Stretch"
-            PlaceholderText="选择布局方向"
+            PlaceholderText="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_SelectLayout]}"
             SelectedIndex="{Binding SelectedOrientationIndex}">
             <ComboBoxItem Content="Vertical"/>
             <ComboBoxItem Content="Horizontal"/>
@@ -561,7 +562,7 @@
     </ui:CodeCard>
 
     <!--  UniformGrid  -->
-    <ui:CodeCard Title="统一网格布局" Height="648">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_UniformGrid]}" Height="648">
       <UniformGrid
         x:Name="UniformGrid"
         ColumnSpacing="5"
@@ -571,7 +572,7 @@
     </ui:CodeCard>
 
     <!--  WrapPanel  -->
-    <ui:CodeCard Title="换行面板布局">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_WrapPanel]}">
       <Grid ColumnDefinitions="*, Auto">
         <WrapPanel
           x:Name="WrapPanel"
@@ -580,22 +581,22 @@
           LineSpacing="10"/>
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Spacing="10">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <Button
               Classes="AddButton"
               Click="OnClickedAddControlToWrapPanel"
-              Content="Add Control"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_AddControl]}"/>
             <Button
               Classes="RemoveButton"
               Click="OnClickedRemoveControlOfWrapPanel"
-              Content="Remove Control"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_RemoveControl]}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
     <!--  VirtualizingStackPanel  -->
-    <ui:CodeCard Title="虚拟堆布局">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_VirtualizingStackPanel]}">
       <Grid ColumnDefinitions="*, Auto">
         <ListBox Height="256" ItemsSource="{Binding Items}">
           <ItemsControl.ItemsPanel>
@@ -610,9 +611,9 @@
           Width="256"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical" Spacing="8">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <TextBlock Text="{Binding ItemCountFormat}"/>
-            <TextBlock Text="添加项目(个数)"/>
+            <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[LV_AddItemsCount]}"/>
             <fui:FluentComboBox
               HorizontalAlignment="Stretch"
               ItemsSource="{Binding AddItemCounts}"
@@ -621,7 +622,7 @@
               HorizontalAlignment="Stretch"
               Classes="Accent"
               Command="{Binding AddItemCommand}"
-              Content="添加"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[MT_Add]}"/>
           </StackPanel>
         </ui:Card>
       </Grid>

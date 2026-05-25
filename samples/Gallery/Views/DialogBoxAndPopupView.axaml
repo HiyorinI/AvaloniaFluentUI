@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -22,45 +23,45 @@
   <StackPanel Spacing="50">
     <fui:ContentDialog
       Name="ContentDialog"
-      Title="这是一个带遮罩的对话框"
-      CloseButtonText="关闭"
-      Content="只要你保持乐观的心态, 你就会发现这个世界上有数不尽的开心事!"
+      Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ThisIsDialogWithMask]}"
+      CloseButtonText="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Close]}"
+      Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_OptimisticContent]}"
       DefaultButton="Primary"
       IsPrimaryButtonEnabled="True"
       IsVisible="False"
-      PrimaryButtonText="确认"/>
-    <ui:CodeCard Name="ContentDialogCard" Title="带遮罩的对话框">
-      <Button Click="OnShowContentDialog" Content="显示对话框"/>
+      PrimaryButtonText="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Confirm]}"/>
+    <ui:CodeCard Name="ContentDialogCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_DialogWithMask]}">
+      <Button Click="OnShowContentDialog" Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Open]}"/>
     </ui:CodeCard>
 
     <fui:ContentDialog
       Name="CustomDialog"
-      Title="打开URL"
-      CloseButtonText="关闭"
+      Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_OpenURL]}"
+      CloseButtonText="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Close]}"
       DefaultButton="Primary"
       IsPrimaryButtonEnabled="True"
       IsVisible="False"
-      PrimaryButtonText="打开">
+      PrimaryButtonText="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Open]}">
       <TextBox
         HorizontalAlignment="Stretch"
         VerticalAlignment="Center"
-        Watermark="输入文件, 流或者播放列表的 URL"/>
+        Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_URLWatermark]}"/>
     </fui:ContentDialog>
-    <ui:CodeCard Title="自定义对话框">
-      <Button Click="OnShowCustomDialog" Content="显示对话框"/>
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_CustomDialog]}">
+      <Button Click="OnShowCustomDialog" Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Open]}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="TaskDialogCard" Title="任务对话框">
-      <Button Click="OnShowTaskDialog" Content="显示任务对话框"/>
+    <ui:CodeCard Name="TaskDialogCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_TaskDialog]}">
+      <Button Click="OnShowTaskDialog" Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ShowTaskDialog]}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="FlyoutCard" Title="Fluent浮出控件">
+    <ui:CodeCard Name="FlyoutCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_FluentFlyout]}">
       <Grid ColumnDefinitions="*, Auto, Auto">
 
         <Button
           Grid.Column="0"
           Width="128"
-          Content="显示弹出视图">
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ShowPopup]}">
           <Button.Flyout>
             <fui:FluentFlyout IsOpen="{Binding FluentFlyoutIsOpen, Mode=TwoWay}" Placement="{Binding FlyoutPlacement}">
               <Border Margin="0" Padding="0">
@@ -74,13 +75,13 @@
                     Margin="10,10,10,1"
                     HorizontalAlignment="Left"
                     FontSize="24"
-                    Text="无名"/>
+                    Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_NoName]}"/>
                   <TextBlock
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Margin="10,1,10,12"
                     HorizontalAlignment="Left"
-                    Text="左眼用来忘记你，右眼用来记住你。"/>
+                    Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_EyeQuote]}"/>
 
                   <Separator
                     Grid.Row="2"
@@ -106,20 +107,6 @@
                     Theme="{StaticResource TransparentButton}">
                     <fui:SymbolIcon FontSize="18" Symbol="Clear"/>
                   </Button>
-                  <!--  <fui:ToolButton  -->
-                  <!--  Grid.Row="3"  -->
-                  <!--  Grid.Column="0"  -->
-                  <!--  HorizontalAlignment="Stretch"  -->
-                  <!--  Command="{Binding CloseFlyoutCommand}"  -->
-                  <!--  IconData="{StaticResource Accept}"  -->
-                  <!--  Theme="{StaticResource TransparentToolButton}"/>  -->
-                  <!--  <fui:ToolButton  -->
-                  <!--  Grid.Row="3"  -->
-                  <!--  Grid.Column="1"  -->
-                  <!--  HorizontalAlignment="Stretch"  -->
-                  <!--  Command="{Binding CloseFlyoutCommand}"  -->
-                  <!--  IconData="{StaticResource Close}"  -->
-                  <!--  Theme="{StaticResource TransparentToolButton}"/>  -->
                 </Grid>
               </Border>
             </fui:FluentFlyout>
@@ -130,7 +117,7 @@
           Grid.Column="1"
           HorizontalAlignment="Right"
           VerticalAlignment="Center"
-          Text="弹出位置: "/>
+          Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_FlyoutPositionLabel]}"/>
         <fui:FluentComboBox
           Grid.Column="2"
           Width="256"
@@ -142,8 +129,8 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="带图片和按钮的浮出控件">
-      <Button Content="显示浮出控件">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ImageButtonFlyout]}">
+      <Button Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ShowFlyout]}">
         <Button.Flyout>
           <fui:FluentFlyout IsOpen="{Binding FluentFlyoutIsOpen, Mode=TwoWay}" Placement="Right">
             <Grid
@@ -160,12 +147,12 @@
                 HorizontalAlignment="Left"
                 FontFamily="Bold"
                 FontSize="20"
-                Text="Minecraft"/>
+                Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Minecraft]}"/>
               <SelectableTextBlock
                 Grid.Row="2"
                 Margin="10,0,10,2"
                 FontSize="12"
-                Text="Forge(全称 Minecraft Forge)是一个为《我的世界》Java版设计的开源模组加载器(Mod Loader), 它为开发者提供了一套标准的开发接口, 让各种修改游戏功能的模组(Mod)能够互相兼容并在同一个游戏客户端中运行。"
+                Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ForgeDesc]}"
                 TextWrapping="WrapWithOverflow"/>
               <Button
                 Grid.Row="3"
@@ -173,7 +160,7 @@
                 Margin="0,0,10,10"
                 HorizontalAlignment="Right"
                 Command="{Binding CloseFlyoutCommand}"
-                Content="Action"/>
+                Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Action]}"/>
             </Grid>
           </fui:FluentFlyout>
         </Button.Flyout>
@@ -181,28 +168,28 @@
     </ui:CodeCard>
 
     <fui:TeachingTip
-      Title="提示"
+      Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_TipTitle]}"
       ActionButtonCommand="{Binding CloseTeachingTipCommand}"
-      ActionButtonContent="确认"
+      ActionButtonContent="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Confirm]}"
       IsLightDismissEnabled="True"
       IsOpen="{Binding TeachingTipIsOpen}"
       IsVisible="False"
       PreferredPlacement="{Binding TeachingTipPlacement}"
-      Subtitle="最短的捷径就是绕远路, 绕远路才是我的最短捷径."
+      Subtitle="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_TeachingTipSubtitle]}"
       Target="{Binding ElementName=TeachingTipButton}"/>
-    <ui:CodeCard Name="TeachingTipCard" Title="气泡弹窗">
+    <ui:CodeCard Name="TeachingTipCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_TeachingTip]}">
       <Grid ColumnDefinitions="*, Auto">
         <Button
           Name="TeachingTipButton"
           Command="{Binding ShowTeachingTipCommand}"
-          Content="显示气泡弹窗"/>
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_TeachingTipButton]}"/>
 
         <StackPanel
           Grid.Column="1"
           Width="128"
           Orientation="Horizontal"
           Spacing="3">
-          <TextBlock VerticalAlignment="Center" Text="位置"/>
+          <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_Position]}"/>
           <fui:FluentComboBox
             VerticalAlignment="Center"
             ItemsSource="{Binding TeachingTipPlacements}"
@@ -211,7 +198,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="颜色选择器">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[DP_ColorPicker]}">
       <ColorPicker HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </ui:CodeCard>
 

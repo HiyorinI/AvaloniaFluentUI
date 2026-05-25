@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Gallery.Controls"
   xmlns:viewModel="clr-namespace:Gallery.ViewModels"
@@ -59,7 +60,7 @@
   <StackPanel Spacing="50">
     <!--  如果Text需要嵌套{}  -->
     <!--  Text="{}{This is literal text, not a markup extension}"  -->
-    <ui:CodeCard Title="自动补全输入框">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_AutoCompleteBox]}">
       <Grid ColumnDefinitions="*, Auto">
         <AutoCompleteBox
           Grid.Column="0"
@@ -81,7 +82,7 @@
             <TextBlock
               Grid.Row="0"
               Grid.Column="0"
-              Text="添加要匹配的元素: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_AddMatchElement]}"/>
             <TextBox
               Grid.Row="0"
               Grid.Column="1"
@@ -89,7 +90,7 @@
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
-              Text="选择匹配模式: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SelectMatchMode]}"/>
             <fui:FluentComboBox
               Grid.Row="1"
               Grid.Column="1"
@@ -101,14 +102,14 @@
               Grid.ColumnSpan="2"
               Classes="AddButton"
               Command="{Binding AddAutoCompleteItemCommand}"
-              Content="添加要匹配的元素"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_AddMatchElementButton]}"/>
           </Grid>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
     <!--  TextBlock  -->
-    <ui:CodeCard Name="TextBlockCard" Title="显示文本">
+    <ui:CodeCard Name="TextBlockCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_DisplayText]}">
       <Grid ColumnDefinitions="*, Auto" RowDefinitions="*, *">
         <TextBlock
           Grid.Row="0"
@@ -148,7 +149,7 @@
             <TextBlock
               Grid.Row="0"
               Grid.Column="0"
-              Text="设置要显示的文本: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SetDisplayText]}"/>
             <TextBox
               Grid.Row="0"
               Grid.Column="1"
@@ -157,7 +158,7 @@
             <TextBlock
               Grid.Row="1"
               Grid.Column="0"
-              Text="设置字体大小"/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_FontSize]}"/>
             <fui:FluentComboBox
               Grid.Row="1"
               Grid.Column="1"
@@ -168,7 +169,7 @@
             <TextBlock
               Grid.Row="2"
               Grid.Column="0"
-              Text="设置字体粗细: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_FontWeight]}"/>
             <fui:FluentComboBox
               Grid.Row="2"
               Grid.Column="1"
@@ -179,7 +180,7 @@
             <TextBlock
               Grid.Row="3"
               Grid.Column="0"
-              Text="设置字母样式: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_FontStyle]}"/>
             <fui:FluentComboBox
               Grid.Row="3"
               Grid.Column="1"
@@ -190,7 +191,7 @@
             <TextBlock
               Grid.Row="4"
               Grid.Column="0"
-              Text="设置字母间隔: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SetLetterSpacing]}"/>
             <fui:ToolTipSlider
               Grid.Row="4"
               Grid.Column="1"
@@ -205,7 +206,7 @@
             <TextBlock
               Grid.Row="5"
               Grid.Column="0"
-              Text="设置文本装饰: "/>
+              Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_TextDecoration]}"/>
             <fui:FluentComboBox
               Grid.Row="5"
               Grid.Column="1"
@@ -218,7 +219,7 @@
     </ui:CodeCard>
 
     <!--  TextBox  -->
-    <ui:CodeCard Name="TextBoxCard" Title="文本输入框">
+    <ui:CodeCard Name="TextBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_TextBox]}">
       <Grid ColumnDefinitions="*, Auto">
         <TextBox
           Width="256"
@@ -232,11 +233,11 @@
           Width="256"
           VerticalAlignment="Stretch">
           <StackPanel Orientation="Vertical">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
 
-            <CheckBox Content="接受回车" IsChecked="{Binding IsAccentReturn}"/>
-            <CheckBox Content="接受Tab" IsChecked="{Binding IsAcceptTab}"/>
-            <TextBlock HorizontalAlignment="Left" Text="提示文字"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_AcceptReturn]}" IsChecked="{Binding IsAccentReturn}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_AcceptTab]}" IsChecked="{Binding IsAcceptTab}"/>
+            <TextBlock HorizontalAlignment="Left" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_WatermarkLabel]}"/>
             <TextBox Text="{Binding Watermark}"/>
 
           </StackPanel>
@@ -244,37 +245,37 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="带清空按钮的输入框">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_ClearTextBox]}">
       <TextBox
         Width="256"
         HorizontalAlignment="Left"
         Classes="Clear"
-        Watermark="带清空按钮的输入框"/>
+        Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_ClearWatermark]}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="PasswordBoxCard" Title="密码输入框">
+    <ui:CodeCard Name="PasswordBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_PasswordBox]}">
       <TextBox
         Width="256"
         HorizontalAlignment="Left"
         Classes="Password"
         PasswordChar="*"
-        Watermark="请输入密码"/>
+        Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_EnterPassword]}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="搜索框">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SearchBox]}">
       <Grid ColumnDefinitions="*, Auto, Auto">
         <fui:SearchTextBox
           Width="256"
           HorizontalAlignment="Left"
           KeyDown="OnSearchKeyDown"
           SearchCommand="{Binding SearchCommand}"
-          Watermark="请输入要搜索的内容"/>
+          Watermark="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SearchWatermark]}"/>
 
         <CheckBox
           Name="StbCheBox"
           Grid.Column="1"
           VerticalAlignment="Center"
-          Content="回车搜索"/>
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_EnterToSearch]}"/>
 
         <TextBlock
           Name="SearchResult"
@@ -285,7 +286,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="NumberBoxCard" Title="数字编辑框">
+    <ui:CodeCard Name="NumberBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_NumberBox]}">
       <Grid ColumnDefinitions="*, Auto">
         <fui:NumberBox
           Maximum="10000"
@@ -294,9 +295,9 @@
 
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock Text="SpinButton显示模式: "/>
+              <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SpinButtonMode]}"/>
               <fui:FluentComboBox
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding NumberBoxSpinButtonPlacementModes}"
@@ -307,7 +308,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="按钮微调器">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_ButtonSpinner]}">
       <Grid ColumnDefinitions="*, Auto">
         <ButtonSpinner
           Name="ButtonSpinner"
@@ -320,12 +321,12 @@
           Spin="OnSpin"/>
         <ui:Card Grid.Column="1">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[BI_Options]}"/>
             <StackPanel Orientation="Horizontal">
-              <TextBlock Text="微调按钮位置: "/>
+              <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_SpinnerLocation]}"/>
               <fui:FAComboBox ItemsSource="{Binding SpinnerLocations}" SelectedItem="{Binding SpinnerLocation}"/>
             </StackPanel>
-            <CheckBox Content="启用旋转功能" IsChecked="{Binding IsEnabledSpinner}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_EnableSpin]}" IsChecked="{Binding IsEnabledSpinner}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
@@ -338,10 +339,10 @@
           Grid.Row="0"
           Classes="Title"
           Text="{OnFormFactor Default=MaskedTextBox}"/>
-        <TextBlock Grid.Row="1" Text="请输入11位电话号码:"/>
+        <TextBlock Grid.Row="1" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_PhoneNumber]}"/>
         <MaskedTextBox Grid.Row="2" Mask="(+86) 000 0000 0000"/>
 
-        <TextBlock Grid.Row="3" Text="请输入名字(A-Z)(a-z)"/>
+        <TextBlock Grid.Row="3" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[TV_EnterName]}"/>
         <MaskedTextBox
           Grid.Row="4"
           AsciiOnly="True"

@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:fui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
+  xmlns:locale="clr-namespace:AvaloniaFluentUI.Locale;assembly=AvaloniaFluentUI"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:models="clr-namespace:Gallery.Models"
   xmlns:ui="clr-namespace:Gallery.Controls"
@@ -30,22 +31,22 @@
           Width="256"
           Margin="10,0,0,0">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock Text="选项"/>
-            <CheckBox Content="自动播放" IsChecked="{Binding FlipViewIsAutoPlay}"/>
+            <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_AutoPlay]}" IsChecked="{Binding FlipViewIsAutoPlay}"/>
 
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock VerticalAlignment="Center" Text="间隔"/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Interval]}"/>
               <fui:FluentComboBox
-                Width="200"
+                Width="150"
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding Intervals}"
                 SelectedItem="{Binding FlipViewAutoPlayInterval}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock VerticalAlignment="Center" Text="方向"/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Direction]}"/>
               <fui:FluentComboBox
-                Width="200"
+                Width="150"
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding FlipOrientations}"
                 SelectedItem="{Binding CurrentFlipOrientation}"/>
@@ -55,21 +56,21 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Name="ListBoxCard" Title="列表控件">
+    <ui:CodeCard Name="ListBoxCard" Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_ListControl]}">
       <ListBox
         Height="328"
         HorizontalAlignment="Stretch"
         ItemsSource="{Binding ItemSource}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="圆角列表控件">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_RoundListBox]}">
       <fui:RoundListBox
         Height="328"
         HorizontalAlignment="Stretch"
         ItemsSource="{Binding ItemSource}"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="表格控件" Height="456">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_DataGrid]}" Height="456">
       <Grid ColumnDefinitions="*, Auto">
         <DataGrid
           Margin="10"
@@ -83,10 +84,10 @@
 
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock FontWeight="Bold" Text="选项"/>
-            <CheckBox Content="是只读的" IsChecked="{Binding DataGridIsReadOnly}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Options]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_IsReadOnly]}" IsChecked="{Binding DataGridIsReadOnly}"/>
             <StackPanel Orientation="Horizontal" Spacing="5">
-              <TextBlock VerticalAlignment="Center" Text="边框显示模式"/>
+              <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_BorderDisplayMode]}"/>
               <fui:FluentComboBox
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding DataGridLineVisibilityModes}"
@@ -99,7 +100,7 @@
 
     <ui:CodeCard
       Name="TreeViewCard"
-      Title="树状控件"
+      Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_TreeView]}"
       Height="456">
       <Grid ColumnDefinitions="*, Auto">
         <TreeView ItemsSource="{Binding TreeViewItems}" SelectionMode="{Binding TreeViewSelectedMode}">
@@ -116,9 +117,9 @@
         </TreeView>
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="3">
-            <TextBlock Text="选项"/>
+            <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Options]}"/>
             <StackPanel Orientation="Horizontal" Spacing="3">
-              <TextBlock Text="选择模式: "/>
+              <TextBlock Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_SelectMode]}"/>
               <fui:FluentComboBox ItemsSource="{Binding TreeViewSelectedModes}" SelectedItem="{Binding TreeViewSelectedMode}"/>
             </StackPanel>
           </StackPanel>
@@ -126,7 +127,7 @@
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="轮播页面" Height="400">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Carousel]}" Height="400">
       <Grid ColumnDefinitions="*, Auto">
         <Carousel
           Name="Carousel"
@@ -162,30 +163,30 @@
 
         <ui:Card Grid.Column="1" Width="256">
           <StackPanel Orientation="Vertical" Spacing="8">
-            <TextBlock FontWeight="Bold" Text="选项"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Options]}"/>
             <TextBlock Text="{Binding CarouselAllCountFormat}"/>
             <TextBlock Text="{Binding CarouselCurrentIndexFormat}"/>
             <Button
               HorizontalAlignment="Stretch"
               Command="{Binding #Carousel.Previous}"
-              Content="上一张"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Previous]}"/>
             <Button
               HorizontalAlignment="Stretch"
               Command="{Binding #Carousel.Next}"
-              Content="下一张"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Next]}"/>
             <Button
               HorizontalAlignment="Stretch"
               Classes="accent"
               Command="{Binding AddCarouselCommand}"
-              Content="添加页面"/>
-            <CheckBox Content="自动播放" IsChecked="{Binding IsAutoPlay}"/>
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_AddPage]}"/>
+            <CheckBox Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_AutoPlay]}" IsChecked="{Binding IsAutoPlay}"/>
           </StackPanel>
         </ui:Card>
       </Grid>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="简单设置卡">
-      <fui:SettingsExpander Header="Volume">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_SimpleSettingsCard]}">
+      <fui:SettingsExpander Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Volume]}">
         <fui:SettingsExpander.Footer>
           <fui:ToolTipSlider
             Width="168"
@@ -196,32 +197,32 @@
       </fui:SettingsExpander>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="可点击设置卡">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_ClickableSettingsCard]}">
       <fui:SettingsExpander
         ActionIconSource="ChevronRight"
-        Description="Volume levels, output, input, sound devices"
-        Header="Sound"
+        Description="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_SoundDescription]}"
+        Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Sound]}"
         IconSource="Volume"
         IsClickEnabled="True"/>
     </ui:CodeCard>
 
-    <ui:CodeCard Title="可展开设置卡">
+    <ui:CodeCard Title="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_ExpandableSettingsCard]}">
       <fui:SettingsExpander
-        Description="Apps might have their own settings"
-        Header="Choose a device for speaking or recording"
+        Description="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_AppsSettingsDescription]}"
+        Header="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_ChooseDevice]}"
         IconSource="Microphone">
-        <fui:SettingsExpanderItem Content="Headest" Description="Device Name"/>
-        <fui:SettingsExpanderItem Content="This one has footer content" Description="Device Name">
+        <fui:SettingsExpanderItem Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_Headset]}" Description="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_DeviceName]}"/>
+        <fui:SettingsExpanderItem Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_HasFooterContent]}" Description="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_DeviceName]}">
           <fui:SettingsExpanderItem.Footer>
             <fui:PushButton
               Classes="Accent"
-              Content="添加设备"
+              Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_AddDevice]}"
               IconData="{DynamicResource Add}"/>
           </fui:SettingsExpanderItem.Footer>
         </fui:SettingsExpanderItem>
         <fui:SettingsExpanderItem
           ActionIconSource="ChevronRight"
-          Content="This one is clickable"
+          Content="{Binding Source={x:Static locale:LocalizationService.Instance}, Path=[VP_IsClickable]}"
           IsClickEnabled="True"/>
       </fui:SettingsExpander>
     </ui:CodeCard>
