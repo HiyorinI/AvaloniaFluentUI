@@ -15,7 +15,7 @@ namespace AvaloniaFluentUI.Locale;
 /// </summary>
 public class LocalizationService : INotifyPropertyChanged
 {
-    private static readonly ResourceManager s_resourceManager =
+    private static readonly ResourceManager resourceManager =
         new("AvaloniaFluentUI.Locale.Strings",
             typeof(LocalizationService).Assembly);
 
@@ -24,6 +24,11 @@ public class LocalizationService : INotifyPropertyChanged
     private LocalizationService() { }
 
     public static LocalizationService Instance { get; } = new();
+
+    /// <summary>
+    /// 当前有的翻译语言, 添加自定义语言时可把他添加到此列表
+    /// </summary>
+    public static HashSet<string> Languages = new HashSet<string>() { "en-US", "zh-CN", "ja-JP" };
 
     /// <summary>
     /// Raised when the UI culture changes. Bindings should re-read their
@@ -45,6 +50,11 @@ public class LocalizationService : INotifyPropertyChanged
     public ConcurrentDictionary<string, string> CustomStrings { get; private set; } = new();
 
     /// <summary>
+    /// 索引器允许通过 <c>Path=[key] 进行 XAML 绑定, 但最好还是切换语言后重启应用</c>.
+    /// </summary>
+    public string this[string resourceKey] => GetString(resourceKey);
+
+    /// <summary>
     /// Gets a localized string for the specified resource key using the
     /// current UI culture.
     /// </summary>
@@ -53,13 +63,24 @@ public class LocalizationService : INotifyPropertyChanged
         return GetString(key, CultureInfo.CurrentUICulture);
     }
 
+    /// <summary>
+    /// 添加不同的语言 通过 language:key 添加
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public LocalizationService AddValue(string key, string value)
     {
         CustomStrings[key] = value;
-
+        
         return this;
     }
 
+    /// <summary>
+    /// 添加不同的语言 通过 language:key 添加
+    /// </summary>
+    /// <param name="keys"></param>
+    /// <param name="values"></param>
     public void AddValues(IEnumerable<string> keys, IEnumerable<string> values)
     {
         foreach (var (key, value) in keys.Zip(values))
@@ -84,17 +105,29 @@ public class LocalizationService : INotifyPropertyChanged
             return val;
 
         // 3. Built-in embedded RESX
-        var value = s_resourceManager.GetString(key, culture);
+        string? value;
+        try
+        {
+            value = resourceManager.GetString(key, culture);
+        }
+        catch (MissingManifestResourceException)
+        {
+            value = null;
+        }
         if (value != null)
             return value;
 
-        // 4. Fallback to en-US
-        // if (culture.Name != "en-US")
-        // {
-            value = s_resourceManager.GetString(key, DefaultCultureInfo);
-            if (value != null)
-                return value;
-        // }
+        // 4. Fallback to default culture
+        try
+        {
+            value = resourceManager.GetString(key, DefaultCultureInfo);
+        }
+        catch (MissingManifestResourceException)
+        {
+            value = null;
+        }
+        if (value != null)
+            return value;
 
         return string.Empty;
     }
