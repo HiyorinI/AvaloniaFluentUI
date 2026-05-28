@@ -46,6 +46,14 @@ public class StandardUICommand : XamlUICommand
         }
     }
 
+    /// <summary>
+    /// Called by TextCommandBarFlyout when the UI culture changes.
+    /// </summary>
+    internal void RefreshLocale()
+    {
+        SetupCommand();
+    }
+
     private void SetupCommand()
     {
         switch (Kind)

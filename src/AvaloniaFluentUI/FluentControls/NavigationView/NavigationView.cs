@@ -1469,9 +1469,41 @@ public partial class NavigationView : HeaderedContentControl
         _selectionModel.ChildrenRequested += OnSelectionModelChildrenRequested;
 
         _itemsFactory = new NavigationViewItemsFactory();
+        
+        LocalizationService.Instance.PropertyChanged += OnLanguageChanged;
     }
 
-
+    /// <summary>
+    /// 语言更新重新获取值
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnLanguageChanged(object sender, PropertyChangedEventArgs e)
+    {
+        try
+        {
+            var tip = ToolTip.GetTip(_topNavOverflowButton);
+            if (tip != null)
+            {
+                ToolTip.SetTip(_topNavOverflowButton, LocalizationService.Instance.GetString(SR_NavigationOverflowButtonToolTip));
+            }
+        
+            var searchButtonName = LocalizationService.Instance.GetString(SR_NavigationViewSearchButtonName);
+            AutomationProperties.SetName(_paneSearchButton, searchButtonName); 
+            ToolTip.SetTip(_paneSearchButton, searchButtonName);
+        
+            var navigationName = LocalizationService.Instance.GetString(SR_NavigationBackButtonToolTip);
+            ToolTip.SetTip(_backButton, navigationName);
+            AutomationProperties.SetName(_backButton, navigationName);
+        
+            ToolTip.SetTip(_closeButton, LocalizationService.Instance.GetString(SR_NavigationButtonOpenName));
+        
+            _settingsItem.Content = IsTopNavigationView ? null : LocalizationService.Instance.GetString(SR_SettingsButtonName);
+            UpdateSettingsItemToolTip();
+            SetPaneToggleButtonAutomationName();
+        }
+        catch (Exception exception) { }
+    }
 
 
     ///////////////////////////////////////
@@ -5015,7 +5047,8 @@ public partial class NavigationView : HeaderedContentControl
 
         var localizedSettingsName = LocalizationService.Instance.GetString(SR_SettingsButtonName);
 
-        _settingsItem.Tag = localizedSettingsName;
+        // _settingsItem.Tag = localizedSettingsName;
+        _settingsItem.Tag = "Settings";
         UpdateSettingsItemToolTip();
 
         // Add the name only in case of horizontal nav

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Input.Platform;
 using Avalonia.Media;
 using AvaloniaFluentUI.Media.Animation;
 using AvaloniaFluentUI.Controls.Input;
+using AvaloniaFluentUI.Locale;
 
 namespace AvaloniaFluentUI.Controls;
 
@@ -38,10 +40,38 @@ public class TextCommandBarFlyout : CommandBarFlyout
                 Hide();
             }
         };
+
+
+        LocalizationService.Instance.PropertyChanged += OnLanguageChanged;
     }
 
-    private void InitializeButtonWithUICommand(Button b,
-        XamlUICommand command, Action executeFunc)
+    private void OnLanguageChanged(object sender, PropertyChangedEventArgs e)
+    {
+        // Step 1: Refresh all cached StandardUICommands so their Label/Description
+        // are up-to-date before we copy them to the buttons.
+        if (_buttons != null)
+        {
+            foreach (var kvp in _buttons)
+            {
+                if (kvp.Value is CommandBarButton btn)
+                {
+                    if (btn.Command is StandardUICommand stdCmd)
+                        stdCmd.RefreshLocale();
+
+                    // CommandBarButton only copies Label/Description from the command
+                    // once at assignment time, so re-sync here.
+                    if (btn.Command is XamlUICommand cmd)
+                    {
+                        btn.Label = cmd.Label;
+                        if (cmd.Description != null)
+                            ToolTip.SetTip(btn, cmd.Description);
+                    }
+                }
+            }
+        }
+    }
+
+    private void InitializeButtonWithUICommand(Button b, XamlUICommand command, Action executeFunc)
     {
         // WinUI collects the event token for revoking later, but never actually does
         // This should be ok because the button is tied to the TextCommandBarFlyout
@@ -96,7 +126,7 @@ public class TextCommandBarFlyout : CommandBarFlyout
         
         if (Popup.Child is { } presenter)
         {
-            _=FluentAnimation.SlideInAsync(presenter, -32D, TranslateTransform.YProperty, 150D);
+            FluentAnimation.SlideInAsync(presenter, -32D, TranslateTransform.YProperty, 150D);
         }
     }
 
