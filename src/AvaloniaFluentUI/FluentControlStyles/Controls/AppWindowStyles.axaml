@@ -168,8 +168,8 @@
             <Image
               Name="Icon"
               Grid.Column="0"
-              Width="16"
-              Height="16"
+              Width="{TemplateBinding IconSize}"
+              Height="{TemplateBinding IconSize}"
               Margin="10,0,0,0"
               HorizontalAlignment="Left"
               VerticalAlignment="Center"
@@ -201,7 +201,6 @@
           <!--  Margin="{Binding TemplateSettings.ContentMargin, RelativeSource={RelativeSource TemplatedParent}}"  -->
           <ContentPresenter
             Name="PART_ContentPresenter"
-            Margin="{TemplateBinding ContentMargin}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             ClipToBounds="False"
