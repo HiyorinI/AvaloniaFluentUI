@@ -181,8 +181,8 @@
               Text="{TemplateBinding Label}"
               TextAlignment="Left"
               TextTrimming="CharacterEllipsis"
-              TextWrapping="Wrap"
-              Theme="{StaticResource BodyTextBlockStyle}"/>
+              TextWrapping="Wrap"/>
+            <!--  ERROR  -->
 
             <TextBlock
               Name="KeyboardAcceleratorTextLabel"
@@ -190,11 +190,12 @@
               Margin="24,0,12,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
+              Classes="Caption"
               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               IsVisible="False"
               Text="{TemplateBinding HotKey,
-                                     Converter={StaticResource KeyGestureConverter}}"
-              Theme="{StaticResource CaptionTextBlockStyle}"/>
+                                     Converter={StaticResource KeyGestureConverter}}"/>
+            <!--  ERROR  -->
 
             <ui:SymbolIcon
               Name="SubItemChevron"
@@ -446,8 +447,8 @@
               Text="{TemplateBinding Label}"
               TextAlignment="Left"
               TextTrimming="CharacterEllipsis"
-              TextWrapping="NoWrap"
-              Theme="{StaticResource BodyTextBlockStyle}"/>
+              TextWrapping="NoWrap"/>
+            <!--  ERROR  -->
 
             <TextBlock
               Name="KeyboardAcceleratorTextLabel"
@@ -455,11 +456,12 @@
               Margin="24,0,12,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
+              Classes="Caption"
               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               IsVisible="False"
               Text="{TemplateBinding HotKey,
-                                     Converter={StaticResource KeyGestureConverter}}"
-              Theme="{StaticResource CaptionTextBlockStyle}"/>
+                                     Converter={StaticResource KeyGestureConverter}}"/>
+            <!--  ERROR  -->
 
           </Grid>
         </Panel>

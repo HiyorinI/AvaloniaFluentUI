@@ -67,10 +67,10 @@
   <x:Double x:Key="AppBarButtonContentHeight">20</x:Double>
 
 
-  
-  <!-- Control-specific resources -->
+
+  <!--  Control-specific resources  -->
   <x:String x:Key="AppBarButtonOverflowFlyoutGlyph">&#xE974;</x:String>
-<ControlTheme x:Key="{x:Type ui:CommandBarButton}" TargetType="ui:CommandBarButton">
+  <ControlTheme x:Key="{x:Type ui:CommandBarButton}" TargetType="ui:CommandBarButton">
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ControlFillColorTransparentBrush}"/>
@@ -152,11 +152,12 @@
               Margin="24,0,12,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
+              Classes="Caption"
               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               IsVisible="False"
               Text="{TemplateBinding HotKey,
-                                     Converter={StaticResource KeyGestureConverter}}"
-              Theme="{StaticResource CaptionTextBlockStyle}"/>
+                                     Converter={StaticResource KeyGestureConverter}}"/>
+            <!--  ERROR  -->
 
             <ui:FontIcon
               Name="SubItemChevron"
