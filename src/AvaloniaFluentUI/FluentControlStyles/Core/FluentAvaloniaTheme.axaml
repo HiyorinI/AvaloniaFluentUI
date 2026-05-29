@@ -18,7 +18,6 @@
       </ResourceDictionary.ThemeDictionaries>
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="/FluentControlStyles/Themes/Compact.axaml"/>
-        <ResourceInclude Source="/FluentControlStyles/Themes/Icon/FluentIcon.axaml"/>
       </ResourceDictionary.MergedDictionaries>
       <FontFamily x:Key="SymbolThemeFontFamily">/Assets/Fonts/#Symbols</FontFamily>
     </ResourceDictionary>
