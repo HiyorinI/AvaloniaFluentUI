@@ -13,6 +13,6 @@
   </Application.Resources>
 
   <Application.Styles>
-    <fui:FluentAvaloniaTheme CustomAccentColor="DeepSkyBlue"/>
+    <fui:FluentAvaloniaTheme/>
   </Application.Styles>
 </Application>

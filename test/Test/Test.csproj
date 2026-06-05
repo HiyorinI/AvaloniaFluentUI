@@ -13,18 +13,17 @@
         <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Avalonia"/>
-        <PackageReference Include="Avalonia.Desktop"/>
-        <PackageReference Include="Avalonia.Diagnostics">
-            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
-            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="CommunityToolkit.Mvvm"/>
-
-</ItemGroup>
   
+ <ItemGroup>
+   <PackageReference Include="Avalonia"/>
+   <PackageReference Include="Avalonia.Desktop"/>
+   <PackageReference Include="AvaloniaUI.DiagnosticsSupport">
+     <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+     <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+   </PackageReference>
+   <PackageReference Include="CommunityToolkit.Mvvm"/>
+ </ItemGroup>
+
     <ItemGroup>
         <ProjectReference Include="../../src/AvaloniaFluentUI/AvaloniaFluentUI.csproj"/>
     </ItemGroup>

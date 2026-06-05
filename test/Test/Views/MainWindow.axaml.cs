@@ -1,22 +1,72 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.Animation;
+using Avalonia.Animation.Easings;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media;
-using AvaloniaFluentUI.Controls.Windowing;
+using AvaloniaFluentUI.Windowing;
+using AvaloniaFluentUI.Locale;
+using AvaloniaFluentUI.Styling;
 
 namespace Test.Views;
 
-public partial class MainWindow : AppWindow 
+public partial class MainWindow : AppWindow
 {
     public MainWindow()
     {
         InitializeComponent();
 
-        TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
-        EnableWindowEffect(true);
+        // SplashScreen = new MainWindowSplashScreen();
+        
+        LocalizationService.Instance.PropertyChanged += async (_, _) =>
+        {
+            await Task.Delay(500);
+            // Console.WriteLine(NavigationView.SettingsItem.Tag);
+        };
 
-        SplashScreen = new MainWindowSplashScreen();
+        FluentAvaloniaTheme.Instance.ThemeChanged += (_, theme) =>
+        {
+            Console.WriteLine($"Theme Changed: {theme}");
+        };
 
-        // TitleBarHeight = 100;
+        FluentAvaloniaTheme.Instance.ThemeColorChanged += (_, color) =>
+        {
+            Console.WriteLine($"Theme Color Changed: {color}");
+        };
+
+        CarouselPage.PageTransition = new PageSlide
+        {
+            Duration =  TimeSpan.FromMilliseconds(300),
+            SlideInEasing = new CubicEaseInOut()
+        };
+    }
+
+    private void OnClicked(object? sender, RoutedEventArgs e)
+    {
+        FluentAvaloniaTheme.Instance.CurrentAccentColor = GetRandomColor();
+    }
+
+    public Color GetRandomColor()
+    {
+        var random = new Random();
+        return Color.Parse($"#{random.Next(256):X2}" +
+                           $"{random.Next(256):X2}" +
+                           $"{random.Next(256):X2}");
+    }
+
+    private void ToggleToDefaultColor(object? sender, RoutedEventArgs e)
+    {
+        FluentAvaloniaTheme.Instance.CustomAccentColor = null;
+    }
+
+    private void TogglePage(object? sender, RoutedEventArgs e)
+    {
+        CarouselPage.CurrentPage = new DrawerPage
+        {
+            Content = new TextBlock { Text = "DrawPage"}
+        };
     }
 }
 
