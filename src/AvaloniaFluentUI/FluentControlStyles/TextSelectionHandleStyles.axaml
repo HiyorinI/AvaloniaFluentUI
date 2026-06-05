@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Design.PreviewWith>
+    <Grid>
+      <Border>
+        <Image
+          Name="PART_HandlePathIcon"
+          Height="{DynamicResource TextSelectHandleSize}"
+          HorizontalAlignment="Left"
+          Cursor="Arrow"
+          Source="{DynamicResource TextSelectionHandleDrawing}"
+          Stretch="Uniform"/>
+      </Border>
+    </Grid>
+  </Design.PreviewWith>
+  <x:Double x:Key="TextSelectHandleSize">32</x:Double>
+
+  <DrawingImage x:Key="TextSelectionHandleDrawing">
+    <DrawingImage.Drawing>
+      <GeometryDrawing Brush="{DynamicResource TextControlSelectionHighlightColor}" Geometry="{DynamicResource TextSelectionHandlePath}">
+        <GeometryDrawing.Pen>
+          <Pen
+            Brush="{DynamicResource TextFillColorPrimaryBrush}"
+            LineJoin="Round"
+            Thickness="0.5"/>
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingImage.Drawing>
+  </DrawingImage>
+
+  <DrawingImage x:Key="TextCaretHandleDrawing">
+    <DrawingImage.Drawing>
+      <GeometryDrawing Brush="{DynamicResource TextControlSelectionHighlightColor}" Geometry="{DynamicResource TextCaretHandlePath}">
+        <GeometryDrawing.Pen>
+          <Pen
+            Brush="{DynamicResource TextFillColorPrimaryBrush}"
+            LineJoin="Round"
+            Thickness="0.5"/>
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingImage.Drawing>
+  </DrawingImage>
+
+  <GeometryGroup x:Key="TextSelectionHandlePath">
+    <CombinedGeometry>
+      <CombinedGeometry.Geometry1>
+        <RectangleGeometry Rect="0,0,16,16"/>
+      </CombinedGeometry.Geometry1>
+      <CombinedGeometry.Geometry2>
+        <EllipseGeometry
+          Center="16,16"
+          RadiusX="16"
+          RadiusY="16"/>
+      </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
+  </GeometryGroup>
+
+  <GeometryGroup x:Key="TextCaretHandlePath">
+    <CombinedGeometry>
+      <CombinedGeometry.Geometry1>
+        <RectangleGeometry Rect="0,0,16,16">
+          <RectangleGeometry.Transform>
+            <TransformGroup>
+              <RotateTransform Angle="-45" CenterX="16"/>
+            </TransformGroup>
+          </RectangleGeometry.Transform>
+        </RectangleGeometry>
+      </CombinedGeometry.Geometry1>
+      <CombinedGeometry.Geometry2>
+        <EllipseGeometry
+          Center="16,22.7"
+          RadiusX="16"
+          RadiusY="16"/>
+      </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
+  </GeometryGroup>
+  <ControlTheme x:Key="{x:Type TextSelectionHandle}" TargetType="TextSelectionHandle">
+    <Setter Property="Background" Value="{DynamicResource TextControlSelectionHighlightColor}"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Grid>
+            <Border
+              Padding="0,0,0,10"
+              Background="Transparent"
+              IsHitTestVisible="True">
+              <Image
+                Name="PART_HandlePathIcon"
+                Height="{DynamicResource TextSelectHandleSize}"
+                Cursor="Arrow"
+                Source="{DynamicResource TextSelectionHandleDrawing}"
+                Stretch="Uniform"/>
+            </Border>
+            <Border
+              Name="PART_Indicator"
+              Width="1"
+              Height="5"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              Background="Transparent"/>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style Selector="^:caret /template/ Image#PART_HandlePathIcon">
+      <Setter Property="Source" Value="{DynamicResource TextCaretHandleDrawing}"/>
+    </Style>
+    <Style Selector="^:start /template/ Image#PART_HandlePathIcon">
+      <Setter Property="RenderTransform">
+        <ScaleTransform ScaleX="-1" ScaleY="1"/>
+      </Setter>
+    </Style>
+    <Style Selector="^:caret /template/ Border#PART_Indicator">
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="^:end /template/ Border#PART_Indicator">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    <Style Selector="^:start /template/ Border#PART_Indicator">
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+  </ControlTheme>
+
+</ResourceDictionary>
+

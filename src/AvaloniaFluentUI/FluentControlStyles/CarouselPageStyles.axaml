@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Design.PreviewWith>
+    <Border Width="400" Height="300">
+      <CarouselPage>
+        <ContentPage Header="Page 1">
+          <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="First page"/>
+        </ContentPage>
+        <ContentPage Header="Page 2">
+          <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="Second page"/>
+        </ContentPage>
+      </CarouselPage>
+    </Border>
+  </Design.PreviewWith>
+
+  <ControlTheme x:Key="{x:Type CarouselPage}" TargetType="CarouselPage">
+    <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Carousel
+          Name="PART_Carousel"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
+          Background="{TemplateBinding Background}"
+          ItemTemplate="{TemplateBinding PageTemplate}"
+          ItemsPanel="{TemplateBinding ItemsPanel}"
+          PageTransition="{TemplateBinding PageTransition}"/>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+</ResourceDictionary>
