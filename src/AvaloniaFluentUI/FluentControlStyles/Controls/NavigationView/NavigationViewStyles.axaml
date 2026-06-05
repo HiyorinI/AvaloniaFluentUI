@@ -307,6 +307,7 @@
                     <Button
                       Name="PaneAutoSuggestButton"
                       Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.SmallerPaneToggleButtonWidth}"
+                      Padding="10,5,12,6"
                       FontSize="22"
                       IsVisible="False"
                       Theme="{StaticResource NavigationViewPaneSearchButtonStyle}"/>
