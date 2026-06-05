@@ -6,7 +6,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls;assembly=AvaloniaFluentUI"
   xmlns:vm="using:Test.ViewModels"
-  xmlns:wnd="clr-namespace:AvaloniaFluentUI.Controls.Windowing;assembly=AvaloniaFluentUI"
+  xmlns:wnd="clr-namespace:AvaloniaFluentUI.Windowing;assembly=AvaloniaFluentUI"
   Title="Test"
   d:DesignHeight="450"
   d:DesignWidth="800"
@@ -33,5 +33,18 @@
         Theme="{StaticResource TransparentToolButton}"/>
     </Grid>
   </wnd:AppWindow.TitleBarContent>
+
+  <Grid
+    Margin="15,55,15,10"
+    RowDefinitions="Auto, Auto, Auto, Auto"
+    RowSpacing="10">
+    <ui:MultiSelectionComboBox ItemsSource="{Binding Items}" Watermark="请选择你的选项"/>
+    <ui:SegmentedView Grid.Row="1" ItemsSource="{Binding SegmentedItems}"/>
+    <ui:SegmentedToggleView Grid.Row="2" ItemsSource="{Binding SegmentedItems}"/>
+    <ui:SegmentedToggleView
+      Grid.Row="3"
+      ItemsSource="{Binding SegmentedItems}"
+      Orientation="Vertical"/>
+  </Grid>
 
 </wnd:AppWindow>

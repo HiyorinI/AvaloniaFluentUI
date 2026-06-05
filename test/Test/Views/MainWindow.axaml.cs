@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Media;
-using AvaloniaFluentUI.Controls.Windowing;
+using AvaloniaFluentUI.Windowing;
 
 namespace Test.Views;
 
