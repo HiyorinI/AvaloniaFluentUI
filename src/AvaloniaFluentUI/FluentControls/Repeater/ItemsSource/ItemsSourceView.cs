@@ -11,9 +11,9 @@ namespace AvaloniaFluentUI.Controls;
 /// <summary>
 /// Represents a standardized view of the supported interactions between a given ItemsSource object and an ItemsRepeater control.
 /// </summary>
-public class FAItemsSourceView
+public class ItemsSourceView
 {
-    public FAItemsSourceView(IEnumerable source)
+    public ItemsSourceView(IEnumerable source)
     {
         if (source == null)
             throw new ArgumentNullException(nameof(source));
