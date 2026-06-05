@@ -37,12 +37,11 @@
 
     <Style Selector="^.Caption">
       <Setter Property="FontSize" Value="{StaticResource CaptionFontSize}"/>
-      <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
     <Style Selector="^.StrongBody">
       <Setter Property="FontSize" Value="{StaticResource StrongBodyFontSize}"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="FontWeight" Value="DemiBold"/>
     </Style>
 
     <Style Selector="^.SubTitle">
