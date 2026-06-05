@@ -18,8 +18,7 @@
 
 ## 安装🚀
 ```shell
-# nuget可能不为最新版本
-dotnet add package AvaloniaFluentUI
+dotnet add package AvaloniaFluentUI --version 1.0.3
 ```
 
 ## 运行示例▶️
