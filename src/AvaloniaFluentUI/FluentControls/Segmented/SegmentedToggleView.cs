@@ -75,8 +75,8 @@ public class SegmentedToggleView : SegmentedView
             var position = transform.Value.Transform(new Point(0, 0));
 
             _selectedIndicator.Margin = Orientation == Orientation.Horizontal
-                ? new Thickness(position.X, 0, 0, 0)
-                : new Thickness(0, position.Y, 0, 0);
+                ? new Thickness(position.X, 2, 2, 2)
+                : new Thickness(3, position.Y, 0, 2);
             _selectedIndicator.Width = width;
             _selectedIndicator.Height = height;
         }

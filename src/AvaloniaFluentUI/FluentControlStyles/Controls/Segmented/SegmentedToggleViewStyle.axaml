@@ -69,12 +69,13 @@
     <!-- </Style> -->
 
     <Style Selector="^[Orientation=Horizontal]">
+      <Setter Property="Padding" Value="2"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+
       <Style Selector="^ /template/ ui|SingleDirectionScrollViewer#PART_ScrollViewer">
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Disabled"/>
       </Style>
-
-      <Setter Property="Padding" Value="2 4 2 0"/>
 
       <Style Selector="^ /template/ Rectangle#PART_SelectedIndicator">
         <Setter Property="RenderTransformOrigin" Value="50%, 50%"/>
@@ -88,7 +89,8 @@
     </Style>
 
     <Style Selector="^[Orientation=Vertical]">
-      <Setter Property="Padding" Value="4 4 0 4"/>
+      <Setter Property="Padding" Value="4 2"/>
+      <Setter Property="VerticalAlignment" Value="Stretch"/>
 
       <Style Selector="^ /template/ ui|SingleDirectionScrollViewer#PART_ScrollViewer">
         <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
