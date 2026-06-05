@@ -11,7 +11,6 @@ using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Logging;
 using Avalonia.Threading;
-using Avalonia.Utilities;
 using Avalonia.VisualTree;
 using AvaloniaFluentUI.Core;
 using AvaloniaFluentUI.Data;
@@ -179,6 +178,16 @@ public sealed class TabViewListView : ListBox
         // WinUI b/c they don't have to do this.
         if (container == item || tvi.IsContainerFromTemplate)
         {
+            // PrepareContainerForItemOverride will set the ContentTemplate of the item, but it will default
+            // to ItemTemplate, which only should be applied to the header (since its a TVI). In this case,
+            // undo that and search elsewhere for an appropriate template without defaulting to the
+            // ItemTemplate passed down from the TabView - fixes GH 739
+            var template = ItemTemplate;
+            if (tvi.ContentTemplate == template)
+            {
+                tvi.ContentTemplate = this.FindDataTemplate(item);
+            }
+
             base.ContainerForItemPreparedOverride(container, item, index);
             return;
         }
@@ -246,6 +255,11 @@ public sealed class TabViewListView : ListBox
             {
                 _initialPoint = currentPoint.Position;
                 _dragItem = (args.Source as Visual).FindAncestorOfType<TabViewItem>(true);
+
+                // Clicking in empty space of tab row will still fire this.
+                if (_dragItem == null)
+                    return;
+
                 _dragIndex = IndexFromContainer(_dragItem);
                 _isDragItemFocused = _dragItem.IsFocused;
                 _isDragItemSelected = _dragItem.IsSelected;
@@ -634,7 +648,7 @@ public sealed class TabViewListView : ListBox
             }
 
             // Disable if we're right up on the edge
-            if (MathUtilities.AreClose(bound, offset.X, 0.05))
+            if (MathHelpers.IsClose(bound, offset.X, 0.05))
             {
                 hVelocity = 0;
             }
@@ -654,7 +668,7 @@ public sealed class TabViewListView : ListBox
             }
 
             // Disable if we're right up on the edge
-            if (MathUtilities.AreClose(bound, offset.Y, 0.05))
+            if (MathHelpers.IsClose(bound, offset.Y, 0.05))
             {
                 vVelocity = 0;
             }
@@ -741,14 +755,14 @@ public sealed class TabViewListView : ListBox
     }
 
     private static bool IsStationary(Vector v) =>
-        MathUtilities.IsZero(v.X) && MathUtilities.IsZero(v.Y);
+        MathHelpers.IsZero(v.X) && MathHelpers.IsZero(v.Y);
 
     internal Orientation? GetLogicalOrientation()
     {
         var panel = ItemsPanelRoot;
         if (panel is VirtualizingStackPanel vsp)
             return vsp.Orientation;
-        else if (panel is Avalonia.Controls.StackPanel sp)
+        else if (panel is StackPanel sp)
             return sp.Orientation;
 
         return null;
@@ -831,7 +845,8 @@ public sealed class TabViewListView : ListBox
 
     private void UpdateDragInfo()
     {
-        FAUISettings.GetSystemDragSize(VisualRoot.RenderScaling, out _cxDrag, out _cyDrag);
+        var scaling = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1;
+        FAUISettings.GetSystemDragSize(scaling, out _cxDrag, out _cyDrag);
     }
 
     private TabViewItem _dragItem;
@@ -841,7 +856,6 @@ public sealed class TabViewListView : ListBox
     private bool _isInDrag = false;
     private bool _isInReorder = false;
     private IDisposable _dragItemOpacitySub;
-    private bool _processReorder;
     private Point? _initialPoint;
     private double _cxDrag = double.NaN;
     private double _cyDrag = double.NaN;
@@ -850,11 +864,7 @@ public sealed class TabViewListView : ListBox
     // True if there is a drag drop operation started by this listview
     private bool _isDraggingOverSelf;
 
-    private LiveReorderHelper _liveReorderHelper;
-    //private LiveReorderIndices _liveReorderIndices = new LiveReorderIndices(-1,-1,-1);
-    private DispatcherTimer _liveReorderTimer;
-    //private readonly MovedItems _movedItems = new MovedItems();
-    //private List<Rect> _cachedContainerBounds;
+    private LiveReorderHelper _liveReorderHelper;    
     private Point? _lastDragOverPoint;
 
     // For 12.0/v3 - Avalonia has decided to make the decision that the lowest common denominator

@@ -115,6 +115,7 @@ public partial class TabViewItem : SelectorItem
 
     internal bool IsContainerFromTemplate { get; set; }
 
+    internal Button CloseButton => _closeButton;
 
     private const string s_pcCloseCollapsed = ":closeCollapsed";
     private const string s_pcDragging = ":dragging";
@@ -130,6 +131,11 @@ public partial class TabViewItem : SelectorItem
 
         Loaded += OnLoaded;
         SizeChanged += OnSizeChanged;
+    }
+
+    static TabViewItem()
+    {
+        FocusableProperty.OverrideDefaultValue<TabViewItem>(true);
     }
     
     protected internal TabView ParentTabView
@@ -257,7 +263,7 @@ public partial class TabViewItem : SelectorItem
 
                 BeginCheckingForDrag(pointer.Id);
 
-                var mod = TopLevel.GetTopLevel(this).PlatformSettings.HotkeyConfiguration.CommandModifiers;
+                var mod = TopLevel.GetTopLevel(this).GetPlatformSettings().HotkeyConfiguration.CommandModifiers;
                 bool ctrlDown = (e.KeyModifiers & mod) == mod;
 
                 if (ctrlDown)
@@ -486,12 +492,12 @@ public partial class TabViewItem : SelectorItem
 
     private void OnTabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
     {
-        _isBeingDragged = true;
+        //_isBeingDragged = true;
     }
 
     private void OnTabDragCompleted(TabView sender, TabViewTabDragCompletedEventArgs args)
     {
-        _isBeingDragged = false;
+        //_isBeingDragged = false;
 
         StopCheckingForDrag(_dragPointerId);
         UpdateDragDropVisualState(false);
@@ -708,18 +714,16 @@ public partial class TabViewItem : SelectorItem
     }
 
     private Button _closeButton;
-    private object _toolTip;
     private ContentPresenter _headerContentPresenter;
     private TabViewWidthMode _tabViewWidthMode = TabViewWidthMode.Equal;
     private TabViewCloseButtonOverlayMode _closeButtonOverlayMode = TabViewCloseButtonOverlayMode.Auto;
-    private bool _firstTimeSettingToolTip = true;
     private FACompositeDisposable _tabDragRevoker;
     private Path _selectedBackgroundPath;
     private TabViewTabStripLocation _location;
 
     private bool _hasPointerCapture = false;
     private bool _isMiddlePointerButtonPressed = false;
-    private bool _isBeingDragged = false;
+    //private bool _isBeingDragged = false;
     private bool _isPointerOver = false;
     private Point _lastPointerPressedPosition;
     private int _dragPointerId;
