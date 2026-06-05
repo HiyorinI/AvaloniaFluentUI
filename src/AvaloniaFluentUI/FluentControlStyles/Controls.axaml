@@ -146,7 +146,7 @@
 
         <MergeResourceInclude Source="/FluentControlStyles/Controls/TextBox/SearchTextBox.axaml"/>
 
-        <MergeResourceInclude Source="/FluentControlStyles/Controls/Card/SettingCard.axaml"/>
+        <MergeResourceInclude Source="/FluentControlStyles/Controls/Card/SettingCardStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Styles.Resources>
