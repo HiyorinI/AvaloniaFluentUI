@@ -31,11 +31,11 @@ public class DialogHost : ContentControl
     {
         _ = base.MeasureOverride(availableSize);
 
-        if (VisualRoot is TopLevel tl)
+        if (TopLevel.GetTopLevel(this) is TopLevel tl)
         {
             return tl.ClientSize;
         }
-        else if (VisualRoot is Control c)
+        else if (TopLevel.GetTopLevel(this) is Control c)
         {
             return c.Bounds.Size;
         }
@@ -46,7 +46,7 @@ public class DialogHost : ContentControl
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-        if (e.Root is Control wb)
+        if (TopLevel.GetTopLevel(this) is Control wb)
         {
             // OverlayLayer is a Canvas, so we won't get a signal to resize if the window
             // bounds change. Subscribe to force update
