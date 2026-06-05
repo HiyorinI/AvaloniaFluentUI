@@ -1,30 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Media;
-using Avalonia.Utilities;
+﻿using Avalonia.Media;
+using AvaloniaFluentUI.Core;
 
-namespace AvaloniaFluentUI.Controls.Windowing;
-
-/// <summary>
-/// Values describing the complexity the title bar hit test logic should use
-/// </summary>
-public enum TitleBarHitTestType
-{
-    /// <summary>
-    /// Hit testing is done with a simple bounds check
-    /// </summary>
-    Simple,
-
-    /// <summary>
-    /// Hit testing is done with bounds checks first, then
-    /// uses the current Renderer to hit test visuals to check
-    /// for interactive content
-    /// </summary>
-    /// <remarks>
-    /// Use this if you're using something like a TabView or NavigationView
-    /// where managing the drag rectangles manually may be too cumbersome
-    /// </remarks>
-    Complex
-}
+namespace AvaloniaFluentUI.Windowing;
 
 /// <summary>
 /// Represents the title bar of an <see cref="AppWindow"/> allowing customization such as
@@ -234,32 +211,9 @@ public class AppWindowTitleBar
     }
 
     /// <summary>
-    /// Gets or sets whether the window content should display in the title bar area of the window
-    /// </summary>
-    // public bool ExtendsContentIntoTitleBar
-    // {
-    //     get => _extendsContentIntoTitleBar;
-    //     set
-    //     {
-    //         if (_extendsContentIntoTitleBar != value)
-    //         {
-    //             _extendsContentIntoTitleBar = value;
-    //             _parent.OnExtendsContentIntoTitleBarChanged(value);
-    //         }
-    //     }
-    // }
-
-    /// <summary>
-    /// Gets or sets how the hit test logic should handle hit testing controls that are placed
-    /// in the title bar drag rect region
-    /// </summary>
-    public TitleBarHitTestType TitleBarHitTestType { get; set; }
-
-    /// <summary>
     /// Gets or sets the height of the default title bar
     /// </summary>
     /// <remarks>
-    /// If <see cref="ExtendsContentIntoTitleBar" /> is true, this value describes the height of the
     /// default drag rect and caption buttons only. If custom drag rects are set, only the caption
     /// buttons are affected by this
     /// </remarks>
@@ -268,75 +222,12 @@ public class AppWindowTitleBar
         get => _height;
         set
         {
-            if (!MathUtilities.AreClose(_height, value))
+            if (!MathHelpers.IsClose(_height, value))
             {
                 _height = value;
                 _parent.OnTitleBarHeightChanged(value);
             }
         }
-    }
-
-    /// <summary>
-    /// Gets or sets the system reserved region for caption buttons
-    /// </summary>
-    /// <remarks>
-    /// This value is always zero in LTR mode. In RTL mode, this value is constant unless
-    /// render scaling changes on the window
-    /// </remarks>
-    public double LeftInset => _leftInset;
-
-    /// <summary>
-    /// Gets or sets the system reserved region for caption buttons
-    /// </summary>
-    /// <remarks>
-    /// This value is always zero in RTL mode. In LTR mode, this value is constant unless
-    /// render scaling changes on the window
-    /// </remarks>
-    public double RightInset => _rightInset;
-
-    /// <summary>
-    /// Sets custom specified drag regions for the window. Setting this value overrides the 
-    /// default drag rect. Pass null to restore to the default.
-    /// </summary>
-    public void SetDragRectangles(Rect[] value)
-    {
-        _dragRects = value;
-    }
-
-    internal bool? HitTestDragRects(Point p)
-    {
-        if (_dragRects == null)
-            return null;
-
-        for (int i = 0; i < _dragRects.Length; i++)
-        {
-            if (_dragRects[i].Contains(p))
-            {
-                if (TitleBarHitTestType == TitleBarHitTestType.Simple)
-                    return true;
-
-                return _parent.ComplexHitTest(p);
-            }
-        }
-
-        return false;
-    }
-
-    internal void SetInset(double inset, FlowDirection dir)
-    {
-        // For now, setting both insets to the same value. FlowDirection is mostly handled by
-        // the mirror transform which means technically we always want the right inset
-        _rightInset = _leftInset = inset;
-        //if (dir == FlowDirection.LeftToRight)
-        //{
-        //    _leftInset = inset;
-        //    _rightInset = 0;
-        //}
-        //else
-        //{
-        //    _rightInset = inset;
-        //    _leftInset = 0;
-        //}
     }
 
     private AppWindow _parent;
@@ -351,10 +242,7 @@ public class AppWindowTitleBar
     private Color? _buttonPressedForegroundColor;
     // private bool _extendsContentIntoTitleBar;
     private Color? _foregroundColor;
-    private double _height = 32;
+    private double _height = 40;
     private Color? _inactiveBackgroundColor;
     private Color? _inactiveForegroundColor;
-    private Rect[] _dragRects;
-    private double _leftInset;
-    private double _rightInset;
 }
