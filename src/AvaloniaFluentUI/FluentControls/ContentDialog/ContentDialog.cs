@@ -719,8 +719,9 @@ public partial class ContentDialog : ContentControl, ICustomKeyboardNavigation
                 // ContentDialog itself to pull focus away from the main visual tree so weird things don't happen
                 // The latter shouldn't happen in 99% of cases as either something in the user content will be able
                 // to take focus OR there should always be at least one button which can take focus
-                var next = KeyboardNavigationHandler.GetNext(this, NavigationDirection.Next) ?? this;
-                next.Focus();
+                var manager = TopLevel.GetTopLevel(this).FocusManager;
+                var next = manager.FindNextElement(NavigationDirection.Next, new FindNextElementOptions { SearchRoot = this });
+                next?.Focus();
 
 #if DEBUG
                 Logger.TryGet(LogEventLevel.Debug, "ContentDialog")?.Log("SetupDialog", "Set initial focus to {next}", next);
@@ -941,9 +942,9 @@ public partial class ContentDialog : ContentControl, ICustomKeyboardNavigation
     private DialogHost _host;
     private ContentDialogResult _result;
     private TaskCompletionSource<ContentDialogResult> _tcs;
-    private Button _primaryButton;
-    private Button _secondaryButton;
-    private Button _closeButton;
+    private Button? _primaryButton;
+    private Button? _secondaryButton;
+    private Button? _closeButton;
     private bool _hasDeferralActive;
     private Visual _hotkeyDownVisual;
 }
