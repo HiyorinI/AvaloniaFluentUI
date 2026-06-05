@@ -112,9 +112,9 @@ public partial class ItemsRepeater : Panel
     /// Gets a standardized view of the supported interactions between a given ItemsSource object and the ItemsRepeater control and its associated components.
     /// </summary>
     /// <remarks>
-    /// Note the return type is <see cref="FAItemsSourceView"/> and not the ItemsSourceView in Avalonia
+    /// Note the return type is <see cref="ItemsSourceView"/> and not the ItemsSourceView in Avalonia
     /// </remarks>
-    public FAItemsSourceView ItemsSourceView => _itemsSourceView;
+    public ItemsSourceView ItemsSourceView => _itemsSourceView;
 
     internal Control MadeAnchor => _viewportManager.MadeAnchor;
 
@@ -385,10 +385,10 @@ public partial class ItemsRepeater : Panel
             if (args.NewValue != args.OldValue)
             {
                 var newValue = args.NewValue;
-                var newDataSource = newValue as FAItemsSourceView;
+                var newDataSource = newValue as ItemsSourceView;
                 if (newValue != null && newDataSource == null)
                 {
-                    newDataSource = new FAItemsSourceView(newValue as IEnumerable);
+                    newDataSource = new ItemsSourceView(newValue as IEnumerable);
                 }
 
                 OnDataSourcePropertyChanged(_itemsSourceView, newDataSource);
@@ -615,7 +615,7 @@ public partial class ItemsRepeater : Panel
         EnsureDefaultLayoutState();
     }
 
-    private void OnDataSourcePropertyChanged(FAItemsSourceView oldValue, FAItemsSourceView newValue)
+    private void OnDataSourcePropertyChanged(ItemsSourceView oldValue, ItemsSourceView newValue)
     {
         if (_isLayoutInProgress)
             throw new Exception();
@@ -896,7 +896,7 @@ public partial class ItemsRepeater : Panel
     private readonly ViewManager _viewManager;
     private readonly ViewportManager _viewportManager;
 
-    private FAItemsSourceView _itemsSourceView;
+    private ItemsSourceView _itemsSourceView;
     private IElementFactory _itemTemplateWrapper;
     private VirtualizingLayoutContext _layoutContext;
     private object _layoutState;
@@ -925,7 +925,7 @@ public partial class ItemsRepeater : Panel
 
     // Bug in framework's reference tracking causes crash during
     // UIAffinityQueue cleanup. To avoid that bug, take a strong ref
-    private IElementFactory _itemTemplate;
+    //private IFAElementFactory _itemTemplate;
 
     // Bug where DataTemplate with no content causes a crash.
     // See: https://github.com/microsoft/microsoft-ui-xaml/issues/776
