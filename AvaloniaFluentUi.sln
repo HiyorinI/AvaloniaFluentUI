@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "test\Test\Test.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocaleTest", "test\LocaleTest\LocaleTest.csproj", "{77D0FE03-0AD8-46B3-98EF-13967FB1084D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipViewTest", "test\FlipViewTest\FlipViewTest.csproj", "{FD168AC3-E029-45C7-911B-111250B8CC56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{77D0FE03-0AD8-46B3-98EF-13967FB1084D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77D0FE03-0AD8-46B3-98EF-13967FB1084D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77D0FE03-0AD8-46B3-98EF-13967FB1084D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD168AC3-E029-45C7-911B-111250B8CC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD168AC3-E029-45C7-911B-111250B8CC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD168AC3-E029-45C7-911B-111250B8CC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD168AC3-E029-45C7-911B-111250B8CC56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{5B1A025A-1A2A-2B0C-6C5D-2A6C2A6B7C8D} = {0749A958-EEF5-429D-9F2D-69D36EB5DCD0}
 		{F299B5FD-A5E2-4427-BFD3-961C5B00A0D8} = {B676BE65-6B49-4EEA-9D20-20A7E6349C2A}
 		{77D0FE03-0AD8-46B3-98EF-13967FB1084D} = {B676BE65-6B49-4EEA-9D20-20A7E6349C2A}
+		{FD168AC3-E029-45C7-911B-111250B8CC56} = {B676BE65-6B49-4EEA-9D20-20A7E6349C2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E358197-10B9-4579-8309-5D9BCB8E7F3E}
