@@ -10,6 +10,7 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using AvaloniaFluentUI.Controls;
 using AvaloniaFluentUI.Locale;
+using AvaloniaFluentUI.Styling;
 using CommunityToolkit.Mvvm.Messaging;
 using Gallery.Helpers;
 using Gallery.Messages;
@@ -76,10 +77,7 @@ public class ViewBase : ContentControl
         UrlHelpers.OpenUrl("https://github.com/HiyorinI/AvaloniaFluentUI.git");
     }
 
-    private void OnToggleThemeClicked(object? sender, RoutedEventArgs e)
-    { 
-        ThemeService.ToggleTheme();
-    }
+    private void OnToggleThemeClicked(object? sender, RoutedEventArgs e) => FluentAvaloniaTheme.Instance.ToggleTheme();
     
     protected async Task ScrollTo(string name)
     {

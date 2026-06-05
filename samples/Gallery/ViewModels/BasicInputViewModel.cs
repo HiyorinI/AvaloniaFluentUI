@@ -137,7 +137,6 @@ public partial class BasicInputViewModel : ViewModelBase
     {
         if (int.TryParse(value.ToString(), out int number))
         {
-            Console.WriteLine("是 Int");
             MultiSelectionSelectedItems.Clear();
             foreach (var item in MultiSelectionItems)
             {

@@ -31,7 +31,7 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var config = ThemeService.LoadConfig();
+        var config = ConfigService.LoadConfig();
         InitializeCulture();
         LocalizationService.Instance.SetCulture(config?.Language);
         

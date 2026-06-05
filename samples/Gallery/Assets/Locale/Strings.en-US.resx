@@ -470,4 +470,7 @@
       <data name="ToggleTheme" xml:space="preserve"><value>SwitchTheme</value></data>
   <data name="Pin" xml:space="preserve"><value>PinToTop</value></data>
     <data name="UnPin" xml:space="preserve"><value>Unpin</value></data>
+  <data name="MT_File" xml:space="preserve">
+    <value>File</value>
+  </data>
 </root>
