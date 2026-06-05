@@ -75,18 +75,30 @@
             IsVisible="False"
             ZIndex="10"/>
 
-          <ui:PipsPager
+          <PipsPager
             Name="PART_PipsPager"
             Grid.Row="1"
             MinWidth="128"
-            MaxWidth="256"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderThickness="0"
-            ItemsSource="{TemplateBinding ImageSource}"
-            ScrollViewer.BringIntoViewOnFocusChange="False"
-            SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+            MaxVisiblePips="{TemplateBinding MaxVisiblePips}"
+            NumberOfPages="{TemplateBinding ItemCount}"
+            SelectedPageIndex="{Binding SelectedIndex, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+          <!--  <ui:PipsPager  -->
+          <!--  Name="PART_PipsPager"  -->
+          <!--  Grid.Row="1"  -->
+          <!--  MinWidth="128"  -->
+          <!--  MaxWidth="256"  -->
+          <!--  HorizontalAlignment="Center"  -->
+          <!--  VerticalAlignment="Bottom"  -->
+          <!--  Background="Transparent"  -->
+          <!--  BorderThickness="0"  -->
+          <!--  ItemsSource="{TemplateBinding ImageSource}"  -->
+          <!--  ScrollViewer.BringIntoViewOnFocusChange="False"  -->
+          <!--  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>  -->
         </Grid>
       </ControlTemplate>
     </Setter>

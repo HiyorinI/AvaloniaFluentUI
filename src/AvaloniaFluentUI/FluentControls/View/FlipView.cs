@@ -58,6 +58,15 @@ public class FlipView : TemplatedControl
     public static readonly StyledProperty<FlipOrientation> OrientationProperty =
         AvaloniaProperty.Register<FlipView, FlipOrientation>(nameof(Orientation), defaultValue: FlipOrientation.Horizontal);
 
+    public static readonly StyledProperty<int> MaxVisiblePipsProperty =
+        AvaloniaProperty.Register<FlipView, int>(nameof(MaxVisiblePips), defaultValue: 8);
+
+    public int MaxVisiblePips
+    {
+        get => GetValue(MaxVisiblePipsProperty);
+        set => SetValue(MaxVisiblePipsProperty, value);
+    }
+
     public FlipOrientation Orientation
     {
         get => GetValue(OrientationProperty);
@@ -135,6 +144,7 @@ public class FlipView : TemplatedControl
     private readonly TranslateTransform _nextTransform = new();
 
     private CancellationTokenSource? _disposeCts;
+    private CancellationTokenSource? _cancelAnimationCts;
 
     private const string PART_CURRENT_IMAGE = "PART_CurrentImage";
     private const string PART_NEXT_IMAGE = "PART_NextImage";
