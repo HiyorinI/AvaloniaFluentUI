@@ -7,7 +7,7 @@
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
     <Setter Property="BorderThickness" Value="1"/>
     <Setter Property="CornerRadius" Value="5"/>
     <Setter Property="Template">
@@ -90,7 +90,8 @@
             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
             Content="{TemplateBinding Content}"
-            ContentTemplate="{TemplateBinding ContentTemplate}"/>
+            ContentTemplate="{TemplateBinding ContentTemplate}"
+            TextBlock.TextAlignment="Center"/>
         </Border>
       </ControlTemplate>
     </Setter>
@@ -111,8 +112,8 @@
       </Style>
 
       <Style Selector="^:selected">
-        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
 
@@ -126,7 +127,7 @@
       <Setter Property="Margin" Value="2"/>
 
       <Style Selector="^:pointerover">
-        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
       </Style>
 

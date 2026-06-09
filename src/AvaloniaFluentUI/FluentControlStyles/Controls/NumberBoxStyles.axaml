@@ -61,12 +61,12 @@
   <x:Double x:Key="NumberBoxPopupShadowDepth">16</x:Double>
   <Thickness x:Key="NumberBoxPopupIndicatorMargin">0,0,8,0</Thickness>
 
-  
-  <!-- Control-specific resources -->
+
+  <!--  Control-specific resources  -->
   <Thickness x:Key="NumberBoxPopupSpinButtonBorderThickness">0</Thickness>
 
   <Thickness x:Key="NumberBoxPopupBorderThickness">1</Thickness>
-<ControlTheme x:Key="NumberBoxSpinButtonStyle" TargetType="RepeatButton">
+  <ControlTheme x:Key="NumberBoxSpinButtonStyle" TargetType="RepeatButton">
     <Setter Property="MinWidth" Value="32"/>
     <Setter Property="Padding" Value="0"/>
     <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -245,10 +245,10 @@
               FontWeight="{TemplateBinding FontWeight}"
               Foreground="{TemplateBinding Foreground}"
               InnerLeftContent="{TemplateBinding InnerLeftContent}"
+              PlaceholderText="{TemplateBinding PlaceholderText}"
               SelectionBrush="{TemplateBinding SelectionHighlightColor}"
               TextAlignment="{TemplateBinding TextAlignment}"
-              Theme="{StaticResource NumberBoxTextBoxStyle}"
-              Watermark="{TemplateBinding PlaceholderText}"/>
+              Theme="{StaticResource NumberBoxTextBoxStyle}"/>
 
             <ui:FluentPopup
               Name="UpDownPopup"
@@ -505,10 +505,10 @@
               FontWeight="{TemplateBinding FontWeight}"
               Foreground="{TemplateBinding Foreground}"
               InnerLeftContent="{TemplateBinding InnerLeftContent}"
+              PlaceholderText="{TemplateBinding PlaceholderText}"
               SelectionBrush="{TemplateBinding SelectionHighlightColor}"
               TextAlignment="{TemplateBinding TextAlignment}"
-              Theme="{StaticResource CompactNumberBoxTextBoxStyle}"
-              Watermark="{TemplateBinding PlaceholderText}"/>
+              Theme="{StaticResource CompactNumberBoxTextBoxStyle}"/>
 
             <ui:FluentPopup
               Name="UpDownPopup"

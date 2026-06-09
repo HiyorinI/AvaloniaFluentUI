@@ -396,7 +396,7 @@
                   Name="ContentGridBorder"
                   Margin="{DynamicResource NavigationViewContentMargin}"
                   Background="{DynamicResource LayerFillColorDefaultBrush}"
-                  BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                  BorderBrush="{DynamicResource ControlStrokeColorDefault}"
                   BorderThickness="{DynamicResource NavigationViewContentGridBorderThickness}"
                   ClipToBounds="True"
                   CornerRadius="{DynamicResource NavigationViewContentGridCornerRadius}">

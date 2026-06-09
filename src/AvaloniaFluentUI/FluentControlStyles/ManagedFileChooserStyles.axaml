@@ -219,8 +219,8 @@
                   <TextBox
                     Margin="0,0,2,0"
                     IsVisible="{Binding !SelectingFolder}"
-                    Text="{Binding FileName}"
-                    Watermark="File name"/>
+                    PlaceholderText="File name"
+                    Text="{Binding FileName}"/>
                 </DockPanel>
                 <CheckBox
                   Content="Show hidden files"

@@ -137,9 +137,8 @@
         <MergeResourceInclude Source="/FluentControlStyles/Controls/SmoothScrollViewer/SingleDirectionScrollViewerStyle.axaml"/>
 
         <MergeResourceInclude Source="/FluentControlStyles/Controls/FluentMenu/FluentContextMenuStyle.axaml"/>
-        <MergeResourceInclude Source="/FluentControlStyles/Controls/ComboBox/FluentComboBoxStyle.axaml"/>
         <MergeResourceInclude Source="/FluentControlStyles/Controls/ComboBox/MultiSelectionComboBoxStyle.axaml"/>
-        <MergeResourceInclude Source="/FluentControlStyles/Controls/Flyout/FluentFlyoutPresenter.axaml"/>
+        <!-- <MergeResourceInclude Source="/FluentControlStyles/Controls/Flyout/FluentFlyoutPresenter.axaml"/> -->
 
         <MergeResourceInclude Source="/FluentControlStyles/Controls/Button/PushButtonStyle.axaml"/>
         <MergeResourceInclude Source="/FluentControlStyles/Controls/Button/ToolButtonStyle.axaml"/>
@@ -157,6 +156,7 @@
 
         <MergeResourceInclude Source="/FluentControlStyles/Controls/TextBox/SearchTextBox.axaml"/>
 
+        <MergeResourceInclude Source="/FluentControlStyles/Controls/Card/CardStyles.axaml"/>
         <MergeResourceInclude Source="/FluentControlStyles/Controls/Card/SettingCardStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>

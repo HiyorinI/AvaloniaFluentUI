@@ -15,11 +15,11 @@
   </Design.PreviewWith>
 
   <!--  ListBox comes from WinUI ListBox style  -->
-  
-  <!-- Control-specific resources -->
+
+  <!--  Control-specific resources  -->
   <Thickness x:Key="ListBoxBorderThemeThickness">0</Thickness>
 
-  <!-- Control-specific resources -->
+  <!--  Control-specific resources  -->
   <x:Double x:Key="ListViewItemContentOffsetX">-40.5</x:Double>
   <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.3</x:Double>
   <x:Double x:Key="ListViewItemDragThemeOpacity">0.80</x:Double>
@@ -33,7 +33,7 @@
   <Thickness x:Key="ListViewItemCompactSelectedBorderThemeThickness">4</Thickness>
   <x:Double x:Key="ListAccentLowOpacity">0.6</x:Double>
   <x:Double x:Key="ListAccentMediumOpacity">0.8</x:Double>
-<ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
+  <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Background" Value="{DynamicResource SystemControlTransparentBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
@@ -51,7 +51,6 @@
           BorderThickness="{TemplateBinding BorderThickness}">
           <ui:SmoothScrollViewer
             Name="PART_ScrollViewer"
-            Padding="0,0,8,0"
             AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
             Background="{TemplateBinding Background}"
             BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"

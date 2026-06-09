@@ -11,10 +11,10 @@
 
   <Thickness x:Key="CalendarDatePickerTopHeaderMargin">0,0,0,8</Thickness>
 
-  
-  <!-- Control-specific resources -->
+
+  <!--  Control-specific resources  -->
   <Thickness x:Key="CalendarDatePickerBorderThemeThickness">1</Thickness>
-<ControlTheme x:Key="CalendarDropDownButton" TargetType="Button">
+  <ControlTheme x:Key="CalendarDropDownButton" TargetType="Button">
     <Setter Property="Template">
       <ControlTemplate>
         <Panel
@@ -58,8 +58,9 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
-            UseFloatingWatermark="{TemplateBinding UseFloatingWatermark}"
-            Watermark="{TemplateBinding Watermark}">
+            PlaceholderForeground="{TemplateBinding PlaceholderForeground}"
+            PlaceholderText="{TemplateBinding PlaceholderText}"
+            UseFloatingPlaceholder="{TemplateBinding UseFloatingPlaceholder}">
             <TextBox.InnerRightContent>
               <Button
                 Name="PART_Button"

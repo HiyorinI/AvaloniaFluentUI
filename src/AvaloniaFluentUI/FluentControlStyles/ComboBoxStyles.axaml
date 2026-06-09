@@ -23,7 +23,7 @@
 
         <ComboBoxItem Content="Item1"/>
 
-        <Rectangle Name="Pill" Theme="{StaticResource ComboBoxItemPill}"/>
+        <Rectangle Theme="{StaticResource ComboBoxItemPill}"/>
       </StackPanel>
     </Border>
   </Design.PreviewWith>
@@ -64,9 +64,9 @@
 
 
   <!--  Control-specific resources  -->
-  
+
   <SolidColorBrush x:Key="ComboBoxDropDownGlyphForegroundFocusedPressed" Color="{StaticResource TextFillColorSecondaryBrush}"/>
-<ControlTheme x:Key="ComboBoxItemPill" TargetType="Rectangle">
+  <ControlTheme x:Key="ComboBoxItemPill" TargetType="Rectangle">
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="Height" Value="{StaticResource ComboBoxItemPillHeight}"/>
     <Setter Property="Width" Value="{StaticResource ComboBoxItemPillWidth}"/>
@@ -93,20 +93,10 @@
     <Setter Property="Template">
       <ControlTemplate>
         <DataValidationErrors>
-          <Grid ColumnDefinitions="*,32" RowDefinitions="Auto, *, Auto">
+          <Grid ColumnDefinitions="*,32">
 
-            <!-- Disabling since Avalonia doesn't have Header property here
-                        <ContentPresenter x:Name="HeaderContentPresenter"
-                                          Grid.Row="0"
-                                          Grid.Column="0"
-                                          Grid.ColumnSpan="2"
-                                          IsVisible="False"
-                                          FontWeight="{DynamicResource ComboBoxHeaderThemeFontWeight}"
-                                          Margin="{DynamicResource ComboBoxTopHeaderMargin}"
-                                          VerticalAlignment="Top" />-->
             <Border
-              x:Name="Background"
-              Grid.Row="1"
+              Name="Background"
               Grid.Column="0"
               Grid.ColumnSpan="2"
               MinWidth="{DynamicResource ComboBoxThemeMinWidth}"
@@ -116,8 +106,7 @@
               CornerRadius="{TemplateBinding CornerRadius}"/>
 
             <Border
-              x:Name="HighlightBackground"
-              Grid.Row="1"
+              Name="HighlightBackground"
               Grid.Column="0"
               Grid.ColumnSpan="2"
               Background="{DynamicResource ControlFillColorDefaultBrush}"
@@ -127,26 +116,31 @@
 
             <Border
               Name="Pill"
-              Grid.Row="1"
               Margin="1,0,0,0"
               Classes="ComboBoxItemPill"
               Opacity="0"/>
 
             <TextBlock
               x:Name="PlaceholderTextBlock"
-              Grid.Row="1"
               Grid.Column="0"
               Margin="{TemplateBinding Padding}"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               Foreground="{TemplateBinding PlaceholderForeground}"
-              IsVisible="{TemplateBinding SelectionBoxItem,
-                                          Converter={x:Static ObjectConverters.IsNull}}"
-              Text="{TemplateBinding PlaceholderText}"/>
+              Text="{TemplateBinding PlaceholderText}">
+              <TextBlock.IsVisible>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                  <Binding
+                    Converter="{x:Static ObjectConverters.IsNull}"
+                    Path="SelectionBoxItem"
+                    RelativeSource="{RelativeSource TemplatedParent}"/>
+                  <Binding Path="!IsEditable" RelativeSource="{RelativeSource TemplatedParent}"/>
+                </MultiBinding>
+              </TextBlock.IsVisible>
+            </TextBlock>
 
             <ContentPresenter
-              x:Name="ContentPresenter"
-              Grid.Row="1"
+              Name="ContentPresenter"
               Grid.Column="0"
               Margin="{TemplateBinding Padding}"
               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -154,9 +148,28 @@
               Content="{TemplateBinding SelectionBoxItem}"
               ContentTemplate="{TemplateBinding ItemTemplate}"/>
 
+            <TextBox
+              Name="PART_EditableTextBox"
+              Grid.Column="0"
+              Padding="{TemplateBinding Padding}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Background="Transparent"
+              BorderThickness="0"
+              Foreground="{TemplateBinding Foreground}"
+              IsVisible="{TemplateBinding IsEditable}"
+              PlaceholderText="{TemplateBinding PlaceholderText}"
+              Text="{TemplateBinding Text,
+                                     Mode=TwoWay}">
+              <TextBox.Resources>
+                <SolidColorBrush x:Key="TextControlBackgroundFocused">Transparent</SolidColorBrush>
+                <SolidColorBrush x:Key="TextControlBackgroundPointerOver">Transparent</SolidColorBrush>
+                <Thickness x:Key="TextControlBorderThemeThicknessFocused">0</Thickness>
+              </TextBox.Resources>
+            </TextBox>
+
             <Border
-              x:Name="DropDownOverlay"
-              Grid.Row="1"
+              Name="DropDownOverlay"
               Grid.Column="1"
               Width="30"
               Margin="-4,4,4,4"
@@ -189,7 +202,7 @@
               PlacementTarget="Background"
               WindowManagerAddShadowHint="False">
               <Border
-                x:Name="PopupBorder"
+                Name="PopupBorder"
                 Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                 HorizontalAlignment="Stretch"
                 Background="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
@@ -198,7 +211,6 @@
                 BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
                 CornerRadius="{DynamicResource OverlayCornerRadius}">
                 <ui:SmoothScrollViewer
-                  Padding="{StaticResource ComboBoxViewerPadding}"
                   HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                   IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
                   VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">

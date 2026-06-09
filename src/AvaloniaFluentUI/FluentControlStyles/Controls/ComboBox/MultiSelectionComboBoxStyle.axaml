@@ -154,8 +154,8 @@
               Width="16"
               Height="16"
               Padding="0"
+              Content="{StaticResource Close}"
               Cursor="Hand"
-              IconData="{StaticResource Close}"
               IconHeight="8"
               IconWidth="8"
               Theme="{StaticResource TransparentToolButton}"/>

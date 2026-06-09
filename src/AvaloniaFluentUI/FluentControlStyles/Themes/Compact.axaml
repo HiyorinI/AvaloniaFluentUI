@@ -8,6 +8,10 @@
   <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
   <CornerRadius x:Key="OverlayCornerRadius">8</CornerRadius>
 
+  <CornerRadius x:Key="CardCornerRadius">6</CornerRadius>
+  <Thickness x:Key="CardBorderThickness">1</Thickness>
+  <Thickness x:Key="CardPadding">16</Thickness>
+
   <!--  Font Sizes  -->
   <x:Double x:Key="ControlContentThemeFontSize">14</x:Double>
 
