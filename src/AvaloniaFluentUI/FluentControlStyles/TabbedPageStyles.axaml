@@ -96,7 +96,6 @@
     <Setter Property="IndicatorTemplate">
       <DataTemplate>
         <Border
-          Margin="2,0"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch"
           Background="{DynamicResource AccentFillColorDefaultBrush}"
@@ -156,10 +155,18 @@
       <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
       <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     </Style>
+
+    <Style Selector="^">
+      <Setter Property="Transitions">
+        <Transitions>
+          <BrushTransition Property="TextElement.Foreground" Duration="0:0:0.25"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
     <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+      <Setter Property="CornerRadius" Value="6"/>
       <Setter Property="Opacity" Value="0"/>
-      <Setter Property="RenderTransform" Value="scale(0.0, 1.0)"/>
-      <Setter Property="RenderTransformOrigin" Value="50%, 100%"/>
       <Setter Property="Transitions">
         <Transitions>
           <DoubleTransition Property="Opacity" Duration="0:0:0.114"/>
@@ -171,10 +178,46 @@
       </Setter>
     </Style>
 
-    <Style Selector="^:selected /template/ ContentPresenter#PART_SelectedPipe">
-      <Setter Property="IsVisible" Value="True"/>
-      <Setter Property="Opacity" Value="1"/>
-      <Setter Property="RenderTransform" Value="scale(0.35, 1.0)"/>
+    <Style Selector="^[TabStripPlacement=Top],     ^[TabStripPlacement=Bottom]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="RenderTransform" Value="scale(0.0, 1.0)"/>
+        <Setter Property="RenderTransformOrigin" Value="50%, 100%"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^[TabStripPlacement=Left],     ^[TabStripPlacement=Right]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="RenderTransform" Value="scale(1.0, 0.0)"/>
+        <Setter Property="RenderTransformOrigin" Value="100%, 50%"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:selected[TabStripPlacement=Top],     ^:selected[TabStripPlacement=Bottom]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="IsVisible" Value="True"/>
+        <Setter Property="RenderTransform" Value="scale(0.35, 1.0)"/>
+        <Setter Property="Opacity" Value="1"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:pressed[TabStripPlacement=Top],     ^:pressed[TabStripPlacement=Bottom]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="RenderTransform" Value="scale(0.3, 1.0)"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:selected[TabStripPlacement=Left],     ^:selected[TabStripPlacement=Right]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="IsVisible" Value="True"/>
+        <Setter Property="RenderTransform" Value="scale(1.0, 0.85)"/>
+        <Setter Property="Opacity" Value="1"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:pressed[TabStripPlacement=Left],     ^:pressed[TabStripPlacement=Right]">
+      <Style Selector="^ /template/ ContentPresenter#PART_SelectedPipe">
+        <Setter Property="RenderTransform" Value="scale(1.0, 0.65)"/>
+      </Style>
     </Style>
 
     <!--  Placement-specific pipe positioning  -->
@@ -192,7 +235,6 @@
           <Border
             Width="2"
             Height="18"
-            Margin="2,0"
             Background="{DynamicResource AccentFillColorDefaultBrush}"
             CornerRadius="{DynamicResource ControlCornerRadius}"/>
         </DataTemplate>
@@ -208,7 +250,6 @@
           <Border
             Width="2"
             Height="18"
-            Margin="2,0"
             Background="{DynamicResource AccentFillColorDefaultBrush}"
             CornerRadius="{DynamicResource ControlCornerRadius}"/>
         </DataTemplate>
