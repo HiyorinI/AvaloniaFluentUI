@@ -47,7 +47,7 @@ public partial class MainWindowViewModel : ViewModelBase
         
         LocalizationService.Instance.PropertyChanged += (_, _) =>
         {
-            if (_targetCulture == LocalizationService.Instance.CurrentCulture) { return; }
+            if (_targetCulture == LocalizationService.Instance.CurrentLanguage) { return; }
             
             Task.Run(async () =>
             {

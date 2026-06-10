@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="Assets\BC2\" />
         <Folder Include="Assets\demo\" />
         <Folder Include="Controls\" />
         <Folder Include="Models\"/>

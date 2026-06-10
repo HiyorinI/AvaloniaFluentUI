@@ -17,18 +17,16 @@ public partial class MainWindow : AppWindow
     public MainWindow()
     {
         InitializeComponent();
-
-        // SplashScreen = new MainWindowSplashScreen();
         
-        LocalizationService.Instance.PropertyChanged += async (_, _) =>
-        {
-            await Task.Delay(500);
-            // Console.WriteLine(NavigationView.SettingsItem.Tag);
-        };
-
+        // SplashScreen = new MainWindowSplashScreen();
+        // EnabledAcrylicBlue(true);
+        
         FluentAvaloniaTheme.Instance.ThemeChanged += (_, theme) =>
         {
             Console.WriteLine($"Theme Changed: {theme}");
+            Console.WriteLine(Background.ToString());
+            
+            // Background = Brush.Parse(FluentAvaloniaTheme.Instance.IsDarkTheme ? "#30161616" : "#30F3F3F3");  
         };
 
         FluentAvaloniaTheme.Instance.ThemeColorChanged += (_, color) =>
@@ -36,11 +34,7 @@ public partial class MainWindow : AppWindow
             Console.WriteLine($"Theme Color Changed: {color}");
         };
 
-        CarouselPage.PageTransition = new PageSlide
-        {
-            Duration =  TimeSpan.FromMilliseconds(300),
-            SlideInEasing = new CubicEaseInOut()
-        };
+        
     }
 
     private void OnClicked(object? sender, RoutedEventArgs e)
@@ -61,12 +55,12 @@ public partial class MainWindow : AppWindow
         FluentAvaloniaTheme.Instance.CustomAccentColor = null;
     }
 
-    private void TogglePage(object? sender, RoutedEventArgs e)
+    private void OnAcrylicClicked(object? sender, RoutedEventArgs e)
     {
-        CarouselPage.CurrentPage = new DrawerPage
+        if (sender is CheckBox cb)
         {
-            Content = new TextBlock { Text = "DrawPage"}
-        };
+            EnabledAcrylicBlue((bool)cb.IsChecked);
+        }
     }
 }
 

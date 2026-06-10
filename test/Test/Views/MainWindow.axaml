@@ -9,6 +9,7 @@
   xmlns:vm="using:Test.ViewModels"
   xmlns:wnd="clr-namespace:AvaloniaFluentUI.Windowing;assembly=AvaloniaFluentUI"
   Title="Test"
+  MinWidth="328"
   d:DesignHeight="450"
   d:DesignWidth="800"
   x:DataType="vm:MainWindowViewModel"
@@ -22,7 +23,8 @@
         Width="328"
         Margin="0,10,0,0"
         VerticalAlignment="Center"
-        PlaceholderText="请输入内容"/>
+        PlaceholderText="请输入内容"
+        SearchCommand="{Binding SearchCommand}"/>
       <ui:ToolButton
         Grid.Column="1"
         Width="46"
@@ -30,167 +32,43 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Stretch"
         Command="{Binding ToggleThemeCommand}"
-        IconData="M15 3v-2q0-0.406 0.297-0.703t0.703-0.297 0.703 0.297 0.297 0.703v2q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297-0.297-0.703zM8 7q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297l-2-2q-0.297-0.297-0.297-0.703t0.297-0.703 0.703-0.297 0.703 0.297l2 2q0.297 0.297 0.297 0.703zM27 4q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703l-2 2q-0.297 0.297-0.703 0.297t-0.703-0.297-0.297-0.703 0.297-0.703l2-2q0.297-0.297 0.703-0.297zM24 16v0.156q0 1.625-0.648 3.055t-1.75 2.492-2.547 1.68-3.055 0.617q-1.656 0-3.117-0.625t-2.547-1.711-1.711-2.547-0.625-3.117 0.625-3.117 1.711-2.547 2.547-1.711 3.117-0.625 3.117 0.625 2.547 1.711 1.711 2.547 0.625 3.117zM16 22h0.125q1.219 0 2.289-0.484t1.867-1.313 1.258-1.914 0.461-2.289-0.461-2.289-1.258-1.914-1.867-1.313-2.289-0.484h-0.125v12zM3 15q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703-0.703 0.297h-2q-0.406 0-0.703-0.297t-0.297-0.703 0.297-0.703 0.703-0.297h2zM31 15q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703-0.703 0.297h-2q-0.406 0-0.703-0.297t-0.297-0.703 0.297-0.703 0.703-0.297h2zM7 24q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703l-2 2q-0.297 0.297-0.703 0.297t-0.703-0.297-0.297-0.703 0.297-0.703l2-2q0.297-0.297 0.703-0.297zM28 27q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297l-2-2q-0.297-0.297-0.297-0.703t0.297-0.703 0.703-0.297 0.703 0.297l2 2q0.297 0.297 0.297 0.703zM17 29v2q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297-0.297-0.703v-2q0-0.406 0.297-0.703t0.703-0.297 0.703 0.297 0.297 0.703z"
+        Content="M15 3v-2q0-0.406 0.297-0.703t0.703-0.297 0.703 0.297 0.297 0.703v2q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297-0.297-0.703zM8 7q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297l-2-2q-0.297-0.297-0.297-0.703t0.297-0.703 0.703-0.297 0.703 0.297l2 2q0.297 0.297 0.297 0.703zM27 4q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703l-2 2q-0.297 0.297-0.703 0.297t-0.703-0.297-0.297-0.703 0.297-0.703l2-2q0.297-0.297 0.703-0.297zM24 16v0.156q0 1.625-0.648 3.055t-1.75 2.492-2.547 1.68-3.055 0.617q-1.656 0-3.117-0.625t-2.547-1.711-1.711-2.547-0.625-3.117 0.625-3.117 1.711-2.547 2.547-1.711 3.117-0.625 3.117 0.625 2.547 1.711 1.711 2.547 0.625 3.117zM16 22h0.125q1.219 0 2.289-0.484t1.867-1.313 1.258-1.914 0.461-2.289-0.461-2.289-1.258-1.914-1.867-1.313-2.289-0.484h-0.125v12zM3 15q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703-0.703 0.297h-2q-0.406 0-0.703-0.297t-0.297-0.703 0.297-0.703 0.703-0.297h2zM31 15q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703-0.703 0.297h-2q-0.406 0-0.703-0.297t-0.297-0.703 0.297-0.703 0.703-0.297h2zM7 24q0.406 0 0.703 0.297t0.297 0.703-0.297 0.703l-2 2q-0.297 0.297-0.703 0.297t-0.703-0.297-0.297-0.703 0.297-0.703l2-2q0.297-0.297 0.703-0.297zM28 27q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297l-2-2q-0.297-0.297-0.297-0.703t0.297-0.703 0.703-0.297 0.703 0.297l2 2q0.297 0.297 0.297 0.703zM17 29v2q0 0.406-0.297 0.703t-0.703 0.297-0.703-0.297-0.297-0.703v-2q0-0.406 0.297-0.703t0.703-0.297 0.703 0.297 0.297 0.703z"
         Theme="{StaticResource TransparentToolButton}"/>
     </Grid>
   </wnd:AppWindow.TitleBarContent>
 
-  <ui:SmoothScrollViewer Margin="15,55,15,0" Padding="0,0,15,0">
-
-    <StackPanel Orientation="Vertical" Spacing="8">
-      <PipsPager
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        MaxVisiblePips="8"
-        NumberOfPages="24"/>
-      <GroupBox Header="个人信息">
-        <StackPanel Spacing="8">
-          <TextBox PlaceholderText="名字"/>
-          <TextBox PlaceholderText="姓氏"/>
-          <TextBox PlaceholderText="电子邮件"/>
-        </StackPanel>
-      </GroupBox>
-      <GroupBox Header="首选项">
-        <StackPanel Spacing="8">
-          <CheckBox Content="接收通知"/>
-          <CheckBox Content="深色模式"/>
-        </StackPanel>
-      </GroupBox>
-
-      <ui:SettingCard Description="I'm is God" Header="NiHao"/>
-
-      <ContentPage
-        Height="256"
-        BorderBrush="DeepPink"
-        BorderThickness="1"
-        CornerRadius="6">
-        <TextBlock
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          Text="你好!"/>
-      </ContentPage>
-
-      <ui:PushButton
-        Classes="Outlined"
-        Click="TogglePage"
-        Content="切换Page"/>
-      <CarouselPage
-        Name="CarouselPage"
-        Height="256"
-        BorderBrush="DeepPink"
-        IsGestureEnabled="True">
-        <ContentPage Header="Welcome">
-          <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Spacing="16">
-            <TextBlock
-              HorizontalAlignment="Center"
-              FontSize="28"
-              Text="Welcome to MyApp"/>
-            <TextBlock
-              HorizontalAlignment="Center"
-              Opacity="0.6"
-              Text="Swipe to learn more"/>
-          </StackPanel>
-        </ContentPage>
-
-        <ContentPage Header="Features">
-          <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Spacing="16">
-            <TextBlock
-              HorizontalAlignment="Center"
-              FontSize="28"
-              Text="Powerful Features"/>
-            <TextBlock
-              HorizontalAlignment="Center"
-              Opacity="0.6"
-              Text="Everything you need in one place"/>
-          </StackPanel>
-        </ContentPage>
-
-        <ContentPage Header="Get Started">
-          <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Spacing="16">
-            <TextBlock
-              HorizontalAlignment="Center"
-              FontSize="28"
-              Text="Ready?"/>
-            <Button HorizontalAlignment="Center" Content="Get Started"/>
-          </StackPanel>
-        </ContentPage>
-      </CarouselPage>
-
-      <DrawerPage
-        Height="512"
-        BackdropBrush="Aquamarine"
-        DrawerBackground="DeepPink"
-        DrawerFooterBackground="Orange"
-        DrawerHeaderBackground="DeepSkyBlue"
-        DrawerHeaderForeground="Green">
-        <DrawerPage.Drawer>
-          <ContentPage Header="Menu">
-            <StackPanel Margin="12" Spacing="8">
-              <Button Content="Home"/>
-              <Button Content="Profile"/>
-              <Button Content="Settings"/>
-            </StackPanel>
-          </ContentPage>
-        </DrawerPage.Drawer>
-
-        <NavigationPage>
-          <TextBlock Text="Content"/>
-        </NavigationPage>
-      </DrawerPage>
-
-
-
-      <TabbedPage>
-        <ContentPage Header="Home">
-          <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Home content"/>
-        </ContentPage>
-
-        <ContentPage Header="Profile">
-          <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Profile content"/>
-        </ContentPage>
-
-        <ContentPage Header="Settings">
-          <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Settings content"/>
-        </ContentPage>
-      </TabbedPage>
-
-      <TextSelectionHandle/>
-      <CommandBar>
-        <CommandBar.PrimaryCommands>
-          <CommandBarButton Icon="{x:Static fi:FluentIcon.Cut}" Label="Cut"/>
-          <CommandBarButton Icon="{x:Static fi:FluentIcon.Copy}" Label="Copy"/>
-          <CommandBarButton Icon="{x:Static fi:FluentIcon.Paste}" Label="Paste"/>
-          <CommandBarSeparator/>
-          <CommandBarButton Icon="{x:Static fi:FluentIcon.Remove}" Label="Remove"/>
-          <CommandBarButton Icon="{x:Static fi:FluentIcon.Accept}" Label="Accent"/>
-        </CommandBar.PrimaryCommands>
-        <CommandBar.SecondaryCommands>
-          <CommandBarButton Label="Select All"/>
-          <CommandBarButton Label="Find and Replace"/>
-          <CommandBarButton Label="Settings"/>
-        </CommandBar.SecondaryCommands>
-      </CommandBar>
-    </StackPanel>
-  </ui:SmoothScrollViewer>
-
+  <Grid
+    Margin="15,55,15,0"
+    RowDefinitions="Auto, *"
+    RowSpacing="12">
+    <ui:SegmentedToggleView
+      HorizontalAlignment="Center"
+      SelectedIndex="{Binding CurrentIndex, Mode=TwoWay}"
+      SelectedItem="{Binding CurrentItem}">
+      <ui:SegmentedItem
+        Width="100"
+        Content="主页"
+        IsSelected="True"
+        Tag="Main"/>
+      <ui:SegmentedItem
+        Width="290"
+        Content="翻转视图"
+        Tag="FlipView"/>
+      <ui:SegmentedItem
+        Width="100"
+        Content="导航"
+        Tag="Navi"/>
+      <ui:SegmentedItem
+        Width="100"
+        Content="按钮"
+        Tag="Button"/>
+      <ui:SegmentedItem
+        Width="100"
+        Content="卡片"
+        Tag="Card"/>
+    </ui:SegmentedToggleView>
+    <ui:StackContent Grid.Row="1" Content="{Binding CurrentViewModel}"/>
+  </Grid>
 
   <!--  <fui:NavigationView  -->
   <!--  Name="NavigationView"  -->
