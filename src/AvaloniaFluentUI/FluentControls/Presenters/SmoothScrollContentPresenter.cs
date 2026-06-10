@@ -11,12 +11,7 @@ public class SmoothScrollContentPresenter : Avalonia.Controls.Presenters.ScrollC
 {
     private double _remainDelta;
     private bool _isRunning;
-
-    public SmoothScrollContentPresenter()
-    {
-        Padding = new Thickness(0);
-    }
-
+    
     private async Task Scroll(Orientation orientation)
     {
         _isRunning = true;
