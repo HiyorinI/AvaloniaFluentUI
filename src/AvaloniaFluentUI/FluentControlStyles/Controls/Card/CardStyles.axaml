@@ -1,0 +1,140 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls">
+
+  <ControlTheme x:Key="{x:Type ui:Card}" TargetType="ui:Card">
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource CardBorderThickness}"/>
+    <Setter Property="CornerRadius" Value="{DynamicResource CardCornerRadius}"/>
+    <Setter Property="Padding" Value="{DynamicResource CardPadding}"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="MinHeight" Value="68"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+          Name="RootBorder"
+          MinHeight="{TemplateBinding MinHeight}"
+          Padding="{TemplateBinding Padding}"
+          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}"
+          CornerRadius="{TemplateBinding CornerRadius}">
+          <Border.Transitions>
+            <Transitions>
+              <BrushTransition Property="Background" Duration="00:00:00.083"/>
+              <BrushTransition Property="BorderBrush" Duration="00:00:0.143"/>
+            </Transitions>
+          </Border.Transitions>
+          <ContentPresenter
+            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+            Content="{TemplateBinding Content}"
+            ContentTemplate="{TemplateBinding ContentTemplate}"/>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <!--  SimpleCard  -->
+  <ControlTheme
+    x:Key="{x:Type ui:SimpleCard}"
+    BasedOn="{StaticResource {x:Type ui:Card}}"
+    TargetType="ui:SimpleCard">
+
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+    </Style>
+
+    <Style Selector="^:pressed">
+      <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
+    </Style>
+
+    <Style Selector="^.Border">
+      <Style Selector="^:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+      </Style>
+    </Style>
+  </ControlTheme>
+
+  <!--  ElevatedCard  -->
+  <ControlTheme
+    x:Key="{x:Type ui:ElevatedCard}"
+    BasedOn="{StaticResource {x:Type ui:SimpleCard}}"
+    TargetType="ui:ElevatedCard">
+
+    <Style Selector="^">
+      <Setter Property="ClipToBounds" Value="False"/>
+      <Setter Property="RenderTransform" Value="translate(0px, 0px)"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition
+            Easing="LinearEasing"
+            Property="RenderTransform"
+            Duration="0:0:0.154"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
+    <Style Selector="^:pointerover">
+      <Setter Property="RenderTransform" Value="translate(0px, -4px)"/>
+      <Style Selector="^ /template/ Border#RootBorder">
+        <Setter Property="BoxShadow" Value="0 0 24 0 #50000000"/>
+      </Style>
+    </Style>
+  </ControlTheme>
+
+
+  <!--  HeaderCard  -->
+  <ControlTheme x:Key="{x:Type ui:HeaderCard}" TargetType="ui:HeaderCard">
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource CardBorderThickness}"/>
+    <Setter Property="CornerRadius" Value="{DynamicResource CardCornerRadius}"/>
+    <Setter Property="Padding" Value="0 16 0 16"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+          Name="RootBorder"
+          Padding="{TemplateBinding Padding}"
+          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}"
+          CornerRadius="{TemplateBinding CornerRadius}">
+          <Border.Transitions>
+            <Transitions>
+              <BrushTransition Property="Background" Duration="00:00:00.083"/>
+            </Transitions>
+          </Border.Transitions>
+          <DockPanel>
+            <TextBlock
+              Margin="16,0"
+              Classes="SubTitle"
+              DockPanel.Dock="Top"
+              Text="{TemplateBinding Header}"/>
+            <Separator Margin="0,16" DockPanel.Dock="Top"/>
+            <ContentPresenter
+              Margin="16,0"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Content="{TemplateBinding Content}"
+              ContentTemplate="{TemplateBinding ContentTemplate}"
+              DockPanel.Dock="Bottom"/>
+          </DockPanel>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+</ResourceDictionary>
+
