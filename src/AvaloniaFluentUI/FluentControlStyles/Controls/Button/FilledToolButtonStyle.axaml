@@ -1,0 +1,253 @@
+﻿<ResourceDictionary
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:ui="clr-namespace:AvaloniaFluentUI.Controls">
+  <!--  Add Resources Here  -->
+  <ControlTheme x:Key="{x:Type ui:FilledToolButton}" TargetType="ui:FilledToolButton">
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="IconWidth" Value="16"/>
+    <Setter Property="IconHeight" Value="16"/>
+    <Setter Property="BackgroundSizing" Value="InnerBorderEdge"/>
+    <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+          Name="PART_Border"
+          Width="{TemplateBinding Width}"
+          Height="{TemplateBinding Height}"
+          MinWidth="{TemplateBinding MinWidth}"
+          MinHeight="{TemplateBinding MinHeight}"
+          Padding="{TemplateBinding Padding}"
+          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}"
+          CornerRadius="{TemplateBinding CornerRadius}">
+          <ui:FluentIconElement
+            Name="PART_Icon"
+            Width="{TemplateBinding IconWidth}"
+            Height="{TemplateBinding IconHeight}"
+            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+            Foreground="{TemplateBinding Foreground}"
+            Source="{TemplateBinding Content}"/>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+
+    <!--  Information  -->
+    <Style Selector="^ /template/ Border#PART_Border">
+      <Setter Property="Transitions">
+        <Transitions>
+          <BrushTransition Property="Background" Duration="00:00:00.083"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
+    <Style Selector="^:pointerover">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:pressed">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+      </Style>
+    </Style>
+
+    <Style Selector="^:disabled">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+      </Style>
+      <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+      </Style>
+    </Style>
+
+    <!--  Information  -->
+    <Style Selector="^.Information">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource InformationDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+        <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+      </Style>
+    </Style>
+
+    <!--  Success  -->
+    <Style Selector="^.Success">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource SuccessDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+        <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+      </Style>
+    </Style>
+
+    <!--  Attention  -->
+    <Style Selector="^.Attention">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource AttentionDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+        <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+      </Style>
+    </Style>
+
+    <!--  Warning  -->
+    <Style Selector="^.Warning">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource WarningDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+        <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+      </Style>
+    </Style>
+
+    <!--  Error  -->
+    <Style Selector="^.Error">
+      <Style Selector="^ /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource ErrorDefaultBrush}"/>
+      </Style>
+
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPointerOver}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource FilledBorderBackgroundPointerOver}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource FilledBackgroundPressed}"/>
+        </Style>
+      </Style>
+
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#PART_Border">
+          <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}"/>
+          <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+        <Style Selector="^ /template/ ui|FluentIconElement#PART_Icon">
+          <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}"/>
+        </Style>
+      </Style>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>
