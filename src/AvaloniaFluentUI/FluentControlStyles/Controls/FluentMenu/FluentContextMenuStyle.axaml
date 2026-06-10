@@ -43,6 +43,7 @@
     <Setter Property="BorderThickness" Value="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}"/>
     <Setter Property="Focusable" Value="True"/>
+    <Setter Property="ClipToBounds" Value="False"/>
     <Setter Property="MaxWidth" Value="{DynamicResource FlyoutThemeMaxWidth}"/>
     <Setter Property="MinHeight" Value="{DynamicResource MenuFlyoutThemeMinHeight}"/>
     <Setter Property="Padding" Value="{DynamicResource MenuFlyoutPresenterThemePadding}"/>
@@ -51,22 +52,27 @@
     <Setter Property="Template">
       <ControlTemplate>
         <Border
-          MinHeight="{TemplateBinding MinHeight}"
-          MaxWidth="{TemplateBinding MaxWidth}"
-          Padding="{TemplateBinding Padding}"
-          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-          Background="{TemplateBinding Background}"
-          BorderBrush="{TemplateBinding BorderBrush}"
-          BorderThickness="{TemplateBinding BorderThickness}"
+          Margin="5,0,5,5"
+          BoxShadow="0 4 8 0 #24000000"
           CornerRadius="{TemplateBinding CornerRadius}">
-          <ui:SmoothScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
-            <ItemsPresenter
-              Name="PART_ItemsPresenter"
-              Margin="{DynamicResource MenuFlyoutScrollerMargin}"
-              Grid.IsSharedSizeScope="True"
-              ItemsPanel="{TemplateBinding ItemsPanel}"
-              KeyboardNavigation.TabNavigation="Continue"/>
-          </ui:SmoothScrollViewer>
+          <Border
+            MinHeight="{TemplateBinding MinHeight}"
+            MaxWidth="{TemplateBinding MaxWidth}"
+            Padding="{TemplateBinding Padding}"
+            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="{TemplateBinding CornerRadius}">
+            <ui:SmoothScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+              <ItemsPresenter
+                Name="PART_ItemsPresenter"
+                Margin="{DynamicResource MenuFlyoutScrollerMargin}"
+                Grid.IsSharedSizeScope="True"
+                ItemsPanel="{TemplateBinding ItemsPanel}"
+                KeyboardNavigation.TabNavigation="Continue"/>
+            </ui:SmoothScrollViewer>
+          </Border>
         </Border>
       </ControlTemplate>
     </Setter>

@@ -118,9 +118,9 @@
 
 
   <ControlTheme x:Key="{x:Type ui:TeachingTip}" TargetType="ui:TeachingTip">
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
     <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorTertiaryBrush}"/>
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource TeachingTipContentBorderThicknessUntargeted}"/>
     <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}"/>
     <Setter Property="ActionButtonStyle" Value="{StaticResource {x:Type Button}}"/>
@@ -187,6 +187,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                BoxShadow="0 6 12 0 #24000000"
                 CornerRadius="{TemplateBinding CornerRadius}"
                 FlowDirection="{TemplateBinding FlowDirection}">
                 <Grid Name="ContentRootGrid" RowDefinitions="Auto,*,Auto">

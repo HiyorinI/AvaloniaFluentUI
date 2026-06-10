@@ -54,10 +54,10 @@
 
   <x:Double x:Key="MenuBarHeight">40</x:Double>
 
-  
-  <!-- Control-specific resources -->
+
+  <!--  Control-specific resources  -->
   <Thickness x:Key="MenuBarItemBorderThickness">0</Thickness>
-<ControlTheme x:Key="MenuBarItemStyle" TargetType="MenuItem">
+  <ControlTheme x:Key="MenuBarItemStyle" TargetType="MenuItem">
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ControlAltFillColorTertiaryBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource MenuBarItemBorderThickness}"/>
@@ -97,21 +97,26 @@
               Placement="BottomEdgeAlignedLeft"
               WindowManagerAddShadowHint="False">
               <Border
-                MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"
-                MaxWidth="{DynamicResource FlyoutThemeMaxWidth}"
-                HorizontalAlignment="Stretch"
-                Background="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
-                BackgroundSizing="InnerBorderEdge"
-                BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
-                BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
+                Margin="5,0,5,5"
+                BoxShadow="0 4 8 0 #24000000"
                 CornerRadius="{DynamicResource OverlayCornerRadius}">
-                <ui:SmoothScrollViewer>
-                  <ItemsPresenter
-                    Name="PART_ItemsPresenter"
-                    Margin="{DynamicResource MenuFlyoutPresenterThemePadding}"
-                    Grid.IsSharedSizeScope="True"
-                    ItemsPanel="{TemplateBinding ItemsPanel}"/>
-                </ui:SmoothScrollViewer>
+                <Border
+                  MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"
+                  MaxWidth="{DynamicResource FlyoutThemeMaxWidth}"
+                  HorizontalAlignment="Stretch"
+                  Background="{DynamicResource AcrylicInAppFillColorDefaultBrush}"
+                  BackgroundSizing="InnerBorderEdge"
+                  BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
+                  BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
+                  CornerRadius="{DynamicResource OverlayCornerRadius}">
+                  <ui:SmoothScrollViewer>
+                    <ItemsPresenter
+                      Name="PART_ItemsPresenter"
+                      Margin="{DynamicResource MenuFlyoutPresenterThemePadding}"
+                      Grid.IsSharedSizeScope="True"
+                      ItemsPanel="{TemplateBinding ItemsPanel}"/>
+                  </ui:SmoothScrollViewer>
+                </Border>
               </Border>
             </ui:FluentPopup>
           </Panel>
