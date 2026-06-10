@@ -182,11 +182,11 @@
               Grid.Row="1"
               Grid.Column="1"
               MinHeight="{DynamicResource ComboBoxMinHeight}"
-              Margin="0,0,14,0"
+              Margin="0,0,10,0"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
               FontFamily="{DynamicResource SymbolThemeFontFamily}"
-              FontSize="12"
+              FontSize="15"
               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Glyph="&#xE70D;"
               IsHitTestVisible="False"/>
@@ -226,6 +226,18 @@
       </ControlTemplate>
     </Setter>
 
+    <Style Selector="^ /template/ ui|FontIcon#DropDownGlyph">
+      <Setter Property="RenderTransformOrigin" Value="50%, 100%"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition
+            Easing="CubicEaseOut"
+            Property="RenderTransform"
+            Duration="0:0:0.15"/>
+        </Transitions>
+      </Setter>
+    </Style>
+
     <Style Selector="^:pointerover">
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
@@ -248,6 +260,10 @@
       </Style>
       <Style Selector="^ /template/ Border#Background">
         <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}"/>
+      </Style>
+
+      <Style Selector="^ /template/ ui|FontIcon#DropDownGlyph">
+        <Setter Property="RenderTransform" Value="scale(1.0, 0.85)"/>
       </Style>
     </Style>
 
