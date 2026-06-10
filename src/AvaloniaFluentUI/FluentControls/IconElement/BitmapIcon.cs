@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Avalonia;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -10,8 +11,38 @@ namespace AvaloniaFluentUI.Controls;
 /// <summary>
 /// Represents and icon that uses a bitmap as its content
 /// </summary>
-public partial class BitmapIcon : FAIconElement
+public partial class BitmapIcon : IconElement
 {
+    /// <summary>
+    /// Defines the <see cref="UriSource"/> property
+    /// </summary>
+    public static readonly StyledProperty<Uri> UriSourceProperty =
+        AvaloniaProperty.Register<BitmapIcon, Uri>(nameof(UriSource));
+
+    /// <summary>
+    /// Defines the <see cref="ShowAsMonochrome"/> property
+    /// </summary>
+    public static readonly StyledProperty<bool> ShowAsMonochromeProperty =
+        AvaloniaProperty.Register<BitmapIcon, bool>(nameof(ShowAsMonochrome));
+
+    /// <summary>
+    /// Gets or sets the Uniform Resource Identifier (URI) of the bitmap to use as the icon content.
+    /// </summary>
+    public Uri UriSource
+    {
+        get => GetValue(UriSourceProperty);
+        set => SetValue(UriSourceProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets a value that indicates whether the bitmap is shown in a single color.
+    /// </summary>
+    public bool ShowAsMonochrome
+    {
+        get => GetValue(ShowAsMonochromeProperty);
+        set => SetValue(ShowAsMonochromeProperty, value);
+    }
+    
     public BitmapIcon()
     {
         RenderOptions.SetBitmapInterpolationMode(this, BitmapInterpolationMode.HighQuality);
@@ -33,6 +64,7 @@ public partial class BitmapIcon : FAIconElement
                 throw new InvalidOperationException("Cannot edit properties of BitmapIcon if BitmapIconSource is linked");
 
             CreateBitmap(change.GetNewValue<Uri>());
+            InvalidateCachedBitmap();
             InvalidateVisual();
         }
         else if (change.Property == ShowAsMonochromeProperty)
@@ -40,7 +72,12 @@ public partial class BitmapIcon : FAIconElement
             if (_bis != null)
                 throw new InvalidOperationException("Cannot edit properties of BitmapIcon if BitmapIconSource is linked");
 
+            InvalidateCachedBitmap();
             InvalidateVisual();
+        }
+        else if (change.Property == ForegroundProperty && ShowAsMonochrome)
+        {
+            InvalidateCachedBitmap();
         }
     }
 
@@ -64,52 +101,60 @@ public partial class BitmapIcon : FAIconElement
 
         var dst = new Rect(Bounds.Size);
 
-        // RTB will throw ArgumentException if height or width isn't at least 1, so
-        // don't draw anything if we don't meet that requirement
         if (dst.Width < 1 || dst.Height < 1)
             return;
 
-        var wid = (int)dst.Width;
-        var hei = (int)dst.Height;
+        var avBitmap = GetCachedAvaloniaBitmap();
+        if (avBitmap == null)
+            return;
 
-        using (var bmp = new WriteableBitmap(new PixelSize(wid, hei), new Vector(96, 96),
-            PixelFormats.Bgra8888, AlphaFormat.Premul))
+        using (context.PushClip(dst))
         {
-            using var buffer = bmp.Lock();
-
-            var skSfc = SKSurface.Create(new SKImageInfo(wid, hei), buffer.Address);
-            if (skSfc == null)
-                return;
-
-            var skDC = skSfc.Canvas;
-
-            skDC.Clear(new SKColor(0, 0, 0, 0));
-
-            var finalBmp = _bitmap.Resize(new SKImageInfo(wid, hei), SKFilterQuality.High);
-
-            if (ShowAsMonochrome)
-            {
-                var avColor = Foreground is ISolidColorBrush sc ? sc.Color : Colors.White;
-
-                var color = new SKColor(avColor.R, avColor.G, avColor.B, avColor.A);
-                SKPaint paint = new SKPaint();
-                paint.ColorFilter = SKColorFilter.CreateBlendMode(color, SKBlendMode.SrcATop);
-
-                skDC.DrawBitmap(finalBmp, new SKRect(0, 0, (float)wid, (float)hei), paint);
-                paint.Dispose();
-            }
-            else
-            {
-                skDC.DrawBitmap(finalBmp, new SKRect(0, 0, (float)wid, (float)hei));
-            }
-
-            finalBmp.Dispose();
-
-            using (context.PushClip(dst))
-            {
-                context.DrawImage(bmp, new Rect(bmp.Size), dst);
-            }
+            context.DrawImage(avBitmap, new Rect(avBitmap.Size), dst);
         }
+    }
+
+    private Bitmap GetCachedAvaloniaBitmap()
+    {
+        if (_cachedAvBitmap != null)
+            return _cachedAvBitmap;
+
+        if (_bitmap == null)
+            return null;
+
+        byte[] pngData;
+
+        if (ShowAsMonochrome)
+        {
+            var avColor = Foreground is ISolidColorBrush sc ? sc.Color : Colors.White;
+            var skColor = new SKColor(avColor.R, avColor.G, avColor.B, avColor.A);
+
+            using var colorFilter = SKColorFilter.CreateBlendMode(skColor, SKBlendMode.SrcATop);
+            using var paint = new SKPaint { ColorFilter = colorFilter };
+
+            using var surface = SKSurface.Create(new SKImageInfo(_bitmap.Width, _bitmap.Height, SKColorType.Bgra8888));
+            surface.Canvas.Clear(SKColors.Transparent);
+            surface.Canvas.DrawBitmap(_bitmap, 0, 0, paint);
+            using var snap = surface.Snapshot();
+            using var data = snap.Encode(SKEncodedImageFormat.Png, 100);
+            pngData = data.ToArray();
+        }
+        else
+        {
+            using var image = SKImage.FromBitmap(_bitmap);
+            using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+            pngData = data.ToArray();
+        }
+
+        using var ms = new MemoryStream(pngData);
+        _cachedAvBitmap = new Bitmap(ms);
+        return _cachedAvBitmap;
+    }
+
+    private void InvalidateCachedBitmap()
+    {
+        _cachedAvBitmap?.Dispose();
+        _cachedAvBitmap = null;
     }
 
     private void CreateBitmap(Uri src)
@@ -136,6 +181,7 @@ public partial class BitmapIcon : FAIconElement
     /// <inheritdoc/>
     protected void Dispose()
     {
+        InvalidateCachedBitmap();
         _bitmap?.Dispose();
         _bitmap = null;
         _originalSize = default;
@@ -164,9 +210,11 @@ public partial class BitmapIcon : FAIconElement
         Dispose();
         _bitmap = _bis._bitmap;
         _originalSize = _bis.Size;
+        InvalidateCachedBitmap();
     }
 
     private BitmapIconSource _bis;
     protected SKBitmap _bitmap;
     private Size _originalSize;
+    private Bitmap _cachedAvBitmap;
 }
