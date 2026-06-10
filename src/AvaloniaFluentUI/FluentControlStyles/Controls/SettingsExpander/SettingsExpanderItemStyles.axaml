@@ -75,7 +75,8 @@
               HorizontalAlignment="Left"
               VerticalAlignment="Center"
               IsVisible="False"
-              Source="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
+              Source="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
+              TextElement.FontSize="24"/>
             <!-- <ContentPresenter Name="IconPresenter" Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"/> -->
             <!-- </Viewbox> -->
 
@@ -119,7 +120,8 @@
               Width="{DynamicResource SettingsExpanderItemActionIconSize}"
               Height="{DynamicResource SettingsExpanderItemActionIconSize}"
               IsVisible="False"
-              Source="{Binding TemplateSettings.ActionIcon, RelativeSource={RelativeSource TemplatedParent}}"/>
+              Source="{Binding TemplateSettings.ActionIcon, RelativeSource={RelativeSource TemplatedParent}}"
+              TextElement.FontSize="18"/>
             <!-- <ContentPresenter Name="ExpandChevronActionIconContainer" Content="{Binding TemplateSettings.ActionIcon, RelativeSource={RelativeSource TemplatedParent}}"/> -->
             <!-- </Viewbox> -->
           </Grid>

@@ -50,41 +50,41 @@
           <Grid ColumnDefinitions="*,Auto">
             <ContentPresenter Content="{TemplateBinding Content}"/>
 
-            <Viewbox
-              Name="IconHost"
-              Grid.Column="1"
-              Width="24"
-              Height="24"
-              Margin="0,3,10,0">
-              <Path
-                Name="ExpandCollapseChevron"
-                Width="20"
-                Height="20"
-                Margin="{DynamicResource SettingsExpanderExpandCollapseChevronMargin}"
-                Data="{StaticResource ChevronDownMed}"
-                Fill="{DynamicResource TextFillColorPrimaryBrush}"
-                IsVisible="False"
-                Stretch="Uniform"/>
-            </Viewbox>
-            <!--  <ui:SymbolIcon  -->
-            <!--  Name="ExpandCollapseChevron"  -->
+            <!--  <Viewbox  -->
+            <!--  Name="IconHost"  -->
             <!--  Grid.Column="1"  -->
+            <!--  Width="24"  -->
+            <!--  Height="24"  -->
+            <!--  Margin="0,3,10,0">  -->
+            <!--  <Path  -->
+            <!--  Name="ExpandCollapseChevron"  -->
+            <!--  Width="20"  -->
+            <!--  Height="20"  -->
             <!--  Margin="{DynamicResource SettingsExpanderExpandCollapseChevronMargin}"  -->
-            <!--  FontSize="18"  -->
-            <!--  Foreground="{DynamicResource TextFillColorPrimaryBrush}"  -->
+            <!--  Data="{StaticResource ChevronDownMed}"  -->
+            <!--  Fill="{DynamicResource TextFillColorPrimaryBrush}"  -->
             <!--  IsVisible="False"  -->
+            <!--  Stretch="Uniform"/>  -->
+            <!-- </Viewbox> -->
+            <ui:SymbolIcon
+              Name="ExpandCollapseChevron"
+              Grid.Column="1"
+              Margin="{DynamicResource SettingsExpanderExpandCollapseChevronMargin}"
+              FontSize="18"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              IsVisible="False"
+              Symbol="ChevronDown"/>
             <!--  RenderTransform="none"  -->
-            <!--  Symbol="ChevronDown"/>  -->
           </Grid>
         </Border>
       </ControlTemplate>
     </Setter>
 
-    <Style Selector="^ /template/ Path#ExpandCollapseChevron">
+    <Style Selector="^ /template/ ui|SymbolIcon#ExpandCollapseChevron">
       <Setter Property="RenderTransformOrigin" Value="50%, 50%"/>
       <Setter Property="Transitions">
         <Transitions>
-          <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.096"/>
+          <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.167"/>
         </Transitions>
       </Setter>
     </Style>
@@ -106,18 +106,18 @@
     </Style>
 
     <Style Selector="^:checked">
-      <Style Selector="^ /template/ Path#ExpandCollapseChevron">
+      <Style Selector="^ /template/ ui|SymbolIcon#ExpandCollapseChevron">
         <Setter Property="RenderTransform" Value="rotate(180deg)"/>
       </Style>
       <Style Selector="^:not(:empty) /template/ Border#Root">
         <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource TopCornerRadiusFilterConverter}}"/>
       </Style>
-      <Style Selector="^ /template/ Viewbox#IconHost">
-        <Setter Property="Margin" Value="0 0 10 1"/>
-      </Style>
+      <!-- <Style Selector="^ /template/ Viewbox#IconHost"> -->
+      <!-- <Setter Property="Margin" Value="0 0 10 1"/> -->
+      <!-- </Style> -->
     </Style>
 
-    <Style Selector="^:not(:empty) /template/ Path#ExpandCollapseChevron">
+    <Style Selector="^:not(:empty) /template/ ui|SymbolIcon#ExpandCollapseChevron">
       <Setter Property="IsVisible" Value="True"/>
     </Style>
   </ControlTheme>
