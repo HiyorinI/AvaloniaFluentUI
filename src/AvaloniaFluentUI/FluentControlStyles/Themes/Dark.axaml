@@ -69,9 +69,9 @@
   <Color x:Key="SolidBackgroundFillColorQuarternary">#2C2C2C</Color>
   <Color x:Key="SolidBackgroundFillColorTransparent">#00202020</Color>
 
-  <Color x:Key="SystemFillColorSuccess">#0F7B0F</Color>
-  <Color x:Key="SystemFillColorCaution">#9D9D00</Color>
-  <Color x:Key="SystemFillColorCritical">#D83F40</Color>
+  <Color x:Key="SystemFillColorSuccess">#6CCB5F</Color>
+  <Color x:Key="SystemFillColorCaution">#FCE100</Color>
+  <Color x:Key="SystemFillColorCritical">#FF99A4</Color>
   <Color x:Key="SystemFillColorNeutral">#787878</Color>
 
   <Color x:Key="SystemFillColorSolidNeutral">#9D9D9D</Color>

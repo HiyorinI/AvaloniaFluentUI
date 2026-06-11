@@ -70,7 +70,7 @@
   <Color x:Key="SolidBackgroundFillColorTransparent">#00F3F3F3</Color>
 
   <Color x:Key="SystemFillColorSuccess">#0F7B0F</Color>
-  <Color x:Key="SystemFillColorCaution">#9D9D00</Color>
+  <Color x:Key="SystemFillColorCaution">#9D5D00</Color>
   <Color x:Key="SystemFillColorCritical">#D83F40</Color>
   <Color x:Key="SystemFillColorNeutral">#787878</Color>
 
