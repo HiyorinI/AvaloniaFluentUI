@@ -53,7 +53,7 @@
   <Thickness x:Key="ExpanderChevronBorderThickness">0</Thickness>
   <ControlTheme x:Key="ExpanderToggleButtonTheme" TargetType="ToggleButton">
     <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ExpanderHeaderBorderThickness}"/>
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
     <Setter Property="Padding" Value="{DynamicResource ExpanderHeaderPadding}"/>
@@ -119,9 +119,9 @@
     </Setter>
 
     <Style Selector="^:pointerover">
-      <Style Selector="^ /template/ Border#Root">
-        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
-      </Style>
+      <!-- <Style Selector="^ /template/ Border#Root"> -->
+      <!-- <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/> -->
+      <!-- </Style> -->
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
@@ -135,9 +135,9 @@
     </Style>
 
     <Style Selector="^:pressed">
-      <Style Selector="^ /template/ Border#Root">
-        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}"/>
-      </Style>
+      <!-- <Style Selector="^ /template/ Border#Root"> -->
+      <!-- <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}"/> -->
+      <!-- </Style> -->
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
@@ -171,9 +171,9 @@
     </Style>
 
     <Style Selector="^:checked">
-      <Style Selector="^ /template/ Border#Root">
-        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
-      </Style>
+      <!-- <Style Selector="^ /template/ Border#Root"> -->
+      <!-- <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/> -->
+      <!-- </Style> -->
       <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
       </Style>
@@ -186,9 +186,9 @@
       </Style>
 
       <Style Selector="^:pointerover">
-        <Style Selector="^ /template/ Border#Root">
-          <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
-        </Style>
+        <!-- <Style Selector="^ /template/ Border#Root"> -->
+        <!-- <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/> -->
+        <!-- </Style> -->
         <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
           <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
@@ -202,9 +202,9 @@
       </Style>
 
       <Style Selector="^:pressed">
-        <Style Selector="^ /template/ Border#Root">
-          <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
-        </Style>
+        <!-- <Style Selector="^ /template/ Border#Root"> -->
+        <!-- <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/> -->
+        <!-- </Style> -->
         <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
           <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
         </Style>
@@ -275,7 +275,7 @@
     <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorSecondaryBrush}"/>
     <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}"/>
     <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -403,7 +403,7 @@
     <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorSecondaryBrush}"/>
     <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}"/>
     <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefault}"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
